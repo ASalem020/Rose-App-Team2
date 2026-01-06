@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Carousel,
   CarouselContent,
@@ -6,12 +8,31 @@ import {
 import TestimonialItem from './testimonial-item';
 import { cn } from '@/lib/utils/tailwind-merge';
 import { testimonials } from '../constants/testimonials';
+import Autoplay, {
+  AutoplayType,
+} from 'embla-carousel-autoplay';
+import { useRef, type RefObject } from 'react';
 
 export default function TestimonialsContent() {
+  // Variables
+  const plugin: RefObject<AutoplayType> = useRef(
+    Autoplay({
+      delay: 2000,
+      stopOnInteraction: false, // Keep playing after manual interaction
+      stopOnMouseEnter: true, // Pause when mouse enters
+    }),
+  );
+
   return (
     <div className="testimonials-content bg-maroon-50 p-2 pb-24 pt-14">
       {/* Carousel */}
-      <Carousel>
+      <Carousel
+        plugins={[plugin.current]}
+        opts={{
+          loop: true,
+          align: 'start',
+        }}
+      >
         <div className="container mx-auto">
           {/* Carousel Content */}
           <CarouselContent
