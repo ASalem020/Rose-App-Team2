@@ -1,15 +1,24 @@
 import Rating from '@/components/shared/rating';
 import { cn } from '@/lib/utils/tailwind-merge';
 import Image from 'next/image';
-import { Testimonial } from '../types/testimonial';
+
+type TestimonialItemPropsType = {
+  name: string;
+  imgSrc: string;
+  rate: number;
+  maxRate?: number;
+  comment: string;
+  date: string;
+};
 
 export default function TestimonialItem({
   name,
   imgSrc,
   rate,
+  maxRate,
   comment,
   date,
-}: Testimonial) {
+}: TestimonialItemPropsType) {
   return (
     <div className="comment-box relative min-h-60 min-w-[21.4375rem] rounded-3xl bg-white p-5">
       {/* Avatar */}
@@ -39,7 +48,11 @@ export default function TestimonialItem({
       {/* Rating + Comment */}
       <div className="text flex flex-col gap-2 py-6">
         {/* Rating */}
-        <Rating rate={rate} className="mx-auto" />
+        <Rating
+          rate={rate}
+          className="mx-auto"
+          maxStars={maxRate}
+        />
 
         {/* Comment */}
         <p className="font-medium leading-4 text-zinc-800">

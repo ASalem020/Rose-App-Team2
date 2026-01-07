@@ -17,6 +17,8 @@ export default function SectionHeaderDescription({
         'before:absolute before:left-0 before:top-3/4 before:z-0 before:h-4 before:w-3/4 before:rounded-r-2xl before:bg-softPink-100',
         // After Styles
         'after:absolute after:-bottom-[0.375rem] after:left-0 after:z-0 after:h-[0.125rem] after:w-40 after:bg-softPink-600',
+        // Dark Styles
+        'dark:text-softPink-200 before:dark:bg-zinc-700 after:dark:bg-softPink-500',
       )}
     >
       <span className="relative z-10">{description}</span>
