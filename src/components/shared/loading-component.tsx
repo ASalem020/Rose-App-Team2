@@ -3,12 +3,12 @@ import { Loader } from 'lucide-react';
 
 type LoadingComponentPropsType = {
   iconSize?: number;
-  loadingClasses?: string;
+  className?: string;
 };
 
 export default function LoadingComponent({
   iconSize = 16,
-  loadingClasses,
+  className,
 }: LoadingComponentPropsType) {
   return (
     <div
@@ -17,6 +17,8 @@ export default function LoadingComponent({
         'loading-component flex animate-pulse items-center gap-1 text-zinc-800',
         // Dark Styles
         'dark:text-zinc-50',
+        // Custom Classes
+        className,
       )}
     >
       <Loader className="animate-spin" size={iconSize} />
@@ -24,8 +26,6 @@ export default function LoadingComponent({
         className={cn(
           // Main Styles
           'loading-message font-medium',
-          // Custom Classes
-          loadingClasses,
         )}
       >
         Loading ...
