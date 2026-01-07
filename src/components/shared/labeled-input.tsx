@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Input } from '@/components/ui/input';
+import {
+  Input,
+  type InputProps,
+} from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils/tailwind-merge';
 
-export interface LabeledInputProps extends React.ComponentProps<
-  typeof Input
-> {
+export interface LabeledInputProps extends InputProps {
   label: string;
   labelClassName?: string;
   containerClassName?: string;

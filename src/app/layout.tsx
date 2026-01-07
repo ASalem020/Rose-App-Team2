@@ -4,7 +4,16 @@ import './globals.css';
 import QueryProvider from '@/components/providers/query-provider';
 
 const sarabun = Sarabun({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  weight: [
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+  ],
   subsets: ['latin', 'thai'],
   variable: '--font-sarabun',
 });
@@ -27,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sarabun.variable} ${tajawal.variable} antialiased`}>
+      <body
+        className={`${sarabun.variable} ${tajawal.variable} antialiased`}
+      >
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
