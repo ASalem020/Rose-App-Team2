@@ -7,9 +7,9 @@ import {
 } from '@/components/ui/carousel';
 import TestimonialItem from './testimonial-item';
 import { cn } from '@/lib/utils/tailwind-merge';
-import Autoplay, {
-  AutoplayType,
-} from 'embla-carousel-autoplay';
+import AutoScroll, {
+  type AutoScrollType,
+} from 'embla-carousel-auto-scroll';
 import { useRef, type RefObject } from 'react';
 import useTestimonials from '../hooks/use-testimonials';
 import ErrorMessage from '@/components/shared/error-message';
@@ -17,9 +17,10 @@ import LoadingComponent from '@/components/shared/loading-component';
 
 export default function TestimonialsContent() {
   // Refs
-  const plugin: RefObject<AutoplayType> = useRef(
-    Autoplay({
-      delay: 2000,
+  const plugin: RefObject<AutoScrollType> = useRef(
+    AutoScroll({
+      speed: 1.2,
+      startDelay: 0,
       stopOnInteraction: false,
       stopOnMouseEnter: true,
     }),
@@ -50,6 +51,7 @@ export default function TestimonialsContent() {
         opts={{
           loop: true,
           align: 'start',
+          dragFree: true,
         }}
       >
         <div className="container mx-auto">
