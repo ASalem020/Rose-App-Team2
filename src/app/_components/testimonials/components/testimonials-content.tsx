@@ -73,11 +73,11 @@ export default function TestimonialsContent() {
                       ...data.testimonials,
                     ]
                   : data.testimonials
-                ).map(testimonial => {
+                ).map((testimonial, i) => {
                   return (
                     // Carousel Item
                     <CarouselItem
-                      key={testimonial._id}
+                      key={`${testimonial._id}${i}`}
                       className={cn(
                         // Main Styles
                         'flex items-center justify-center pl-16',
