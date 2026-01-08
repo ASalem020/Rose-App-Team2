@@ -20,7 +20,7 @@ export default function TestimonialItem({
   date,
 }: TestimonialItemPropsType) {
   return (
-    <div className="comment-box relative min-h-60 min-w-[21.4375rem] rounded-3xl bg-white p-5">
+    <div className="comment-box relative min-h-60 min-w-[21.4375rem] max-w-[25.25rem] rounded-3xl bg-white p-5">
       {/* Avatar */}
       <div
         className={cn(

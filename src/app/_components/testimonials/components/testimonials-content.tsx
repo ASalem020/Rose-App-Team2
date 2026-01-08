@@ -33,7 +33,7 @@ export default function TestimonialsContent() {
     <div
       className={cn(
         // Main Styles
-        'testimonials-content bg-maroon-50 pb-24 pl-8 pt-14',
+        'testimonials-content flex min-h-[34.375rem] items-center justify-center overflow-hidden bg-maroon-50',
         // Dark Styles
         'dark:bg-zinc-700',
       )}
@@ -54,12 +54,12 @@ export default function TestimonialsContent() {
           dragFree: true,
         }}
       >
-        <div className="container mx-auto">
+        <div className="container mx-auto overflow-x-hidden overflow-y-visible px-5 py-16">
           {/* Carousel Content */}
           <CarouselContent
             className={cn(
               // Main Styles
-              '-ml-16 pt-20',
+              '-ml-16',
               // Media Queries
               'lg:px-5',
             )}
