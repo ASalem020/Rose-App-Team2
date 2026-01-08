@@ -24,9 +24,9 @@ export default function Rating({
           viewBox="0 0 24 24"
           fill="#FBA707"
           stroke="#FBA707"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-star-icon lucide-star"
           key={index}
         >
