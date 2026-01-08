@@ -14,7 +14,7 @@ export default function About() {
     <div className="m-auto flex w-4/5 gap-20">
       <div className="flex flex-row items-center justify-center gap-2">
         <Image
-          src="/assets/images/951.png"
+          src="/assets/images/about-img-1.png"
           alt="logo"
           width={302}
           height={344}
@@ -22,14 +22,14 @@ export default function About() {
         />
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
-            src="/assets/images/954.png"
+            src="/assets/images/about-img-2.png"
             alt="logo"
             width={193}
             height={193}
             className="max-h-48 max-w-48 rounded-full"
           />
           <Image
-            src="/assets/images/953.png"
+            src="/assets/images/about-img-3.png"
             alt="logo"
             width={193}
             height={144}
