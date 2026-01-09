@@ -2,6 +2,7 @@ import { ArrowRight, Check } from 'lucide-react';
 import React from 'react';
 import { Button } from '../ui/button';
 import Image from 'next/image';
+import { cn } from '@/lib/utils/tailwind-merge';
 
 export default function About() {
   const aboutFeatures = [
@@ -11,15 +12,27 @@ export default function About() {
     { feat: 'Fast & Reliable Delivery' },
   ];
   return (
-    <div className="m-auto flex w-4/5 gap-20">
+    <div className="m-auto flex h-[24.375rem] w-4/5 gap-20">
       <div className="flex flex-row items-center justify-center gap-2">
-        <Image
-          src="/assets/images/about-img-1.png"
-          alt="logo"
-          width={302}
-          height={344}
-          className="max-h-[21.5rem] max-w-72 rounded-[7.5rem] rounded-tl-[3.125rem]"
-        />
+        <div
+          className={cn(
+            'relative inline-block',
+            'before:-z-10 before:w-[16.75rem]',
+            "before:absolute before:-inset-2 before:content-['']",
+            'before:-translate-x-4 before:-translate-y-1.5 before:rotate-[3.09deg]',
+            'before:rounded-[7.5rem] before:rounded-tl-[3.125rem]',
+            'before:border-4 before:border-maroon-600',
+          )}
+        >
+          {' '}
+          <Image
+            src="/assets/images/about-img-1.png"
+            alt="logo"
+            width={302}
+            height={344}
+            className="max-h-[21.5rem] max-w-72 rounded-[7.5rem] rounded-tl-[3.125rem]"
+          />
+        </div>
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
             src="/assets/images/about-img-2.png"
@@ -37,7 +50,7 @@ export default function About() {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col justify-center gap-6">
         <p className="font-bold text-softPink-500">ABOUT</p>
         <div className="flex flex-col gap-2">
           <h3 className="text-3xl font-bold text-maroon-700">
