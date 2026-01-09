@@ -39,6 +39,7 @@ export interface InputProps
     VariantProps<typeof inputVariants> {
   onReview?: () => void;
   text?: string;
+  error?: boolean;
 }
 
 const Input = React.forwardRef<
@@ -52,6 +53,7 @@ const Input = React.forwardRef<
       variant,
       placeholder,
       onReview,
+      error,
       onChange,
       ...props
     },
@@ -113,6 +115,7 @@ const Input = React.forwardRef<
           className,
           {
             'dark:text-white': resolvedVariant !== 'upload',
+            'border-red-600 dark:border-red-500': error,
           },
         )}
         ref={ref}

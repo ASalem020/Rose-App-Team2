@@ -30,38 +30,46 @@ type PhoneInputProps = Omit<
     'onChange'
   > & {
     onChange?: (value: RPNInput.Value) => void;
+    error?: boolean;
   };
 
 const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
   React.forwardRef<
     React.ElementRef<typeof RPNInput.default>,
     PhoneInputProps
-  >(({ className, onChange, value, ...props }, ref) => {
-    return (
-      <RPNInput.default
-        ref={ref}
-        className={cn('group flex', className)}
-        flagComponent={FlagComponent}
-        countrySelectComponent={CountrySelect}
-        inputComponent={InputComponent}
-        smartCaret={false}
-        value={value || undefined}
-        /**
-         * Handles the onChange event.
-         *
-         * react-phone-number-input might trigger the onChange event as undefined
-         * when a valid phone number is not entered. To prevent this,
-         * the value is coerced to an empty string.
-         *
-         * @param {E164Number | undefined} value - The entered value
-         */
-        onChange={value =>
-          onChange?.(value || ('' as RPNInput.Value))
-        }
-        {...props}
-      />
-    );
-  });
+  >(
+    (
+      { className, onChange, value, error, ...props },
+      ref,
+    ) => {
+      return (
+        <RPNInput.default
+          ref={ref}
+          className={cn('group flex', className)}
+          flagComponent={FlagComponent}
+          countrySelectComponent={CountrySelect}
+          inputComponent={InputComponent}
+          smartCaret={false}
+          value={value || undefined}
+          countrySelectProps={{ error } as any}
+          error={error}
+          /**
+           * Handles the onChange event.
+           *
+           * react-phone-number-input might trigger the onChange event as undefined
+           * when a valid phone number is not entered. To prevent this,
+           * the value is coerced to an empty string.
+           *
+           * @param {E164Number | undefined} value - The entered value
+           */
+          onChange={value =>
+            onChange?.(value || ('' as RPNInput.Value))
+          }
+          {...props}
+        />
+      );
+    },
+  );
 PhoneInput.displayName = 'PhoneInput';
 
 const InputComponent = React.forwardRef<
@@ -89,6 +97,7 @@ type CountrySelectProps = {
   value: RPNInput.Country;
   options: CountryEntry[];
   onChange: (country: RPNInput.Country) => void;
+  error?: boolean;
 };
 
 const CountrySelect = ({
@@ -96,6 +105,7 @@ const CountrySelect = ({
   value: selectedCountry,
   options: countryList,
   onChange,
+  error,
 }: CountrySelectProps) => {
   const scrollAreaRef = React.useRef<HTMLDivElement>(null);
   const [searchValue, setSearchValue] = React.useState('');
@@ -114,7 +124,10 @@ const CountrySelect = ({
         <Button
           type="button"
           variant="outline"
-          className="flex gap-1 rounded-e-none rounded-s-lg border-r-0 border-zinc-200 px-3 group-focus-within:border-maroon-600 group-hover:border-zinc-400 group-hover:bg-transparent group-focus-within:group-hover:border-maroon-600 dark:border-zinc-600 dark:bg-zinc-700 dark:group-focus-within:border-softPink-400 dark:group-hover:border-zinc-500 dark:group-hover:bg-zinc-700 dark:group-focus-within:group-hover:border-softPink-400"
+          className={cn(
+            'flex gap-1 rounded-e-none rounded-s-lg border-r-0 border-zinc-200 px-3 group-focus-within:border-maroon-600 group-hover:border-zinc-400 group-hover:bg-transparent group-focus-within:group-hover:border-maroon-600 dark:border-zinc-600 dark:bg-zinc-700 dark:group-focus-within:border-softPink-400 dark:group-hover:border-zinc-500 dark:group-hover:bg-zinc-700 dark:group-focus-within:group-hover:border-softPink-400',
+            error && 'border-red-600 dark:border-red-500',
+          )}
           disabled={disabled}
         >
           <FlagComponent

@@ -8,18 +8,29 @@ import { cn } from '@/lib/utils/tailwind-merge';
 
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
-  React.ComponentPropsWithoutRef<typeof OTPInput>
->(({ className, containerClassName, ...props }, ref) => (
-  <OTPInput
-    ref={ref}
-    containerClassName={cn(
-      'flex items-center gap-2 group justify-center has-[:disabled]:opacity-50',
-      containerClassName,
-    )}
-    className={cn('disabled:cursor-not-allowed', className)}
-    {...props}
-  />
-));
+  React.ComponentPropsWithoutRef<typeof OTPInput> & {
+    error?: boolean;
+  }
+>(
+  (
+    { className, containerClassName, error, ...props },
+    ref,
+  ) => (
+    <OTPInput
+      ref={ref}
+      containerClassName={cn(
+        'flex items-center gap-2 group justify-center has-[:disabled]:opacity-50',
+        error && 'has-error',
+        containerClassName,
+      )}
+      className={cn(
+        'disabled:cursor-not-allowed',
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
 InputOTP.displayName = 'InputOTP';
 
 const InputOTPGroup = React.forwardRef<
@@ -59,6 +70,7 @@ const InputOTPSlot = React.forwardRef<
         isFirstEmpty &&
           !isActive &&
           'group-hover:border-zinc-400 dark:group-hover:border-zinc-500',
+        '[.has-error_&]:border-red-600 dark:[.has-error_&]:border-red-500',
         className,
       )}
       {...props}

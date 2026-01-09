@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import {
@@ -23,6 +24,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { AccountDropdown } from '@/components/shared/account-dropdown';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
 import {
   InputOTP,
@@ -73,82 +75,343 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Inputs Div */}
+      {/* Dropdowns */}
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Inputs</h2>
-        <div className="flex gap-2">
-          {/* Inputs Div Light */}
-          <div className="flex w-1/2 flex-col gap-4 rounded-xl border p-10">
-            <Input placeholder="Enter your name" />
-            <Input
-              variant="search"
-              placeholder="Search..."
-            />
-            <Input variant="upload" type="file" />
-            <Input
-              variant="upload"
-              type="file"
-              onReview={() => alert('Reviewing files...')}
-            />
-            <Input type="password" placeholder="Password" />
-            <Input
-              variant="text"
-              type="text"
-              text="Default Text"
-            />
-            <Textarea
-              variant={'default'}
-              placeholder="placeholder"
-            />
-            <Textarea variant={'text'} text="text area" />
-            <InputOTP maxLength={6}>
-              <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
-              </InputOTPGroup>
-            </InputOTP>
-            <PhoneInput />
+        <h2 className="text-xl font-semibold">Dropdowns</h2>
+        <div className="flex gap-4">
+          <div className="rounded-xl border p-10">
+            <AccountDropdown />
           </div>
-          {/* Inputs Div Dark */}
-          <div className="dark flex w-1/2 flex-col gap-4 rounded-xl border bg-background p-10">
-            <Input placeholder="Enter your name" />
-            <Input
-              variant="search"
-              placeholder="Search..."
-            />
-            <Input variant="upload" type="file" />
-            <Input
-              variant="upload"
-              type="file"
-              onReview={() => alert('Reviewing files...')}
-            />
-            <Input type="password" placeholder="Password" />
-            <Input
-              variant="text"
-              type="text"
-              text="Default Text"
-              className="text-white"
-            />
-            <Textarea
-              variant={'default'}
-              placeholder="placeholder"
-            />
-            <Textarea variant={'text'} text="text area" />
-            <InputOTP maxLength={6}>
-              <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
-              </InputOTPGroup>
-            </InputOTP>
-            <PhoneInput />
+          <div className="dark rounded-xl border bg-background p-10">
+            <AccountDropdown />
+          </div>
+        </div>
+      </section>
+
+      {/* Inputs Div */}
+      <section className="space-y-8">
+        <h2 className="text-xl font-semibold">
+          Inputs & Forms
+        </h2>
+        <div className="grid gap-8 rounded-xl border p-10">
+          {/* Default Input */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Default Input
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Standard text input field.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<Input placeholder="..." />'}
+            </code>
+            <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
+              <div className="space-y-2 rounded-lg border bg-background p-4">
+                <p className="text-xs text-muted-foreground">
+                  Light Mode
+                </p>
+                <Input placeholder="Default Input" />
+              </div>
+              <div className="dark space-y-2 rounded-lg border bg-background p-4">
+                <p className="text-xs text-white">
+                  Dark Mode
+                </p>
+                <Input placeholder="Default Input" />
+              </div>
+            </div>
+          </div>
+
+          {/* Input with Error */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Input with Error
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Input state indicating a validation error.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<Input error placeholder="..." />'}
+            </code>
+            <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
+              <div className="space-y-2 rounded-lg border bg-background p-4">
+                <Label error>Error Label</Label>
+                <Input error placeholder="Invalid input" />
+                <p className="text-xs text-red-600">
+                  Error message
+                </p>
+              </div>
+              <div className="dark space-y-2 rounded-lg border bg-background p-4 text-white">
+                <Label className="text-white" error>
+                  Error Label
+                </Label>
+                <Input error placeholder="Invalid input" />
+                <p className="text-xs text-red-500">
+                  Error message
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Search Input */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Search Input
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Input with a search icon prefix.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<Input variant="search" ... />'}
+            </code>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="rounded-lg border bg-background p-4">
+                <Input
+                  variant="search"
+                  placeholder="Search..."
+                />
+              </div>
+
+              <div className="dark rounded-lg border bg-background p-4">
+                <Input
+                  variant="search"
+                  placeholder="Search..."
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Upload Input */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              File Upload
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Custom file input styling.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<Input variant="upload" type="file" />'}
+            </code>
+            <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
+              <div className="space-y-4 rounded-lg border bg-background p-4">
+                <Input variant="upload" type="file" />
+                <Input
+                  variant="upload"
+                  type="file"
+                  onReview={() => alert('Review')}
+                />
+              </div>
+              <div className="dark space-y-4 rounded-lg border bg-background p-4">
+                <Input variant="upload" type="file" />
+                <Input
+                  variant="upload"
+                  type="file"
+                  onReview={() => alert('Review')}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Password Input */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Password Input
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Input with a password visibility toggle.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<Input type="password" ... />'}
+            </code>
+            <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
+              <div className="rounded-lg border bg-background p-4">
+                <Input
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+              <div className="dark rounded-lg border bg-background p-4">
+                <Input
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Text/Pre-filled Input */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Text Variant
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Input initialized with specific text style.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<Input variant="text" text="..." />'}
+            </code>
+            <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
+              <div className="rounded-lg border bg-background p-4">
+                <Input
+                  variant="text"
+                  text="Pre-filled text"
+                />
+              </div>
+              <div className="dark rounded-lg border bg-background p-4">
+                <Input
+                  variant="text"
+                  text="Pre-filled text"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Textarea */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Textarea
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Multi-line text input.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<Textarea placeholder="..." />'}
+            </code>
+            <div className="grid grid-cols-1 gap-4 pt-4 md:grid-cols-2">
+              <div className="rounded-lg border bg-background p-4">
+                <Textarea placeholder="Type your message here." />
+              </div>
+              <div className="dark rounded-lg border bg-background p-4">
+                <Textarea placeholder="Type your message here." />
+              </div>
+            </div>
+          </div>
+
+          {/* Input OTP */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Input OTP
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              One-Time Password input.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<InputOTP ... />'}
+            </code>
+
+            <div className="grid grid-cols-1 gap-8 pt-4 md:grid-cols-2">
+              {/* Light */}
+              <div className="space-y-4 rounded-lg border bg-background p-4">
+                <p className="text-xs font-semibold">
+                  Standard
+                </p>
+                <InputOTP maxLength={6}>
+                  <InputOTPGroup>
+                    {Array.from({ length: 6 }).map(
+                      (_, i) => (
+                        <InputOTPSlot key={i} index={i} />
+                      ),
+                    )}
+                  </InputOTPGroup>
+                </InputOTP>
+
+                <p className="text-xs font-semibold">
+                  With Error
+                </p>
+                <InputOTP maxLength={6} error>
+                  <InputOTPGroup>
+                    {Array.from({ length: 6 }).map(
+                      (_, i) => (
+                        <InputOTPSlot key={i} index={i} />
+                      ),
+                    )}
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+
+              {/* Dark */}
+              <div className="dark space-y-4 rounded-lg border bg-background p-4 text-white">
+                <p className="text-xs font-semibold">
+                  Standard
+                </p>
+                <InputOTP maxLength={6}>
+                  <InputOTPGroup>
+                    {Array.from({ length: 6 }).map(
+                      (_, i) => (
+                        <InputOTPSlot key={i} index={i} />
+                      ),
+                    )}
+                  </InputOTPGroup>
+                </InputOTP>
+
+                <p className="text-xs font-semibold">
+                  With Error
+                </p>
+                <InputOTP maxLength={6} error>
+                  <InputOTPGroup>
+                    {Array.from({ length: 6 }).map(
+                      (_, i) => (
+                        <InputOTPSlot key={i} index={i} />
+                      ),
+                    )}
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+            </div>
+          </div>
+
+          {/* Phone Input */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium">
+              Phone Input
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              International phone number input.
+            </p>
+            <code className="rounded bg-muted p-1 text-xs">
+              {'<PhoneInput ... />'}
+            </code>
+
+            <div className="grid grid-cols-1 gap-8 pt-4 md:grid-cols-2">
+              {/* Light */}
+              <div className="space-y-4 rounded-lg border bg-background p-4">
+                <p className="text-xs font-semibold">
+                  Standard
+                </p>
+                <PhoneInput
+                  placeholder="Phone number"
+                  defaultCountry="EG"
+                />
+
+                <p className="text-xs font-semibold">
+                  With Error
+                </p>
+                <PhoneInput
+                  placeholder="Phone number"
+                  defaultCountry="EG"
+                  error
+                />
+              </div>
+
+              {/* Dark */}
+              <div className="dark space-y-4 rounded-lg border bg-background p-4 text-white">
+                <p className="text-xs font-semibold">
+                  Standard
+                </p>
+                <PhoneInput
+                  placeholder="Phone number"
+                  defaultCountry="EG"
+                />
+
+                <p className="text-xs font-semibold">
+                  With Error
+                </p>
+                <PhoneInput
+                  placeholder="Phone number"
+                  defaultCountry="EG"
+                  error
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -300,6 +563,27 @@ export default function Home() {
           Breadcrumbs
         </h2>
         <div className="rounded-xl border p-6">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">
+                  Home
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">
+                  Components
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+        <div className="dark rounded-xl border bg-background p-6">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
