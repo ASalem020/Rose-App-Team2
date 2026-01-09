@@ -183,7 +183,13 @@ const Input = React.forwardRef<
                 </span>
               )}
             </div>
-            <span className="flex shrink-0 items-center gap-2 whitespace-nowrap text-sm text-maroon-600 dark:text-softPink-400">
+            <span
+              className={cn(
+                'flex shrink-0 items-center gap-2 whitespace-nowrap text-sm text-maroon-600 dark:text-softPink-400',
+                props.disabled &&
+                  'text-zinc-400 dark:text-zinc-600',
+              )}
+            >
               <Upload className="h-4 w-4" />
               Upload File
             </span>

@@ -26,10 +26,10 @@ const Label = React.forwardRef<
     typeof LabelPrimitive.Root
   > &
     VariantProps<typeof labelVariants>
->(({ className, ...props }, ref) => (
+>(({ className, error, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
-    className={cn(labelVariants(), className)}
+    className={cn(labelVariants({ error }), className)}
     {...props}
   />
 ));

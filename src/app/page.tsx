@@ -25,7 +25,6 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { AccountDropdown } from '@/components/shared/account-dropdown';
-import { ThemeToggle } from '@/components/shared/theme-toggle';
 import {
   InputOTP,
   InputOTPGroup,
@@ -40,7 +39,6 @@ export default function Home() {
         <h1 className="text-3xl font-bold">
           Design System Showcase
         </h1>
-        <ThemeToggle />
       </div>
 
       {/* buttons div */}
@@ -140,10 +138,8 @@ export default function Home() {
                   Error message
                 </p>
               </div>
-              <div className="dark space-y-2 rounded-lg border bg-background p-4 text-white">
-                <Label className="text-white" error>
-                  Error Label
-                </Label>
+              <div className="dark space-y-2 rounded-lg border bg-background p-4">
+                <Label error>Error Label</Label>
                 <Input error placeholder="Invalid input" />
                 <p className="text-xs text-red-500">
                   Error message
@@ -199,6 +195,11 @@ export default function Home() {
                   type="file"
                   onReview={() => alert('Review')}
                 />
+                <Input
+                  variant="upload"
+                  type="file"
+                  disabled
+                />
               </div>
               <div className="dark space-y-4 rounded-lg border bg-background p-4">
                 <Input variant="upload" type="file" />
@@ -206,6 +207,11 @@ export default function Home() {
                   variant="upload"
                   type="file"
                   onReview={() => alert('Review')}
+                />
+                <Input
+                  variant="upload"
+                  type="file"
+                  disabled
                 />
               </div>
             </div>
@@ -409,6 +415,11 @@ export default function Home() {
                   placeholder="Phone number"
                   defaultCountry="EG"
                   error
+                />
+                <PhoneInput
+                  placeholder="Phone number"
+                  defaultCountry="EG"
+                  disabled
                 />
               </div>
             </div>

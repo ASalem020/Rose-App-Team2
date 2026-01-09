@@ -135,7 +135,13 @@ const CountrySelect = ({
             countryName={selectedCountry}
           />
           {selectedCountry && (
-            <span className="flex items-center gap-1 text-sm text-muted-foreground">
+            <span
+              className={cn(
+                'flex items-center gap-1 text-sm text-muted-foreground',
+                disabled &&
+                  'text-zinc-400 dark:text-zinc-600',
+              )}
+            >
               <span>{selectedCountry}</span>
               <span className="text-muted-foreground/50">
                 {`(+${RPNInput.getCountryCallingCode(selectedCountry)})`}

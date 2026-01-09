@@ -37,7 +37,11 @@ const LabeledInput = React.forwardRef<
           containerClassName,
         )}
       >
-        <Label htmlFor={finalId} className={labelClassName}>
+        <Label
+          htmlFor={finalId}
+          className={labelClassName}
+          error={props.error}
+        >
           {label}
         </Label>
         <Input
