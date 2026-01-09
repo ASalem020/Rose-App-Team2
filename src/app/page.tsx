@@ -1,6 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import {
@@ -23,6 +24,12 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from '@/components/ui/input-otp';
+import { PhoneInput } from '@/components/ui/phone-input';
 
 export default function Home() {
   return (
@@ -85,10 +92,26 @@ export default function Home() {
             />
             <Input type="password" placeholder="Password" />
             <Input
-              variant="default"
+              variant="text"
               type="text"
-              placeholder="Default Text"
+              text="Default Text"
             />
+            <Textarea
+              variant={'default'}
+              placeholder="placeholder"
+            />
+            <Textarea variant={'text'} text="text area" />
+            <InputOTP maxLength={6}>
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
+              </InputOTPGroup>
+            </InputOTP>
+            <PhoneInput />
           </div>
           {/* Inputs Div Dark */}
           <div className="dark flex w-1/2 flex-col gap-4 rounded-xl border bg-background p-10">
@@ -105,10 +128,27 @@ export default function Home() {
             />
             <Input type="password" placeholder="Password" />
             <Input
-              variant="default"
+              variant="text"
               type="text"
-              placeholder="Default Text"
+              text="Default Text"
+              className="text-white"
             />
+            <Textarea
+              variant={'default'}
+              placeholder="placeholder"
+            />
+            <Textarea variant={'text'} text="text area" />
+            <InputOTP maxLength={6}>
+              <InputOTPGroup>
+                <InputOTPSlot index={0} />
+                <InputOTPSlot index={1} />
+                <InputOTPSlot index={2} />
+                <InputOTPSlot index={3} />
+                <InputOTPSlot index={4} />
+                <InputOTPSlot index={5} />
+              </InputOTPGroup>
+            </InputOTP>
+            <PhoneInput />
           </div>
         </div>
       </section>
@@ -229,10 +269,7 @@ export default function Home() {
             <Button
               variant="outline"
               onClick={() =>
-                toast.success('Event has been created', {
-                  description:
-                    'Sunday, December 03, 2023 at 9:00 AM',
-                })
+                toast.success('Successful operation')
               }
             >
               Show Success Toast
@@ -240,13 +277,7 @@ export default function Home() {
             <Button
               variant="destructive"
               onClick={() =>
-                toast.error(
-                  'Uh oh! Something went wrong.',
-                  {
-                    description:
-                      'There was a problem with your request.',
-                  },
-                )
+                toast.error('Unsuccessful operation')
               }
             >
               Show Error Toast
@@ -254,10 +285,7 @@ export default function Home() {
             <Button
               variant="secondary"
               onClick={() =>
-                toast.info('Event info details', {
-                  description:
-                    'Here is some information about the event.',
-                })
+                toast.info('Informative message')
               }
             >
               Show Info Toast

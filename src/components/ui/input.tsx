@@ -15,11 +15,12 @@ import {
 import { cn } from '@/lib/utils/tailwind-merge';
 
 const inputVariants = cva(
-  `flex  h-10 w-full rounded-xl border border-input bg-background py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm hover:border hover:border-zinc-400 dark:border-zinc-600 dark:bg-secondary dark:hover:border-zinc-500 focus:border-maroon-600 dark:focus:border-softPink-400 disabled:cursor-not-allowed disabled:text-zinc-400 disabled:opacity-50 dark:disabled:text-zinc-600`,
+  `flex  h-10 w-full rounded-xl border border-input bg-background py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 md:text-sm hover:border hover:border-zinc-400 dark:border-zinc-600 dark:bg-secondary  dark:hover:border-zinc-500 focus:border-maroon-600 dark:focus:border-softPink-400 disabled:cursor-not-allowed disabled:text-zinc-400 disabled:opacity-50 dark:disabled:text-zinc-600`,
   {
     variants: {
       variant: {
         default: 'px-3',
+        text: 'px-3',
         search: 'pl-10 pr-3',
         password: 'pl-3 pr-10',
         upload:
@@ -37,6 +38,7 @@ export interface InputProps
     React.ComponentProps<'input'>,
     VariantProps<typeof inputVariants> {
   onReview?: () => void;
+  text?: string;
 }
 
 const Input = React.forwardRef<
@@ -57,6 +59,7 @@ const Input = React.forwardRef<
   ) => {
     const [showPassword, setShowPassword] =
       React.useState(false);
+
     const [fileName, setFileName] = React.useState<
       string | null
     >(null);
@@ -104,9 +107,13 @@ const Input = React.forwardRef<
       <input
         type={resolvedType}
         placeholder={placeholder}
+        defaultValue={props.text || props.defaultValue}
         className={cn(
           inputVariants({ variant: resolvedVariant }),
           className,
+          {
+            'dark:text-white': resolvedVariant !== 'upload',
+          },
         )}
         ref={ref}
         onChange={handleFileChange}
