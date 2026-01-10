@@ -38,7 +38,7 @@ const NAV_LINKS = [
 
 export function Header() {
   return (
-    <header className="w-full bg-white font-sans shadow-sm dark:bg-[#1e1e20]">
+    <header className="w-full bg-white font-sans shadow-sm dark:bg-zinc-800">
       {/* Top Bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
         {/* Logo */}

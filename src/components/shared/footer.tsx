@@ -18,7 +18,7 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#1e1e20] py-16 text-white">
+    <footer className="w-full bg-zinc-800 py-16 text-white">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-12 px-6 md:flex-row md:px-10">
         {/* Left Section: Logo & Copyright */}
         <div className="flex flex-col items-center space-y-4 md:items-start md:space-y-6">
@@ -28,7 +28,7 @@ export function Footer() {
               alt="Rose Logo"
               width={160}
               height={160}
-              className="h-auto w-40 object-contain brightness-110 grayscale-0 transition-all hover:scale-105"
+              className="h-auto w-40 object-contain"
             />
           </Link>
           <div className="text-center md:text-left">
