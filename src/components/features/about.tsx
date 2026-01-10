@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils/tailwind-merge';
 
 export default function About() {
+  // About content
   const aboutFeatures = [
     { feat: 'Competitive Prices & Easy Shopping' },
     { feat: 'Premium Quality & Elegant Packaging' },
@@ -16,15 +17,15 @@ export default function About() {
       <div className="flex flex-row items-center justify-center gap-2">
         <div
           className={cn(
-            'relative inline-block',
+            'relative',
             'before:-z-10 before:w-[16.75rem]',
-            "before:absolute before:-inset-2 before:content-['']",
+            'before:absolute before:-inset-2',
             'before:-translate-x-4 before:-translate-y-1.5 before:rotate-[3.09deg]',
             'before:rounded-[7.5rem] before:rounded-tl-[3.125rem]',
             'before:border-4 before:border-maroon-600',
           )}
         >
-          {' '}
+          {/* About Images */}
           <Image
             src="/assets/images/about-img-1.png"
             alt="logo"
@@ -51,7 +52,9 @@ export default function About() {
         </div>
       </div>
       <div className="flex flex-col justify-center gap-6">
+        {/* Heading */}
         <p className="font-bold text-softPink-500">ABOUT</p>
+
         <div className="flex flex-col gap-2">
           <h3 className="text-3xl font-bold text-maroon-700">
             Delivering the{' '}
@@ -65,6 +68,8 @@ export default function About() {
             </span>{' '}
             Moments
           </h3>
+
+          {/* Description */}
           <p className="leading-none text-zinc-500">
             Make every moment memorable with our premium
             gift boxes. Carefully curated and beautifully
@@ -76,9 +81,11 @@ export default function About() {
             here.
           </p>
         </div>
+
         <Button className="w-fit bg-maroon-500">
           Discover <ArrowRight />
         </Button>
+
         <ul className="grid w-fit grid-cols-2 gap-x-6">
           {aboutFeatures.map((item, index) => (
             <li
