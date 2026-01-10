@@ -1,7 +1,6 @@
-import About from '@/components/features/about';
-import Companies from '@/components/features/companies';
-import Gallery from '@/components/features/gallery';
-import Image from 'next/image';
+import About from '@/app/_components/about';
+import Companies from '@/app/_components/companies';
+import Gallery from '@/app/_components/gallery';
 
 export default function Home() {
   return (
