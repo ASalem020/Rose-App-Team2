@@ -4,16 +4,17 @@ import { Button } from '../../components/ui/button';
 import Image from 'next/image';
 import { cn } from '@/lib/utils/tailwind-merge';
 
+// About content
+const aboutFeatures = [
+  'Competitive Prices & Easy Shopping',
+  'Premium Quality & Elegant Packaging',
+  'Perfect for Every Occasion',
+  'Fast & Reliable Delivery',
+];
+
 export default function About() {
-  // About content
-  const aboutFeatures = [
-    { feat: 'Competitive Prices & Easy Shopping' },
-    { feat: 'Premium Quality & Elegant Packaging' },
-    { feat: 'Perfect for Every Occasion' },
-    { feat: 'Fast & Reliable Delivery' },
-  ];
   return (
-    <div className="m-auto flex h-[24.375rem] w-4/5 gap-20">
+    <section className="m-auto flex h-[24.375rem] w-4/5 gap-20">
       <div className="flex flex-row items-center justify-center gap-2">
         <div
           className={cn(
@@ -89,17 +90,17 @@ export default function About() {
         </Button>
 
         <ul className="grid w-fit grid-cols-2 gap-x-6">
-          {aboutFeatures.map((item, index) => (
+          {aboutFeatures.map((feat, index) => (
             <li
               key={index}
               className="flex h-[2.625rem] items-center gap-5"
             >
               <Check className="size-5 text-maroon-700" />{' '}
-              {item.feat}
+              {feat}
             </li>
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 }
