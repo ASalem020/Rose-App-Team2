@@ -1,0 +1,16 @@
+{
+  "pages": {
+    "home": {
+      "metadata": {
+        "title": "Home | Rose App",
+        "description": "Home page of the Rose App"
+      },
+      "testimonials": {
+        "header": {
+          "title": "Testimonials",
+          "description": "Real Words from Happy Customers"
+        }
+      }
+    }
+  }
+}
