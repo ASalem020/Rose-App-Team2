@@ -57,12 +57,14 @@ export default function About() {
       </div>
       <div className="flex flex-col justify-center gap-6">
         {/* Heading */}
-        <p className="font-bold text-softPink-500">ABOUT</p>
+        <p className="font-bold text-softPink-500 dark:text-maroon-400">
+          ABOUT
+        </p>
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-3xl font-bold text-maroon-700">
+          <h3 className="text-3xl font-bold text-maroon-700 dark:text-softPink-200">
             Delivering the{' '}
-            <span className="text-softPink-500">
+            <span className="text-softPink-500 dark:text-maroon-400">
               Finest
             </span>{' '}
             Gift Boxes for Your{' '}
@@ -85,7 +87,7 @@ export default function About() {
           </p>
         </div>
 
-        <Button className="w-fit bg-maroon-500">
+        <Button className="w-fit bg-maroon-500 dark:bg-softPink-200">
           Discover <ArrowRight />
         </Button>
 
@@ -95,7 +97,7 @@ export default function About() {
               key={index}
               className="flex h-[2.625rem] items-center gap-5"
             >
-              <Check className="size-5 text-maroon-700" />{' '}
+              <Check className="size-5 text-maroon-700 dark:text-softPink-400" />{' '}
               {feat}
             </li>
           ))}

@@ -13,11 +13,13 @@ const companies = [
 
 export default function Companies() {
   return (
-    <section className="m-auto mb-96 mt-36 flex w-fit flex-col gap-10 rounded-2xl bg-maroon-50 px-6 py-10">
+    <section className="m-auto mb-96 mt-36 flex w-fit flex-col gap-10 rounded-2xl bg-maroon-50 px-6 py-10 dark:bg-zinc-700">
       {/* Heading */}
-      <h3 className="text-center text-4xl font-bold text-maroon-700">
+      <h3 className="text-center text-4xl font-bold text-maroon-700 dark:text-softPink-200">
         Trusted by over{' '}
-        <span className="text-softPink-500">4.5k+</span>{' '}
+        <span className="text-softPink-500 dark:text-maroon-400">
+          4.5k+
+        </span>{' '}
         companies
       </h3>
 

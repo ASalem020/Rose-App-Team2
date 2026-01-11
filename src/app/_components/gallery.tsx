@@ -49,7 +49,7 @@ export default function Gallery() {
   return (
     <section className="mt-32">
       {/* Title */}
-      <h6 className="mb-2 text-start text-sm font-bold uppercase tracking-[.25rem] text-softPink-500 md:text-center md:text-base">
+      <h6 className="dark:text-maroon mb-2 text-start text-sm font-bold uppercase tracking-[.25rem] text-softPink-500 dark:text-maroon-400 md:text-center md:text-base">
         Gallery
       </h6>
 
@@ -57,7 +57,7 @@ export default function Gallery() {
       <p
         className={cn(
           // Main Styles
-          'relative w-fit text-start text-2xl font-bold text-maroon-700 md:mx-auto md:text-center md:text-3xl lg:text-4xl',
+          'relative w-fit text-start text-2xl font-bold text-maroon-700 dark:text-softPink-200 md:mx-auto md:text-center md:text-3xl lg:text-4xl',
           // Before Styles
           'before:absolute before:left-0 before:top-3/4 before:z-0 before:h-4 before:w-3/4 before:rounded-r-2xl before:bg-softPink-100',
           // After Styles
