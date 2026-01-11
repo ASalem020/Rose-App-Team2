@@ -17,7 +17,9 @@ export default function About() {
       <div className="flex flex-row items-center justify-center gap-2">
         <div
           className={cn(
+            // Main Styles
             'relative',
+            // Before Styles
             'before:-z-10 before:w-[16.75rem]',
             'before:absolute before:-inset-2',
             'before:-translate-x-4 before:-translate-y-1.5 before:rotate-[3.09deg]',
@@ -34,6 +36,7 @@ export default function About() {
             className="max-h-[21.5rem] max-w-72 rounded-[7.5rem] rounded-tl-[3.125rem]"
           />
         </div>
+
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
             src="/assets/images/about/about-img-2.png"
@@ -61,7 +64,6 @@ export default function About() {
             <span className="text-softPink-500">
               Finest
             </span>{' '}
-            {''}
             Gift Boxes for Your{' '}
             <span className="text-softPink-500">
               Special
