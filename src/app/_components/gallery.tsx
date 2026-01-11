@@ -2,8 +2,18 @@ import { cn } from '@/lib/utils/tailwind-merge';
 import Image from 'next/image';
 import React from 'react';
 
-export default function Gallery() {
-  const col1 = [
+// Gallery Image Type
+type GalleryImage = {
+  src: string;
+  height: number;
+};
+
+// Gallery Column Type
+type GalleryColumn = GalleryImage[];
+
+// Gallery Columns Data
+const galleryColumns: GalleryColumn[] = [
+  [
     {
       src: '/assets/images/gallery/Frame 74.svg',
       height: 617,
@@ -12,36 +22,32 @@ export default function Gallery() {
       src: '/assets/images/gallery/Frame 79.svg',
       height: 406,
     },
-  ];
-
-  const col2 = [
+  ],
+  [
     {
       src: '/assets/images/gallery/Frame 75.svg',
       height: 411,
     },
-
     {
       src: '/assets/images/gallery/Frame 78.svg',
       height: 611,
     },
-  ];
-
-  const col3 = [
+  ],
+  [
     {
       src: '/assets/images/gallery/Frame 76.svg',
       height: 411,
     },
-
     {
       src: '/assets/images/gallery/Frame 80.svg',
       height: 611,
     },
-  ];
+  ],
+];
 
-  const columns = [col1, col2, col3];
-
+export default function Gallery() {
   return (
-    <div className="mt-32">
+    <section className="mt-32">
       {/* Title */}
       <h6 className="mb-2 text-start text-sm font-bold uppercase tracking-[.25rem] text-softPink-500 md:text-center md:text-base">
         Gallery
@@ -65,17 +71,18 @@ export default function Gallery() {
         </span>
       </p>
 
-      {/* Gallery */}
+      {/* Masonry Grid Gallery */}
       <div className="mt-10 flex justify-center">
         <div className="inline-grid grid-flow-col gap-3">
-          {columns.map((column, i) => (
-            <div key={i} className="grid gap-3">
-              {column.map(img => (
+          {/* Gallery Columns */}
+          {galleryColumns.map((column, columnIndex) => (
+            <div key={columnIndex} className="grid gap-3">
+              {/* Gallery Images */}
+              {column.map((img, index) => (
                 <Image
-                  key={img.src}
-                  className="rounded-base"
+                  key={index}
                   src={img.src}
-                  alt="gallery-image"
+                  alt="Gallery image"
                   width={420}
                   height={img.height}
                 />
@@ -84,6 +91,6 @@ export default function Gallery() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
