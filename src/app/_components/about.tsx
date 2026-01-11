@@ -25,7 +25,7 @@ export default function About() {
             'before:absolute before:-inset-2',
             'before:-translate-x-4 before:-translate-y-1.5 before:rotate-[3.09deg]',
             'before:rounded-[7.5rem] before:rounded-tl-[3.125rem]',
-            'before:border-4 before:border-maroon-600',
+            'before:border-4 before:border-maroon-600 dark:before:border-softPink-400',
           )}
         >
           {/* About Images */}
