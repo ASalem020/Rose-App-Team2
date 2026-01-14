@@ -41,6 +41,7 @@ export function AccountDropdown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
+        {/* Trigger button to open the account dropdown menu */}
         {trigger || (
           <Button variant="outline">Account</Button>
         )}
@@ -49,21 +50,25 @@ export function AccountDropdown({
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
+          {/* View and edit user profile information */}
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
             <span>Profile Item</span>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
+          {/* Manage subscription and billing details */}
           <DropdownMenuItem>
             <CreditCard className="mr-2 h-4 w-4" />
             <span>Billing</span>
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
+          {/* Access application settings and configuration */}
           <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
+          {/* View available keyboard shortcuts */}
           <DropdownMenuItem>
             <Keyboard className="mr-2 h-4 w-4" />
             <span>Keyboard shortcuts</span>
@@ -72,26 +77,31 @@ export function AccountDropdown({
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
+          {/* View team-related settings and members */}
           <DropdownMenuItem>
             <Users className="mr-2 h-4 w-4" />
             <span>Team</span>
           </DropdownMenuItem>
           <DropdownMenuSub>
+            {/* Open submenu to invite new users via different channels */}
             <DropdownMenuSubTrigger>
               <UserPlus className="mr-2 h-4 w-4" />
               <span>Invite users</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
+                {/* Invite users via email */}
                 <DropdownMenuItem>
                   <Mail className="mr-2 h-4 w-4" />
                   <span>Email</span>
                 </DropdownMenuItem>
+                {/* Invite users via direct message */}
                 <DropdownMenuItem>
                   <MessageSquare className="mr-2 h-4 w-4" />
                   <span>Message</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
+                {/* Access more invitation options */}
                 <DropdownMenuItem>
                   <PlusCircle className="mr-2 h-4 w-4" />
                   <span>More...</span>
@@ -99,6 +109,7 @@ export function AccountDropdown({
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
+          {/* Create a new team */}
           <DropdownMenuItem>
             <Plus className="mr-2 h-4 w-4" />
             <span>New Team</span>
@@ -106,19 +117,23 @@ export function AccountDropdown({
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        {/* Link to external GitHub profile or repository */}
         <DropdownMenuItem>
           <Github className="mr-2 h-4 w-4" />
           <span>GitHub</span>
         </DropdownMenuItem>
+        {/* Access help and support resources */}
         <DropdownMenuItem>
           <LifeBuoy className="mr-2 h-4 w-4" />
           <span>Support</span>
         </DropdownMenuItem>
+        {/* Access API documentation or keys (currently disabled) */}
         <DropdownMenuItem disabled>
           <Cloud className="mr-2 h-4 w-4" />
           <span>API</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
+        {/* Sign out of the current account session */}
         <DropdownMenuItem>
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>

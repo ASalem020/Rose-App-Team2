@@ -38,7 +38,8 @@ import {
   InputOTPSlot,
 } from '@/components/ui/input-otp';
 import { PhoneInput } from '@/components/ui/phone-input';
-import { LabeledInput } from '@/components/shared/labeled-input';
+import { Label } from '@/components/ui/label';
+
 import {
   Select,
   SelectContent,
@@ -233,18 +234,28 @@ export default function Home() {
           <div className="grid gap-12">
             <ShowcaseItem
               title="Unified Inputs"
-              description="The LabeledInput component ensures labels and inputs are always paired correctly."
+              description="Explicit pairing of Label and Input components for accessible data entry."
             >
               <div className="grid w-full max-w-md gap-8">
-                <LabeledInput
-                  label="Display Name"
-                  placeholder="e.g. Alex Rose"
-                />
-                <LabeledInput
-                  label="Email Address"
-                  placeholder="alex@rose.app"
-                  error
-                />
+                <div className="grid w-full items-center gap-2">
+                  <Label htmlFor="display-name">
+                    Display Name
+                  </Label>
+                  <Input
+                    id="display-name"
+                    placeholder="e.g. Alex Rose"
+                  />
+                </div>
+                <div className="grid w-full items-center gap-2">
+                  <Label htmlFor="email-address" error>
+                    Email Address
+                  </Label>
+                  <Input
+                    id="email-address"
+                    placeholder="alex@rose.app"
+                    error
+                  />
+                </div>
               </div>
             </ShowcaseItem>
 

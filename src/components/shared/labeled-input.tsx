@@ -1,60 +1,62 @@
-import * as React from 'react';
-import {
-  Input,
-  type InputProps,
-} from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { cn } from '@/lib/utils/tailwind-merge';
+// For Future Use
 
-export interface LabeledInputProps extends InputProps {
-  label: string;
-  labelClassName?: string;
-  containerClassName?: string;
-}
+// import * as React from 'react';
+// import {
+//   Input,
+//   type InputProps,
+// } from '@/components/ui/input';
+// import { Label } from '@/components/ui/label';
+// import { cn } from '@/lib/utils/tailwind-merge';
 
-const LabeledInput = React.forwardRef<
-  HTMLInputElement,
-  LabeledInputProps
->(
-  (
-    {
-      label,
-      className,
-      labelClassName,
-      containerClassName,
-      id,
-      ...props
-    },
-    ref,
-  ) => {
-    const inputId = React.useId();
-    const finalId = id || inputId;
+// export interface LabeledInputProps extends InputProps {
+//   label: string;
+//   labelClassName?: string;
+//   containerClassName?: string;
+// }
 
-    return (
-      <div
-        className={cn(
-          'grid w-full items-center gap-2',
-          containerClassName,
-        )}
-      >
-        <Label
-          htmlFor={finalId}
-          className={labelClassName}
-          error={props.error}
-        >
-          {label}
-        </Label>
-        <Input
-          ref={ref}
-          id={finalId}
-          className={className}
-          {...props}
-        />
-      </div>
-    );
-  },
-);
+// const LabeledInput = React.forwardRef<
+//   HTMLInputElement,
+//   LabeledInputProps
+// >(
+//   (
+//     {
+//       label,
+//       className,
+//       labelClassName,
+//       containerClassName,
+//       id,
+//       ...props
+//     },
+//     ref,
+//   ) => {
+//     const inputId = React.useId();
+//     const finalId = id || inputId;
 
-LabeledInput.displayName = 'LabeledInput';
+//     return (
+//       <div
+//         className={cn(
+//           'grid w-full items-center gap-2',
+//           containerClassName,
+//         )}
+//       >
+//         <Label
+//           htmlFor={finalId}
+//           className={labelClassName}
+//           error={props.error}
+//         >
+//           {label}
+//         </Label>
+//         <Input
+//           ref={ref}
+//           id={finalId}
+//           className={className}
+//           {...props}
+//         />
+//       </div>
+//     );
+//   },
+// );
 
-export { LabeledInput };
+// LabeledInput.displayName = 'LabeledInput';
+
+// export { LabeledInput };

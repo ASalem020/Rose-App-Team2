@@ -10,7 +10,7 @@ import {
 import { cn } from '@/lib/utils/tailwind-merge';
 
 const labelVariants = cva(
-  'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+  'text-sm font-medium leading-none dark:text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
   {
     variants: {
       error: {
