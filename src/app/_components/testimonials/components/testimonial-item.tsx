@@ -1,5 +1,4 @@
 import Rating from '@/components/shared/rating';
-import { cn } from '@/lib/utils/tailwind-merge';
 import Image from 'next/image';
 
 type TestimonialItemPropsType = {
@@ -22,14 +21,7 @@ export default function TestimonialItem({
   return (
     <div className="comment-box relative min-h-60 min-w-[21.4375rem] max-w-[25.25rem] rounded-3xl bg-white p-5">
       {/* Avatar */}
-      <div
-        className={cn(
-          // Main Styles
-          'image relative mx-auto -mt-20 size-24 overflow-hidden rounded-full border-4 border-white',
-          // Media Queries
-          'md:size-[7.5rem]',
-        )}
-      >
+      <div className="image relative mx-auto -mt-20 size-24 overflow-hidden rounded-full border-4 border-white md:size-[7.5rem]">
         <Image
           src={imgSrc}
           alt={`${name} profile photo`}

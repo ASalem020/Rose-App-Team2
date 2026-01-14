@@ -6,7 +6,6 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import TestimonialItem from './testimonial-item';
-import { cn } from '@/lib/utils/tailwind-merge';
 import AutoScroll, {
   type AutoScrollType,
 } from 'embla-carousel-auto-scroll';
@@ -30,14 +29,7 @@ export default function TestimonialsContent() {
   const { data, error, isLoading } = useTestimonials();
 
   return (
-    <div
-      className={cn(
-        // Main Styles
-        'testimonials-content flex min-h-[34.375rem] items-center justify-center overflow-hidden bg-maroon-50',
-        // Dark Styles
-        'dark:bg-zinc-700',
-      )}
-    >
+    <div className="testimonials-content flex min-h-[34.375rem] items-center justify-center overflow-hidden bg-maroon-50 dark:bg-zinc-700">
       {/* Error */}
       {error && <ErrorMessage message={error.message} />}
 
@@ -56,14 +48,7 @@ export default function TestimonialsContent() {
       >
         <div className="container mx-auto overflow-x-hidden overflow-y-visible px-5 py-16">
           {/* Carousel Content */}
-          <CarouselContent
-            className={cn(
-              // Main Styles
-              '-ml-16',
-              // Media Queries
-              'lg:px-5',
-            )}
-          >
+          <CarouselContent className="-ml-16 lg:px-5">
             {data?.message === 'success' && (
               <>
                 {/* Carousel Items */}
@@ -78,12 +63,7 @@ export default function TestimonialsContent() {
                     // Carousel Item
                     <CarouselItem
                       key={`${testimonial._id}${i}`}
-                      className={cn(
-                        // Main Styles
-                        'flex items-center justify-center pl-16',
-                        // Media Queries
-                        'md:basis-1/2 lg:basis-1/3',
-                      )}
+                      className="flex items-center justify-center pl-16 md:basis-1/2 lg:basis-1/3"
                     >
                       <TestimonialItem
                         name={`${testimonial.user.firstName} ${testimonial.user.lastName}`}

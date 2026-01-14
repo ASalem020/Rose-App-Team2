@@ -8,16 +8,7 @@ export default function SectionHeaderTitle({
   title,
 }: SectionHeaderTitlePropsType) {
   return (
-    <h6
-      className={cn(
-        // Main Styles
-        'mb-2 text-start text-sm font-bold uppercase tracking-[.25rem] text-softPink-500',
-        // Dark Styles
-        'dark:text-maroon-400',
-        // Media Queries
-        'md:text-center md:text-base',
-      )}
-    >
+    <h6 className="mb-2 text-start text-sm font-bold uppercase tracking-[.25rem] text-softPink-500 md:text-center md:text-base dark:text-maroon-400">
       {title}
     </h6>
   );
