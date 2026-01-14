@@ -9,26 +9,21 @@ import {
 } from '@/components/ui/carousel';
 import ProductCard from '../product/product-card';
 import { ArrowRight } from 'lucide-react';
-import { useQuery } from '@tanstack/react-query';
 import { Product } from '@/lib/types/product';
 import { Button } from '@/components/ui/button';
-import BestSellingSkeleton from '../skeleton/best-selling-skeleton';
-import { getAllProduct } from '@/lib/services/products.service';
+import useBestSellingProducts from '@/hooks/use-products-best-selling';
+import BestSellingSkeleton from '@/components/skeleton/best-selling-skeleton';
 
 export default function BestSelling() {
-  // ^ 2 Get products
-  const { data, isLoading } = useQuery({
-    queryKey: ['bestSellingProducts'],
-    queryFn: () =>
-      getAllProduct({ limit: 6, sort: '-sold' }),
-  });
+  // ^  Get products
+  const { data, isLoading } = useBestSellingProducts();
 
   if (isLoading) {
     return <BestSellingSkeleton />;
   }
 
   return (
-    <section className="grid grid-cols-4 items-center gap-32">
+    <section className="grid grid-cols-4 items-center gap-12">
       {/* ^ part one */}
       <div className="bg-warning-200 col-span-1 w-72 space-y-5">
         <h3 className="text-xl font-semibold tracking-widest text-pink-500 dark:text-maroon-400">
@@ -74,7 +69,7 @@ export default function BestSelling() {
                 key={product._id}
                 className="flex basis-1/3 items-center justify-center bg-white dark:bg-black"
               >
-                <ProductCard product={product} />
+                <ProductCard productInfo={product} />
               </CarouselItem>
             ))}
           </CarouselContent>

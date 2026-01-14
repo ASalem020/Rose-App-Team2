@@ -1,38 +1,24 @@
 'use client';
 import ProductCard from '../product/product-card';
-import { Suspense, useState } from 'react';
-import { getAllProduct } from '@/lib/services/products.service';
+import { Suspense } from 'react';
 import { Product } from '@/lib/types/product';
-import { getOccasions } from '@/lib/services/occasions.service';
-import MostPopularSkeleton from '../skeleton/most-popular-skeleton';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { useQuery } from '@tanstack/react-query';
+import useAllOccasions from '@/hooks/use-all-occasions';
+import useProductsByOccasions from '@/hooks/use-products-by-occasions';
+import MostPopularSkeleton from '@/components/skeleton/most-popular-skeleton';
 
 export default function MostPopular() {
-  const [activeOccasion, setActiveOccasion] = useState<
-    string | null
-  >(null);
-
   // ^ 1 Get occasions
-  const { data: occasions } = useQuery({
-    queryKey: ['occasions'],
-    queryFn: getOccasions,
-  });
-  if (occasions?.length && !activeOccasion) {
-    setActiveOccasion(occasions[0]._id);
-  }
+  const { activeOccasion, setActiveOccasion, occasions } =
+    useAllOccasions();
 
   // ^ 2 Get products by occasion
-  const { data: products } = useQuery({
-    queryKey: ['products-by-occasion', activeOccasion],
-    queryFn: () =>
-      getAllProduct({
-        occasionsId: activeOccasion as string | null,
-      }),
+  const { products } = useProductsByOccasions({
+    activeOccasion,
   });
 
-  if (!occasions) {
+  if (!products) {
     return <MostPopularSkeleton />;
   }
 
@@ -40,7 +26,7 @@ export default function MostPopular() {
     <section className="mt-20">
       {/* tabs */}
       <div className="my-5 flex items-center justify-between">
-      {/* ToDo : Hadغ is working on the component  */}
+        {/* ToDo : hady is working on the component  */}
         <div className="text-2xl font-bold text-maroon-700 dark:text-pink-200">
           <h2>Most Popular</h2>
         </div>
@@ -62,13 +48,14 @@ export default function MostPopular() {
           ))}
         </div>
       </div>
+
       {/* product */}
       <Suspense fallback={<MostPopularSkeleton />}>
         <div className="grid grid-cols-4 gap-4">
           {products?.map((product: Product) => (
             <ProductCard
               key={product._id}
-              product={product}
+              productInfo={product}
             />
           ))}
         </div>

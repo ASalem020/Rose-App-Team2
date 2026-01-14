@@ -2,11 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Product } from '@/lib/types/product';
 import Image from 'next/image';
 
-export default function ProductDetails({
-  productInfo,
-}: {
-  productInfo: Product;
-}) {
+export default function ProductDetails({productInfo}: {productInfo: Product}) {
   return (
     <div className="grid grid-cols-2 items-center gap-5 p-4">
       <div className="relative h-56 w-full overflow-hidden rounded-md">

@@ -12,7 +12,7 @@ export async function getAllProduct({
   occasionsId,
 }: ProductFilter): Promise<Product[]> {
   const res = await fetch(
-    `https://flower.elevateegy.com/api/v1/products?${limit ? `limit=${limit}` : ''}${sort ? `&sort=${sort}` : ''}${occasionsId ? `&occasions=${occasionsId}` : ''}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/products?${limit ? `limit=${limit}` : ''}${sort ? `&sort=${sort}` : ''}${occasionsId ? `&occasions=${occasionsId}` : ''}`,
     {
       cache: 'no-store',
     },
