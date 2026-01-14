@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Gallery() {
   return (
-    <section className="mt-32">
+    <section className="container mx-auto mt-32">
       {/* Title */}
       <h6 className="dark:text-maroon mb-2 text-start text-sm font-bold uppercase tracking-[.25rem] text-softPink-500 dark:text-maroon-400 md:text-center md:text-base">
         Gallery

@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Companies() {
   return (
-    <section className="m-auto mb-96 mt-36 flex w-fit flex-col gap-10 rounded-2xl bg-maroon-50 px-6 py-10 dark:bg-zinc-700">
+    <section className="container m-auto mb-96 mt-36 flex w-fit flex-col gap-10 rounded-2xl bg-maroon-50 px-6 py-10 dark:bg-zinc-700">
       {/* Heading */}
       <h3 className="text-center text-4xl font-bold text-maroon-700 dark:text-softPink-200">
         Trusted by over{' '}
