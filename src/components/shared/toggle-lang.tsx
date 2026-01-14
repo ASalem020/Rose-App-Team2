@@ -1,12 +1,14 @@
 'use client';
+
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 
 // TODO: The design is incompatible with the design system because I wait a team member code.
 export default function ToggleLang() {
   // Translation
   const locale = useLocale();
+  const t = useTranslations('common.language');
 
   // Navigation
   const router = useRouter();
@@ -23,10 +25,10 @@ export default function ToggleLang() {
     <button
       onClick={toggleLang}
       className="flex items-center gap-2 rounded-full border-2 border-maroon-600/60 bg-white px-4 py-2 text-sm font-semibold text-maroon-600 shadow-sm transition-colors duration-200 hover:bg-maroon-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:ring-offset-2 dark:bg-zinc-900 dark:text-white"
-      aria-label="Toggle language"
+      aria-label={t('toggle')}
     >
       <span className="inline-block">
-        {locale === 'en' ? 'العربية' : 'English'}
+        {locale === 'en' ? t('arabic') : t('english')}
       </span>
       <svg
         className="h-4 w-4"

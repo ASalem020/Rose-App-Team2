@@ -1,4 +1,90 @@
 {
+  "common": {
+    "loading": "جاري التحميل ...",
+    "error": {
+      "generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+      "network": "خطأ في الشبكة. يرجى التحقق من اتصالك.",
+      "notFound": "لم يتم العثور على المورد المطلوب.",
+      "unauthorized": "غير مصرح لك بالوصول إلى هذا المورد.",
+      "serverError": "خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقاً."
+    },
+    "success": {
+      "saved": "تم الحفظ بنجاح",
+      "deleted": "تم الحذف بنجاح",
+      "updated": "تم التحديث بنجاح",
+      "created": "تم الإنشاء بنجاح"
+    },
+    "actions": {
+      "save": "حفظ",
+      "cancel": "إلغاء",
+      "delete": "حذف",
+      "edit": "تعديل",
+      "update": "تحديث",
+      "create": "إنشاء",
+      "submit": "إرسال",
+      "close": "إغلاق",
+      "back": "رجوع",
+      "next": "التالي",
+      "previous": "السابق",
+      "confirm": "تأكيد",
+      "yes": "نعم",
+      "no": "لا",
+      "search": "بحث",
+      "filter": "تصفية",
+      "reset": "إعادة تعيين",
+      "apply": "تطبيق",
+      "view": "عرض",
+      "add": "إضافة",
+      "remove": "إزالة",
+      "select": "اختيار",
+      "clear": "مسح"
+    },
+    "labels": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "address": "العنوان",
+      "date": "التاريخ",
+      "time": "الوقت",
+      "price": "السعر",
+      "quantity": "الكمية",
+      "total": "الإجمالي",
+      "subtotal": "المجموع الفرعي",
+      "discount": "الخصم",
+      "rating": "التقييم",
+      "comment": "تعليق",
+      "description": "الوصف",
+      "category": "الفئة",
+      "status": "الحالة",
+      "image": "صورة",
+      "images": "صور"
+    },
+    "validation": {
+      "required": "هذا الحقل مطلوب",
+      "email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+      "phone": "يرجى إدخال رقم هاتف صحيح",
+      "minLength": "الحد الأدنى {min} أحرف مطلوبة",
+      "maxLength": "الحد الأقصى {max} حرف مسموح",
+      "min": "الحد الأدنى للقيمة هو {min}",
+      "max": "الحد الأقصى للقيمة هو {max}",
+      "pattern": "تنسيق غير صحيح"
+    },
+    "language": {
+      "toggle": "تبديل اللغة",
+      "english": "English",
+      "arabic": "العربية"
+    },
+    "accessibility": {
+      "closeDialog": "إغلاق الحوار",
+      "openMenu": "فتح القائمة",
+      "closeMenu": "إغلاق القائمة",
+      "nextSlide": "الشريحة التالية",
+      "previousSlide": "الشريحة السابقة",
+      "goToSlide": "الانتقال إلى الشريحة {index}",
+      "loading": "جاري تحميل المحتوى",
+      "error": "حدث خطأ"
+    }
+  },
   "pages": {
     "home": {
       "metadata": {
@@ -9,8 +95,34 @@
         "header": {
           "title": "اراء العملاء",
           "description": "تعليقات حقيقية من العملاء السعداء"
+        },
+        "empty": {
+          "title": "لا توجد آراء حتى الآن",
+          "description": "كن أول من يشارك تجربته!"
         }
       }
+    },
+    "notFound": {
+      "title": "الصفحة غير موجودة",
+      "description": "الصفحة التي تبحث عنها غير موجودة.",
+      "backHome": "العودة إلى الرئيسية"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "description": "حدث خطأ أثناء تحميل هذه الصفحة.",
+      "tryAgain": "حاول مرة أخرى"
+    }
+  },
+  "components": {
+    "testimonial": {
+      "profilePhoto": "صورة الملف الشخصي لـ {name}",
+      "rating": "التقييم: {rating} من {max}",
+      "postedOn": "نُشر في {date}"
+    },
+    "carousel": {
+      "next": "الشريحة التالية",
+      "previous": "الشريحة السابقة",
+      "slide": "الشريحة {current} من {total}"
     }
   }
 }

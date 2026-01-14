@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils/tailwind-merge';
 import { Loader } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 type LoadingComponentPropsType = {
   iconSize?: number;
@@ -10,6 +11,8 @@ export default function LoadingComponent({
   iconSize = 16,
   className,
 }: LoadingComponentPropsType) {
+  const t = useTranslations('common');
+
   return (
     <div
       className={cn(
@@ -28,7 +31,7 @@ export default function LoadingComponent({
           'loading-message font-medium',
         )}
       >
-        Loading ...
+        {t('loading')}
       </p>
     </div>
   );
