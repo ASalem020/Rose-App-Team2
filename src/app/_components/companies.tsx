@@ -1,15 +1,6 @@
+import { COMPANIES } from '@/lib/constants/Home page/home.constant';
 import Image from 'next/image';
 import React from 'react';
-
-// Companies Logos
-const companies = [
-  'image 36.svg',
-  'image 40.svg',
-  'image 41.svg',
-  'image 38.svg',
-  'image 39.svg',
-  'image 37.svg',
-];
 
 export default function Companies() {
   return (
@@ -25,7 +16,7 @@ export default function Companies() {
 
       {/* Companies Logos */}
       <div className="flex justify-center gap-16">
-        {companies.map((company, index) => (
+        {COMPANIES.map((company, index) => (
           <Image
             key={index}
             src={`/assets/images/companies/${company}`}
