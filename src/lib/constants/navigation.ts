@@ -10,41 +10,41 @@ import {
 
 export interface NavLink {
   href: string;
-  label: string;
+  labelKey: string;
   icon: LucideIcon;
   active?: boolean;
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { href: '/', label: 'Home', icon: Home, active: true },
-  { href: '/products', label: 'Products', icon: Gift },
+  { href: '/', labelKey: 'home', icon: Home, active: true },
+  { href: '/products', labelKey: 'products', icon: Gift },
   {
     href: '/categories',
-    label: 'Categories',
+    labelKey: 'categories',
     icon: LayoutGrid,
   },
   {
     href: '/occasions',
-    label: 'Occasions',
+    labelKey: 'occasions',
     icon: PartyPopper,
   },
-  { href: '/contact', label: 'Contact', icon: Phone },
-  { href: '/about', label: 'About', icon: Info },
+  { href: '/contact', labelKey: 'contact', icon: Phone },
+  { href: '/about', labelKey: 'about', icon: Info },
 ];
 
 export interface FooterLink {
-  label: string;
+  labelKey: string;
   href: string;
 }
 
 export const FOOTER_LINKS: FooterLink[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'Categories', href: '/categories' },
-  { label: 'Occasions', href: '/occasions' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'About', href: '/about' },
-  { label: 'Terms & Conditions', href: '/terms' },
-  { label: 'Privacy Policy', href: '/privacy' },
-  { label: 'FAQs', href: '/faqs' },
+  { labelKey: 'home', href: '/' },
+  { labelKey: 'products', href: '/products' },
+  { labelKey: 'categories', href: '/categories' },
+  { labelKey: 'occasions', href: '/occasions' },
+  { labelKey: 'contact', href: '/contact' },
+  { labelKey: 'about', href: '/about' },
+  { labelKey: 'terms', href: '/terms' },
+  { labelKey: 'privacy', href: '/privacy' },
+  { labelKey: 'faqs', href: '/faqs' },
 ];
