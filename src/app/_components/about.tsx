@@ -13,14 +13,14 @@ export default function About() {
   return (
     <section className="container m-auto mt-36 flex h-[24.375rem] w-11/12 gap-20">
       <div className="flex flex-row items-center justify-center gap-2">
-        <div className="relative before:absolute before:-inset-2 before:-z-10 before:w-64 before:-translate-x-4 before:-translate-y-1.5 before:rotate-[3.09deg] before:rounded-[7.5rem] before:rounded-tl-[3.125rem] before:border-4 before:border-maroon-600 dark:before:border-softPink-400">
+        <div className="relative before:absolute before:-inset-2 before:z-0 before:w-64 before:-translate-x-4 before:-translate-y-1.5 before:rotate-[3.09deg] before:rounded-[7.5rem] before:rounded-tl-[3.125rem] before:border-4 before:border-maroon-600 dark:before:border-softPink-400">
           {/* About Images */}
           <Image
             src="/assets/images/about/about-img-1.png"
             alt="logo"
             width={302}
             height={344}
-            className="max-h-[21.5rem] max-w-72 rounded-[7.5rem] rounded-tl-[3.125rem] object-cover"
+            className="relative z-10 max-h-[21.5rem] max-w-72 rounded-[7.5rem] rounded-tl-[3.125rem] object-cover"
           />
         </div>
 
@@ -47,7 +47,7 @@ export default function About() {
           {t('header')}
         </p>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex w-11/12 flex-col gap-2">
           <h3 className="text-3xl font-bold text-maroon-700 dark:text-softPink-200">
             {t.rich('title', {
               finest: chunk => (
@@ -69,8 +69,8 @@ export default function About() {
           </p>
         </div>
 
-        <Button className="w-fit bg-maroon-500 dark:bg-softPink-200">
-          {t('button')}{' '}
+        <Button className="w-fit bg-maroon-600 px-5 py-4 text-base dark:bg-softPink-200">
+          {t('button')}
           <ArrowRight className="rtl:rotate-180" />
         </Button>
 
@@ -80,7 +80,7 @@ export default function About() {
               key={index}
               className="flex h-[2.625rem] items-center gap-5"
             >
-              <Check className="size-5 text-maroon-700 dark:text-softPink-400" />{' '}
+              <Check className="size-5 text-maroon-700 dark:text-softPink-400" />
               {feat}
             </li>
           ))}
