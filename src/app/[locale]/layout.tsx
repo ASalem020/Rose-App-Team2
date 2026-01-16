@@ -6,6 +6,8 @@ import {
   getTranslations,
   setRequestLocale,
 } from 'next-intl/server';
+import { Header } from '@/components/shared/header';
+import { Footer } from '@/components/shared/footer';
 
 export function generateStaticParams() {
   return routing.locales.map(locale => ({ locale }));
@@ -40,7 +42,9 @@ export default function LocaleLayout({
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       <body className={`antialiased`}>
+        <Header />
         <Providers>{children}</Providers>
+        <Footer />
       </body>
     </html>
   );

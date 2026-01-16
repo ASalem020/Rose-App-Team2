@@ -2,9 +2,14 @@ import { ArrowRight, Check } from 'lucide-react';
 import React from 'react';
 import { Button } from '../../components/ui/button';
 import Image from 'next/image';
-import { ABOUT_FEATURES } from '@/lib/constants/Home page/home.constant';
+import { useTranslations } from 'next-intl';
 
 export default function About() {
+  // Translations
+  const t = useTranslations('pages.home.about');
+
+  const features = t.raw('features') as string[];
+
   return (
     <section className="container m-auto mt-36 flex h-[24.375rem] w-11/12 gap-20">
       <div className="flex flex-row items-center justify-center gap-2">
@@ -39,41 +44,38 @@ export default function About() {
       <div className="flex flex-col justify-center gap-6">
         {/* Heading */}
         <p className="font-bold uppercase tracking-[0.25em] text-softPink-500 dark:text-maroon-400">
-          about
+          {t('header')}
         </p>
 
         <div className="flex flex-col gap-2">
           <h3 className="text-3xl font-bold text-maroon-700 dark:text-softPink-200">
-            Delivering the&nbsp;
-            <span className="text-softPink-500 dark:text-maroon-400">
-              Finest&nbsp;
-            </span>
-            Gift Boxes for Your&nbsp;
-            <span className="text-softPink-500">
-              Special&nbsp;
-            </span>
-            Moments
+            {t.rich('title', {
+              finest: chunk => (
+                <span className="text-softPink-500 dark:text-maroon-400">
+                  {chunk}
+                </span>
+              ),
+              special: chunk => (
+                <span className="text-softPink-500 dark:text-maroon-400">
+                  {chunk}
+                </span>
+              ),
+            })}
           </h3>
 
           {/* Description */}
           <p className="leading-none text-zinc-500">
-            Make every moment memorable with our premium
-            gift boxes. Carefully curated and beautifully
-            packaged, each box is filled with handpicked
-            items designed to impress. Whether it&apos;s for
-            a birthday, wedding, or a simple “thank you,”
-            our gift boxes are crafted to leave a lasting
-            impression — because thoughtful gifting starts
-            here.
+            {t('description')}
           </p>
         </div>
 
         <Button className="w-fit bg-maroon-500 dark:bg-softPink-200">
-          Discover <ArrowRight />
+          {t('button')}{' '}
+          <ArrowRight className="rtl:rotate-180" />
         </Button>
 
         <ul className="grid w-fit grid-cols-2 gap-x-6">
-          {ABOUT_FEATURES.map((feat, index) => (
+          {features.map((feat, index) => (
             <li
               key={index}
               className="flex h-[2.625rem] items-center gap-5"
