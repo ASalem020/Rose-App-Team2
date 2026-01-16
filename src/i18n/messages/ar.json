@@ -142,6 +142,44 @@
       "next": "الشريحة التالية",
       "previous": "الشريحة السابقة",
       "slide": "الشريحة {current} من {total}"
+    },
+    "header": {
+      "deliverTo": "التوصيل إلى:",
+      "location": "القاهرة",
+      "searchPlaceholder": "ما الهدية الرائعة التي تبحث عنها؟",
+      "greeting": "مرحباً",
+      "userName": "جوناثان",
+      "languageToggle": "English",
+      "nav": {
+        "home": "الرئيسية",
+        "products": "المنتجات",
+        "categories": "الفئات",
+        "occasions": "المناسبات",
+        "contact": "تواصل معنا",
+        "about": "من نحن"
+      }
+    },
+    "footer": {
+      "appName": "تطبيق روز للتجارة الإلكترونية",
+      "copyright": "جميع الحقوق محفوظة | 2025",
+      "discoverTitle": "اكتشف موقعنا",
+      "newsletterTitle": "احصل على",
+      "newsletterDiscount": "خصم 20%",
+      "newsletterSuffix": "كوبون خصم",
+      "newsletterDescription": "بالاشتراك في نشرتنا الإخبارية",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "subscribeButton": "اشترك",
+      "nav": {
+        "home": "الرئيسية",
+        "products": "المنتجات",
+        "categories": "الفئات",
+        "occasions": "المناسبات",
+        "contact": "تواصل معنا",
+        "about": "من نحن",
+        "terms": "الشروط والأحكام",
+        "privacy": "سياسة الخصوصية",
+        "faqs": "الأسئلة الشائعة"
+      }
     }
   }
 }

@@ -142,6 +142,44 @@
       "next": "Next slide",
       "previous": "Previous slide",
       "slide": "Slide {current} of {total}"
+    },
+    "header": {
+      "deliverTo": "Deliver to:",
+      "location": "Cairo",
+      "searchPlaceholder": "What awesome gift are you looking for?",
+      "greeting": "Hello",
+      "userName": "Jonathan",
+      "languageToggle": "العربية",
+      "nav": {
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "occasions": "Occasions",
+        "contact": "Contact",
+        "about": "About"
+      }
+    },
+    "footer": {
+      "appName": "Rose E-Commerce App",
+      "copyright": "All rights reserved | 2025",
+      "discoverTitle": "Discover our website",
+      "newsletterTitle": "Get",
+      "newsletterDiscount": "20% Off",
+      "newsletterSuffix": "Discount Coupon",
+      "newsletterDescription": "By subscribing to our newsletter",
+      "emailPlaceholder": "Enter Your Email",
+      "subscribeButton": "Subscribe",
+      "nav": {
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "occasions": "Occasions",
+        "contact": "Contact",
+        "about": "About",
+        "terms": "Terms & Conditions",
+        "privacy": "Privacy Policy",
+        "faqs": "FAQs"
+      }
     }
   }
 }
