@@ -1,0 +1,128 @@
+{
+  "common": {
+    "loading": "Loading ...",
+    "error": {
+      "generic": "Something went wrong. Please try again.",
+      "network": "Network error. Please check your connection.",
+      "notFound": "The requested resource was not found.",
+      "unauthorized": "You are not authorized to access this resource.",
+      "serverError": "Server error. Please try again later."
+    },
+    "success": {
+      "saved": "Saved successfully",
+      "deleted": "Deleted successfully",
+      "updated": "Updated successfully",
+      "created": "Created successfully"
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "update": "Update",
+      "create": "Create",
+      "submit": "Submit",
+      "close": "Close",
+      "back": "Back",
+      "next": "Next",
+      "previous": "Previous",
+      "confirm": "Confirm",
+      "yes": "Yes",
+      "no": "No",
+      "search": "Search",
+      "filter": "Filter",
+      "reset": "Reset",
+      "apply": "Apply",
+      "view": "View",
+      "add": "Add",
+      "remove": "Remove",
+      "select": "Select",
+      "clear": "Clear"
+    },
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "date": "Date",
+      "time": "Time",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "rating": "Rating",
+      "comment": "Comment",
+      "description": "Description",
+      "category": "Category",
+      "status": "Status",
+      "image": "Image",
+      "images": "Images"
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address",
+      "phone": "Please enter a valid phone number",
+      "minLength": "Minimum {min} characters required",
+      "maxLength": "Maximum {max} characters allowed",
+      "min": "Minimum value is {min}",
+      "max": "Maximum value is {max}",
+      "pattern": "Invalid format"
+    },
+    "language": {
+      "toggle": "Toggle language",
+      "english": "English",
+      "arabic": "العربية"
+    },
+    "accessibility": {
+      "closeDialog": "Close dialog",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "nextSlide": "Next slide",
+      "previousSlide": "Previous slide",
+      "goToSlide": "Go to slide {index}",
+      "loading": "Loading content",
+      "error": "Error occurred"
+    }
+  },
+  "pages": {
+    "home": {
+      "metadata": {
+        "title": "Home | Rose App",
+        "description": "Home page of the Rose App"
+      },
+      "testimonials": {
+        "header": {
+          "title": "Testimonials",
+          "description": "Real Words from Happy Customers"
+        },
+        "empty": {
+          "title": "No testimonials yet",
+          "description": "Be the first to share your experience!"
+        }
+      }
+    },
+    "notFound": {
+      "title": "Page Not Found",
+      "description": "The page you're looking for doesn't exist.",
+      "backHome": "Back to Home"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "description": "An error occurred while loading this page.",
+      "tryAgain": "Try Again"
+    }
+  },
+  "components": {
+    "testimonial": {
+      "profilePhoto": "{name} profile photo",
+      "rating": "Rating: {rating} out of {max}",
+      "postedOn": "Posted on {date}"
+    },
+    "carousel": {
+      "next": "Next slide",
+      "previous": "Previous slide",
+      "slide": "Slide {current} of {total}"
+    }
+  }
+}
