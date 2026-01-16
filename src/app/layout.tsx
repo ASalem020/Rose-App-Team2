@@ -1,7 +1,30 @@
 import type { Metadata } from 'next';
-
+import { Sarabun, Tajawal } from 'next/font/google';
 import './globals.css';
-import QueryProvider from '@/components/providers/query-provider';
+import { Header } from '@/components/shared/header';
+import { Footer } from '@/components/shared/footer';
+import Providers from '@/components/providers';
+
+const sarabun = Sarabun({
+  weight: [
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+  ],
+  subsets: ['latin', 'thai'],
+  variable: '--font-sarabun',
+});
+
+const tajawal = Tajawal({
+  weight: ['200', '300', '400', '500', '700', '800', '900'],
+  subsets: ['latin', 'arabic'],
+  variable: '--font-tajawal',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +38,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        <QueryProvider>{children}</QueryProvider>
+      <body
+        className={`${sarabun.variable} ${tajawal.variable} antialiased`}
+      >
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

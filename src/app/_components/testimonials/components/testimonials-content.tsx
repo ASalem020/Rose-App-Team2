@@ -37,20 +37,20 @@ export default function TestimonialsContent() {
       {isLoading && <LoadingComponent />}
 
       {/* Data Found */}
-      {/* Carousel */}
-      <Carousel
-        plugins={[plugin.current]}
-        opts={{
-          loop: true,
-          align: 'start',
-          dragFree: true,
-        }}
-      >
-        <div className="container mx-auto overflow-x-hidden overflow-y-visible px-5 py-16">
-          {/* Carousel Content */}
-          <CarouselContent className="-ml-16 lg:px-5">
-            {data?.message === 'success' && (
-              <>
+      {!error &&
+        !isLoading &&
+        data?.message === 'success' && (
+          <Carousel
+            plugins={[plugin.current]}
+            opts={{
+              loop: true,
+              align: 'start',
+              dragFree: true,
+            }}
+          >
+            <div className="container mx-auto overflow-x-hidden overflow-y-visible px-5 py-16">
+              {/* Carousel Content */}
+              <CarouselContent className="-ml-16 lg:px-5">
                 {/* Carousel Items */}
                 {(data.testimonials.length < 4
                   ? [
@@ -82,11 +82,10 @@ export default function TestimonialsContent() {
                     </CarouselItem>
                   );
                 })}
-              </>
-            )}
-          </CarouselContent>
-        </div>
-      </Carousel>
+              </CarouselContent>
+            </div>
+          </Carousel>
+        )}
     </div>
   );
 }

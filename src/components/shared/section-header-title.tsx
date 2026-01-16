@@ -1,5 +1,3 @@
-import { cn } from '@/lib/utils/tailwind-merge';
-
 type SectionHeaderTitlePropsType = {
   title: string;
 };
