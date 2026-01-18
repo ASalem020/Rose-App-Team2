@@ -14,31 +14,14 @@ export default function Error({
     }, [error]);
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100vh',
-            fontFamily: 'sans-serif',
-            padding: '2rem',
-            textAlign: 'center'
-        }}>
-            <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Something went wrong!</h1>
-            <p style={{ color: '#666', marginBottom: '2rem' }}>
+        <div className="flex flex-col items-center justify-center h-screen font-sans p-8 text-center">
+            <h1 className="text-2xl mb-4">Something went wrong!</h1>
+            <p className="text-gray-600 mb-8">
                 {error.message || "An unexpected error occurred."}
             </p>
             <button
                 onClick={() => reset()}
-                style={{
-                    padding: '0.5rem 1rem',
-                    backgroundColor: '#0070f3',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    fontSize: '1rem'
-                }}
+                className="px-4 py-2 bg-blue-600 text-white border-none rounded cursor-pointer text-base"
             >
                 Try again
             </button>
