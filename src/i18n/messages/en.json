@@ -42,6 +42,8 @@
     "labels": {
       "name": "Name",
       "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
       "phone": "Phone",
       "address": "Address",
       "date": "Date",
@@ -121,16 +123,6 @@
         "heading": "Trusted by over <span>4.5k+</span> companies"
       }
     },
-    "forgot-password": {
-      "header": "Forgot Password?",
-      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
-      "button": "Continue",
-      "schemas": {
-        "email-required": "Email is required",
-        "email-invalid": "Please enter a valid email address"
-      },
-      "footer": "Don’t have an account yet? <link>Create one now!</link>"
-    },
     "notFound": {
       "title": "Page Not Found",
       "description": "The page you're looking for doesn't exist.",
@@ -140,6 +132,30 @@
       "title": "Something went wrong",
       "description": "An error occurred while loading this page.",
       "tryAgain": "Try Again"
+    },
+    "forgot-password": {
+      "header": "Forgot Password?",
+      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+      "button": "Continue",
+      "schemas": {
+        "email-required": "Please enter your Email",
+        "email-invalid": "Please enter a valid Email address"
+      },
+      "footer": "Don’t have an account yet? <link>Create one now!</link>"
+    },
+    "new-password": {
+      "header": "Create a new password",
+      "subtitle": "Set a strong password to secure your account.",
+      "footer": "Need help? <link>Contact us</link>",
+      "button": "Reset Password",
+      "schemas": {
+        "password-min-length": "Password must be at least 8 characters",
+        "password-lowercase": "Password must include at least one lowercase letter",
+        "password-number": "Password must include at least one number",
+        "password-special": "Password must include at least one special character",
+        "password-uppercase": "Password must include at least one uppercase letter",
+        "match-password": "Passwords do not match"
+      }
     }
   },
   "components": {
@@ -191,7 +207,5 @@
         "faqs": "FAQs"
       }
     }
-  },
-  "email-required": "Please enter your email",
-  "email-invalid": "This Email is invalid"
+  }
 }
