@@ -8,7 +8,7 @@ export default function Testimonials() {
     'pages.home.testimonials.header',
   );
   return (
-    <div className="testimonials">
+    <div className="testimonials my-5">
       <SectionHeader
         title={t('title')}
         description={t('description')}
