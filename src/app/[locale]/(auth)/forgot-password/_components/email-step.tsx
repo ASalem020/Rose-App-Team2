@@ -16,26 +16,38 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { emailSchema } from '@/lib/schemas/auth.schema';
 import { Link } from '@/i18n/navigation';
+import { useSendOtp } from '../_hooks/use-send-otp';
+import { EmailStepFields } from '@/lib/types/auth';
 
 export default function EmailStep() {
   // Translation
   const t = useTranslations('');
 
+  // Mutations
+  const { sendOtp, isPending, error } = useSendOtp();
+
   // Forms
-  const forgotForm = useForm<{ email: string }>({
+  const forgotForm = useForm<EmailStepFields>({
     defaultValues: {
       email: '',
     },
     resolver: zodResolver(emailSchema(t)),
   });
 
-  const handleContinue: SubmitHandler<{
-    email: string;
-  }> = async values => {};
+  const handleContinue: SubmitHandler<
+    EmailStepFields
+  > = async values => {
+    sendOtp(values, {
+      onSuccess: () => {
+        // Go to next step
+        console.log('OTP Sent');
+      },
+    });
+  };
 
   return (
     // NOTE => h-screen here is for testing UI only , waiting layout to be completed...
-    <div className="m-auto flex h-screen w-fit flex-col justify-center">
+    <div className="max-w-100 m-auto flex h-screen flex-col justify-center">
       <h2 className="text-2xl font-semibold text-zinc-800">
         {t('pages.forgot-password.header')}
       </h2>
@@ -73,7 +85,13 @@ export default function EmailStep() {
             )}
           />
 
-          <Button className="w-full" type="submit">
+          {error && <div>{error?.message}</div>}
+
+          <Button
+            loading={isPending}
+            className="w-full"
+            type="submit"
+          >
             {t('pages.forgot-password.button')}
           </Button>
         </form>
@@ -81,10 +99,10 @@ export default function EmailStep() {
 
       <div className="mt-5 text-center text-sm">
         {t.rich('pages.forgot-password.footer', {
-          link: chunk => (
+          link: (chunk: React.ReactNode) => (
             <Link
               href="/register"
-              className="font-bold text-maroon-700 dark:text-maroon-300"
+              className="font-bold text-maroon-700 dark:text-softPink-300"
             >
               {chunk}
             </Link>
