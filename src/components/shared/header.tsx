@@ -82,7 +82,10 @@ export async function Header() {
             }
           />
 
-          <Separator orientation="vertical" className="h-8" />
+          <Separator
+            orientation="vertical"
+            className="h-8"
+          />
 
           {/* Social/Utility Icons */}
           <div className="flex items-center gap-4">
@@ -109,7 +112,10 @@ export async function Header() {
             <ThemeToggle />
           </div>
 
-          <Separator orientation="vertical" className="h-8" />
+          <Separator
+            orientation="vertical"
+            className="h-8"
+          />
 
           {/* Language Toggle */}
           <ToggleLang />
@@ -117,7 +123,7 @@ export async function Header() {
       </div>
 
       {/* Navigation Bar (Maroon) */}
-      <div className="w-full bg-maroon-900 text-white dark:bg-softPink-200 dark:text-maroon-900">
+      <div className="w-full bg-maroon-700 text-white dark:bg-softPink-200 dark:text-maroon-900">
         <nav className="mx-auto flex max-w-7xl items-center justify-center gap-12 px-4 py-3">
           {NAV_LINKS.map(link => (
             <Link
@@ -125,7 +131,9 @@ export async function Header() {
               href={link.href}
               className={cn(
                 'flex items-center gap-2 text-sm capitalize transition-colors hover:text-softPink-200 dark:hover:text-maroon-700',
-                link.active ? 'font-bold' : 'font-medium opacity-90'
+                link.active
+                  ? 'font-bold'
+                  : 'font-medium opacity-90',
               )}
             >
               <link.icon className="h-5 w-5" />

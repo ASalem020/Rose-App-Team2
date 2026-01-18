@@ -1,14 +1,24 @@
+'use client';
+
 import { Toaster } from '@/components/ui/sonner';
-import QueryProvider from './components/query-provider';
-import ThemeProvider from './components/theme-provider';
+import { QueryProvider } from './query-provider';
+import { ThemeProvider } from './theme-provider';
+import {
+  NextIntlClientProvider,
+  AbstractIntlMessages,
+} from 'next-intl';
 
-type ProvidersPropsType = {
+interface ProvidersProps {
   children: React.ReactNode;
-};
+  messages: AbstractIntlMessages;
+  locale: string;
+}
 
-export default function Providers({
+export function Providers({
   children,
-}: ProvidersPropsType) {
+  messages,
+  locale,
+}: ProvidersProps) {
   return (
     <QueryProvider>
       <ThemeProvider
@@ -17,8 +27,13 @@ export default function Providers({
         enableSystem
         disableTransitionOnChange
       >
-        {children}
-        <Toaster />
+        <NextIntlClientProvider
+          messages={messages}
+          locale={locale}
+        >
+          {children}
+          <Toaster />
+        </NextIntlClientProvider>
       </ThemeProvider>
     </QueryProvider>
   );

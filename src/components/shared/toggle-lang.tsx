@@ -2,9 +2,25 @@
 
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import React from 'react';
+import { Globe, Check } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
-// TODO: The design is incompatible with the design system because I wait a team member code.
+type Language = {
+  code: 'en' | 'ar';
+  label: string;
+  nativeLabel: string;
+};
+
+const LANGUAGES: Language[] = [
+  { code: 'en', label: 'English', nativeLabel: 'English' },
+  { code: 'ar', label: 'Arabic', nativeLabel: 'العربية' },
+];
+
 export default function ToggleLang() {
   // Translation
   const locale = useLocale();
@@ -15,49 +31,55 @@ export default function ToggleLang() {
   const pathname = usePathname();
 
   // Functions
-  const toggleLang = () => {
-    router.push(`${pathname}${location.search}`, {
-      locale: locale === 'en' ? 'ar' : 'en',
-    });
+  const switchLanguage = (langCode: 'en' | 'ar') => {
+    if (langCode !== locale) {
+      router.push(`${pathname}${location.search}`, {
+        locale: langCode,
+      });
+    }
   };
 
+  const currentLanguage = LANGUAGES.find(
+    lang => lang.code === locale,
+  );
+
   return (
-    <button
-      onClick={toggleLang}
-      className="flex items-center gap-2 rounded-full border-2 border-maroon-600/60 bg-white px-4 py-2 text-sm font-semibold text-maroon-600 shadow-sm transition-colors duration-200 hover:bg-maroon-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-maroon-600 focus:ring-offset-2 dark:bg-zinc-900 dark:text-white"
-      aria-label={t('toggle')}
-    >
-      <span className="inline-block">
-        {locale === 'en' ? t('arabic') : t('english')}
-      </span>
-      <svg
-        className="h-4 w-4"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-zinc-700 transition-colors duration-200 hover:bg-zinc-100 hover:text-maroon-600 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:hover:text-maroon-400"
+          aria-label={t('toggle')}
+        >
+          <Globe className="h-4 w-4" />
+          <span className="hidden sm:inline-block">
+            {currentLanguage?.nativeLabel}
+          </span>
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="end"
+        className="min-w-[140px]"
       >
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
-        />
-        <path
-          d="M2 12h20"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-        <path
-          d="M12 2a15.3 15.3 0 0 1 0 20a15.3 15.3 0 0 1 0-20"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
-        />
-      </svg>
-    </button>
+        {LANGUAGES.map(language => (
+          <DropdownMenuItem
+            key={language.code}
+            onClick={() => switchLanguage(language.code)}
+            className="flex cursor-pointer items-center justify-between gap-3 px-3 py-2"
+          >
+            <span className="flex flex-col">
+              <span className="font-medium">
+                {language.nativeLabel}
+              </span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                {language.label}
+              </span>
+            </span>
+            {locale === language.code && (
+              <Check className="h-4 w-4 text-maroon-600 dark:text-maroon-400" />
+            )}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

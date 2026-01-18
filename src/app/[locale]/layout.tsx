@@ -1,4 +1,4 @@
-import Providers from '@/components/providers/app';
+import { Providers } from '@/components/providers';
 import { hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
@@ -7,14 +7,19 @@ import {
   getTranslations,
   setRequestLocale,
 } from 'next-intl/server';
-import { Header } from '@/components/shared/header';
-import { Footer } from '@/components/shared/footer';
 import { Sarabun, Tajawal } from 'next/font/google';
-import ThemeProvider from '@/components/providers/app/components/theme-provider';
-import { NextIntlClientProvider } from 'next-intl';
 
 const sarabun = Sarabun({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  weight: [
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+  ],
   subsets: ['latin', 'thai'],
   variable: '--font-sarabun',
 });
@@ -61,19 +66,12 @@ export default async function LocaleLayout({
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
       suppressHydrationWarning
     >
-      <body className={`antialiased ${sarabun.variable} ${tajawal.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextIntlClientProvider messages={messages}>
-            <Header />
-            <Providers>{children}</Providers>
-            <Footer />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+      <body
+        className={`antialiased ${sarabun.variable} ${tajawal.variable}`}
+      >
+        <Providers messages={messages} locale={locale}>
+          {children}
+        </Providers>
       </body>
     </html>
   );
