@@ -121,6 +121,16 @@
         "heading": "Trusted by over <span>4.5k+</span> companies"
       }
     },
+    "forgot-password": {
+      "header": "Forgot Password?",
+      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+      "button": "Continue",
+      "schemas": {
+        "email-required": "Email is required",
+        "email-invalid": "Please enter a valid email address"
+      },
+      "footer": "Don’t have an account yet? <link>Create one now!</link>"
+    },
     "notFound": {
       "title": "Page Not Found",
       "description": "The page you're looking for doesn't exist.",
@@ -181,5 +191,7 @@
         "faqs": "FAQs"
       }
     }
-  }
+  },
+  "email-required": "Please enter your email",
+  "email-invalid": "This Email is invalid"
 }
