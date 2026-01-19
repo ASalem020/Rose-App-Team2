@@ -48,8 +48,6 @@ export default function EmailStep({
       onSuccess: () => {
         // NOTE => Go to next step (OTP step) , to be continue...
         setEmail(values.email);
-        console.log(values);
-        // console.log('OTP Sent');
       },
     });
   };
@@ -102,6 +100,7 @@ export default function EmailStep({
           {/* Error message */}
           {error && <div>{error?.message}</div>}
 
+          {/* Submit Button */}
           <Button
             loading={isPending}
             className="w-full"
