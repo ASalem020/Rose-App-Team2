@@ -34,12 +34,13 @@
     "**/.pnp.*": true
   },
   "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  // "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "i18n-ally.localesPaths": [
     "src/i18n",
     "src/i18n/messages",
     "src/app/[locale]/messages"
-  ]
+  ],
+  "i18n-ally.keystyle": "nested"
 }

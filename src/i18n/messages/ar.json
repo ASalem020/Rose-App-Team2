@@ -181,5 +181,12 @@
         "faqs": "الأسئلة الشائعة"
       }
     }
+  },
+  "auth": {
+    "toggle-lang": "English",
+    "decorated-text": {
+      "login": "أهلا بعودتك",
+      "register": "كن جزء من عائلتنا!"
+    }
   }
 }

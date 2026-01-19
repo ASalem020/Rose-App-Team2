@@ -85,7 +85,7 @@ const config: Config = {
       fontFamily: {
         sarabun: ['var(--font-sarabun)', 'sans-serif'],
         tajawal: ['var(--font-tajawal)', 'sans-serif'],
-      },
+      }
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports

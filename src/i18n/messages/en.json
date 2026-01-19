@@ -181,5 +181,12 @@
         "faqs": "FAQs"
       }
     }
+  },
+  "auth": {
+    "toggle-lang": "العربية",
+    "decorated-text": {
+      "login": "Welcome Back",
+      "register": "Become part of our family!"
+    }
   }
 }
