@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import EmailStep from './email-step';
 import NewPasswordStep from './new-password-step';
 
-// NOTE => This component is for testing the flow only
 export default function ForgotPasswordFlow() {
   const [email, setEmail] = useState<string>('');
 
