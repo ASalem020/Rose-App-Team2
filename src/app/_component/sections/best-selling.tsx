@@ -1,4 +1,5 @@
 'use client';
+
 import * as React from 'react';
 import {
   Carousel,
@@ -31,14 +32,12 @@ export default function BestSelling() {
         </h3>
         <h4 className="text-3xl font-bold text-maroon-700 dark:text-pink-200">
           <span className="text-pink-500 dark:text-maroon-400">
-            {' '}
-            Check Out{' '}
-          </span>{' '}
+            Check Out
+          </span>
           What Everyone’s
           <span className="text-pink-500 dark:text-maroon-400">
-            {' '}
-            Buying{' '}
-          </span>{' '}
+            Buying
+          </span>
           Right Now
         </h4>
         <p className="text-sm text-muted-foreground text-zinc-500 dark:text-zinc-400">

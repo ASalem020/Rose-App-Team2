@@ -9,19 +9,19 @@ import useProductsByOccasions from '@/hooks/use-products-by-occasions';
 import MostPopularSkeleton from '@/components/skeleton/most-popular-skeleton';
 
 export default function MostPopular() {
-  // ^ 1 Get occasions
+  // ^ 1 // Hooks
   const { activeOccasion, setActiveOccasion, occasions } =
     useAllOccasions();
 
-  // ^ 2 Get products by occasion
   const { products } = useProductsByOccasions({
     activeOccasion,
   });
 
+  // ^ 2 // Conditional Rendering
   if (!products) {
     return <MostPopularSkeleton />;
   }
-
+  
   return (
     <section className="mt-20">
       {/* tabs */}
@@ -50,7 +50,6 @@ export default function MostPopular() {
       </div>
 
       {/* product */}
-      <Suspense fallback={<MostPopularSkeleton />}>
         <div className="grid grid-cols-4 gap-4">
           {products?.map((product: Product) => (
             <ProductCard
@@ -59,7 +58,6 @@ export default function MostPopular() {
             />
           ))}
         </div>
-      </Suspense>
 
       <Link
         href={`/product`}
