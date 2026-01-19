@@ -7,11 +7,13 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 
-export default function QueryProvider({
-  children,
-}: {
+interface QueryProviderProps {
   children: React.ReactNode;
-}) {
+}
+
+export function QueryProvider({
+  children,
+}: QueryProviderProps) {
   const [queryClient] = useState(
     () =>
       new QueryClient({

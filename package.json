@@ -10,17 +10,30 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@tanstack/react-query": "^5.90.16",
     "@tanstack/react-query-devtools": "^5.91.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "embla-carousel-auto-scroll": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "input-otp": "^1.4.2",
     "lucide-react": "^0.562.0",
     "next": "14.2.35",
+    "next-intl": "^4.7.0",
+    "next-themes": "^0.4.6",
     "react": "^18",
     "react-dom": "^18",
+    "react-phone-number-input": "^3.4.14",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7"
   },
@@ -38,5 +51,5 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "packageManager": "yarn@4.12.0+sha512.f45ab632439a67f8bc759bf32ead036a1f413287b9042726b7cc4818b7b49e14e9423ba49b18f9e06ea4941c1ad062385b1d8760a8d5091a1a31e5f6219afca8"
+  "packageManager": "yarn@4.12.0"
 }
