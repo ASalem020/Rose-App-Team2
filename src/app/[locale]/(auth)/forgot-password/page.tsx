@@ -1,11 +1,10 @@
 import React from 'react';
-import EmailStep from './_components/email-step';
+import ForgotPasswordFlow from './_components/forgot-password-flow';
 
 export default function ForgotPasswordPage() {
   return (
-    // NOTE => w-1/2 here is for testing UI only , waiting layout to be completed...
     <div className="w-1/2">
-      <EmailStep />
+      <ForgotPasswordFlow />
     </div>
   );
 }
