@@ -141,9 +141,14 @@ export default function NewPasswordStep({
             )}
           />
 
-          {/* Error Message */}
-          {error && <div>{error?.message}</div>}
-
+          {/* Error message */}
+          {error && (
+            <div className="w-full rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-softPink-100">
+              <p className="text-sm text-red-600 dark:text-red-700">
+                {error.message}
+              </p>
+            </div>
+          )}
           {/* Submit Button */}
           <Button
             loading={isPending}

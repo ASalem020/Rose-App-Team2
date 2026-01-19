@@ -8,7 +8,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -28,6 +28,7 @@ export default function EmailStep({
 }: EmailStepProps) {
   // Translation
   const t = useTranslations();
+  const locale = useLocale();
 
   // Mutations
   const { sendOtp, isPending, error } = useSendOtp();
@@ -56,12 +57,12 @@ export default function EmailStep({
     // NOTE => waiting layout to be completed...
     <div className="m-auto flex h-screen max-w-104 flex-col justify-center">
       {/* Header */}
-      <h2 className="text-2xl font-semibold text-zinc-800">
+      <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-50">
         {t('pages.forgot-password.header')}
       </h2>
 
       {/* Subtitle */}
-      <p className="w-fit border-b-2 pb-4 text-zinc-800">
+      <p className="border-b-2 pb-4 text-zinc-800 dark:text-zinc-50">
         {t('pages.forgot-password.subtitle')}
       </p>
 
@@ -98,7 +99,16 @@ export default function EmailStep({
           />
 
           {/* Error message */}
-          {error && <div>{error?.message}</div>}
+          {error && (
+            <div className="w-full rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-softPink-100">
+              <p className="text-sm text-red-600 dark:text-red-700">
+                {/* Static error message for arabic*/}
+                {locale === 'ar'
+                  ? `لا يوجد حساب مرتبط بعنوان البريد الإلكتروني ${forgotForm.getValues('email')} `
+                  : error.message}
+              </p>
+            </div>
+          )}
 
           {/* Submit Button */}
           <Button
