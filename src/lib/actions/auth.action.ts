@@ -44,3 +44,18 @@ export async function resetPasswordAction(
 
   return payload;
 }
+
+// API function for verifying OTP
+export async function verifyOtpAction(code: string) {
+    const response = await fetch(`${process.env.API_URL}/auth/verifyResetCode`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ resetCode: code }),
+    });
+
+    const payload = await response.json();
+
+    return payload;
+};
