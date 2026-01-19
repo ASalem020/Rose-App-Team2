@@ -20,7 +20,13 @@ import { resetPasswordSchema } from '@/lib/schemas/auth.schema';
 import { useResetPassword } from '../_hooks/use-new-password';
 import { toast } from 'sonner';
 
-export default function NewPasswordStep() {
+interface NewPasswordStepProps {
+  email: string;
+}
+
+export default function NewPasswordStep({
+  email,
+}: NewPasswordStepProps) {
   // Translation
   const t = useTranslations();
 
@@ -37,12 +43,13 @@ export default function NewPasswordStep() {
     resolver: zodResolver(resetPasswordSchema(t)),
   });
 
+  // Handlers
   const handleReset: SubmitHandler<
     ResetPasswordFields
   > = async values => {
     resetPassword(
       {
-        email: 'michaelsamy196@gmail.com',
+        email,
         newPassword: values.newPassword,
       },
       {
@@ -58,7 +65,7 @@ export default function NewPasswordStep() {
 
   return (
     // NOTE => waiting for layout to be completed...
-    <div className="max-w-100 m-auto flex h-screen flex-col justify-center">
+    <div className="m-auto flex h-screen max-w-100 flex-col justify-center">
       <h2 className="text-2xl font-semibold text-zinc-800">
         {t('pages.new-password.header')}
       </h2>
@@ -134,8 +141,10 @@ export default function NewPasswordStep() {
             )}
           />
 
+          {/* Error Message */}
           {error && <div>{error?.message}</div>}
 
+          {/* Submit Button */}
           <Button
             loading={isPending}
             className="mt-5 w-full"
