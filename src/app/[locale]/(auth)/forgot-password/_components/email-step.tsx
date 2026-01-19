@@ -19,9 +19,15 @@ import { Link } from '@/i18n/navigation';
 import { useSendOtp } from '../_hooks/use-send-otp';
 import { EmailStepFields } from '@/lib/types/auth';
 
-export default function EmailStep() {
+interface EmailStepProps {
+  setEmail: (email: string) => void;
+}
+
+export default function EmailStep({
+  setEmail,
+}: EmailStepProps) {
   // Translation
-  const t = useTranslations('');
+  const t = useTranslations();
 
   // Mutations
   const { sendOtp, isPending, error } = useSendOtp();
@@ -34,27 +40,34 @@ export default function EmailStep() {
     resolver: zodResolver(emailSchema(t)),
   });
 
+  // Handlers
   const handleContinue: SubmitHandler<
     EmailStepFields
   > = async values => {
     sendOtp(values, {
       onSuccess: () => {
-        // Go to next step
-        console.log('OTP Sent');
+        // NOTE => Go to next step (OTP step) , to be continue...
+        setEmail(values.email);
+        console.log(values);
+        // console.log('OTP Sent');
       },
     });
   };
 
   return (
-    // NOTE => h-screen here is for testing UI only , waiting layout to be completed...
-    <div className="max-w-100 m-auto flex h-screen flex-col justify-center">
+    // NOTE => waiting layout to be completed...
+    <div className="m-auto flex h-screen max-w-104 flex-col justify-center">
+      {/* Header */}
       <h2 className="text-2xl font-semibold text-zinc-800">
         {t('pages.forgot-password.header')}
       </h2>
+
+      {/* Subtitle */}
       <p className="w-fit border-b-2 pb-4 text-zinc-800">
         {t('pages.forgot-password.subtitle')}
       </p>
 
+      {/* Form */}
       <Form {...forgotForm}>
         <form
           onSubmit={forgotForm.handleSubmit(handleContinue)}
@@ -70,6 +83,7 @@ export default function EmailStep() {
                   {t('common.labels.email')}
                 </FormLabel>
 
+                {/* Input */}
                 <FormControl>
                   <Input
                     {...field}
@@ -85,6 +99,7 @@ export default function EmailStep() {
             )}
           />
 
+          {/* Error message */}
           {error && <div>{error?.message}</div>}
 
           <Button
@@ -97,6 +112,7 @@ export default function EmailStep() {
         </form>
       </Form>
 
+      {/* Footer */}
       <div className="mt-5 text-center text-sm">
         {t.rich('pages.forgot-password.footer', {
           link: (chunk: React.ReactNode) => (
