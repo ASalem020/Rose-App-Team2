@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import EmailStep from './email-step';
 import NewPasswordStep from './new-password-step';
+import VerifyOtp from './verify-otp';
 
 export default function ForgotPasswordFlow() {
   const [email, setEmail] = useState<string>('');
@@ -18,6 +19,7 @@ export default function ForgotPasswordFlow() {
 
       <EmailStep setEmail={setEmail} />
       <NewPasswordStep email={email} />
+      <VerifyOtp email={email} />
     </div>
   );
 }

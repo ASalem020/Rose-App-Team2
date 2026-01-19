@@ -141,7 +141,22 @@
         "email-required": "Please enter your Email",
         "email-invalid": "Please enter a valid Email address"
       },
-      "footer": "Don’t have an account yet? <link>Create one now!</link>"
+      "footer": "Don’t have an account yet? <link>Create one now!</link>",
+      "otp": {
+        "title": "Enter the OTP Code",
+        "description": "We have sent a 6-digit code to",
+        "edit": "edit",
+        "sendNewCode": "send new code",
+        "send": "send",
+        "verify": "Verify",
+        "needHelp": "Need help?",
+        "contactUs": "contact us",
+        "toast": {
+          "success": "OTP verified successfully!",
+          "error": "Failed to verify OTP. Please try again.",
+          "invalidCode": "Invalid or expired verification code"
+        }
+      }
     },
     "new-password": {
       "header": "Create a new password",
