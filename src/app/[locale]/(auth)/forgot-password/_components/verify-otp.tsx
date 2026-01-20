@@ -5,15 +5,17 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useState, useEffect, useCallback } from 'react';
 import { useVerifyOtp } from '../_hooks/use-verify-otp';
 import { useSendOtp } from '../_hooks/use-send-otp';
+import { Loader2 } from 'lucide-react';
 
-const RESEND_COOLDOWN_KEY = 'otp_resend_cooldown';
+const COOLDOWN_KEY = 'otp_cooldown';
 const COOLDOWN_DURATION = 60; // 60 seconds
 
 interface VerifyOtpProps {
     email: string;
+    setStep: (step: number) => void;
 }
 
-export default function VerifyOtp({ email }: VerifyOtpProps) {
+export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
     // Translations
     const t = useTranslations('pages.forgot-password.otp');
     const locale = useLocale();
@@ -34,9 +36,9 @@ export default function VerifyOtp({ email }: VerifyOtpProps) {
 
     // Calculate remaining time from localStorage
     const getRemainingTime = useCallback(() => {
-        const storedTime = localStorage.getItem(RESEND_COOLDOWN_KEY);
+        const storedTime = localStorage.getItem(COOLDOWN_KEY);
         if (!storedTime) return 0;
-        
+
         const elapsedSeconds = Math.floor((Date.now() - parseInt(storedTime, 10)) / 1000);
         const remaining = COOLDOWN_DURATION - elapsedSeconds;
         return remaining > 0 ? remaining : 0;
@@ -58,7 +60,7 @@ export default function VerifyOtp({ email }: VerifyOtpProps) {
 
             if (remaining <= 0) {
                 clearInterval(timer);
-                localStorage.removeItem(RESEND_COOLDOWN_KEY);
+                localStorage.removeItem(COOLDOWN_KEY);
             }
         }, 1000);
 
@@ -74,7 +76,7 @@ export default function VerifyOtp({ email }: VerifyOtpProps) {
             {
                 onSuccess: () => {
                     // Store timestamp in localStorage
-                    localStorage.setItem(RESEND_COOLDOWN_KEY, Date.now().toString());
+                    localStorage.setItem(COOLDOWN_KEY, Date.now().toString());
                     setCountdown(COOLDOWN_DURATION);
                 },
             }
@@ -98,7 +100,12 @@ export default function VerifyOtp({ email }: VerifyOtpProps) {
                     <p className='text-xs text-zinc-500'>
                         {t('description')} <span className='text-black dark:text-white'>{email || 'user@example.com'}</span>.
                     </p>
-                    <button className='text-blue-700 capitalize text-xs underline'>{t('edit')}</button>
+                    <button
+                        onClick={() => setStep(1)}
+                        className='text-blue-700 capitalize text-xs underline'
+                    >
+                        {t('edit')}
+                    </button>
                 </div>
             </div>
             <div className='w-full'>
@@ -117,31 +124,30 @@ export default function VerifyOtp({ email }: VerifyOtpProps) {
                     </InputOTP>
                     <div className='flex justify-end gap-2 items-center'>
                         <p>{t('sendNewCode')}</p>
-                        <button 
-                            type="button" 
+                        <button
+                            type="button"
                             onClick={handleResendOtp}
                             disabled={isResendDisabled}
-                            className={`${
-                                isResendDisabled 
-                                    ? 'text-zinc-400 cursor-not-allowed' 
-                                    : 'text-maroon-700 dark:text-softPink-400'
-                            }`}
+                            className={`${isResendDisabled
+                                ? 'text-zinc-400 cursor-not-allowed'
+                                : 'text-maroon-700 dark:text-softPink-400'
+                                }`}
                         >
-                            {isSending 
-                                ? '...' 
-                                : countdown > 0 
-                                    ? `${countdown}s` 
+                            {isSending
+                                ? '...'
+                                : countdown > 0
+                                    ? `${countdown}s`
                                     : t('send')
                             }
                         </button>
                     </div>
-                    
+
                     {/* Error Message */}
                     {verifyError && (
                         <div className='w-full p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'>
                             <p className='text-sm text-red-600 dark:text-red-400'>
-                                {locale === 'ar' 
-                                    ? 'كود التحقق غير صحيح او انتهت صلاحيته' 
+                                {locale === 'ar'
+                                    ? 'كود التحقق غير صحيح او انتهت صلاحيته'
                                     : verifyError.message
                                 }
                             </p>
@@ -155,7 +161,7 @@ export default function VerifyOtp({ email }: VerifyOtpProps) {
                         className='w-full'
                         disabled={isVerifying || code.length !== 6}
                     >
-                        {isVerifying ? t('verify') + '...' : t('verify')}
+                        {isVerifying ? < Loader2 className="h-4 w-4 animate-spin" /> : t('verify')}
                     </Button>
                 </form>
                 {/* Footer */}

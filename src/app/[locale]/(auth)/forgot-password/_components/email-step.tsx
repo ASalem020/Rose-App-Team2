@@ -1,3 +1,5 @@
+// Michael Samy's Component
+
 'use client';
 
 import {
@@ -43,7 +45,7 @@ export default function EmailStep({
   // Handlers
   const handleContinue: SubmitHandler<
     EmailStepFields
-  > = async values => {
+  > = async values => {    
     sendOtp(values, {
       onSuccess: () => {
         // NOTE => Go to next step (OTP step) , to be continue...
