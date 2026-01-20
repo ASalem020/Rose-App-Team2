@@ -20,10 +20,12 @@ import { useSendOtp } from '../_hooks/use-send-otp';
 import { EmailStepFields } from '@/lib/types/auth';
 
 interface EmailStepProps {
+  email: string;
   setEmail: (email: string) => void;
 }
 
 export default function EmailStep({
+  email,
   setEmail,
 }: EmailStepProps) {
   // Translation
@@ -36,7 +38,7 @@ export default function EmailStep({
   // Forms
   const forgotForm = useForm<EmailStepFields>({
     defaultValues: {
-      email: '',
+      email: email || '',
     },
     resolver: zodResolver(emailSchema(t)),
   });
