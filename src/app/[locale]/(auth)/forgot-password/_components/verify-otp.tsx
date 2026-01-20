@@ -101,7 +101,7 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
                     <p className='text-xs text-zinc-500'>
                         {t('description')} <span className='text-black dark:text-white'>{email}</span>.
                     </p>
-                    {/* resend button */}
+                    {/* edit email button  sends user to step 1 */}
                     <button
                         onClick={() => setStep(1)}
                         className={cn(
@@ -127,6 +127,7 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
                             ))}
                         </InputOTPGroup>
                     </InputOTP>
+                    {/* resend verify code button */}
                     <div className='flex justify-end gap-2 items-center'>
                         <p>{t('sendNewCode')}</p>
                         <button
