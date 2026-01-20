@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useVerifyOtp } from '../_hooks/use-verify-otp';
 import { useSendOtp } from '../_hooks/use-send-otp';
 import { Loader2 } from 'lucide-react';
+import { cn } from '@/lib/utils/tailwind-merge';
 
 const COOLDOWN_KEY = 'otp_cooldown';
 const COOLDOWN_DURATION = 60; // 60 seconds
@@ -98,11 +99,15 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
 
                 <div className='flex items-center gap-2'>
                     <p className='text-xs text-zinc-500'>
-                        {t('description')} <span className='text-black dark:text-white'>{email || 'user@example.com'}</span>.
+                        {t('description')} <span className='text-black dark:text-white'>{email}</span>.
                     </p>
+                    {/* resend button */}
                     <button
                         onClick={() => setStep(1)}
-                        className='text-blue-700 capitalize text-xs underline'
+                        className={cn(
+                            'text-maroon-700 capitalize text-xs underline',
+                            isResendDisabled && 'text-zinc-400 cursor-not-allowed'
+                        )}
                     >
                         {t('edit')}
                     </button>
@@ -128,10 +133,11 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
                             type="button"
                             onClick={handleResendOtp}
                             disabled={isResendDisabled}
-                            className={`${isResendDisabled
-                                ? 'text-zinc-400 cursor-not-allowed'
-                                : 'text-maroon-700 dark:text-softPink-400'
-                                }`}
+                            className={cn(
+                                isResendDisabled
+                                    ? 'text-zinc-400 cursor-not-allowed'
+                                    : 'text-maroon-700 dark:text-softPink-400'
+                            )}
                         >
                             {isSending
                                 ? '...'
