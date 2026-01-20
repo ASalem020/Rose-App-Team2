@@ -66,10 +66,10 @@ export default function NewPasswordStep({
   return (
     // NOTE => waiting for layout to be completed...
     <div className="m-auto flex h-screen max-w-100 flex-col justify-center">
-      <h2 className="text-2xl font-semibold text-zinc-800">
+      <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-50">
         {t('pages.new-password.header')}
       </h2>
-      <p className="border-b-2 pb-4 text-zinc-800">
+      <p className="border-b-2 pb-4 text-zinc-800 dark:text-zinc-50">
         {t('pages.new-password.subtitle')}
       </p>
 
