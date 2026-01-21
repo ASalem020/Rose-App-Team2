@@ -21,9 +21,9 @@ export default function AuthToggleLangButton() {
   }
   return (
     <div className={cn(
-      'auth-toggle-lang-button w-full mb-10 duration-300 hover:text-maroon-600 cursor-pointer',
+      'auth-toggle-lang-button w-full mb-10 duration-300 hover:text-maroon-600 cursor-pointer text-end',
       locale === 'en' && 'font-tajawal'
     )}
-      dir={locale === 'en' ? 'rtl' : 'ltr'} onClick={toggleLang}>{t('toggle-lang')}</div>
+      onClick={toggleLang}>{t('toggle-lang')}</div>
   )
 }

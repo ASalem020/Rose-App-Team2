@@ -17,7 +17,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
 
           {/* Form Decorate Shape Top */}
           <div className="form-decorate-top flex justify-center mb-10">
-            <div className="image-container relative w-60 h-11">
+            <div className="image-container relative w-72 h-11">
               <Image src={'/assets/images/auth/form-border-decorate.png'} alt="form border decorate shape" fill priority />
             </div>
           </div>
@@ -29,7 +29,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
 
           {/* Form Decorate Shape bottom */}
           <div className="form-decorate-bottom flex justify-center mt-10">
-            <div className="image-container relative w-60 h-11">
+            <div className="image-container relative w-72 h-11">
               <Image src={'/assets/images/auth/form-border-decorate.png'} alt="form border decorate shape" fill priority className="rotate-180" />
             </div>
           </div>
