@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {RoseCardtype} from '@/type/cardstype'
+import {RoseCardtype} from '@/types/cardstype'
 
 export default function RoseCard({
   image,

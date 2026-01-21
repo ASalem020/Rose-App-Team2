@@ -1,4 +1,4 @@
-import { WebSupport } from '@/type/supporttype';
+import { WebSupport } from '@/types/supporttype';
 
 export default function SupportInfo({
   icon,
