@@ -58,11 +58,11 @@ export default function ForgotPasswordFlow() {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold">
+    <div className='w-104 mx-auto h-96'>
+      <h1 className="h-16 ">
         {steps[step].title}
       </h1>
-      <p className="mt-2 text-sm text-gray-600">
+      <p className="h-4 py-4">
         {steps[step].description}
       </p>
       <div className="mt-6">{steps[step].form}</div>
