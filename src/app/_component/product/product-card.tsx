@@ -11,7 +11,7 @@ export default function ProductCard({
 }) {
   return (
     <>
-      <button className="relative w-72 cursor-pointer space-y-3 rounded-xl bg-white dark:bg-black">
+      <button className="relative w-72 cursor-pointer space-y-3 rounded-xl ">
         <div className="relative h-64 w-full overflow-hidden rounded-xl">
           <Image
             src={productInfo.imgCover}
@@ -37,8 +37,8 @@ export default function ProductCard({
               </del>
             </p>
           </div>
-          <Button className="flex size-12 cursor-pointer items-center justify-center rounded-full bg-maroon-600 text-maroon-50 dark:bg-maroon-500">
-            <ShoppingCart  className="size-8"/>
+          <Button className="flex size-11 p-2 cursor-pointer items-center justify-center rounded-full bg-maroon-600 text-maroon-50 dark:bg-maroon-500">
+            <ShoppingCart  className=" size-7 "/>
           </Button>
         </div>
         <div className="absolute right-4 top-4 flex h-4 w-11 items-center justify-center rounded-lg bg-zinc-100">

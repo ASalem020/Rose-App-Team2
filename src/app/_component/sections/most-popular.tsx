@@ -1,6 +1,6 @@
 'use client';
+
 import ProductCard from '../product/product-card';
-import { Suspense } from 'react';
 import { Product } from '@/lib/types/product';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ export default function MostPopular() {
   }
   
   return (
-    <section className="mt-20">
+    <section className="mx-auto w-11/12">
       {/* tabs */}
       <div className="my-5 flex items-center justify-between">
         {/* ToDo : hady is working on the component  */}
