@@ -3,6 +3,7 @@
 import { redirect } from "@/i18n/navigation";
 import { RegisterFields } from "../_types/register-fields";
 import { getLocale } from "next-intl/server";
+import { SignUpResponse } from "../_types/api-resoponse";
 
 type AddUserProps = {
   values: RegisterFields;
@@ -10,7 +11,7 @@ type AddUserProps = {
 
 export async function addUser({values}: AddUserProps){
   const locale = await getLocale();
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`,{
+  const res = await fetch(`${process.env.API_URL}/auth/signup`,{
     method: "POST",
     headers: {
       "Content-Type": 'application/json'
@@ -28,9 +29,12 @@ export async function addUser({values}: AddUserProps){
     )
   });
 
-  if (!res.ok) {
-    throw new Error('Failed to create account , try again later !');
+  const payload: SignUpResponse = await res.json();
+
+  if ('error' in payload) {
+    throw new Error( payload.error || 'Failed to create account , try again later !');
   }
+
 
   redirect({href: '/login',locale});
   return await res.json();
