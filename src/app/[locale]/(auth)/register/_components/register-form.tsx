@@ -7,8 +7,7 @@ import { RegisterFields } from '../_types/register-fields';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { PhoneInput } from '@/components/ui/phone-input';
-import { SelectItem } from '@radix-ui/react-select';
-import { Select, SelectContent, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { useLocale, useTranslations } from 'next-intl';
 import ErrorMessage from '@/components/shared/error-message';
@@ -88,7 +87,7 @@ export default function RegisterForm() {
               <SelectTrigger>
                 <SelectValue placeholder={t("gender.label")} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent position="popper">
                 <SelectItem value="male">
                   {t('gender.male')}
                 </SelectItem>
