@@ -10,7 +10,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
     // Auth Layout
     <div className="auth-layout grid grid-cols-1 md:grid-cols-2 min-h-screen">
       {/* Form */}
-      <div className="auth-form flex flex-col items-center justify-center">
+      <div className="auth-form flex flex-col items-center justify-center min-h-[76.68rem]">
         <div className="container md:w-3/5 mx-auto px-5">
           {/* Toggle Lang Button */}
           <AuthToggleLangButton />

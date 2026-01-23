@@ -130,6 +130,20 @@
       "title": "حدث خطأ ما",
       "description": "حدث خطأ أثناء تحميل هذه الصفحة.",
       "tryAgain": "حاول مرة أخرى"
+    },
+    "register": {
+      "first-name": "الإسم الأول",
+      "last-name": "الإسم الثاني",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "gender": {
+        "label":  "النوع",
+        "male": "ذكر",
+        "female": "انثي"
+      },
+      "password": "كلمة المرور",
+      "confirm-password": "تأكيد كلمة المرور",
+      "have-account": "لديك حساب بالفعل ؟ <Link> تسجيل الدخول </Link>"
     }
   },
   "components": {

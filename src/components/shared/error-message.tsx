@@ -2,12 +2,12 @@ import { cn } from '@/lib/utils/tailwind-merge';
 import React from 'react';
 
 type ErrorMessagePropsType = {
-  message: string;
+  message: string | undefined;
   className?: string;
 };
 
 export default function ErrorMessage({
-  message,
+  message = 'Something is wrong !',
   className,
 }: ErrorMessagePropsType) {
   return (
