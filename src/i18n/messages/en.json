@@ -141,7 +141,8 @@
         "email-required": "Please enter your Email",
         "email-invalid": "Please enter a valid Email address"
       },
-      "footer": "Don’t have an account yet? <link>Create one now!</link>"
+      "footer": "Don’t have an account yet? <link>Create one now!</link>",
+      "success-toast": "Your password has been successfully reset."
     },
     "new-password": {
       "header": "Create a new password",
@@ -207,5 +208,6 @@
         "faqs": "FAQs"
       }
     }
-  }
+  },
+  "success-toast": "Your password has been successfully reset."
 }

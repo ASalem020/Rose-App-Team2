@@ -54,10 +54,7 @@ export default function NewPasswordStep({
       },
       {
         onSuccess: () => {
-          toast.success(
-            () =>
-              'Your password has been successfully reset.',
-          );
+          toast.success(t('success-toast'));
         },
       },
     );
