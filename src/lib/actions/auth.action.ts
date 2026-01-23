@@ -10,7 +10,7 @@ export async function sendOtpAction(
   fields: EmailStepFields,
 ) {
   const response = await fetch(
-    `${process.env.API_URL}/auth/forgotPassword`,
+    `${process.env.NEXT_PUBLIC_API_URL}/auth/forgotPassword`,
     {
       method: 'POST',
       headers: {
@@ -30,7 +30,7 @@ export async function resetPasswordAction(
   fields: ResetPasswordFields,
 ) {
   const response = await fetch(
-    `${process.env.API_URL}/auth/resetPassword`,
+    `${process.env.NEXT_PUBLIC_API_URL}/auth/resetPassword`,
     {
       method: 'PUT',
       headers: {

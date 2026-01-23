@@ -69,10 +69,10 @@ export default function NewPasswordStep({
   return (
     // NOTE => waiting for layout to be completed...
     <div className="m-auto flex h-screen max-w-100 flex-col justify-center">
-      <h2 className="text-2xl font-semibold text-zinc-800">
+      <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-50">
         {t('pages.new-password.header')}
       </h2>
-      <p className="border-b-2 pb-4 text-zinc-800">
+      <p className="border-b-2 pb-4 text-zinc-800 dark:text-zinc-50">
         {t('pages.new-password.subtitle')}
       </p>
 
@@ -144,9 +144,14 @@ export default function NewPasswordStep({
             )}
           />
 
-          {/* Error Message */}
-          {error && <div>{error?.message}</div>}
-
+          {/* Error message */}
+          {error && (
+            <div className="w-full rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-softPink-100">
+              <p className="text-sm text-red-600 dark:text-red-700">
+                {error.message}
+              </p>
+            </div>
+          )}
           {/* Submit Button */}
           <Button
             loading={isPending}

@@ -10,8 +10,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { useTranslations } from 'next-intl';
-import React from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
@@ -20,24 +20,35 @@ import { emailSchema } from '@/lib/schemas/auth.schema';
 import { Link } from '@/i18n/navigation';
 import { useSendOtp } from '../_hooks/use-send-otp';
 import { EmailStepFields } from '@/lib/types/auth';
+import {
+  COOLDOWN_DURATION,
+  COOLDOWN_KEY,
+  getRemainingTime,
+} from '../_utils/otp-utils';
 
 interface EmailStepProps {
+  email: string;
   setEmail: (email: string) => void;
 }
 
 export default function EmailStep({
+  email,
   setEmail,
 }: EmailStepProps) {
   // Translation
   const t = useTranslations();
+  const locale = useLocale();
 
-  // Mutations
+  // State
+  const [countdown, setCountdown] = useState(0);
+
+  // Mutation
   const { sendOtp, isPending, error } = useSendOtp();
 
   // Forms
   const forgotForm = useForm<EmailStepFields>({
     defaultValues: {
-      email: '',
+      email: email || '',
     },
     resolver: zodResolver(emailSchema(t)),
   });
@@ -45,25 +56,62 @@ export default function EmailStep({
   // Handlers
   const handleContinue: SubmitHandler<
     EmailStepFields
-  > = async values => {    
-    sendOtp(values, {
-      onSuccess: () => {
-        // NOTE => Go to next step (OTP step) , to be continue...
-        setEmail(values.email);
-      },
-    });
+  > = async values => {
+    // If timer is running then go to next step without sending another OTP
+    if (localStorage.getItem(COOLDOWN_KEY)) {
+      // NOTE => Go to next step (OTP step) , to be continue...
+      // return;
+    } else {
+      // NOTE => Go to next step (OTP step) , to be continue...
+
+      // If timer is not running then send OTP and go to next step
+      sendOtp(values, {
+        onSuccess: () => {
+          setEmail(values.email);
+          localStorage.setItem(
+            COOLDOWN_KEY,
+            Date.now().toString(),
+          );
+          setCountdown(COOLDOWN_DURATION);
+        },
+      });
+    }
   };
+
+  // Effects
+  useEffect(() => {
+    // Initialize countdown from localStorage on mount
+    const remaining = getRemainingTime();
+    setCountdown(remaining);
+  }, []);
+
+  useEffect(() => {
+    // Countdown timer
+    if (countdown <= 0) return;
+
+    const timer = setInterval(() => {
+      const remaining = getRemainingTime();
+      setCountdown(remaining);
+
+      if (remaining <= 0) {
+        clearInterval(timer);
+        localStorage.removeItem(COOLDOWN_KEY);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [countdown]);
 
   return (
     // NOTE => waiting layout to be completed...
     <div className="m-auto flex h-screen max-w-104 flex-col justify-center">
       {/* Header */}
-      <h2 className="text-2xl font-semibold text-zinc-800">
+      <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-50">
         {t('pages.forgot-password.header')}
       </h2>
 
       {/* Subtitle */}
-      <p className="w-fit border-b-2 pb-4 text-zinc-800">
+      <p className="border-b-2 pb-4 text-zinc-800 dark:text-zinc-50">
         {t('pages.forgot-password.subtitle')}
       </p>
 
@@ -100,7 +148,16 @@ export default function EmailStep({
           />
 
           {/* Error message */}
-          {error && <div>{error?.message}</div>}
+          {error && (
+            <div className="w-full rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-softPink-100">
+              <p className="text-sm text-red-600 dark:text-red-700">
+                {/* Static error message for arabic*/}
+                {locale === 'ar'
+                  ? `لا يوجد حساب مرتبط بعنوان البريد الإلكتروني ${forgotForm.getValues('email')} `
+                  : error.message}
+              </p>
+            </div>
+          )}
 
           {/* Submit Button */}
           <Button
