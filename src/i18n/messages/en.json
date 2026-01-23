@@ -151,10 +151,12 @@
         "verify": "Verify",
         "needHelp": "Need help?",
         "contactUs": "contact us",
+        "schemas": {
+          "code-required": "Please enter the verification code",
+          "code-length": "The code must be exactly 6 digits"
+        },
         "toast": {
-          "success": "OTP verified successfully!",
-          "error": "Failed to verify OTP. Please try again.",
-          "invalidCode": "Invalid or expired verification code"
+          "success": "OTP verified successfully!"
         }
       }
     },

@@ -150,7 +150,14 @@
         "send": "إرسال",
         "verify": "تحقق",
         "needHelp": "هل تحتاج مساعدة؟",
-        "contactUs": "تواصل معنا"
+        "contactUs": "تواصل معنا",
+        "schemas": {
+          "code-required": "يرجى إدخال رمز التحقق",
+          "code-length": "يجب أن يتكون الرمز من 6 أرقام بالضبط"
+        },
+        "toast": {
+          "success": "تم التحقق من الرمز بنجاح!"
+        }
       }
     },
     "new-password": {

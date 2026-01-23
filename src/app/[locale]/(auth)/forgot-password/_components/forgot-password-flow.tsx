@@ -6,7 +6,7 @@ import NewPasswordStep from './new-password-step';
 import VerifyOtp from './verify-otp';
 
 export default function ForgotPasswordFlow() {
-  const [email, setEmail] = useState<string>('example@email.com');
+  const [email, setEmail] = useState<string>('');
 
   return (
     // NOTE => waiting for Forgot password Flow and layout to be completed...
@@ -18,6 +18,7 @@ export default function ForgotPasswordFlow() {
       3. then return to that page to type the new password */}
 
       <EmailStep email={email} setEmail={setEmail} />
+      <VerifyOtp email={email} setStep={() => { 'mock' }} />
       <NewPasswordStep email={email} />
     </div>
   );

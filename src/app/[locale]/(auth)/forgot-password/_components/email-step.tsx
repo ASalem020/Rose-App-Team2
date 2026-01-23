@@ -61,6 +61,7 @@ export default function EmailStep({
     if (localStorage.getItem(COOLDOWN_KEY)) {
       // NOTE => Go to next step (OTP step) , to be continue...
       // return;
+      setEmail(values.email);
     } else {
       // NOTE => Go to next step (OTP step) , to be continue...
 

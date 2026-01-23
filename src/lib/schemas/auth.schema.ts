@@ -1,6 +1,23 @@
 import { Translations } from '../types/global';
 import z from 'zod';
 
+export const otpSchema = (t: Translations) => {
+  return z.object({
+    code: z
+      .string()
+      .min(
+        1,
+        t(
+          'pages.forgot-password.otp.schemas.code-required',
+        ),
+      )
+      .length(
+        6,
+        t('pages.forgot-password.otp.schemas.code-length'),
+      ),
+  });
+};
+
 export const emailSchema = (t: Translations) => {
   return z.object({
     email: z.email({
