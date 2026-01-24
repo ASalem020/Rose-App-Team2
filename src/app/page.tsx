@@ -1,9 +1,16 @@
+import BestSelling from './_component/sections/best-selling';
+import MostPopular from './_component/sections/most-popular';
 import Testimonials from './_components/testimonials';
 
 export default function Home() {
   return (
-    <div className="bg-white font-sarabun dark:bg-zinc-800">
+    <main className="min-h-screen w-full bg-white py-32 dark:bg-black">
+      <div className="container mx-auto">
+        <BestSelling />
+        <MostPopular />
       <Testimonials />
-    </div>
+      </div>
+    </main>
+   
   );
 }
