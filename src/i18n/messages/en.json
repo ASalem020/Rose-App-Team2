@@ -224,5 +224,6 @@
         "faqs": "FAQs"
       }
     }
-  }
+  },
+  "success-toast": "Your password has been successfully reset."
 }
