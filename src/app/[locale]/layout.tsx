@@ -67,7 +67,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`antialiased ${sarabun.variable} ${tajawal.variable}`}
+        className={`antialiased ${sarabun.variable} ${tajawal.variable} rtl:font-tajawal`}
       >
         <Providers messages={messages} locale={locale}>
           {children}

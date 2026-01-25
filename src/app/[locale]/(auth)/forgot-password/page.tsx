@@ -1,5 +1,9 @@
 import React from 'react';
 
 export default function ForgotPasswordPage() {
-  return <div>ForgotPasswordPage</div>;
+  return (
+    <div className="w-1/2">
+      {/* Forgot Password Flow */}
+    </div>
+  );
 }

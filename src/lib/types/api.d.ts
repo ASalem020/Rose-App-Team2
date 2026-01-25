@@ -1,12 +1,13 @@
 // ^ API Success Response
 declare type APISuccessResponse<T> = {
-    message: string;
+  message: string;
 } & T;
 
 //^ API Error Response
 declare type APIErrorResponse = {
-    error: string;
-}
+  error: string;
+};
 
-declare type APIResponse<T> = APISuccessResponse<T> | APIErrorResponse;
-
+declare type APIResponse<T> =
+  | APISuccessResponse<T>
+  | APIErrorResponse;

@@ -8,6 +8,7 @@
  */
 
 import { loginSchema } from "../schemas/auth.schema";
+export type LoginFields = z.infer<typeof loginSchema>
 
 export interface LoginResponse {
     token: string;
@@ -24,7 +25,18 @@ export interface LoginResponse {
         wishlist: [],
         addresses: [],
     };
-
 }
 
-export type LoginFields = z.infer<typeof loginSchema>
+import {
+  emailSchema,
+  otpSchema,
+  resetPasswordSchema,
+} from '../schemas/auth.schema';
+
+export type EmailStepFields = z.infer<typeof emailSchema>;
+
+export type OtpStepFields = z.infer<typeof otpSchema>;
+
+export type ResetPasswordFields = z.infer<
+  typeof resetPasswordSchema
+>;

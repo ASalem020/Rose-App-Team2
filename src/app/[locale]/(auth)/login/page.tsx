@@ -9,7 +9,7 @@ export default function LoginPage() {
     <h1 className='text-maroon-700 text-3xl font-semibold text-center max-w-sm w-full'>Welcome back!</h1>
 
     {/* login form */}
-    <LoginForm/>
+    <LoginForm />
 
     {/* footer */}
     <footer>
