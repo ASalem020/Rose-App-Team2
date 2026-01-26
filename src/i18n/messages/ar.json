@@ -177,11 +177,15 @@
         },
         "placeholders": {
           "first-name": "محمد",
-          "last-name": "أحمد"
+          "last-name": "أحمد",
+        "gender": "اختر النوع"
         },
         "create-button": {
           "loading": "جاري الإنشاء ...",
           "create": "إنشاء حساب"
+        },
+        "toast": {
+          "success": "تم إنشاء الحساب بنجاح ، سجل دخول الآن!"
         }
     }
   },

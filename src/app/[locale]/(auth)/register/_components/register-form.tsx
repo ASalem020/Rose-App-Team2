@@ -33,7 +33,7 @@ export default function RegisterForm() {
       },
       email: '',
       phone: '',
-      gender: 'male',
+      gender: undefined,
       password: '',
       confirmPassword: ''
     },
@@ -45,7 +45,7 @@ export default function RegisterForm() {
   const onSubmit: SubmitHandler<RegisterFields> = async (values) => {
     try {
       await addUser({ values });
-      toast.success('Creating Account Successfully, login now!');
+      toast.success(t('toast.success'));
       reset();
     } catch (e) {
       // TODO: Until get backend error component
@@ -105,7 +105,7 @@ export default function RegisterForm() {
           return (
             <Select dir={locale === 'ar' ? 'rtl' : 'ltr'} value={field.value} onValueChange={field.onChange}>
               <SelectTrigger>
-                <SelectValue placeholder={t("gender.label")} />
+                <SelectValue placeholder={t("placeholders.gender")} />
               </SelectTrigger>
               <SelectContent position="popper">
                 <SelectItem value="male">

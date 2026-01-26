@@ -22,7 +22,7 @@ const inputVariants = cva(
         default: 'px-3',
         text: 'px-3',
         search: 'pl-10 pr-3',
-        password: 'pl-3 pr-10',
+        password: 'pl-3 pr-10 rtl:pr-3 rtl:pl-10',
         upload:
           'pr-[140px] pl-3 cursor-pointer text-transparent disabled:text-transparent dark:disabled:text-transparent file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-transparent disabled:file:text-transparent',
       },
@@ -35,8 +35,8 @@ const inputVariants = cva(
 
 export interface InputProps
   extends
-    React.ComponentProps<'input'>,
-    VariantProps<typeof inputVariants> {
+  React.ComponentProps<'input'>,
+  VariantProps<typeof inputVariants> {
   onReview?: () => void;
   text?: string;
   error?: boolean;
@@ -141,7 +141,7 @@ const Input = React.forwardRef<
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus:outline-none disabled:pointer-events-none"
+            className="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus:outline-none disabled:pointer-events-none"
             tabIndex={-1}
             disabled={props.disabled}
           >
@@ -187,7 +187,7 @@ const Input = React.forwardRef<
               className={cn(
                 'flex shrink-0 items-center gap-2 whitespace-nowrap text-sm text-maroon-600 dark:text-softPink-400',
                 props.disabled &&
-                  'text-zinc-400 dark:text-zinc-600',
+                'text-zinc-400 dark:text-zinc-600',
               )}
             >
               <Upload className="h-4 w-4" />

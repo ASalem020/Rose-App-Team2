@@ -177,11 +177,15 @@
       },
       "placeholders": {
         "first-name": "Mohamed",
-        "last-name": "Ahmed"
+        "last-name": "Ahmed",
+        "gender": "Select Gender"
       },
       "create-button": {
         "loading": "Creating ...",
         "create": "Create Account"
+      },
+      "toast": {
+        "success": "Creating Account Successfully, login now!"
       }
     }
   },

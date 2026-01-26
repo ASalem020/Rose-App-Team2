@@ -3,7 +3,8 @@
 import { redirect } from "@/i18n/navigation";
 import { RegisterFields } from "../_types/register-fields";
 import { getLocale } from "next-intl/server";
-import { SignUpResponse } from "../_types/api-resoponse";
+import { SignUpResponse } from "../_types/api-response";
+import { formatEgyptianPhone } from "../_utils/format-egyptian-phone";
 
 type AddUserProps = {
   values: RegisterFields;
@@ -11,6 +12,8 @@ type AddUserProps = {
 
 export async function addUser({values}: AddUserProps){
   const locale = await getLocale();
+  const formattedPhone = formatEgyptianPhone(values.phone)
+
   const res = await fetch(`${process.env.API_URL}/auth/signup`,{
     method: "POST",
     headers: {
@@ -23,7 +26,7 @@ export async function addUser({values}: AddUserProps){
         email: values.email,
         password: values.password,
         rePassword: values.confirmPassword,
-        phone: values.phone,
+        phone: formattedPhone,
         gender: values.gender
       }
     )
