@@ -128,35 +128,11 @@
       "description": "The page you're looking for doesn't exist.",
       "backHome": "Back to Home"
     },
+
     "error": {
       "title": "Something went wrong",
       "description": "An error occurred while loading this page.",
       "tryAgain": "Try Again"
-    },
-    "forgot-password": {
-      "header": "Forgot Password?",
-      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
-      "button": "Continue",
-      "schemas": {
-        "email-required": "Please enter your Email",
-        "email-invalid": "Please enter a valid Email address"
-      },
-      "footer": "Don’t have an account yet? <link>Create one now!</link>",
-      "otp": {
-        "title": "Enter the OTP Code",
-        "description": "We have sent a 6-digit code to",
-        "edit": "edit",
-        "sendNewCode": "send new code",
-        "send": "send",
-        "verify": "Verify",
-        "needHelp": "Need help?",
-        "contactUs": "contact us",
-        "toast": {
-          "success": "OTP verified successfully!",
-          "error": "Failed to verify OTP. Please try again.",
-          "invalidCode": "Invalid or expired verification code"
-        }
-      }
     },
     "new-password": {
       "header": "Create a new password",
@@ -171,6 +147,9 @@
         "password-uppercase": "Password must include at least one uppercase letter",
         "match-password": "Passwords do not match"
       }
+    },
+    "login": {
+      "rememberMe": "Remember me"
     }
   },
   "components": {
@@ -222,5 +201,13 @@
         "faqs": "FAQs"
       }
     }
+  },
+  "ForgotPassword": {
+    "title": "Forgot Password?",
+    "description": "Worry not, we’ll send you instructions to help you reset it.",
+    "otpTitle": "Enter the OTP Code",
+    "otpDescription": "We have sent a 6-digit code to {email}",
+    "newPasswordTitle": "Create a new password",
+    "newPasswordDescription": "Set a strong password to secure your account."
   }
 }

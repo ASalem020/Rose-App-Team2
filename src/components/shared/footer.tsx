@@ -56,7 +56,9 @@ export async function Footer() {
           <div className="space-y-2 text-center md:text-start">
             <h4 className="text-lg font-bold capitalize text-softPink-300">
               {t('newsletterTitle')}{' '}
-              <span className="text-white">{t('newsletterDiscount')}</span>{' '}
+              <span className="text-white">
+                {t('newsletterDiscount')}
+              </span>{' '}
               {t('newsletterSuffix')}
             </h4>
             <p className="text-xs capitalize text-zinc-500">

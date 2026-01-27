@@ -1,6 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
-import { verifyOtpAction } from "@/lib/actions/auth.action";
-import { toast } from "sonner";
+import { useMutation } from '@tanstack/react-query';
+import { verifyOtpAction } from '@/lib/actions/auth.action';
+import { toast } from 'sonner';
 
 export const useVerifyOtp = () => {
   // Mutation
@@ -24,5 +24,10 @@ export const useVerifyOtp = () => {
       // Error will be displayed in the component, not as a toast
     },
   });
-  return { isPending, error, verifyOtp: mutate, resetError: reset };
+  return {
+    isPending,
+    error,
+    verifyOtp: mutate,
+    resetError: reset,
+  };
 };

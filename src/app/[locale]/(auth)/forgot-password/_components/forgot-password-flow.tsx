@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import EmailStep from './email-step';
 import VerifyOtp from './verify-otp';
 import NewPasswordStep from './new-password-step';
@@ -9,17 +10,19 @@ import { FORGOT_PASSWROD_STEPS } from '@/lib/constants/auth-constants';
 import { Church } from 'lucide-react';
 
 export default function ForgotPasswordFlow() {
+  // transaltion hook
+  const t = useTranslations('ForgotPassword');
+
   const [step, setStep] = useState<ForgotPasswordStep>(
     FORGOT_PASSWROD_STEPS.EMAIL,
   );
   const [email, setEmail] = useState('');
-       
-        //  E-mail step
+
   const steps = {
+    // email step
     [FORGOT_PASSWROD_STEPS.EMAIL]: {
-      title: 'Forgot Password?',
-      description:
-        'Worry not, we’ll send you instructions to help you reset it.',
+      title: t('title'),
+      description: t('description'),
       form: (
         <EmailStep
           setEmail={(value: string) => {
@@ -29,13 +32,13 @@ export default function ForgotPasswordFlow() {
         />
       ),
     },
-      //  OTP step
+
+    // OTP step
     [FORGOT_PASSWROD_STEPS.OTP]: {
-      title: 'Enter the OTP Code',
+      title: t('otpTitle'),
       description: (
         <>
-          We have sent a 6-digit code to{' '}
-          <span>{email || ''}</span>
+          {t('otpDescription', { email })}
           <button
             onClick={() =>
               setStep(FORGOT_PASSWROD_STEPS.EMAIL)
@@ -48,23 +51,19 @@ export default function ForgotPasswordFlow() {
       ),
       form: <VerifyOtp email={email} />,
     },
-      //  new password step
+
+    // New Password step
     [FORGOT_PASSWROD_STEPS.NEW_PASSWORD]: {
-      title: 'Create a new password',
-      description:
-        'Set a strong password to secure your account.',
+      title: t('newPasswordTitle'),
+      description: t('newPasswordDescription'),
       form: <NewPasswordStep email={email} />,
     },
   };
 
   return (
-    <div className='w-104 mx-auto h-96'>
-      <h1 className="h-16 ">
-        {steps[step].title}
-      </h1>
-      <p className="h-4 py-4">
-        {steps[step].description}
-      </p>
+    <div className="mx-auto h-96 w-104">
+      <h1 className="h-16">{steps[step].title}</h1>
+      <p className="h-4 py-4">{steps[step].description}</p>
       <div className="mt-6">{steps[step].form}</div>
     </div>
   );

@@ -123,7 +123,7 @@ export default function Home() {
     '/logo/bb70dbdbb3472a27ffcc4d3baeb8eaceb3873b18.png';
 
   return (
-    <div className="flex min-h-screen w-full flex-col gap-24 bg-zinc-50/30 p-6 font-sans dark:bg-zinc-950 md:p-12 lg:p-20">
+    <div className="flex min-h-screen w-full flex-col gap-24 bg-zinc-50/30 p-6 font-sans md:p-12 lg:p-20 dark:bg-zinc-950">
       {/* Dynamic Header */}
       <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div className="space-y-2">

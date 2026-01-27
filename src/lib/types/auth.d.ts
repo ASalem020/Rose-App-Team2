@@ -10,4 +10,5 @@ export type ResetPasswordFields = z.infer<
   typeof resetPasswordSchema
 >;
 
-export type ForgotPasswordStep = (typeof FORGOT_PASSWROD_STEPS) [keyof typeof FORGOT_PASSWROD_STEPS]
+export type ForgotPasswordStep =
+  (typeof FORGOT_PASSWROD_STEPS)[keyof typeof FORGOT_PASSWROD_STEPS];
