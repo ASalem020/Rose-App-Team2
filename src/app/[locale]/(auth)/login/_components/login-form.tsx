@@ -8,7 +8,6 @@ import Link from 'next/link'
 import { loginSchema } from '@/lib/schemas/auth.schema'
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoaderCircle } from 'lucide-react'
 import useLogin from '../hooks/use-login'
 import { FormControl, FormItem, FormLabel, Form, FormField, FormMessage } from '@/components/ui/form'
 import { useTranslations } from 'next-intl'
@@ -55,7 +54,6 @@ export default function LoginForm() {
                         )}
                     />
 
-
                     {/* password input */}
                     <FormField
                         control={form.control}
@@ -71,14 +69,12 @@ export default function LoginForm() {
                         )}
                     />
 
-
                     {/* forget password button */}
                     <div className='flex items-center justify-end w-full'>
                         <Link href="/forgot-password" className="text-maroon-700 ">{t('forgotPassword')}</Link>
                     </div>
 
                     {/* remember me checkbox */}
-
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="form-checkbox h-4 w-4 text-maroon-600 border-zinc-300 block" />
                         <span className=" text-zinc-800 block">{t('rememberMe')}</span>

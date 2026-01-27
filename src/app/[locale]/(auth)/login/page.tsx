@@ -5,12 +5,10 @@ import LoginForm from './_components/login-form';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-
 export default function LoginPage() {
 
   // ^ translation
   const t = useTranslations('pages.login');
-
 
   return <div className='flex flex-col items-center justify-center h-screen w-1/3 space-y-11 '>
     {/* Header */}
