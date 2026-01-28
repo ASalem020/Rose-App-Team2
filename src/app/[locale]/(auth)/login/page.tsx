@@ -7,7 +7,8 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import RememberMeCheckbox from './remember-me/remember-me-checkbox';
-import { saveAuthToken } from '@/lib/utils/auth-remember-me';
+
+import { useTranslations } from 'next-intl';
 
 type FormData = {
   email: string;
@@ -15,7 +16,13 @@ type FormData = {
 };
 
 export default function LoginForm() {
+  // State for "Remember Me" checkbox
   const [rememberMe, setRememberMe] = useState(false);
+
+  // Translation hook for login page
+  const t = useTranslations('pages.login');
+
+  // React Hook Form setup
   const {
     register,
     handleSubmit,
@@ -23,10 +30,13 @@ export default function LoginForm() {
     setError,
   } = useForm<FormData>();
 
+  // Form submit handler
   const onSubmit = async (data: FormData) => {
     try {
+      // Fake token for demonstration, replace with API call response
       const token = 'FAKE_TOKEN_FOR_TEST';
 
+      // Save token in localStorage or sessionStorage based on "Remember Me"
       saveAuthToken(token, rememberMe);
 
       console.log(
@@ -48,11 +58,12 @@ export default function LoginForm() {
       className="w-full max-w-sm space-y-6"
     >
       <div className="space-y-4">
+        {/* Email input */}
         <div className="space-y-1">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t('email')}</Label>
           <Input
             {...register('email', {
-              required: 'Email is required',
+              required: t('emailRequired'),
             })}
             type="email"
             id="email"
@@ -67,11 +78,12 @@ export default function LoginForm() {
           )}
         </div>
 
+        {/* Password input */}
         <div className="space-y-1">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">{t('password')}</Label>
           <Input
             {...register('password', {
-              required: 'Password is required',
+              required: t('passwordRequired'),
             })}
             type="password"
             id="password"
@@ -85,8 +97,8 @@ export default function LoginForm() {
             </p>
           )}
         </div>
-        {/* Remember me chekbox */}
 
+        {/* Remember Me checkbox + Forgot Password link */}
         <div className="flex items-center justify-between">
           <RememberMeCheckbox
             checked={rememberMe}
@@ -96,16 +108,17 @@ export default function LoginForm() {
             href="/forget-password"
             className="text-maroon-700"
           >
-            Forgot your password?
+            {t('forgotPassword')}
           </Link>
         </div>
 
+        {/* Submit button */}
         <Button
           type="submit"
           disabled={isSubmitting}
           className="h-10 bg-maroon-600 text-white hover:bg-maroon-800"
         >
-          Login
+          {t('login')}
         </Button>
       </div>
     </form>
