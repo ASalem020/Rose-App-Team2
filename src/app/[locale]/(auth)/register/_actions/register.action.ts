@@ -6,13 +6,13 @@ import { getLocale } from "next-intl/server";
 import { SignUpResponse } from "../_types/api-response";
 import { formatEgyptianPhone } from "../_utils/format-egyptian-phone";
 
-type AddUserProps = {
+type RegisterActionPropsType = {
   values: RegisterFields;
 };
 
-export async function addUser({values}: AddUserProps){
+export async function registerAction({values}: RegisterActionPropsType){
   const locale = await getLocale();
-  const formattedPhone = formatEgyptianPhone(values.phone)
+  const formattedPhone = formatEgyptianPhone(values.phone);
 
   const res = await fetch(`${process.env.API_URL}/auth/signup`,{
     method: "POST",
