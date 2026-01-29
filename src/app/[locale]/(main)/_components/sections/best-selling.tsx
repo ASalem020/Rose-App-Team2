@@ -24,9 +24,9 @@ export default function BestSelling() {
   }
 
   return (
-    <section className="grid grid-cols-4 items-center gap-12">
+    <section className="mx-auto grid grid-cols-4 items-center gap-12 w-11/12 ">
       {/* ^ part one */}
-      <div className="bg-warning-200 col-span-1 w-72 space-y-5">
+      <div className=" bg-warning-200 col-span-1 space-y-5 ">
         <h3 className="text-xl font-semibold tracking-widest text-pink-500 dark:text-maroon-400">
           Best Selling
         </h3>
@@ -54,28 +54,34 @@ export default function BestSelling() {
       </div>
 
       {/* ^ partr two */}
-      <div className="col-span-3 flex">
+  
+      <div className="col-span-3 w-full  ">
         <Carousel
           opts={{
             align: 'start',
             loop: true,
           }}
-          className="w-full"
+          className="w-full "
         >
+          <div className="w-full overflow-hidden">
+
           <CarouselContent>
             {data?.map((product: Product) => (
               <CarouselItem
-                key={product._id}
-                className="flex basis-1/3 items-center justify-center bg-white dark:bg-black"
+              key={product._id}
+              className="flex basis-1/3 items-center justify-center "
               >
                 <ProductCard productInfo={product} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="size-11 bg-maroon-600 text-maroon-50 hover:bg-maroon-700 hover:text-white dark:bg-maroon-500" />
-          <CarouselNext className="size-11 bg-maroon-600 text-maroon-50 hover:bg-maroon-700 hover:text-white dark:bg-maroon-500" />
+        </div>
+
+          <CarouselPrevious className="size-11 bg-maroon-600 text-maroon-50 hover:bg-maroon-700 hover:text-white dark:bg-maroon-500 " />
+          <CarouselNext className="size-11 bg-maroon-600 text-maroon-50 hover:bg-maroon-700 hover:text-white dark:bg-maroon-500  " />
         </Carousel>
       </div>
+
     </section>
   );
 }

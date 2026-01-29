@@ -173,6 +173,18 @@
         "password-uppercase": "يجب أن تتضمن كلمة المرور حرفًا كبيرًا واحدًا على الأقل",
         "match-password": "كلمات المرور غير متطابقة"
       }
+    },
+     "login": {
+      "header": "مرحبًا بعودتك!",
+      "login-form": {
+        "emailLabel": "البريد الإلكتروني",
+        "passwordLabel": "كلمة المرور",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "rememberMe": "تذكرني",
+        "button": "تسجيل الدخول"
+      },
+      "footer": "ليس لديك حساب؟",
+      "register": "أنشئ واحدًا الآن!"
     }
   },
   "components": {

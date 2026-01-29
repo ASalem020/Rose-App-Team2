@@ -173,6 +173,18 @@
         "password-uppercase": "Password must include at least one uppercase letter",
         "match-password": "Passwords do not match"
       }
+    },
+    "login": {
+      "header": "Welcome Back!",
+      "login-form": {
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "forgotPassword": "Forgot Password?",
+        "rememberMe": "Remember Me",
+        "button": "Login"
+      },
+      "footer": "Don’t have an account yet?",
+      "register": "Create one now!"
     }
   },
   "components": {
