@@ -1,7 +1,7 @@
 import { NextAuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { LoginResponse } from './lib/types/auth';
-LoginResponse
+
 export const authOptions: NextAuthOptions = {
   providers: [
     Credentials({
@@ -9,57 +9,50 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         email: {},
         password: {},
-        rememberMe: {}, // Add rememberMe to credentials
+        rememberMe: {}, // include Remember Me
       },
       authorize: async credentials => {
         const response = await fetch(
           `${process.env.API_URL}/auth/signin`,
           {
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               email: credentials?.email,
               password: credentials?.password,
             }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
           },
         );
 
-        const payload: APIResponse<LoginResponse> =
+        const payload: LoginResponse =
           await response.json();
 
-        if ('error' in payload) {
+        if ('error' in payload)
           throw new Error(payload.error);
-        }
 
         return {
           id: payload.user._id,
           accessToken: payload.token,
           user: payload.user,
-          rememberMe: credentials?.rememberMe === 'true', // Convert to boolean
+          rememberMe: credentials?.rememberMe === 'true',
         };
       },
     }),
   ],
-
   callbacks: {
-    // Called when JWT token is created or updated
     jwt: async ({ token, user }) => {
       if (user) {
         token.accessToken = user.accessToken;
         token.user = user.user;
-        token.rememberMe = user.rememberMe; // Store rememberMe in token
+        token.rememberMe = user.rememberMe; // store rememberMe
       }
       return token;
     },
-
-    // Called when session is created
     session: async ({ session, token }) => {
       session.user = token.user;
 
-      // If rememberMe is false, expire session immediately (session-only)
-      if (token.rememberMe === false) {
+      // persistent session only if rememberMe true
+      if (token.rememberMe !== true) {
         session.expires = new Date(0).toISOString();
       }
 

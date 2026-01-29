@@ -11,11 +11,11 @@ export default function RememberMeCheckbox({
   checked,
   onChange,
 }: RememberMeProps) {
-  // Use login page translations instead of common
+  // Translation for login page
   const t = useTranslations('pages.login');
 
   return (
-    // Remember me checkbox label
+    // Remember Me checkbox label
     <label className="flex cursor-pointer items-center gap-2 text-sm">
       <input
         type="checkbox"
@@ -31,7 +31,7 @@ export default function RememberMeCheckbox({
         }`}
       >
         {checked && (
-          // Checkmark when checkbox is checked
+          // Checkmark when checked
           <span className="text-xs text-white">✓</span>
         )}
       </span>
