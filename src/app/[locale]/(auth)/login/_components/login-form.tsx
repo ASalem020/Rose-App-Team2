@@ -17,7 +17,7 @@ export default function LoginForm() {
     const t = useTranslations('pages.login.login-form');
 
     // ^ Mutation 
-    const { error, mutate } = useLogin()
+    const { error, login } = useLogin()
 
     // ^ react-hook-form
     const form = useForm({
@@ -31,8 +31,7 @@ export default function LoginForm() {
 
     //   ^ function 
     const onSubmit: SubmitHandler<LoginFields> = (data) => {
-        mutate(data)
-
+        login(data);
     }
 
     return <Form {...form}>
@@ -83,7 +82,7 @@ export default function LoginForm() {
                 </div>
 
 
-                {/* global error message */}
+                {/* global */}
                 {error?.message && (
                     <div className=" border border-red-400 text-center p-2">
                         <p className="text-red-400 font-xl">*{error?.message}</p>

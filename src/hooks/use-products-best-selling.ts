@@ -11,7 +11,5 @@ export default function useBestSellingProducts() {
   return {
     data,
     isLoading,
-
-
   }
 }

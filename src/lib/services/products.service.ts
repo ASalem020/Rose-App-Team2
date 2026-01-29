@@ -11,12 +11,13 @@ export async function getAllProduct({
   sort,
   occasionsId,
 }: ProductFilter): Promise<Product[]> {
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/products?${limit ? `limit=${limit}` : ''}${sort ? `&sort=${sort}` : ''}${occasionsId ? `&occasions=${occasionsId}` : ''}`,
+    `${process.env.API_URL}/products?${limit ? `limit=${limit}` : ''}${sort ? `&sort=${sort}` : ''}${occasionsId ? `&occasions=${occasionsId}` : ''}`,
     {
       cache: 'no-store',
     },
   );
   const data = await res.json();
-  return data.products;
+   return data.products;
 }

@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react';
 
 export default function useLogin() {
   // ^ Mutation
-  const { error, mutate } = useMutation({
+  const { error, mutate:login } = useMutation({
     mutationFn: async (credentials: LoginFields) => {
       const response = await signIn('credentials', {
         email: credentials.email,
@@ -15,7 +15,6 @@ export default function useLogin() {
       if (response?.error) {
         throw new Error(response.error);
       }
-
       return response;
     },
     onSuccess: () => {
@@ -28,6 +27,6 @@ export default function useLogin() {
   });
   return {
     error,
-    mutate,
+    login,
   };
 }
