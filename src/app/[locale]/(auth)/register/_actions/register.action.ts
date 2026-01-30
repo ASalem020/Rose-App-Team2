@@ -6,11 +6,8 @@ import { getLocale } from "next-intl/server";
 import { SignUpResponse } from "../_types/api-response";
 import { formatEgyptianPhone } from "../_utils/format-egyptian-phone";
 
-type RegisterActionPropsType = {
-  values: RegisterFields;
-};
 
-export async function registerAction({ values }: RegisterActionPropsType){
+export async function registerAction(values: RegisterFields){
   const locale = await getLocale();
   const formattedPhone = formatEgyptianPhone(values.phone);
 

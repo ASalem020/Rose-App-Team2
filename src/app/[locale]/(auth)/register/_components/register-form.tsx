@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 import { registerSchema } from '@/lib/schema/auth.schema';
 import { useEffect, useState } from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import useRegister from '../_hooks/use-register';
+import { useRegister } from '../_hooks/use-register';
 
 
 export default function RegisterForm() {
@@ -45,7 +45,7 @@ export default function RegisterForm() {
   // Functions
   const onSubmit: SubmitHandler<RegisterFields> = async (values) => {
     try {
-      await mutateAsync({ values });
+      await mutateAsync(values);
       toast.success(t('toast.success'));
       form.reset();
     } catch (e) {
@@ -166,7 +166,7 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>{t('password')}</FormLabel>
               <FormControl>
-                <Input type='password' placeholder='**********' {...field} />
+                <Input type='password' placeholder='**********' {...field} autoComplete='new-password' />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -181,7 +181,7 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>{t('confirm-password')}</FormLabel>
               <FormControl>
-                <Input type='password' placeholder='**********' {...field} />
+                <Input type='password' placeholder='**********' {...field} autoComplete='new-password' />
               </FormControl>
               <FormMessage />
             </FormItem>
