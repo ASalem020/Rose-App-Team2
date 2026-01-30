@@ -10,7 +10,7 @@ type RegisterActionPropsType = {
   values: RegisterFields;
 };
 
-export async function registerAction({values}: RegisterActionPropsType){
+export async function registerAction({ values }: RegisterActionPropsType){
   const locale = await getLocale();
   const formattedPhone = formatEgyptianPhone(values.phone);
 
@@ -39,7 +39,5 @@ export async function registerAction({values}: RegisterActionPropsType){
   }
 
 
-  redirect({href: '/login',locale});
-  return await res.json();
-
+  redirect({href: '/login',locale})
 } 

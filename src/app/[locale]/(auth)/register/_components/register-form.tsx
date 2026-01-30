@@ -7,11 +7,11 @@ import { PhoneInput } from '@/components/ui/phone-input';
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { useLocale, useTranslations } from 'next-intl';
-import { registerAction } from '../_actions/register.action';
 import { toast } from 'sonner';
 import { registerSchema } from '@/lib/schema/auth.schema';
 import { useEffect, useState } from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import useRegister from '../_hooks/use-register';
 
 
 export default function RegisterForm() {
@@ -22,6 +22,9 @@ export default function RegisterForm() {
   // States 
   const [backendError, setBackendError] = useState('')
 
+  // Hooks
+  const { isLoading, mutateAsync } = useRegister();
+
   // Forms
   const form = useForm<RegisterFields>({
     defaultValues: {
@@ -31,7 +34,7 @@ export default function RegisterForm() {
       },
       email: '',
       phone: '',
-      gender: undefined,
+      gender: '',
       password: '',
       confirmPassword: ''
     },
@@ -42,7 +45,7 @@ export default function RegisterForm() {
   // Functions
   const onSubmit: SubmitHandler<RegisterFields> = async (values) => {
     try {
-      await registerAction({ values });
+      await mutateAsync({ values });
       toast.success(t('toast.success'));
       form.reset();
     } catch (e) {
@@ -193,8 +196,8 @@ export default function RegisterForm() {
         )}
 
         {/* Submit Button */}
-        <Button type='submit' disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? t('create-button.loading') : t('create-button.create')}
+        <Button type='submit' disabled={isLoading}>
+          {isLoading ? t('create-button.loading') : t('create-button.create')}
         </Button>
       </form>
     </Form>

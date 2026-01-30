@@ -10,7 +10,7 @@ export const registerSchema = (t: Translations) => {
     }),
     email: z.email(t("validation.email.type")).nonempty(t("validation.email.required")),
     phone: z.string().nonempty(t("validation.phone.required")).min(10,t("validation.phone.type")),
-    gender: z.union([z.literal('male'),z.literal('female')],"Gender must be Male or Female only"),
+    gender: z.union([z.literal('male'),z.literal('female'),z.literal('')],"Gender must be Male or Female only"),
     password: z
     .string().nonempty(t("validation.password.required"))
     .regex(/(?=.*?[A-Z])/, t("validation.password.uppercase"))
