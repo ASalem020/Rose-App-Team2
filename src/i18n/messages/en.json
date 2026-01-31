@@ -42,6 +42,8 @@
     "labels": {
       "name": "Name",
       "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
       "phone": "Phone",
       "address": "Address",
       "date": "Date",
@@ -187,6 +189,58 @@
       "toast": {
         "success": "Creating Account Successfully, login now!"
       }
+    "forgot-password": {
+      "header": "Forgot Password?",
+      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+      "button": "Continue",
+      "schemas": {
+        "email-required": "Please enter your Email",
+        "email-invalid": "Please enter a valid Email address"
+      },
+      "footer": "Don’t have an account yet? <link>Create one now!</link>",
+      "otp": {
+        "title": "Enter the OTP Code",
+        "description": "We have sent a 6-digit code to",
+        "edit": "edit",
+        "sendNewCode": "send new code",
+        "send": "send",
+        "verify": "Verify",
+        "needHelp": "Need help?",
+        "contactUs": "contact us",
+        "schemas": {
+          "code-required": "Please enter the verification code",
+          "code-length": "The code must be exactly 6 digits"
+        },
+        "toast": {
+          "success": "OTP verified successfully!"
+        }
+      }
+    },
+    "new-password": {
+      "header": "Create a new password",
+      "subtitle": "Set a strong password to secure your account.",
+      "footer": "Need help? <link>Contact us</link>",
+      "button": "Reset Password",
+      "schemas": {
+        "password-min-length": "Password must be at least 8 characters",
+        "password-lowercase": "Password must include at least one lowercase letter",
+        "password-number": "Password must include at least one number",
+        "password-special": "Password must include at least one special character",
+        "password-uppercase": "Password must include at least one uppercase letter",
+        "match-password": "Passwords do not match"
+      }
+    },
+    "login": {
+      "header": "Welcome Back!",
+      "login-form": {
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "forgotPassword": "Forgot Password?",
+        "rememberMe": "Remember Me",
+        "button": "Login"
+      },
+      "footer": "Don’t have an account yet?",
+      "register": "Create one now!"
     }
   },
   "components": {
@@ -246,4 +300,5 @@
       "register": "Become part of our family!"
     }
   }
+  "success-toast": "Your password has been successfully reset."
 }

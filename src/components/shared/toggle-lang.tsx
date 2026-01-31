@@ -68,7 +68,7 @@ export default function ToggleLang() {
             className="flex cursor-pointer items-center justify-between gap-3 px-3 py-2"
           >
             <span className="flex flex-col">
-              <span className="font-medium">
+              <span className="font-tajawal font-medium">
                 {language.nativeLabel}
               </span>
               <span className="text-xs text-zinc-500 dark:text-zinc-400">

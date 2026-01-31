@@ -7,6 +7,7 @@ import {
   NextIntlClientProvider,
   AbstractIntlMessages,
 } from 'next-intl';
+import NextAuthProvider from './next-auth.provider';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -21,20 +22,22 @@ export function Providers({
 }: ProvidersProps) {
   return (
     <QueryProvider>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <NextIntlClientProvider
-          messages={messages}
-          locale={locale}
+      <NextAuthProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          {children}
-          <Toaster />
-        </NextIntlClientProvider>
-      </ThemeProvider>
+          <NextIntlClientProvider
+            messages={messages}
+            locale={locale} 
+          >
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
+        </ThemeProvider>
+      </NextAuthProvider>
     </QueryProvider>
   );
 }

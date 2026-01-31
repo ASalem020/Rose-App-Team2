@@ -1,9 +1,14 @@
-import Testimonials from './_components/testimonials';
+
+import Testimonials from './[locale]/(main)/_components/testimonials/index';
 
 export default function Home() {
   return (
-    <div className="bg-white font-sarabun dark:bg-zinc-800">
-      <Testimonials />
-    </div>
+    <main className="min-h-screen w-full bg-white py-32 dark:bg-black">
+      <div className="container mx-auto">
+          
+          <Testimonials />
+      </div>
+    </main>
+
   );
 }

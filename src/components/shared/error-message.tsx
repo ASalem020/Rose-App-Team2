@@ -14,7 +14,7 @@ export default function ErrorMessage({
     <p
       className={cn(
         // Main Styles
-        'error-message text-xs text-red-600',
+        'error-message text-sm text-destructive p-3 border-red-300 bg-red-50 text-center ',
         // Media Queries
         'md:text-sm',
         // Custom Classes
