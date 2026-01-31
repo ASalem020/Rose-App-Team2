@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl"
 
 export default function AuthToggleLangButton() {
   // Translation
-  const t = useTranslations('auth');
+  const t = useTranslations('pages.auth');
   const locale = useLocale();
 
   // Navigation

@@ -18,7 +18,7 @@ type DecoratedTextPropsType = {
 export default function DecoratedText({ text, className }: DecoratedTextPropsType) {
   // Translation
   const locale = useLocale();
-  const t = useTranslations('auth.decorated-text');
+  const t = useTranslations('pages.auth.decorated-text');
 
   return (
     <div className={cn(
