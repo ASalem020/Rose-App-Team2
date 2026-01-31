@@ -133,6 +133,62 @@
       "description": "An error occurred while loading this page.",
       "tryAgain": "Try Again"
     },
+    "register": {
+      "first-name": "First Name",
+      "last-name": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "gender": {
+        "label": "Gender",
+        "male": "male",
+        "female": "female"
+      },
+      "password": "Password",
+      "confirm-password": "Confirm Password",
+      "have-account": "Already have an account ? <Link> Login </Link>",
+      "validation": {
+        "name": {
+          "type": "Enter valid data type (strings only)!",
+          "first-name-requested": "First Name is required",
+          "last-name-requested": "Last Name is required"
+        },
+        "email": {
+          "type": "Please enter valid email !",
+          "required": "Email is required !"
+        },
+        "phone": {
+          "type": "Please enter valid phone !",
+          "required": "Phone is required !"
+        },
+        "gender": {
+          "type": "Gender must be Male or Female only"
+        },
+        "password": {
+          "required": "Password is required !",
+          "uppercase": "At least one uppercase letter (A-Z)",
+          "lowercase": "At least one lowercase letter (a-z)",
+          "numbers": "At least one number (0-9)",
+          "special-characters": "At least one special character (!@#$%^&*-)",
+          "min": "Password Must Be At Least 8 Digits"
+        },
+        "confirm-password": {
+          "type": "Enter valid confirm password !",
+          "required": "Confirm Password is required !"
+        },
+        "password-matched": "Confirm password must match password"
+      },
+      "placeholders": {
+        "first-name": "Mohamed",
+        "last-name": "Ahmed",
+        "gender": "Select Gender"
+      },
+      "create-button": {
+        "loading": "Creating ...",
+        "create": "Create Account"
+      },
+      "toast": {
+        "success": "Creating Account Successfully, login now!"
+      }
     "forgot-password": {
       "header": "Forgot Password?",
       "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
@@ -237,5 +293,12 @@
       }
     }
   },
+  "auth": {
+    "toggle-lang": "العربية",
+    "decorated-text": {
+      "login": "Welcome Back",
+      "register": "Become part of our family!"
+    }
+  }
   "success-toast": "Your password has been successfully reset."
 }

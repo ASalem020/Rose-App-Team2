@@ -16,11 +16,6 @@ type Language = {
   nativeLabel: string;
 };
 
-const LANGUAGES: Language[] = [
-  { code: 'en', label: 'English', nativeLabel: 'English' },
-  { code: 'ar', label: 'Arabic', nativeLabel: 'العربية' },
-];
-
 export default function ToggleLang() {
   // Translation
   const locale = useLocale();
@@ -29,6 +24,12 @@ export default function ToggleLang() {
   // Navigation
   const router = useRouter();
   const pathname = usePathname();
+
+  // Variables 
+  const LANGUAGES: Language[] = [
+    { code: 'en', label: 'English', nativeLabel: 'English' },
+    { code: 'ar', label: 'Arabic', nativeLabel: 'العربية' },
+  ];
 
   // Functions
   const switchLanguage = (langCode: 'en' | 'ar') => {
