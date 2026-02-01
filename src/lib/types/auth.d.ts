@@ -1,3 +1,4 @@
+import { FORGOT_PASSWROD_STEPS } from '../constants/auth-constants';
 /**
  * Auth User
  * @interface AuthUser
@@ -40,3 +41,6 @@ export type OtpStepFields = z.infer<typeof otpSchema>;
 export type ResetPasswordFields = z.infer<
   typeof resetPasswordSchema
 >;
+
+export type ForgotPasswordStep =
+  (typeof FORGOT_PASSWROD_STEPS)[keyof typeof FORGOT_PASSWROD_STEPS];

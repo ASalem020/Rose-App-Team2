@@ -1,14 +1,19 @@
+import Testimonials from './_components/testimonials';
 
-import Testimonials from './[locale]/(main)/_components/testimonials/index';
+import SupportSection from "@/components/appsupport/support-Sections";
+import OccasionsSection from "@/components/cards/card-List";
+import { CardDemo } from "@/components/home/hero-section";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-white py-32 dark:bg-black">
-      <div className="container mx-auto">
-          
-          <Testimonials />
-      </div>
+    
+    <main className="mx-auto ">
+      <Testimonials />
+      <CardDemo/>
+      <OccasionsSection/>
+       <SupportSection/>
+       
     </main>
-
+     
   );
 }
