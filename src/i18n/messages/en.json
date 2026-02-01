@@ -128,11 +128,87 @@
       "description": "The page you're looking for doesn't exist.",
       "backHome": "Back to Home"
     },
-
+    "components": {
+      "testimonial": {
+        "profilePhoto": "{name} profile photo",
+        "rating": "Rating: {rating} out of {max}",
+        "postedOn": "Posted on {date}"
+      },
+      "carousel": {
+        "next": "Next slide",
+        "previous": "Previous slide",
+        "slide": "Slide {current} of {total}"
+      },
+      "header": {
+        "deliverTo": "Deliver to:",
+        "location": "Cairo",
+        "searchPlaceholder": "What awesome gift are you looking for?",
+        "greeting": "Hello",
+        "userName": "Jonathan",
+        "languageToggle": "العربية",
+        "nav": {
+          "home": "Home",
+          "products": "Products",
+          "categories": "Categories",
+          "occasions": "Occasions",
+          "contact": "Contact",
+          "about": "About"
+        }
+      },
+      "footer": {
+        "appName": "Rose E-Commerce App",
+        "copyright": "All rights reserved | 2025",
+        "discoverTitle": "Discover our website",
+        "newsletterTitle": "Get",
+        "newsletterDiscount": "20% Off",
+        "newsletterSuffix": "Discount Coupon",
+        "newsletterDescription": "By subscribing to our newsletter",
+        "emailPlaceholder": "Enter Your Email",
+        "subscribeButton": "Subscribe",
+        "nav": {
+          "home": "Home",
+          "products": "Products",
+          "categories": "Categories",
+          "occasions": "Occasions",
+          "contact": "Contact",
+          "about": "About",
+          "terms": "Terms & Conditions",
+          "privacy": "Privacy Policy",
+          "faqs": "FAQs"
+        }
+      }
+    },
     "error": {
       "title": "Something went wrong",
       "description": "An error occurred while loading this page.",
       "tryAgain": "Try Again"
+    },
+    "forgot-password": {
+      "header": "Forgot Password?",
+      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+      "button": "Continue",
+      "schemas": {
+        "email-required": "Please enter your Email",
+        "email-invalid": "Please enter a valid Email address"
+      },
+      "footer": "Don’t have an account yet? <link>Create one now!</link>",
+      "otp": {
+        "title": "Enter the OTP Code",
+        "description": "We have sent a 6-digit code to",
+        "edit": "edit",
+        "sendNewCode": "send new code",
+        "send": "send",
+        "verify": "Verify",
+        "needHelp": "Need help?",
+        "contactUs": "contact us",
+        "schemas": {
+          "code-required": "Please enter the verification code",
+          "code-length": "The code must be exactly 6 digits"
+        },
+        "toast": {
+          "success": "OTP verified successfully!"
+        }
+      }
     },
     "new-password": {
       "header": "Create a new password",
@@ -148,67 +224,26 @@
         "match-password": "Passwords do not match"
       }
     },
+    "auth": {
+      "toggle-lang": "العربية",
+      "decorated-text": {
+        "login": "Welcome Back",
+        "register": "Become part of our family!"
+      }
+    },
     "login": {
-      "rememberMe": "Remember me"
-    }
-  },
-  "components": {
-    "testimonial": {
-      "profilePhoto": "{name} profile photo",
-      "rating": "Rating: {rating} out of {max}",
-      "postedOn": "Posted on {date}"
+      "rememberMe": "Remember me",
+      "header": "Welcome Back!",
+      "login-form": {
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "forgotPassword": "Forgot Password?",
+        "rememberMe": "Remember Me",
+        "button": "Login"
+      },
+      "footer": "Don’t have an account yet?",
+      "register": "Create one now!"
     },
-    "carousel": {
-      "next": "Next slide",
-      "previous": "Previous slide",
-      "slide": "Slide {current} of {total}"
-    },
-    "header": {
-      "deliverTo": "Deliver to:",
-      "location": "Cairo",
-      "searchPlaceholder": "What awesome gift are you looking for?",
-      "greeting": "Hello",
-      "userName": "Jonathan",
-      "languageToggle": "العربية",
-      "nav": {
-        "home": "Home",
-        "products": "Products",
-        "categories": "Categories",
-        "occasions": "Occasions",
-        "contact": "Contact",
-        "about": "About"
-      }
-    },
-    "footer": {
-      "appName": "Rose E-Commerce App",
-      "copyright": "All rights reserved | 2025",
-      "discoverTitle": "Discover our website",
-      "newsletterTitle": "Get",
-      "newsletterDiscount": "20% Off",
-      "newsletterSuffix": "Discount Coupon",
-      "newsletterDescription": "By subscribing to our newsletter",
-      "emailPlaceholder": "Enter Your Email",
-      "subscribeButton": "Subscribe",
-      "nav": {
-        "home": "Home",
-        "products": "Products",
-        "categories": "Categories",
-        "occasions": "Occasions",
-        "contact": "Contact",
-        "about": "About",
-        "terms": "Terms & Conditions",
-        "privacy": "Privacy Policy",
-        "faqs": "FAQs"
-      }
-    }
-  },
-  "ForgotPassword": {
-    "title": "Forgot Password?",
-    "description": "Worry not, we’ll send you instructions to help you reset it.",
-    "otpTitle": "Enter the OTP Code",
-    "otpDescription": "We have sent a 6-digit code to {email}",
-    "newPasswordTitle": "Create a new password",
-    "newPasswordDescription": "Set a strong password to secure your account."
     "register": {
       "first-name": "First Name",
       "last-name": "Last Name",
@@ -264,119 +299,9 @@
       },
       "toast": {
         "success": "Creating Account Successfully, login now!"
-      },
-      "forgot-password": {
-        "header": "Forgot Password?",
-        "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
-        "button": "Continue",
-        "schemas": {
-          "email-required": "Please enter your Email",
-          "email-invalid": "Please enter a valid Email address"
-        },
-        "footer": "Don’t have an account yet? <link>Create one now!</link>",
-        "otp": {
-          "title": "Enter the OTP Code",
-          "description": "We have sent a 6-digit code to",
-          "edit": "edit",
-          "sendNewCode": "send new code",
-          "send": "send",
-          "verify": "Verify",
-          "needHelp": "Need help?",
-          "contactUs": "contact us",
-          "schemas": {
-            "code-required": "Please enter the verification code",
-            "code-length": "The code must be exactly 6 digits"
-          },
-          "toast": {
-            "success": "OTP verified successfully!"
-          }
-        }
-      },
-      "new-password": {
-        "header": "Create a new password",
-        "subtitle": "Set a strong password to secure your account.",
-        "footer": "Need help? <link>Contact us</link>",
-        "button": "Reset Password",
-        "schemas": {
-          "password-min-length": "Password must be at least 8 characters",
-          "password-lowercase": "Password must include at least one lowercase letter",
-          "password-number": "Password must include at least one number",
-          "password-special": "Password must include at least one special character",
-          "password-uppercase": "Password must include at least one uppercase letter",
-          "match-password": "Passwords do not match"
-        }
       }
-    },
-    "login": {
-      "header": "Welcome Back!",
-      "login-form": {
-        "emailLabel": "Email",
-        "passwordLabel": "Password",
-        "forgotPassword": "Forgot Password?",
-        "rememberMe": "Remember Me",
-        "button": "Login"
-      },
-      "footer": "Don’t have an account yet?",
-      "register": "Create one now!"
-    },
-    "components": {
-      "testimonial": {
-        "profilePhoto": "{name} profile photo",
-        "rating": "Rating: {rating} out of {max}",
-        "postedOn": "Posted on {date}"
-      },
-      "carousel": {
-        "next": "Next slide",
-        "previous": "Previous slide",
-        "slide": "Slide {current} of {total}"
-      },
-      "header": {
-        "deliverTo": "Deliver to:",
-        "location": "Cairo",
-        "searchPlaceholder": "What awesome gift are you looking for?",
-        "greeting": "Hello",
-        "userName": "Jonathan",
-        "languageToggle": "العربية",
-        "nav": {
-          "home": "Home",
-          "products": "Products",
-          "categories": "Categories",
-          "occasions": "Occasions",
-          "contact": "Contact",
-          "about": "About"
-        }
-      },
-      "footer": {
-        "appName": "Rose E-Commerce App",
-        "copyright": "All rights reserved | 2025",
-        "discoverTitle": "Discover our website",
-        "newsletterTitle": "Get",
-        "newsletterDiscount": "20% Off",
-        "newsletterSuffix": "Discount Coupon",
-        "newsletterDescription": "By subscribing to our newsletter",
-        "emailPlaceholder": "Enter Your Email",
-        "subscribeButton": "Subscribe",
-        "nav": {
-          "home": "Home",
-          "products": "Products",
-          "categories": "Categories",
-          "occasions": "Occasions",
-          "contact": "Contact",
-          "about": "About",
-          "terms": "Terms & Conditions",
-          "privacy": "Privacy Policy",
-          "faqs": "FAQs"
-        }
-      }
-    },
-    "auth": {
-      "toggle-lang": "العربية",
-      "decorated-text": {
-        "login": "Welcome Back",
-        "register": "Become part of our family!"
-      }
-    },
-    "success-toast": "Your password has been successfully reset."
-  }
-}
+    }
+  },
 
+  "success-toast": "Your password has been successfully reset."
+}

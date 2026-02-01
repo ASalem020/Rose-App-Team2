@@ -22,6 +22,7 @@ import { ResetPasswordFields } from '@/lib/types/auth';
 import { resetPasswordSchema } from '@/lib/schemas/auth.schema';
 import { useResetPassword } from '../_hooks/use-new-password';
 import { toast } from 'sonner';
+import { useRouter } from '@/i18n/navigation';
 
 interface NewPasswordStepProps {
   email: string;
@@ -32,6 +33,9 @@ export default function NewPasswordStep({
 }: NewPasswordStepProps) {
   // Translation
   const t = useTranslations();
+
+  // States
+  const router = useRouter()
 
   // Mutations
   const { resetPassword, isPending, error } =
@@ -46,6 +50,8 @@ export default function NewPasswordStep({
     resolver: zodResolver(resetPasswordSchema(t)),
   });
 
+
+
   // Handlers
   const handleReset: SubmitHandler<
     ResetPasswordFields
@@ -58,6 +64,7 @@ export default function NewPasswordStep({
       {
         onSuccess: () => {
           toast.success(t('success-toast'));
+          router.push('/login');
         },
       },
     );
@@ -65,7 +72,7 @@ export default function NewPasswordStep({
 
   return (
     // NOTE => waiting for layout to be completed...
-    <div className="m-auto flex h-screen max-w-100 flex-col justify-center">
+    <div className="m-auto flex max-w-100 flex-col justify-center">
       <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-50">
         {t('pages.new-password.header')}
       </h2>
@@ -131,7 +138,6 @@ export default function NewPasswordStep({
                     {...field}
                     placeholder="********"
                     autoComplete="new-password"
-                    autoFocus
                   />
                 </FormControl>
 
