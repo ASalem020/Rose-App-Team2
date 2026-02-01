@@ -54,7 +54,7 @@ export default function BestSelling() {
       </div>
 
       {/* ^ partr two */}
-  
+
       <div className="col-span-3 w-full  ">
         <Carousel
           opts={{
@@ -63,19 +63,19 @@ export default function BestSelling() {
           }}
           className="w-full "
         >
-          <div className="w-full overflow-hidden">
+          <div className="w-full overflow-x-hidden overflow-y-visible">
 
-          <CarouselContent>
-            {data?.map((product: Product) => (
-              <CarouselItem
-              key={product._id}
-              className="flex basis-1/3 items-center justify-center "
-              >
-                <ProductCard productInfo={product} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </div>
+            <CarouselContent>
+              {data?.map((product: Product) => (
+                <CarouselItem
+                  key={product._id}
+                  className="flex basis-1/3 items-center justify-center "
+                >
+                  <ProductCard productInfo={product} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </div>
 
           <CarouselPrevious className="size-11 bg-maroon-600 text-maroon-50 hover:bg-maroon-700 hover:text-white dark:bg-maroon-500 " />
           <CarouselNext className="size-11 bg-maroon-600 text-maroon-50 hover:bg-maroon-700 hover:text-white dark:bg-maroon-500  " />

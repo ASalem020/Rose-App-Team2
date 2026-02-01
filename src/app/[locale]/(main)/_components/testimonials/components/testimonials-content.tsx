@@ -50,7 +50,7 @@ export default function TestimonialsContent() {
           >
             <div className="container mx-auto overflow-x-hidden overflow-y-visible px-5 py-16">
               {/* Carousel Content */}
-              <CarouselContent className="-ml-16 lg:px-5 overflow-visible">
+              <CarouselContent className="-ml-16 lg:px-5" >
                 {/* Carousel Items */}
                 {(data.testimonials.length < 4
                   ? [
