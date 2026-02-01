@@ -1,3 +1,10 @@
+import { FORGOT_PASSWROD_STEPS } from '../constants/auth-constants';
+import {
+  emailSchema,
+  otpSchema,
+  resetPasswordSchema,
+} from '../schemas/auth.schema';
+import { loginSchema } from "../schemas/auth.schema";
 /**
  * Auth User
  * @interface AuthUser
@@ -7,7 +14,6 @@
  * @property {string} createdAt - The user's creation date
  */
 
-import { loginSchema } from "../schemas/auth.schema";
 export type LoginFields = z.infer<typeof loginSchema>
 
 export interface LoginResponse {
@@ -27,11 +33,6 @@ export interface LoginResponse {
     };
 }
 
-import {
-  emailSchema,
-  otpSchema,
-  resetPasswordSchema,
-} from '../schemas/auth.schema';
 
 export type EmailStepFields = z.infer<typeof emailSchema>;
 
@@ -40,3 +41,6 @@ export type OtpStepFields = z.infer<typeof otpSchema>;
 export type ResetPasswordFields = z.infer<
   typeof resetPasswordSchema
 >;
+
+export type ForgotPasswordStep =
+  (typeof FORGOT_PASSWROD_STEPS)[keyof typeof FORGOT_PASSWROD_STEPS];

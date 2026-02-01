@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react';
@@ -12,18 +11,21 @@ export default function LoginPage() {
     // ^ translation
     const t = useTranslations('pages.login');
 
-    return <div className='flex flex-col space-y-11 justify-center items-center'>
+    return <> 
+    <div className='flex flex-col space-y-11 justify-center items-center'>
         {/* Header */}
         {/* Waiting for Hady */}
         <DecoratedText text="login" />
 
         {/* login form */}
         <LoginForm />
-
+         
+         
+        </div>
         {/* footer */}
         <footer>
             <p className='text-zinc-800 max-w-sm w-full'>{t('footer')}<Link href={'/register'} className='text-maroon-700'>{t('register')}</Link></p>
         </footer>
-
-    </div>;
+    
+    </>
 }

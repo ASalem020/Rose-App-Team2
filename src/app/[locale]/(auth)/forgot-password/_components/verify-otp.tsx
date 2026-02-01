@@ -1,5 +1,9 @@
-'use client'
-import { InputOTP, InputOTPSlot, InputOTPGroup } from '@/components/ui/input-otp';
+'use client';
+import {
+  InputOTP,
+  InputOTPSlot,
+  InputOTPGroup,
+} from '@/components/ui/input-otp';
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState, useEffect, useCallback } from 'react';
@@ -91,13 +95,13 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
         setCountdown(remaining);
     }, [getRemainingTime, email]);
 
-    // Countdown timer
-    useEffect(() => {
-        if (countdown <= 0) return;
+  // Countdown timer
+  useEffect(() => {
+    if (countdown <= 0) return;
 
-        const timer = setInterval(() => {
-            const remaining = getRemainingTime();
-            setCountdown(remaining);
+    const timer = setInterval(() => {
+      const remaining = getRemainingTime();
+      setCountdown(remaining);
 
             if (remaining <= 0) {
                 clearInterval(timer);
@@ -105,8 +109,8 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
             }
         }, 1000);
 
-        return () => clearInterval(timer);
-    }, [countdown, getRemainingTime]);
+    return () => clearInterval(timer);
+  }, [countdown, getRemainingTime]);
 
 
 
