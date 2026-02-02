@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ProductCardSkeleton() {
+export default function ProductItemSkeleton() {
   return (
     <div
       className="relative w-72 animate-pulse space-y-3 rounded-md bg-white p-3 shadow-md"

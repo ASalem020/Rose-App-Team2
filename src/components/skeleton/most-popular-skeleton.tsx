@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCardSkeleton from './product-card-skeleton';
+import ProductItemSkeleton from './product-item-skeleton';
 
 export default function MostPopularSkeleton() {
   return (
@@ -27,7 +27,7 @@ export default function MostPopularSkeleton() {
             key={i}
             className="flex items-center justify-center"
           >
-            <ProductCardSkeleton />
+            <ProductItemSkeleton />
           </div>
         ))}
       </div>
