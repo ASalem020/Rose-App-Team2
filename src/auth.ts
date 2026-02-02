@@ -3,6 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { LoginResponse } from './lib/types/auth';
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     Credentials({
       name: 'Credentials',
@@ -49,6 +50,7 @@ export const authOptions: NextAuthOptions = {
 
     session: async ({ session, token }) => {
       session.user = token.user;
+      session.accessToken = token.accessToken;
       return session;
     },
   },

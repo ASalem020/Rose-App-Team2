@@ -16,7 +16,7 @@ export async function Footer() {
         <div className="flex flex-col items-center gap-4 md:items-start md:gap-6 rtl:md:items-end">
           <Link href="/">
             <Image
-              src="/logo/bb70dbdbb3472a27ffcc4d3baeb8eaceb3873b18.png"
+              src="/assets/images/logo/bb70dbdbb3472a27ffcc4d3baeb8eaceb3873b18.png"
               alt="Rose Logo"
               width={160}
               height={160}
