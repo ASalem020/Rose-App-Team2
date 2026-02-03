@@ -59,13 +59,17 @@ export default function ProductContent({
 
   // Effects
   useEffect(() => {
+    // get added items from local storage
     const cart = JSON.parse(
       localStorage.getItem('cart') || '[]',
     );
 
+    // if cart is empty, return
     if (cart.length === 0) {
       return;
     }
+
+    // if user logged in, add all cart items to the database
     if (isLoggedIn) {
       cart.map((id: string) => {
         addToCart(id);
