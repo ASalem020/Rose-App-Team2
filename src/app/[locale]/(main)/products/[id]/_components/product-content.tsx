@@ -29,10 +29,12 @@ export default function ProductContent({
   // States
   const [isWishlisted, setIsWishlisted] = useState(false);
   const { status } = useSession();
-  const isLoggedIn = status === 'authenticated';
 
   // Mutation
   const { addToCart } = useAddCart();
+
+  // Variables
+  const isLoggedIn = status === 'authenticated';
 
   // Handlers
   const addToCartHandler = () => {
