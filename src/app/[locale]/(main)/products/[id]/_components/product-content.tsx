@@ -14,6 +14,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils/tailwind-merge';
+import { useTranslations } from 'next-intl';
 
 type ProductContentProps = {
   product: Product;
@@ -22,6 +23,9 @@ type ProductContentProps = {
 export default function ProductContent({
   product,
 }: ProductContentProps) {
+  // Translation
+  const t = useTranslations('pages.product-details');
+
   // States
   const [isWishlisted, setIsWishlisted] = useState(false);
   const { status } = useSession();
@@ -41,12 +45,12 @@ export default function ProductContent({
         'cart',
         JSON.stringify([...cart, product._id]),
       );
-      toast.success('Product added to Cart Successfully');
+      toast.success(t('toast-added'));
       return;
     }
     addToCart(product._id, {
       onSuccess: () => {
-        toast.success('Product added to Cart Successfully');
+        toast.success(t('toast-added'));
       },
     });
   };
@@ -76,23 +80,25 @@ export default function ProductContent({
 
         {/* Price Details */}
         <div className="mt-2 flex flex-row gap-3">
-          <p>
+          <div className="flex flex-row items-center gap-2">
             {/* Price */}
-            <span className="me-2 text-zinc-300 line-through dark:text-zinc-500">
+            <span className="text-zinc-300 line-through dark:text-zinc-500">
               {product.price}
             </span>
             {/* Price after discount */}
-            {product.priceAfterDiscount}
-            <span className="ms-1 text-xl font-medium">
-              EGP
-            </span>
-          </p>
+            <p className="flex flex-row items-center gap-1">
+              {product.priceAfterDiscount}
+              <span className="self-end text-xl font-medium">
+                {t('currency')}
+              </span>
+            </p>
+          </div>
 
           {/* Quantity left in stock */}
           {product.quantity < 0 ? (
             <p className="flex items-center justify-center gap-1 rounded-2xl bg-red-50 px-3 py-1 text-sm text-red-600">
               <Package size={20} />
-              Out of stock
+              {t('stock-empty')}
             </p>
           ) : (
             <p className="flex items-center justify-center gap-1 rounded-2xl bg-zinc-100 px-3 py-1 text-sm dark:bg-zinc-700">
@@ -100,8 +106,8 @@ export default function ProductContent({
                 size={20}
                 className="text-zinc-500"
               />
-              {product.quantity - product.sold} left in
-              stock
+              {product.quantity - product.sold}{' '}
+              {t('stock-left')}
             </p>
           )}
         </div>
@@ -115,12 +121,12 @@ export default function ProductContent({
           strokeWidth={2}
           size={20}
         />
-        Rating:
+        {t('rating')}
         <span className="font-medium">
           {product.rateAvg}/5
         </span>
         <span className="font-medium text-blue-600 dark:text-blue-400">
-          ({product.rateCount} ratings)
+          ({product.rateCount} {t('rating-number')})
         </span>
       </div>
 
@@ -142,6 +148,7 @@ export default function ProductContent({
               : 'bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800',
           )}
         >
+          {/* TODO: Add wishlist functionality */}
           {isWishlisted ? (
             <HeartMinus size={25} />
           ) : (
@@ -155,7 +162,7 @@ export default function ProductContent({
           onClick={addToCartHandler}
           disabled={product.quantity < 0}
         >
-          <ShoppingCart size={25} /> Add to Cart
+          <ShoppingCart size={25} /> {t('add-cart-btn')}
         </Button>
       </div>
     </div>

@@ -11,6 +11,7 @@ export default async function ProductDetailsPage({
 }: PageProps) {
   return (
     <div>
+      {/* Product details section */}
       <Suspense fallback={<ProductDetailsSkeleton />}>
         <ProductDetails params={params} />
       </Suspense>
