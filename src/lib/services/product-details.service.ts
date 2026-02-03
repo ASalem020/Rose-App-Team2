@@ -1,4 +1,4 @@
-export async function getProductDetails(id: string) {
+export async function getProductDetailsService(id: string) {
   const res = await fetch(
     `${process.env.API_URL}/products/${id}`,
   );

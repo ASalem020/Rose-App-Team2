@@ -1,5 +1,5 @@
 import ProductGallery from './product-gallery';
-import { getProductDetails } from '@/lib/services/product-details.service';
+import { getProductDetailsService } from '@/lib/services/product-details.service';
 import { Product } from '@/lib/types/product';
 import ProductContent from './product-content';
 
@@ -11,7 +11,7 @@ export default async function ProductDetails({
   params,
 }: SkeletonProps) {
   // Fetch product details
-  const product: Product = await getProductDetails(
+  const product: Product = await getProductDetailsService(
     params.id,
   );
 

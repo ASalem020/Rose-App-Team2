@@ -57,6 +57,7 @@ export default function ProductContent({
     });
   };
 
+  // Effects
   useEffect(() => {
     const cart = JSON.parse(
       localStorage.getItem('cart') || '[]',
