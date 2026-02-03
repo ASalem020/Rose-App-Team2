@@ -4,11 +4,13 @@ import { Product } from '@/lib/types/product';
 import Image from 'next/image';
 import { useState } from 'react';
 
+type ProductGalleryProps = {
+  product: Product;
+};
+
 export default function ProductGallery({
   product,
-}: {
-  product: Product;
-}) {
+}: ProductGalleryProps) {
   const [activeImage, setActiveImage] = useState(
     product?.images[0] || '',
   );
