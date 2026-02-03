@@ -1,5 +1,5 @@
+import ProductItemSkeleton from '@/components/skeleton/product-item.skeleton';
 import React from 'react';
-import ProductItemSkeleton from './product-item-skeleton';
 
 export default function MostPopularSkeleton() {
   return (

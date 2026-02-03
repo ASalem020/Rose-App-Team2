@@ -1,4 +1,4 @@
-import ProductItemSkeleton from './product-item.skeleton'
+import ProductItemSkeleton from '../../../../../components/skeleton/product-item.skeleton'
 
 export default function ProductsListSkeleton() {
   return (

@@ -64,7 +64,7 @@ export default function ProductItem({
         </Link>
 
         {/* Badge */}
-        <div className="absolute right-4 top-4 flex h-4 w-11 items-center justify-center rounded-lg bg-zinc-100">
+        <div className="absolute right-2.5 top-2.5 rtl:right-auto rtl:left-2.5 utl: flex h-4 w-11 items-center justify-center rounded-lg bg-zinc-100">
           <span className="text-zinc-700">New</span>
         </div>
       </div>
