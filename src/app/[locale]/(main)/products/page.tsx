@@ -1,9 +1,8 @@
 import React, { Suspense } from 'react';
 import ProductsList from './_components/products-list';
-import { SearchParamsType } from '@/lib/types/global';
 import ProductsListSkeleton from './_skeleton/products-list.skeleton';
 
-export default function ProductPage({ searchParams }: { searchParams: SearchParamsType }) {
+export default function ProductPage({ searchParams }: { searchParams: Record<string, string> }) {
   return <>
     <div className="container mx-auto px-5 mt-16 mb-44 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {/* Filtration */}

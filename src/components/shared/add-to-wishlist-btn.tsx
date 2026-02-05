@@ -1,7 +1,11 @@
 'use client'
+import { useAddToWishlist } from '@/hooks/use-add-to-wishlist';
+import useRemoveFromWishlist from '@/hooks/use-remove-from-wishlist';
+import { localWishlist } from '@/lib/utils/local-wishlist';
 import { cn } from '@/lib/utils/tailwind-merge';
 import { HeartMinus, HeartPlus } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react';
+import { useState } from 'react'
 
 type AddToWishlistBtnPropsType = {
   productId: string
@@ -11,24 +15,30 @@ export default function AddToWishlistBtn({ productId }: AddToWishlistBtnPropsTyp
   // State 
   const [added, setIsAdded] = useState<boolean>(localStorage.getItem('wishlist')?.includes(productId) || false);
 
+  // Mutation
+  const { addToWishlist } = useAddToWishlist();
+  const { removeFromWishlist } = useRemoveFromWishlist();
+
+  // Variables
+  const { status } = useSession();
+
   // Functions
   const toggleAdded = () => {
-    setIsAdded((prev) => !prev);
-  }
+    const isUnauthenticated = status === 'unauthenticated';
 
-  // Effects 
-  useEffect(() => {
-    if (added) {
-      const localeStorageWishlist = localStorage.getItem('wishlist');
-
-      if (!localeStorageWishlist) return localStorage.setItem('wishlist', JSON.stringify([productId]));
-
-      if (localeStorageWishlist.includes(productId)) return;
-
-      localStorage.setItem('wishlist', JSON.stringify([...(JSON.parse(localeStorageWishlist)), productId]));
+    if (!isUnauthenticated) {
+      if (added) {
+        removeFromWishlist(productId);
+      } else {
+        addToWishlist(productId);
+      }
     }
 
-  }, [added, productId]);
+    localWishlist({ state: added, productId });
+    setIsAdded(prev => !prev);
+  };
+
+
 
   return (
     <div className={cn(
