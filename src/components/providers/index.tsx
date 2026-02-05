@@ -31,7 +31,7 @@ export function Providers({
         >
           <NextIntlClientProvider
             messages={messages}
-            locale={locale} 
+            locale={locale}
           >
             {children}
             <Toaster />

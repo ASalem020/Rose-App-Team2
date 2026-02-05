@@ -1,12 +1,15 @@
+import { withAuth } from 'next-auth/middleware';
+import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
+import { routing } from './i18n/routing';
+import { getToken } from 'next-auth/jwt';
 
-import { withAuth } from "next-auth/middleware";
-import createMiddleware from "next-intl/middleware";
-import { NextRequest, NextResponse } from "next/server";
-import { routing } from "./i18n/routing";
-import { getToken } from "next-auth/jwt";
-
-const authPages = ["/login", "/register" , "/forgot-password"];
-const publicPages = ["/", ...authPages];
+const authPages = [
+  '/login',
+  '/register',
+  '/forgot-password',
+];
+const publicPages = ['/', ...authPages];
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -22,37 +25,42 @@ const authMiddleware = withAuth(
       authorized: ({ token }) => token != null,
     },
     pages: {
-      signIn: "/login",
+      signIn: '/login',
     },
-  }
+  },
 );
 
 export default async function middleware(req: NextRequest) {
   // ^ Variables
   const token = await getToken({ req });
   const publicPathnameRegex = RegExp(
-    `^(/(${routing.locales.join("|")}))?(${publicPages
-      .flatMap((p) => (p === "/" ? ["", "/"] : p))
-      .join("|")})/?$`,
-    "i"
+    `^(/(${routing.locales.join('|')}))?(${publicPages
+      .flatMap(p => (p === '/' ? ['', '/'] : p))
+      .join('|')})/?$`,
+    'i',
   );
   const authPathnameRegex = RegExp(
-    `^(/(${routing.locales.join("|")}))?(${authPages
-      .flatMap((p) => (p === "/" ? ["", "/"] : p))
-      .join("|")})/?$`,
-    "i"
+    `^(/(${routing.locales.join('|')}))?(${authPages
+      .flatMap(p => (p === '/' ? ['', '/'] : p))
+      .join('|')})/?$`,
+    'i',
   );
-  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
-  const isAuthPage = authPathnameRegex.test(req.nextUrl.pathname);
+  const isPublicPage = publicPathnameRegex.test(
+    req.nextUrl.pathname,
+  );
+  const isAuthPage = authPathnameRegex.test(
+    req.nextUrl.pathname,
+  );
 
   if (isPublicPage) {
     // Redirect to homepage if user is authenticated and attempting to access an auth page
     if (token && isAuthPage) {
-      const redirectUrl = new URL("/", req.nextUrl.origin);
+      const redirectUrl = new URL('/', req.nextUrl.origin);
 
       // Include current search params
-      Object.entries(req.nextUrl.searchParams).map(([key, value]) =>
-        redirectUrl.searchParams.set(key, value)
+      Object.entries(req.nextUrl.searchParams).map(
+        ([key, value]) =>
+          redirectUrl.searchParams.set(key, value),
       );
 
       return NextResponse.redirect(redirectUrl);
@@ -66,5 +74,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  matcher: ['/((?!api|_next|.*\\..*).*)'],
 };

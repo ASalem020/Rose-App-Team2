@@ -1,8 +1,7 @@
-'use client'
-import { usePathname, useRouter } from "@/i18n/navigation";
-import { cn } from "@/lib/utils/tailwind-merge";
-import { useLocale, useTranslations } from "next-intl"
-
+'use client';
+import { usePathname, useRouter } from '@/i18n/navigation';
+import { cn } from '@/lib/utils/tailwind-merge';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function AuthToggleLangButton() {
   // Translation
@@ -16,14 +15,18 @@ export default function AuthToggleLangButton() {
   // Functions
   const toggleLang = () => {
     router.push(`${pathname}${location.search}`, {
-      locale: locale === 'en' ? 'ar' : 'en'
-    })
-  }
+      locale: locale === 'en' ? 'ar' : 'en',
+    });
+  };
   return (
-    <div className={cn(
-      'auth-toggle-lang-button w-full mb-10 duration-300 hover:text-maroon-600 cursor-pointer text-end',
-      locale === 'en' && 'font-tajawal'
-    )}
-      onClick={toggleLang}>{t('toggle-lang')}</div>
-  )
+    <div
+      className={cn(
+        'auth-toggle-lang-button mb-10 w-full cursor-pointer text-end duration-300 hover:text-maroon-600',
+        locale === 'en' && 'font-tajawal',
+      )}
+      onClick={toggleLang}
+    >
+      {t('toggle-lang')}
+    </div>
+  );
 }

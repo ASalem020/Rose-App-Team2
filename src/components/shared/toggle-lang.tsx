@@ -25,9 +25,13 @@ export default function ToggleLang() {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Variables 
+  // Variables
   const LANGUAGES: Language[] = [
-    { code: 'en', label: 'English', nativeLabel: 'English' },
+    {
+      code: 'en',
+      label: 'English',
+      nativeLabel: 'English',
+    },
     { code: 'ar', label: 'Arabic', nativeLabel: 'العربية' },
   ];
 

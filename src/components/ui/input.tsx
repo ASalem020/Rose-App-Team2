@@ -35,8 +35,8 @@ const inputVariants = cva(
 
 export interface InputProps
   extends
-  React.ComponentProps<'input'>,
-  VariantProps<typeof inputVariants> {
+    React.ComponentProps<'input'>,
+    VariantProps<typeof inputVariants> {
   onReview?: () => void;
   text?: string;
   error?: boolean;
@@ -141,7 +141,7 @@ const Input = React.forwardRef<
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute ltr:right-3 rtl:left-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus:outline-none disabled:pointer-events-none"
+            className="absolute top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus:outline-none disabled:pointer-events-none ltr:right-3 rtl:left-3"
             tabIndex={-1}
             disabled={props.disabled}
           >
@@ -187,7 +187,7 @@ const Input = React.forwardRef<
               className={cn(
                 'flex shrink-0 items-center gap-2 whitespace-nowrap text-sm text-maroon-600 dark:text-softPink-400',
                 props.disabled &&
-                'text-zinc-400 dark:text-zinc-600',
+                  'text-zinc-400 dark:text-zinc-600',
               )}
             >
               <Upload className="h-4 w-4" />

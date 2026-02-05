@@ -5,7 +5,6 @@ import Gallery from './_components/gallery';
 import BestSelling from '@/app/[locale]/(main)/_components/sections/best-selling';
 import MostPopular from '@/app/[locale]/(main)/_components/sections/most-popular';
 
-
 export default function Home() {
   return (
     <div className="bg-white dark:bg-zinc-800">

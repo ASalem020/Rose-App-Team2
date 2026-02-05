@@ -6,7 +6,6 @@ export const useSendOtp = () => {
   // Mutation
   const { isPending, error, mutate } = useMutation({
     mutationFn: async (fields: EmailStepFields) => {
-      
       const payload = await sendOtpAction(fields);
 
       if ('error' in payload) {

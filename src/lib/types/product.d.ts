@@ -1,30 +1,30 @@
 export interface Product {
-  _id: string
-  title: string
-  description: string
-  slug: string
+  _id: string;
+  title: string;
+  description: string;
+  slug: string;
 
-  price: number
-  priceAfterDiscount: number
+  price: number;
+  priceAfterDiscount: number;
 
-  quantity: number
-  sold: number
+  quantity: number;
+  sold: number;
 
-  rateAvg: number
-  rateCount: number
+  rateAvg: number;
+  rateCount: number;
 
-  images: string[]
-  imgCover: string
+  images: string[];
+  imgCover: string;
 
-  category: string
-  occasion: string
+  category: string;
+  occasion: string;
 
-  isSuperAdmin: boolean
-  isInWishlist: boolean
+  isSuperAdmin: boolean;
+  isInWishlist: boolean;
 
-  favoriteId: string | null
+  favoriteId: string | null;
 
-  createdAt: string
-  updatedAt: string
-  __v: number
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }

@@ -9,7 +9,9 @@ export function MainLayout({ children }: MainLayoutProps) {
   return (
     <>
       <Header />
-      <main className='font-sarabun rtl:font-tajawal'>{children}</main>
+      <main className="font-sarabun rtl:font-tajawal">
+        {children}
+      </main>
       <Footer />
     </>
   );

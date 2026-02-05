@@ -1,6 +1,5 @@
 // Michael Samy's Code
 
-
 'use client';
 
 import {
@@ -35,7 +34,7 @@ export default function NewPasswordStep({
   const t = useTranslations();
 
   // States
-  const router = useRouter()
+  const router = useRouter();
 
   // Mutations
   const { resetPassword, isPending, error } =
@@ -49,8 +48,6 @@ export default function NewPasswordStep({
     },
     resolver: zodResolver(resetPasswordSchema(t)),
   });
-
-
 
   // Handlers
   const handleReset: SubmitHandler<

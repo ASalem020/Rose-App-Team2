@@ -4,7 +4,7 @@ import ProductCardSkeleton from './product-card-skeleton';
 export default function BestSellingSkeleton() {
   return (
     <div
-      className="grid animate-pulse grid-cols-1 items-start gap-8 md:grid-cols-4 container mx-auto"
+      className="container mx-auto grid animate-pulse grid-cols-1 items-start gap-8 md:grid-cols-4"
       aria-hidden
     >
       {/* left content skeleton */}
