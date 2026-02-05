@@ -4,9 +4,14 @@
 import BuildSearchparams, { BuildSearchparamsProps } from '@/components/features/build-searchparams';
 import { Link } from '@/i18n/navigation';
 import { X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useRouter } from "next/navigation";
 
 export default function RatingFilter({ searchParams }: BuildSearchparamsProps) {
+
+    // ^ translaition
+    const t = useTranslations("pages.product.filter");
+
     // ^ 1 Router and Active Rate
     const router = useRouter();
     const activeRate = Number(searchParams.rateAvg ?? 0);
@@ -16,7 +21,7 @@ export default function RatingFilter({ searchParams }: BuildSearchparamsProps) {
 
             {/* reset  */}
             <div className='flex justify-between items-center '>
-                <h2 className='text-xl text-zinc-800 gap-2'>Rating</h2>
+                <h2 className='text-xl text-zinc-800 gap-2'>{t("rating")}</h2>
                 <span
                     className="cursor-pointer text-red-600 gap-2 flex items-center"
                     onClick={() => {
@@ -25,7 +30,7 @@ export default function RatingFilter({ searchParams }: BuildSearchparamsProps) {
                         router.push(`/products?${params.toString()}`);
                     }}
                 >
-                    <X /> Reset
+                    <X /> {t("reset")}
                 </span>
             </div>
 

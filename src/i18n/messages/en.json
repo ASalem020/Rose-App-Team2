@@ -300,6 +300,15 @@
         "register": "Become part of our family!"
       }
     },
-    "success-toast": "Your password has been successfully reset."
+    "success-toast": "Your password has been successfully reset.",
+    "product": {
+      "filter" : {
+        "categories": "Categories",
+        "reset": "Reset ",
+        "rating": "Rating",
+        "resetAll": "Reset All"
+      }
+    }
+
   }
 }

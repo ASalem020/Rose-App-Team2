@@ -2,9 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { RotateCcw } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function ResetAllFilters() {
+
+    // ^ translaition
+    const t = useTranslations("pages.product.filter");
+
     // ^ 1 Router and Pathname
     const router = useRouter();
     const pathname = usePathname();
@@ -16,7 +21,7 @@ export default function ResetAllFilters() {
             className="bg-maroon-100/50 text-maroon-600 w-full rounded-md h-11 hover:bg-maroon-100 flex items-center justify-center gap-3 text-lg"
         >
             <RotateCcw />
-            Reset All
+            {t("resetAll")}
         </Button>
     );
 }

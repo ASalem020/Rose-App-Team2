@@ -2,7 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import { categories } from '@/lib/types/category'
 
-export default function CategoryCard({ category, isActive }: { category: categories, isActive?: boolean }) {
+type CategoryCardProps = {
+category: categories,
+isActive?: boolean
+}
+
+
+export default function CategoryCard({ category, isActive }: CategoryCardProps ) {
 
   return (
     <div className={`bg-zinc-200 hover:bg-zinc-300 w-fill h-12 rounded-md overflow-hidden flex items-center ${isActive ? 'bg-maroon-100/60' : ''}`}>
