@@ -13,7 +13,7 @@ export async function getAllProduct({
 }: ProductFilter): Promise<Product[]> {
 
   const res = await fetch(
-    `${process.env.API_URL}/products?${limit ? `limit=${limit}` : ''}${sort ? `&sort=${sort}` : ''}${occasionsId ? `&occasions=${occasionsId}` : ''}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/products?${limit ? `limit=${limit}` : ''}${sort ? `&sort=${sort}` : ''}${occasionsId ? `&occasions=${occasionsId}` : ''}`,
     {
       cache: 'no-store',
     },
