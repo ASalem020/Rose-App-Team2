@@ -5,6 +5,7 @@ import { localWishlist } from '@/lib/utils/local-wishlist';
 import { cn } from '@/lib/utils/tailwind-merge';
 import { HeartMinus, HeartPlus } from 'lucide-react'
 import { useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react'
 
 type AddToWishlistBtnPropsType = {
@@ -12,6 +13,9 @@ type AddToWishlistBtnPropsType = {
 }
 
 export default function AddToWishlistBtn({ productId }: AddToWishlistBtnPropsType) {
+  // Translation
+  const t = useTranslations('common');
+
   // State 
   const [added, setIsAdded] = useState<boolean>(localStorage.getItem('wishlist')?.includes(productId) || false);
 
@@ -34,34 +38,34 @@ export default function AddToWishlistBtn({ productId }: AddToWishlistBtnPropsTyp
       }
     }
 
-    localWishlist({ state: added, productId });
+    localWishlist({ state: added, productId, t });
     setIsAdded(prev => !prev);
   };
 
-
-
   return (
     <div className={cn(
-      // Main Styles
-      'cursor-pointer w-8 h-8 duration:300 hover:w-fit rounded-full flex gap-1.5 items-center justify-center absolute z-20 top-2 left-2 rtl:left-0 rtl:right-2 group hover:px-2 text-maroon-600 bg-white',
-      // Conditional Styles
-      added && 'bg-zinc-800 text-white !w-fit px-2'
-    )}
-      aria-label='add to wishlist button' onClick={toggleAdded}>
-      {/* Icon */}
-      <div className="icon">
-        {added ? <HeartMinus size={18} /> : <HeartPlus size={18} />}
-      </div>
+      "add-to-wishlist-container w-8 h-8 duration-300 hover:!w-32 rtl:hover:!w-36 rounded-full absolute z-20 top-2 left-2 rtl:left-0 rtl:right-2 group hover:px-2 text-maroon-600 bg-white overflow-hidden cursor-pointer",
+      added && 'bg-zinc-800 text-white !w-fit hover:!w-fit px-2'
+    )}>
+      <div className={cn(
+        "add-to-wishlist-button flex gap-1.5 pt-1.5 ps-1.5",
+        added && "ps-0",
+      )}
+        aria-label='add to wishlist button'
+        onClick={toggleAdded}>
+        {/* Icon */}
+        <div className="icon">
+          {added ? <HeartMinus size={18} /> : <HeartPlus size={18} />}
+        </div>
 
-      {/* Hovered Text */}
-      <span className={cn(
-        // Main Styles
-        'text text-nowrap hidden group-hover:inline text-xs font-medium',
-        // Conditional Styles
-        added && '!inline'
-      )}>
-        {added ? "Remove from Wishlist" : "Add To Wishlist"}
-      </span>
+        {/* Hovered Text */}
+        <span className={cn(
+          'text whitespace-nowrap opacity-0 invisible group-hover:visible group-hover:opacity-100 text-xs font-medium duration-300',
+          added && '!visible !opacity-100'
+        )}>
+          {added ? t('wishlist.remove') : t('wishlist.add')}
+        </span>
+      </div>
     </div>
   )
 }

@@ -1,16 +1,27 @@
-export async function localWishlist({state,productId}: {state: boolean | undefined,productId: string}){
-  const localStorageWishlist = localStorage.getItem('wishlist');
+import { _Translator } from "next-intl";
+import { toast } from "sonner";
 
-  if(state) {
-    const wishlist = JSON.parse(localStorageWishlist as string);
-    const newWishlist = wishlist.filter((e: string) => e !== productId);
+type LocalWishlistProps = {
+  state?: boolean;
+  productId: string;
+  t: _Translator;
+};
 
-    localStorage.setItem('wishlist', JSON.stringify(newWishlist));
+export function localWishlist({ state, productId, t }: LocalWishlistProps) {
+  const stored = localStorage.getItem("wishlist");
+  const wishlist: string[] = stored ? JSON.parse(stored) : [];
+
+  // remove from wishlist
+  if (state) {
+    const updated = wishlist.filter(id => id !== productId);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+    return;
   }
 
-  if (!localStorageWishlist) return localStorage.setItem('wishlist', JSON.stringify([productId]));
+  // prevent duplicates
+  if (wishlist.includes(productId)) return;
 
-  if (localStorageWishlist.includes(productId)) return;
-
-  localStorage.setItem('wishlist', JSON.stringify([...(JSON.parse(localStorageWishlist)), productId]));
+  const updated = [...wishlist, productId];
+  localStorage.setItem("wishlist", JSON.stringify(updated));
+  toast.success(t("success.saved"));
 }

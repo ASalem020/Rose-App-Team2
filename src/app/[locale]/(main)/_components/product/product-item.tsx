@@ -15,9 +15,7 @@ export default function ProductItem({
   return (
     <>
       <div className={cn(
-        // Main Styles 
         "relative z-10 w-72 rounded-xl",
-        // Custom Classes
         divCustomClasses
       )}>
         {/* Add To Wishlist Button */}
@@ -25,9 +23,7 @@ export default function ProductItem({
 
         {/* Product Image */}
         <div className={cn(
-          // Main Styles
           "relative h-64 w-full overflow-hidden rounded-xl mb-4",
-          // Custom Classes
           imgCustomClasses
         )}>
           <Image

@@ -85,6 +85,10 @@
       "goToSlide": "Go to slide {index}",
       "loading": "Loading content",
       "error": "Error occurred"
+    },
+    "wishlist": {
+      "add": "Add To Wishlist",
+      "remove": "Remove From Wishlist"
     }
   },
   "pages": {

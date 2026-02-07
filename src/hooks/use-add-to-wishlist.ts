@@ -14,7 +14,6 @@ export function useAddToWishlist() {
 
       return payload;
     },
-
     onError: error => {
       toast.error(error.message);
     },
