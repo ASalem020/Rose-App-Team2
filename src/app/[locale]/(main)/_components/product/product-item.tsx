@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import Rating from '../rating/rating';
 import { Product } from '@/lib/types/product';
 import { cn } from '@/lib/utils/tailwind-merge';
-import Link from 'next/link';
 import AddToWishlistBtn from '@/components/shared/add-to-wishlist-btn';
+import { Link } from '@/i18n/navigation';
 
 type ProductItemPropsType = { divCustomClasses?: string, imgCustomClasses?: string, href: string } & Pick<Product, '_id' | 'imgCover' | 'title' | 'price' | 'priceAfterDiscount' | 'rateAvg'>
 
@@ -26,7 +26,7 @@ export default function ProductItem({
         {/* Product Image */}
         <div className={cn(
           // Main Styles
-          "relative h-64 w-full overflow-hidden rounded-xl",
+          "relative h-64 w-full overflow-hidden rounded-xl mb-4",
           // Custom Classes
           imgCustomClasses
         )}>

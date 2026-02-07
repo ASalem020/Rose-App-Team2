@@ -54,7 +54,7 @@ export default function MostPopular() {
         {products?.map((product: Product) => (
           <ProductItem
             _id={product._id}
-            href={`/product-details/${product._id}`}
+            href={`/products/${product._id}`}
             key={product._id}
             imgCover={product.imgCover}
             title={product.title}
