@@ -6,11 +6,10 @@ import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function ResetAllFilters() {
-
-    // ^ translaition
+    // ^ Translation
     const t = useTranslations("pages.product.filter");
 
-    // ^ 1 Router and Pathname
+    // ^ Navigation 
     const router = useRouter();
     const pathname = usePathname();
 

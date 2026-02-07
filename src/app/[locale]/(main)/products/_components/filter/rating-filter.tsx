@@ -1,18 +1,15 @@
-
 'use client'
 
 import BuildSearchparams, { BuildSearchparamsProps } from '@/components/features/build-searchparams';
-import { Link } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from "next/navigation";
 
 export default function RatingFilter({ searchParams }: BuildSearchparamsProps) {
-
-    // ^ translaition
+    // ^ Translation
     const t = useTranslations("pages.product.filter");
 
-    // ^ 1 Router and Active Rate
+    // ^ Navigation 
     const router = useRouter();
     const activeRate = Number(searchParams.rateAvg ?? 0);
 

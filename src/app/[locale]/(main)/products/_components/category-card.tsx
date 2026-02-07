@@ -7,15 +7,13 @@ category: categories,
 isActive?: boolean
 }
 
-
 export default function CategoryCard({ category, isActive }: CategoryCardProps ) {
-
   return (
-    <div className={`bg-zinc-200 hover:bg-zinc-300 w-fill h-12 rounded-md overflow-hidden flex items-center ${isActive ? 'bg-maroon-100/60' : ''}`}>
+    <div className={`bg-zinc-200 hover:bg-zinc-300 w-fill h-9 rounded-md overflow-hidden flex items-center ${isActive ? 'bg-maroon-100/70' : ''}`}>
 
       {/*  category image */}
-      <div className={`bg-zinc-500 p-2 w-10 h-12 object-cover flex items-center justify-center ${isActive ? 'bg-maroon-600/90' : ''}`}>
-        <Image src={category.image} alt="Category Image" width={300} height={200} className="invert brightness-0" />
+      <div className={`bg-zinc-500 p-2 w-10 h-12 object-cover flex items-center justify-center ${isActive ? 'bg-maroon-600/70' : ''}`}>
+        <Image src={category.image} alt={category.name} width={300} height={200} className="invert brightness-0" />
       </div>
 
       {/* category name */}

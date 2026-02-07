@@ -1,6 +1,6 @@
 import { categories } from '../types/category';
 
-export async function getCategories(): Promise<categories[]> {
+export async function getCategoriesService(): Promise<categories[]> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/categories`,
   );

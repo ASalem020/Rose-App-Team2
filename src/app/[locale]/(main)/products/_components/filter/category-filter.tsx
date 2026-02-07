@@ -1,5 +1,5 @@
-
 "use client";
+
 import BuildSearchparams, { BuildSearchparamsProps } from '@/components/features/build-searchparams';
 import useAllCategories from '@/hooks/use-all-category';
 import { categories } from '@/lib/types/category';
@@ -11,15 +11,14 @@ import CategoryCardSkeleton from '@/components/skeleton/category-card-skeleton';
 import { useTranslations } from 'next-intl';
 
 export default function CategoryFilter({ searchParams }: BuildSearchparamsProps) {
-
-    // ^ translaition 
+    // ^ Translation 
     const t = useTranslations("pages.product.filter");
 
-    // ^ 1 Router and Active Category
+    // ^ Navigation 
     const router = useRouter();
     const activeCategory = searchParams.category ?? null;
 
-    // ^ 1 Get Categories
+    // ^ Hooks
     const { categories } = useAllCategories();
 
     return (
@@ -41,7 +40,7 @@ export default function CategoryFilter({ searchParams }: BuildSearchparamsProps)
             </div>
 
             {/* display categories */}
-            <div className="flex flex-col space-y-3 max-h-64 overflow-y-auto pr-2">
+            <div className="flex flex-col space-y-2 max-h-64 overflow-y-auto pr-2">
                 {categories ?
                     categories?.map((category: categories) => {
                         const params = BuildSearchparams({ searchParams });
@@ -52,10 +51,9 @@ export default function CategoryFilter({ searchParams }: BuildSearchparamsProps)
                         );
                     })
                     : <>
-                        <CategoryCardSkeleton />
-                        <CategoryCardSkeleton />
-                        <CategoryCardSkeleton />
-                        <CategoryCardSkeleton />
+                        {[1, 2, 3, 4, 5].map((index) => (
+                            <CategoryCardSkeleton key={index} />
+                        ))}
                     </>
                 }
             </div>
