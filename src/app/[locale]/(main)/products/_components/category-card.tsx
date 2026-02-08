@@ -12,7 +12,7 @@ export default function CategoryCard({ category, isActive }: CategoryCardProps) 
   return (
     <div
       className={cn(
-        "bg-zinc-200 hover:bg-zinc-300 w-full h-9 rounded-md overflow-hidden flex items-center",
+        "bg-zinc-200 hover:bg-zinc-300 w-full h-8 rounded-md overflow-hidden flex items-center",
         isActive && "bg-maroon-100/70"
       )}
     >
