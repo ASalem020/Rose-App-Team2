@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils/tailwind-merge';
 import { useTranslations } from 'next-intl';
+import { CartItem } from '@/lib/types/cart';
 
 type ProductContentProps = {
   product: Product;
@@ -38,43 +39,60 @@ export default function ProductContent({
 
   // Handlers
   const addToCartHandler = () => {
+    // if user not logged in
     if (!isLoggedIn) {
       const cart = JSON.parse(
         localStorage.getItem('cart') || '[]',
       );
 
-      localStorage.setItem(
-        'cart',
-        JSON.stringify([...cart, product._id]),
+      const existingProductIndex = cart.findIndex(
+        (item: CartItem) => item.product === product._id,
       );
+
+      if (existingProductIndex !== -1) {
+        // Product already exists → increase quantity only
+        cart[existingProductIndex].quantity += 1;
+      } else {
+        // New product → add it
+        cart.push({
+          product: product._id,
+          quantity: 1,
+        });
+      }
+
+      // save cart to local storage
+      localStorage.setItem('cart', JSON.stringify(cart));
       toast.success(t('toast-added'));
+
       return;
     }
-    addToCart(product._id, {
-      onSuccess: () => {
-        toast.success(t('toast-added'));
+
+    addToCart(
+      { product: product._id, quantity: 1 },
+      {
+        onSuccess: () => {
+          toast.success(t('toast-added'));
+        },
       },
-    });
+    );
   };
 
   // Effects
   useEffect(() => {
-    // get added items from local storage
+    // get stored items from local storage
     const cart = JSON.parse(
       localStorage.getItem('cart') || '[]',
     );
 
-    // if cart is empty, return
-    if (cart.length === 0) {
-      return;
-    }
-
-    // if user logged in, add all cart items to the database
-    if (isLoggedIn) {
-      cart.map((id: string) => {
-        addToCart(id);
-      });
-      localStorage.removeItem('cart');
+    // if cart is not empty
+    if (cart.length !== 0) {
+      // if user logged in, add all cart items to the database
+      if (isLoggedIn) {
+        cart.map((cart: CartItem) => {
+          addToCart(cart);
+        });
+        localStorage.removeItem('cart');
+      }
     }
   }, [isLoggedIn, addToCart]);
 
