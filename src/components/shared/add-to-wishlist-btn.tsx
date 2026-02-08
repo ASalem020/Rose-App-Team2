@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils/tailwind-merge';
 import { HeartMinus, HeartPlus } from 'lucide-react'
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type AddToWishlistBtnPropsType = {
   productId: string
@@ -17,7 +17,7 @@ export default function AddToWishlistBtn({ productId }: AddToWishlistBtnPropsTyp
   const t = useTranslations('common');
 
   // State 
-  const [added, setIsAdded] = useState<boolean>(localStorage.getItem('wishlist')?.includes(productId) || false);
+  const [added, setIsAdded] = useState<boolean>(false);
 
   // Mutation
   const { addToWishlist } = useAddToWishlist();
@@ -41,6 +41,14 @@ export default function AddToWishlistBtn({ productId }: AddToWishlistBtnPropsTyp
     localWishlist({ state: added, productId, t });
     setIsAdded(prev => !prev);
   };
+
+  // Effects
+  useEffect(() => {
+    const wishlist = localStorage.getItem('wishlist');
+    if (wishlist?.includes(productId)) {
+      setIsAdded(true);
+    }
+  }, [productId]);
 
   return (
     <div className={cn(
