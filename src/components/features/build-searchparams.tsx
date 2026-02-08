@@ -1,11 +1,8 @@
-
-
 export type BuildSearchparamsProps = {
     searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export default function BuildSearchparams({ searchParams }: BuildSearchparamsProps) {
-
     const params = new URLSearchParams();
     if (!searchParams) return params;
     Object.entries(searchParams).forEach(([key, value]) => {
@@ -13,6 +10,5 @@ export default function BuildSearchparams({ searchParams }: BuildSearchparamsPro
             params.set(key, value);
         }
     });
-
     return params;
 }

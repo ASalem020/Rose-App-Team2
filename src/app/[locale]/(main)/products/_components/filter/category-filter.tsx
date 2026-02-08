@@ -47,7 +47,9 @@ export default function CategoryFilter({ searchParams }: BuildSearchparamsProps)
                         params.set('category', category._id);
                         const isActive = activeCategory === category._id;
                         return (
-                            <Link href={`/products?${params.toString()}`} key={category._id}><CategoryCard key={category._id} category={category} isActive={isActive} /></Link>
+                            <Link href={`/products?${params.toString()}`} key={category._id}>
+                                <CategoryCard key={category._id} category={category} isActive={isActive} />
+                            </Link>
                         );
                     })
                     : <>
