@@ -85,6 +85,10 @@
       "goToSlide": "الانتقال إلى الشريحة {index}",
       "loading": "جاري تحميل المحتوى",
       "error": "حدث خطأ"
+    },
+    "wishlist": {
+      "add": "أضف إلي المفضلة",
+      "remove": "إزالة من المفضلة"
     }
   },
   "pages": {
@@ -230,13 +234,6 @@
       "footer": "ليس لديك حساب؟",
       "register": "أنشئ واحدًا الآن!"
     },
-    "auth": {
-      "toggle-lang": "English",
-      "decorated-text": {
-        "login": "أهلا بعودتك",
-        "register": "كن جزء من عائلتنا!"
-      }
-    },
     "register": {
       "first-name": "الإسم الأول",
       "last-name": "الإسم الثاني",
@@ -293,8 +290,21 @@
       "toast": {
         "success": "تم إنشاء الحساب بنجاح ، سجل دخول الآن!"
       }
+    },
+    "product-details": {
+      "add-cart-btn": "أضف إلى العربة",
+      "currency": "جنيه مصري",
+      "stock-left": "تركت في المخزون",
+      "stock-empty": "نفد من المخزون",
+      "rating": "التقييم:",
+      "rating-number": "تقييم",
+      "toast-added": "تمت إضافة المنتج إلى العربة بنجاح",
+      "error": {
+        "header": "رسالة الخطأ:",
+        "try-again": "حاول مرة اخري",
+        "back": "رجوع"
+      }
     }
   },
-
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
 }

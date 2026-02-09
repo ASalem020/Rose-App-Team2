@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import ProductCard from '../product/product-card';
+import ProductItem from '../product/product-item';
 import { ArrowRight } from 'lucide-react';
 import { Product } from '@/lib/types/product';
 import { Button } from '@/components/ui/button';
@@ -24,7 +24,7 @@ export default function BestSelling() {
   }
 
   return (
-    <section className="mx-auto grid w-11/12 grid-cols-4 items-center gap-12">
+    <section className="mx-auto mb-32 mt-24 grid w-11/12 grid-cols-4 items-center gap-12">
       {/* ^ part one */}
       <div className="bg-warning-200 col-span-1 space-y-5">
         <h3 className="text-xl font-semibold tracking-widest text-pink-500 dark:text-maroon-400">
@@ -53,7 +53,7 @@ export default function BestSelling() {
         </Button>
       </div>
 
-      {/* ^ partr two */}
+      {/* ^ part two */}
 
       <div className="col-span-3 w-full">
         <Carousel
@@ -70,7 +70,14 @@ export default function BestSelling() {
                   key={product._id}
                   className="flex basis-1/3 items-center justify-center"
                 >
-                  <ProductCard productInfo={product} />
+                  <ProductItem
+                    _id={product._id}
+                    href={`/products/${product._id}`}
+                    imgCover={product.imgCover} title={product.title}
+                    price={product.price}
+                    priceAfterDiscount={product.priceAfterDiscount}
+                    rateAvg={product.rateAvg}
+                  />
                 </CarouselItem>
               ))}
             </CarouselContent>

@@ -6,13 +6,15 @@ import { ThemeProvider } from './theme-provider';
 import {
   NextIntlClientProvider,
   AbstractIntlMessages,
+  Locale,
 } from 'next-intl';
 import NextAuthProvider from './next-auth.provider';
+import AuthSideEffects from '../shared/auth-side-effects';
 
 interface ProvidersProps {
   children: React.ReactNode;
   messages: AbstractIntlMessages;
-  locale: string;
+  locale: Locale;
 }
 
 export function Providers({
@@ -23,6 +25,8 @@ export function Providers({
   return (
     <QueryProvider>
       <NextAuthProvider>
+        <AuthSideEffects />
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

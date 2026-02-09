@@ -100,6 +100,7 @@ export default function VerifyOtp({
   > = values => {
     verifyOtp(values.code, {
       onSuccess: () => {
+        localStorage.removeItem(COOLDOWN_KEY);
         setStep('new-password');
       },
     });

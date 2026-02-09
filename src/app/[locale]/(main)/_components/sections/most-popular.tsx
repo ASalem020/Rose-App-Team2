@@ -1,6 +1,6 @@
 'use client';
 
-import ProductCard from '../product/product-card';
+import ProductItem from '../product/product-item';
 import { Product } from '@/lib/types/product';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -52,9 +52,15 @@ export default function MostPopular() {
       {/* product */}
       <div className="grid grid-cols-4 gap-4">
         {products?.map((product: Product) => (
-          <ProductCard
+          <ProductItem
+            _id={product._id}
+            href={`/products/${product._id}`}
             key={product._id}
-            productInfo={product}
+            imgCover={product.imgCover}
+            title={product.title}
+            price={product.price}
+            priceAfterDiscount={product.priceAfterDiscount}
+            rateAvg={product.rateAvg}
           />
         ))}
       </div>

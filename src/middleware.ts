@@ -9,7 +9,7 @@ const authPages = [
   '/register',
   '/forgot-password',
 ];
-const publicPages = ['/', ...authPages];
+const publicPages = ['/(.*)'];
 
 const handleI18nRouting = createMiddleware(routing);
 

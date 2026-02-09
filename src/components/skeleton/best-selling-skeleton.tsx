@@ -1,5 +1,5 @@
+import ProductItemSkeleton from '@/components/skeleton/product-item.skeleton';
 import React from 'react';
-import ProductCardSkeleton from './product-card-skeleton';
 
 export default function BestSellingSkeleton() {
   return (
@@ -22,7 +22,7 @@ export default function BestSellingSkeleton() {
             key={i}
             className="flex items-center justify-center"
           >
-            <ProductCardSkeleton />
+            <ProductItemSkeleton />
           </div>
         ))}
       </div>
