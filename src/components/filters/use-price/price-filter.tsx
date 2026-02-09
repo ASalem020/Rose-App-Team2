@@ -1,43 +1,31 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
-import { usePriceFilter } from '@/hooks/use-price-filter';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
+import { usePriceFilter } from '@/hooks/use-price-filter'
 
+/**
+ * PriceFilter
+ 
+ */
 export function PriceFilter() {
-  const tCommon = useTranslations('common');
-  const tProducts = useTranslations('pages.products');
+  // Common translations (e.g. Reset)
+  const tCommon = useTranslations('common')
 
-  const { from, to, setPrice, resetPrice } =
-    usePriceFilter();
+  // Products page translations
+  const tProducts = useTranslations('pages.products')
 
-  const [localFrom, setLocalFrom] = useState(from);
-  const [localTo, setLocalTo] = useState(to);
-
-  // sync URL (reload / back / forward)
-  useEffect(() => {
-    setLocalFrom(from);
-    setLocalTo(to);
-  }, [from, to]);
-
-  const applyPrice = () => {
-    if (
-      localFrom &&
-      localTo &&
-      Number(localFrom) > Number(localTo)
-    )
-      return;
-    setPrice(localFrom, localTo);
-  };
+  // Price filter state and actions from the hook
+  const { from, to, setPrice, resetPrice } = usePriceFilter()
 
   return (
     <section className="space-y-4">
-      {/* Header */}
+      {/* Section header with title and reset action */}
       <div className="flex items-center justify-between">
         <h3 className="text-base font-semibold">
           {tProducts('filters.price.title')}
         </h3>
 
+        {/* Reset button clears the price filter */}
         <button
           type="button"
           onClick={resetPrice}
@@ -47,36 +35,38 @@ export function PriceFilter() {
         </button>
       </div>
 
-      {/* Inputs */}
+      {/* Price range inputs */}
       <div className="grid grid-cols-2 gap-3">
+        {/* From price input */}
         <div className="space-y-1">
           <label className="text-sm text-muted-foreground">
             {tProducts('filters.price.from')}
           </label>
+
           <input
             type="number"
             min={0}
-            value={localFrom}
-            onChange={e => setLocalFrom(e.target.value)}
-            onBlur={applyPrice}
+            value={from ?? ''}
+            onChange={e => setPrice(e.target.value, to)}
             className="h-10 w-full rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 
+        {/* To price input */}
         <div className="space-y-1">
           <label className="text-sm text-muted-foreground">
             {tProducts('filters.price.to')}
           </label>
+
           <input
             type="number"
             min={0}
-            value={localTo}
-            onChange={e => setLocalTo(e.target.value)}
-            onBlur={applyPrice}
+            value={to ?? ''}
+            onChange={e => setPrice(from, e.target.value)}
             className="h-10 w-full rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
       </div>
     </section>
-  );
+  )
 }
