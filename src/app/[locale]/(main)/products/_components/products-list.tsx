@@ -19,7 +19,7 @@ export default async function ProductsList({ queryString }: ProductsListPropsTyp
 
           <ProductItem
             _id={product._id}
-            href={`/product-details/${product._id}`}
+            href={`/products/${product._id}`}
             divCustomClasses="w-full"
             imgCustomClasses="h-72"
             key={product._id}
