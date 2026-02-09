@@ -7,7 +7,7 @@ import { FOOTER_LINKS } from '@/lib/constants/navigation';
 import { getTranslations } from 'next-intl/server';
 
 export async function Footer() {
-  const t = await getTranslations('components.footer');
+  const t = await getTranslations('pages.components.footer');
 
   return (
     <footer className="w-full bg-zinc-800 py-16 text-white">
@@ -56,7 +56,9 @@ export async function Footer() {
           <div className="space-y-2 text-center md:text-start">
             <h4 className="text-lg font-bold capitalize text-softPink-300">
               {t('newsletterTitle')}{' '}
-              <span className="text-white">{t('newsletterDiscount')}</span>{' '}
+              <span className="text-white">
+                {t('newsletterDiscount')}
+              </span>{' '}
               {t('newsletterSuffix')}
             </h4>
             <p className="text-xs capitalize text-zinc-500">

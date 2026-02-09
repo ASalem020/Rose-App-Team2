@@ -1,5 +1,9 @@
-'use client'
-import { InputOTP, InputOTPSlot, InputOTPGroup } from '@/components/ui/input-otp';
+'use client';
+import {
+    InputOTP,
+    InputOTPSlot,
+    InputOTPGroup,
+} from '@/components/ui/input-otp';
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from 'next-intl';
 import { useState, useEffect, useCallback } from 'react';
@@ -10,7 +14,7 @@ import { cn } from '@/lib/utils/tailwind-merge';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { otpSchema } from '@/lib/schemas/auth.schema';
-import { OtpStepFields } from '@/lib/types/auth';
+import { ForgotPasswordStep, OtpStepFields } from '@/lib/types/auth';
 import {
     Form,
     FormControl,
@@ -25,7 +29,7 @@ const COOLDOWN_DURATION = 60; // 60 seconds
 
 interface VerifyOtpProps {
     email: string;
-    setStep: (step: number) => void;
+    setStep: (step: ForgotPasswordStep) => void;
 }
 
 export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
@@ -79,7 +83,7 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
     const handleSubmit: SubmitHandler<OtpStepFields> = (values) => {
         verifyOtp(values.code, {
             onSuccess: () => {
-                setStep(3);
+                setStep("new-password");
             }
         });
     };
@@ -112,7 +116,7 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
 
 
     return (
-        <section className='flex flex-col justify-center items-center h-screen w-full max-w-xs mx-auto'>
+        <section className='flex flex-col justify-center items-center w-full max-w-xs mx-auto'>
             {/* Header */}
             <div className='w-full'>
                 {/* Title */}
@@ -124,7 +128,7 @@ export default function VerifyOtp({ email, setStep }: VerifyOtpProps) {
                         {t('pages.forgot-password.otp.description')} <span className='text-black dark:text-white'>{email}</span>.
                     </p>
                     <button
-                        onClick={() => setStep(1)}
+                        onClick={() => setStep("email")}
                         className={cn(
                             'text-maroon-700 capitalize text-xs underline',
                         )}

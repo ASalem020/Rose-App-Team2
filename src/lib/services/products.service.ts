@@ -11,7 +11,6 @@ export async function getAllProduct({
   sort,
   occasionsId,
 }: ProductFilter): Promise<Product[]> {
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/products?${limit ? `limit=${limit}` : ''}${sort ? `&sort=${sort}` : ''}${occasionsId ? `&occasions=${occasionsId}` : ''}`,
     {
@@ -19,5 +18,5 @@ export async function getAllProduct({
     },
   );
   const data = await res.json();
-   return data.products;
+  return data.products;
 }

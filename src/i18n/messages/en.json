@@ -302,13 +302,12 @@
     },
     "success-toast": "Your password has been successfully reset.",
     "product": {
-      "filter" : {
+      "filter": {
         "categories": "Categories",
         "reset": "Reset ",
         "rating": "Rating",
         "resetAll": "Reset All"
       }
     }
-
   }
 }

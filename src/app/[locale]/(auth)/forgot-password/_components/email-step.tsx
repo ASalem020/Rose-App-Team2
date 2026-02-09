@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button';
 import { emailSchema } from '@/lib/schemas/auth.schema';
 import { Link } from '@/i18n/navigation';
 import { useSendOtp } from '../_hooks/use-send-otp';
-import { EmailStepFields } from '@/lib/types/auth';
+import { EmailStepFields, ForgotPasswordStep } from '@/lib/types/auth';
 import {
   COOLDOWN_DURATION,
   COOLDOWN_KEY,
@@ -29,11 +29,14 @@ import {
 interface EmailStepProps {
   email: string;
   setEmail: (email: string) => void;
+  setStep: (step: ForgotPasswordStep) => void;
 }
+
 
 export default function EmailStep({
   email,
   setEmail,
+  setStep
 }: EmailStepProps) {
   // Translation
   const t = useTranslations();
@@ -62,9 +65,9 @@ export default function EmailStep({
       // NOTE => Go to next step (OTP step) , to be continue...
       // return;
       setEmail(values.email);
+      setStep('otp');
     } else {
       // NOTE => Go to next step (OTP step) , to be continue...
-
       // If timer is not running then send OTP and go to next step
       sendOtp(values, {
         onSuccess: () => {
@@ -74,6 +77,7 @@ export default function EmailStep({
             Date.now().toString(),
           );
           setCountdown(COOLDOWN_DURATION);
+          setStep('otp');
         },
       });
     }
@@ -93,7 +97,6 @@ export default function EmailStep({
     const timer = setInterval(() => {
       const remaining = getRemainingTime();
       setCountdown(remaining);
-
       if (remaining <= 0) {
         clearInterval(timer);
         localStorage.removeItem(COOLDOWN_KEY);
@@ -105,7 +108,7 @@ export default function EmailStep({
 
   return (
     // NOTE => waiting layout to be completed...
-    <div className="m-auto flex h-screen max-w-104 flex-col justify-center">
+    <div className="m-auto flex max-w-104 flex-col justify-center">
       {/* Header */}
       <h2 className="text-2xl font-semibold text-zinc-800 dark:text-zinc-50">
         {t('pages.forgot-password.header')}
