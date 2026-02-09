@@ -1,4 +1,3 @@
-// Michael Samy's Component
 
 'use client';
 

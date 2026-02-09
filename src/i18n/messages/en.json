@@ -85,6 +85,10 @@
       "goToSlide": "Go to slide {index}",
       "loading": "Loading content",
       "error": "Error occurred"
+    },
+    "wishlist": {
+      "add": "Add To Wishlist",
+      "remove": "Remove From Wishlist"
     }
   },
   "pages": {
@@ -308,6 +312,21 @@
         "rating": "Rating",
         "resetAll": "Reset All"
       }
+    },
+    "product-details": {
+      "add-cart-btn": "Add to Cart",
+      "currency": "EGP",
+      "stock-left": "left in stock",
+      "stock-empty": "Out of stock",
+      "rating": "Rating:",
+      "rating-number": "ratings",
+      "toast-added": "Product added to Cart Successfully",
+      "error": {
+        "header": "Error Message:",
+        "try-again": "Try Again",
+        "back": "Go Back"
+      }
     }
-  }
+  },
+  "success-toast": "Your password has been successfully reset."
 }

@@ -1,5 +1,5 @@
 export type BuildSearchparamsProps = {
-    searchParams: { [key: string]: string | string[] | undefined };
+    searchParams:  Record<string ,  string>;
 };
 
 export default function BuildSearchparams({ searchParams }: BuildSearchparamsProps) {

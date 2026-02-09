@@ -22,12 +22,14 @@ const sarabun = Sarabun({
   ],
   subsets: ['latin', 'thai'],
   variable: '--font-sarabun',
+  display: 'swap',
 });
 
 const tajawal = Tajawal({
   weight: ['200', '300', '400', '500', '700', '800', '900'],
   subsets: ['latin', 'arabic'],
   variable: '--font-tajawal',
+  display: 'swap',
 });
 
 export function generateStaticParams() {
@@ -67,7 +69,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`antialiased ${sarabun.variable} ${tajawal.variable} rtl:font-tajawal`}
+        className={`antialiased ${sarabun.variable} ${tajawal.variable}`}
       >
         <Providers messages={messages} locale={locale}>
           {children}

@@ -1,6 +1,5 @@
 "use client";
 
-import BuildSearchparams, { BuildSearchparamsProps } from '@/components/features/build-searchparams';
 import useAllCategories from '@/hooks/use-all-category';
 import { categories } from '@/lib/types/category';
 import CategoryCard from '../category-card';
@@ -9,6 +8,7 @@ import { X } from 'lucide-react';
 import { useRouter } from "next/navigation";
 import CategoryCardSkeleton from '@/components/skeleton/category-card-skeleton';
 import { useTranslations } from 'next-intl';
+import BuildSearchparams, { BuildSearchparamsProps } from '@/components/features/build-searchparams';
 
 export default function CategoryFilter({ searchParams }: BuildSearchparamsProps) {
     // ^ Translation 
@@ -16,14 +16,13 @@ export default function CategoryFilter({ searchParams }: BuildSearchparamsProps)
 
     // ^ Navigation 
     const router = useRouter();
-    const activeCategory = searchParams.category ?? null;
+    const activeCategory = searchParams?.category ?? null ;
 
     // ^ Hooks
     const { categories } = useAllCategories();
 
     return (
         <div className='flex flex-col gap-2'>
-
             {/* reset  */}
             <div className='flex justify-between items-center '>
                 <h2 className='text-xl text-zinc-800'>{t("categories")}</h2>
