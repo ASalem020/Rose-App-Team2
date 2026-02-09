@@ -234,13 +234,6 @@
       "footer": "ليس لديك حساب؟",
       "register": "أنشئ واحدًا الآن!"
     },
-    "auth": {
-      "toggle-lang": "English",
-      "decorated-text": {
-        "login": "أهلا بعودتك",
-        "register": "كن جزء من عائلتنا!"
-      }
-    },
     "register": {
       "first-name": "الإسم الأول",
       "last-name": "الإسم الثاني",

@@ -2,12 +2,13 @@ import { ProductAPIResponse } from "@/lib/types/product";
 import ProductItem from "../../_components/product/product-item";
 
 type ProductsListPropsType = {
-  queryString?: string
+  queryString?: string | Record<string , string>
 }
 
 export default async function ProductsList({ queryString }: ProductsListPropsType) {
   // Variables
   const url = `${process.env.API_URL}/products?limit=12${queryString && "&" + queryString}`;
+  console.log(url)
   const res = await fetch(url);
   const payload: ProductAPIResponse = await res.json();
 
