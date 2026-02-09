@@ -3,7 +3,7 @@ import ForgotPasswordFlow from './_components/forgot-password-flow';
 
 export default function ForgotPasswordPage() {
   return (
-    <div className="">
+    <div>
       <ForgotPasswordFlow />
     </div>
   );
