@@ -19,10 +19,12 @@ import { getTranslations } from 'next-intl/server';
 import ToggleLang from './toggle-lang';
 
 export async function Header() {
-  const t = await getTranslations('pages.components.header');
+  const t = await getTranslations(
+    'pages.components.header',
+  );
 
   return (
-    <header className="w-full bg-white font-sans shadow-sm dark:bg-zinc-800">
+    <header className="w-full bg-white shadow-sm dark:bg-zinc-800">
       {/* Top Bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
         {/* Logo */}

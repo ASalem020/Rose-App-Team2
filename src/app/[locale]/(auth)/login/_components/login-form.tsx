@@ -17,7 +17,7 @@ export default function LoginForm() {
     const t = useTranslations('pages.login.login-form');
 
     // ^ Mutation 
-    const { error, login } = useLogin()
+    const { error, login, isPending } = useLogin()
 
     // ^ react-hook-form
     const form = useForm({
@@ -29,7 +29,7 @@ export default function LoginForm() {
         },
     });
 
-    //   ^ function 
+    // Function 
     const onSubmit: SubmitHandler<LoginFields> = (data) => {
         login(data);
     }
@@ -89,7 +89,7 @@ export default function LoginForm() {
                     </div>
                 )}
 
-                <Button disabled={form.formState.isSubmitting} className='bg-maroon-600 hover:bg-maroon-800 text-white h-10'>{t('button')}</Button>
+                <Button disabled={isPending} className='bg-maroon-600 hover:bg-maroon-800 text-white h-10'>{t('button')}</Button>
             </div>
         </form>
     </Form>

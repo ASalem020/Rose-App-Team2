@@ -85,6 +85,10 @@
       "goToSlide": "الانتقال إلى الشريحة {index}",
       "loading": "جاري تحميل المحتوى",
       "error": "حدث خطأ"
+    },
+    "wishlist": {
+      "add": "أضف إلي المفضلة",
+      "remove": "إزالة من المفضلة"
     }
   },
   "pages": {
@@ -230,13 +234,6 @@
       "footer": "ليس لديك حساب؟",
       "register": "أنشئ واحدًا الآن!"
     },
-    "auth": {
-      "toggle-lang": "English",
-      "decorated-text": {
-        "login": "أهلا بعودتك",
-        "register": "كن جزء من عائلتنا!"
-      }
-    },
     "register": {
       "first-name": "الإسم الأول",
       "last-name": "الإسم الثاني",
@@ -294,41 +291,20 @@
         "success": "تم إنشاء الحساب بنجاح ، سجل دخول الآن!"
       }
     },
-    "products": {
-      "details": {
-        "category": "الفئة",
-        "occasion": "المناسبة",
-        "inStock": "في المخزن",
-        "units": "وحدات",
-        "addToCart": "إضافة إلى السلة",
-        "off": "خصم {percentage}%",
-        "rating": "التقييم: {rate}/5",
-        "ratings": "({count} تقييمات)",
-        "generalRating": "التقييم العام:"
-      },
-      "reviews": {
-        "title": "مراجعات المنتج",
-        "loading": "جاري تحميل المراجعات...",
-        "error": "خطأ في تحميل المراجعات. يرجى المحاولة مرة أخرى لاحقاً.",
-        "empty": "لا توجد مراجعات بعد. كن أول من يراجع هذا المنتج!",
-        "addReview": {
-          "title": "إضافة مراجعة",
-          "labelRating": "تقييمك:",
-          "labelTitle": "العنوان",
-          "placeholderTitle": "أعط مراجعتك عنواناً",
-          "labelComment": "المراجعة",
-          "placeholderComment": "اكتب مراجعتك هنا...",
-          "submitting": "جاري الإرسال...",
-          "submit": "إضافة مراجعة",
-          "authRequired": "يرجى تسجيل الدخول لتتمكن من مراجعة المنتج"
-        }
-      },
-      "related": {
-        "title": "منتجات ذات صلة",
-        "loading": "جاري تحميل المنتجات ذات الصلة..."
+    "product-details": {
+      "add-cart-btn": "أضف إلى العربة",
+      "currency": "جنيه مصري",
+      "stock-left": "تركت في المخزون",
+      "stock-empty": "نفد من المخزون",
+      "rating": "التقييم:",
+      "rating-number": "تقييم",
+      "toast-added": "تمت إضافة المنتج إلى العربة بنجاح",
+      "error": {
+        "header": "رسالة الخطأ:",
+        "try-again": "حاول مرة اخري",
+        "back": "رجوع"
       }
     }
   },
-
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
 }
