@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import React from 'react';
 import LoginForm from './_components/login-form';
@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import DecoratedText from '@/components/features/auth/decorated-text';
 
 export default function LoginPage() {
-
+  
     // ^ translation
     const t = useTranslations('pages.login');
 
@@ -27,4 +27,5 @@ export default function LoginPage() {
             <p className='text-zinc-800 w-full text-center'>{t('footer')}<Link href={'/register'} className='text-maroon-700'>{t('register')}</Link></p>
         </footer>
     </>
+  
 }

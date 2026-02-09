@@ -7,7 +7,9 @@ import { FOOTER_LINKS } from '@/lib/constants/navigation';
 import { getTranslations } from 'next-intl/server';
 
 export async function Footer() {
-  const t = await getTranslations('pages.components.footer');
+  const t = await getTranslations(
+    'pages.components.footer',
+  );
 
   return (
     <footer className="w-full bg-zinc-800 py-16 text-white">

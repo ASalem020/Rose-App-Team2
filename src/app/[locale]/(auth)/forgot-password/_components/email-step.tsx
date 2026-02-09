@@ -18,7 +18,10 @@ import { Button } from '@/components/ui/button';
 import { emailSchema } from '@/lib/schemas/auth.schema';
 import { Link } from '@/i18n/navigation';
 import { useSendOtp } from '../_hooks/use-send-otp';
-import { EmailStepFields, ForgotPasswordStep } from '@/lib/types/auth';
+import {
+  EmailStepFields,
+  ForgotPasswordStep,
+} from '@/lib/types/auth';
 import {
   COOLDOWN_DURATION,
   COOLDOWN_KEY,
@@ -31,11 +34,10 @@ interface EmailStepProps {
   setStep: (step: ForgotPasswordStep) => void;
 }
 
-
 export default function EmailStep({
   email,
   setEmail,
-  setStep
+  setStep,
 }: EmailStepProps) {
   // Translation
   const t = useTranslations();

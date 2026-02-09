@@ -11,20 +11,29 @@ const alexBrush = Alex_Brush({
 });
 
 type DecoratedTextPropsType = {
-  text: "login" | "register",
-  className?: string
-}
+  text: 'login' | 'register';
+  className?: string;
+};
 
-export default function DecoratedText({ text, className }: DecoratedTextPropsType) {
+export default function DecoratedText({
+  text,
+  className,
+}: DecoratedTextPropsType) {
   // Translation
   const locale = useLocale();
   const t = useTranslations('pages.auth.decorated-text');
 
   return (
-    <div className={cn(
-      "text-center text-4xl md:text-5xl text-maroon-700",
-      locale === 'ar' ? 'font-tajawal' : alexBrush.className,
-      className
-    )}>{text === 'login' ? t('login') : t('register')}</div>
-  )
+    <div
+      className={cn(
+        'text-center text-4xl text-maroon-700 md:text-5xl',
+        locale === 'ar'
+          ? 'font-tajawal'
+          : alexBrush.className,
+        className,
+      )}
+    >
+      {text === 'login' ? t('login') : t('register')}
+    </div>
+  );
 }

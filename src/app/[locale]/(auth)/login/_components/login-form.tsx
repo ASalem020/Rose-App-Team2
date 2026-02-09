@@ -1,33 +1,39 @@
+'use client';
 
-'use client'
-
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { LoginFields } from '@/lib/types/auth'
-import Link from 'next/link'
-import { loginSchema } from '@/lib/schemas/auth.schema'
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import useLogin from '../hooks/use-login'
-import { FormControl, FormItem, FormLabel, Form, FormField, FormMessage } from '@/components/ui/form'
-import { useTranslations } from 'next-intl'
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { LoginFields } from '@/lib/types/auth';
+import Link from 'next/link';
+import { loginSchema } from '@/lib/schemas/auth.schema';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import useLogin from '../hooks/use-login';
+import {
+  FormControl,
+  FormItem,
+  FormLabel,
+  Form,
+  FormField,
+  FormMessage,
+} from '@/components/ui/form';
+import { useTranslations } from 'next-intl';
 
 export default function LoginForm() {
-    // ^ translation
-    const t = useTranslations('pages.login.login-form');
+  // ^ translation
+  const t = useTranslations('pages.login.login-form');
 
     // ^ Mutation 
     const { error, login, isPending } = useLogin()
 
-    // ^ react-hook-form
-    const form = useForm({
-        mode: "onSubmit",
-        resolver: zodResolver(loginSchema),
-        defaultValues: {
-            email: "",
-            password: "",
-        },
-    });
+  // ^ react-hook-form
+  const form = useForm({
+    mode: 'onSubmit',
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
     // Function 
     const onSubmit: SubmitHandler<LoginFields> = (data) => {
@@ -53,20 +59,26 @@ export default function LoginForm() {
                         )}
                     />
 
-                    {/* password input */}
-                    <FormField
-                        control={form.control}
-                        name="password"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>{t('passwordLabel')}</FormLabel>
-                                <FormControl>
-                                    <Input type="password" placeholder="*********" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
+            {/* password input */}
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    {t('passwordLabel')}
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      placeholder="*********"
+                      {...field}
                     />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
                     {/* forget password button */}
                     <div className='flex items-center justify-end w-full'>
