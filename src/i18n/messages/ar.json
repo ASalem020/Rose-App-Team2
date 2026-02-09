@@ -85,6 +85,10 @@
       "goToSlide": "الانتقال إلى الشريحة {index}",
       "loading": "جاري تحميل المحتوى",
       "error": "حدث خطأ"
+    },
+    "wishlist": {
+      "add": "أضف إلي المفضلة",
+      "remove": "إزالة من المفضلة"
     }
   },
   "pages": {
@@ -128,10 +132,107 @@
       "description": "الصفحة التي تبحث عنها غير موجودة.",
       "backHome": "العودة إلى الرئيسية"
     },
+    "components": {
+      "testimonial": {
+        "profilePhoto": "صورة الملف الشخصي لـ {name}",
+        "rating": "التقييم: {rating} من {max}",
+        "postedOn": "نُشر في {date}"
+      },
+      "carousel": {
+        "next": "الشريحة التالية",
+        "previous": "الشريحة السابقة",
+        "slide": "الشريحة {current} من {total}"
+      },
+      "header": {
+        "deliverTo": "التوصيل إلى:",
+        "location": "القاهرة",
+        "searchPlaceholder": "ما الهدية الرائعة التي تبحث عنها؟",
+        "greeting": "مرحباً",
+        "userName": "جوناثان",
+        "languageToggle": "English",
+        "nav": {
+          "home": "الرئيسية",
+          "products": "المنتجات",
+          "categories": "الفئات",
+          "occasions": "المناسبات",
+          "contact": "تواصل معنا",
+          "about": "من نحن"
+        }
+      },
+      "footer": {
+        "appName": "تطبيق روز للتجارة الإلكترونية",
+        "copyright": "جميع الحقوق محفوظة | 2025",
+        "discoverTitle": "اكتشف موقعنا",
+        "newsletterTitle": "احصل على",
+        "newsletterDiscount": "خصم 20%",
+        "newsletterSuffix": "كوبون خصم",
+        "newsletterDescription": "بالاشتراك في نشرتنا الإخبارية",
+        "emailPlaceholder": "أدخل بريدك الإلكتروني",
+        "subscribeButton": "اشترك",
+        "nav": {
+          "home": "الرئيسية",
+          "products": "المنتجات",
+          "categories": "الفئات",
+          "occasions": "المناسبات",
+          "contact": "تواصل معنا",
+          "about": "من نحن",
+          "terms": "الشروط والأحكام",
+          "privacy": "سياسة الخصوصية",
+          "faqs": "الأسئلة الشائعة"
+        }
+      }
+    },
     "error": {
       "title": "حدث خطأ ما",
       "description": "حدث خطأ أثناء تحميل هذه الصفحة.",
       "tryAgain": "حاول مرة أخرى"
+    },
+    "forgot-password": {
+      "header": "نسيت كلمة السر؟",
+      "subtitle": "لا تقلق، سنرسل إليك تعليمات لمساعدتك في إعادة ضبطه.",
+      "button": "تابع",
+      "schemas": {
+        "email-required": "برجاء إدخال البريد الإلكتروني ",
+        "email-invalid": "هذا البريد الإلكتروني غير صالح"
+      },
+      "footer": "ليس لديك حساب؟ <link>أنشئ واحدًا الآن!</link>",
+      "otp": {
+        "title": "أدخل رمز التحقق",
+        "description": "لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى",
+        "edit": "تعديل",
+        "sendNewCode": "إرسال رمز جديد",
+        "send": "إرسال",
+        "verify": "تحقق",
+        "needHelp": "هل تحتاج مساعدة؟",
+        "contactUs": "تواصل معنا"
+      }
+    },
+    "new-password": {
+      "header": "قم بإنشاء كلمة مرور جديدة",
+      "subtitle": "قم بتعيين كلمة مرور قوية لتأمين حسابك.",
+      "footer": "بحاجة الى مساعدة؟ <link>اتصل بنا</link>",
+      "button": "إعادة تعيين كلمة المرور",
+      "schemas": {
+        "password-min-length": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+        "password-lowercase": "يجب أن تتضمن كلمة المرور حرفًا صغيرًا واحدًا على الأقل",
+        "password-number": "يجب أن تتضمن كلمة المرور رقمًا واحدًا على الأقل",
+        "password-special": "يجب أن تتضمن كلمة المرور حرفًا خاصًا واحدًا على الأقل",
+        "password-uppercase": "يجب أن تتضمن كلمة المرور حرفًا كبيرًا واحدًا على الأقل",
+        "match-password": "كلمات المرور غير متطابقة"
+      }
+    },
+    "login": {
+      "rememberMe": "تذكرني",
+      "header": "مرحبًا بعودتك!",
+      "login-form": {
+        "emailLabel": "البريد الإلكتروني",
+        "passwordLabel": "كلمة المرور",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "rememberMe": "تذكرني",
+        "button": "تسجيل الدخول"
+      },
+      "footer": "ليس لديك حساب؟",
+      "register": "أنشئ واحدًا الآن!"
     },
     "register": {
       "first-name": "الإسم الأول",
@@ -188,118 +289,22 @@
       },
       "toast": {
         "success": "تم إنشاء الحساب بنجاح ، سجل دخول الآن!"
-      },
-      "forgot-password": {
-        "header": "إعادة تعيين كلمة المرور",
-        "subtitle": "لا تقلق، سنرسل إليك تعليمات لمساعدتك في إعادة ضبطه.",
-        "button": "تابع",
-        "schemas": {
-          "email-required": "برجاء إدخال البريد الإلكتروني ",
-          "email-invalid": "هذا البريد الإلكتروني غير صالح"
-        },
-        "footer": "ليس لديك حساب؟ <link>أنشئ واحدًا الآن!</link>",
-        "otp": {
-          "title": "أدخل رمز التحقق",
-          "description": "لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى",
-          "edit": "تعديل",
-          "sendNewCode": "إرسال رمز جديد",
-          "send": "إرسال",
-          "verify": "تحقق",
-          "needHelp": "هل تحتاج مساعدة؟",
-          "contactUs": "تواصل معنا",
-          "schemas": {
-            "code-required": "يرجى إدخال رمز التحقق",
-            "code-length": "يجب أن يتكون الرمز من 6 أرقام بالضبط"
-          },
-          "toast": {
-            "success": "تم التحقق من الرمز بنجاح!"
-          }
-        }
-      },
-      "new-password": {
-        "header": "إنشاء كلمة مرور جديدة",
-        "subtitle": "قم بتعيين كلمة مرور قوية لتأمين حسابك.",
-        "footer": "بحاجة الى مساعدة؟ <link>اتصل بنا</link>",
-        "button": "إعادة تعيين كلمة المرور",
-        "schemas": {
-          "password-min-length": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
-          "password-lowercase": "يجب أن تتضمن كلمة المرور حرفًا صغيرًا واحدًا على الأقل",
-          "password-number": "يجب أن تتضمن كلمة المرور رقمًا واحدًا على الأقل",
-          "password-special": "يجب أن تتضمن كلمة المرور حرفًا خاصًا واحدًا على الأقل",
-          "password-uppercase": "يجب أن تتضمن كلمة المرور حرفًا كبيرًا واحدًا على الأقل",
-          "match-password": "كلمات المرور غير متطابقة"
-        }
       }
     },
-    "login": {
-      "header": "مرحبًا بعودتك!",
-      "login-form": {
-        "emailLabel": "البريد الإلكتروني",
-        "passwordLabel": "كلمة المرور",
-        "forgotPassword": "نسيت كلمة المرور؟",
-        "rememberMe": "تذكرني",
-        "button": "تسجيل الدخول"
-      },
-      "footer": "ليس لديك حساب؟",
-      "register": "أنشئ واحدًا الآن!"
-    },
-    "components": {
-      "testimonial": {
-        "profilePhoto": "صورة الملف الشخصي لـ {name}",
-        "rating": "التقييم: {rating} من {max}",
-        "postedOn": "نُشر في {date}"
-      },
-      "carousel": {
-        "next": "الشريحة التالية",
-        "previous": "الشريحة السابقة",
-        "slide": "الشريحة {current} من {total}"
-      },
-      "header": {
-        "deliverTo": "التوصيل إلى:",
-        "location": "القاهرة",
-        "searchPlaceholder": "ما الهدية الرائعة التي تبحث عنها؟",
-        "greeting": "مرحباً",
-        "userName": "جوناثان",
-        "languageToggle": "English",
-        "nav": {
-          "home": "الرئيسية",
-          "products": "المنتجات",
-          "categories": "الفئات",
-          "occasions": "المناسبات",
-          "contact": "تواصل معنا",
-          "about": "من نحن"
-        }
-      },
-      "footer": {
-        "appName": "تطبيق روز للتجارة الإلكترونية",
-        "copyright": "جميع الحقوق محفوظة | 2025",
-        "discoverTitle": "اكتشف موقعنا",
-        "newsletterTitle": "احصل على",
-        "newsletterDiscount": "خصم 20%",
-        "newsletterSuffix": "كوبون خصم",
-        "newsletterDescription": "بالاشتراك في نشرتنا الإخبارية",
-        "emailPlaceholder": "أدخل بريدك الإلكتروني",
-        "subscribeButton": "اشترك",
-        "nav": {
-          "home": "الرئيسية",
-          "products": "المنتجات",
-          "categories": "الفئات",
-          "occasions": "المناسبات",
-          "contact": "تواصل معنا",
-          "about": "من نحن",
-          "terms": "الشروط والأحكام",
-          "privacy": "سياسة الخصوصية",
-          "faqs": "الأسئلة الشائعة"
-        }
+    "product-details": {
+      "add-cart-btn": "أضف إلى العربة",
+      "currency": "جنيه مصري",
+      "stock-left": "تركت في المخزون",
+      "stock-empty": "نفد من المخزون",
+      "rating": "التقييم:",
+      "rating-number": "تقييم",
+      "toast-added": "تمت إضافة المنتج إلى العربة بنجاح",
+      "error": {
+        "header": "رسالة الخطأ:",
+        "try-again": "حاول مرة اخري",
+        "back": "رجوع"
       }
-    },
-    "auth": {
-      "toggle-lang": "English",
-      "decorated-text": {
-        "login": "أهلا بعودتك",
-        "register": "كن جزء من عائلتنا!"
-      }
-    },
-    "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
-  }
+    }
+  },
+  "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
 }

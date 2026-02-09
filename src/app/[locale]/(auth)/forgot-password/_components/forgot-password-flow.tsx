@@ -2,24 +2,43 @@
 
 import React, { useState } from 'react';
 import EmailStep from './email-step';
-import NewPasswordStep from './new-password-step';
 import VerifyOtp from './verify-otp';
+import NewPasswordStep from './new-password-step';
+import { ForgotPasswordStep } from '@/lib/types/auth';
+import { FORGOT_PASSWROD_STEPS } from '@/lib/constants/auth-constants';
 
 export default function ForgotPasswordFlow() {
-  const [email, setEmail] = useState<string>('');
+  const [step, setStep] = useState<ForgotPasswordStep>(
+    FORGOT_PASSWROD_STEPS.EMAIL,
+  );
+  const [email, setEmail] = useState('');
+
+  const steps = {
+    // email step
+    [FORGOT_PASSWROD_STEPS.EMAIL]: {
+      form: (
+        <EmailStep
+          email={email}
+          setEmail={setEmail}
+          setStep={setStep}
+        />
+      ),
+    },
+
+    // OTP step
+    [FORGOT_PASSWROD_STEPS.OTP]: {
+      form: <VerifyOtp email={email} setStep={setStep} />,
+    },
+
+    // New Password step
+    [FORGOT_PASSWROD_STEPS.NEW_PASSWORD]: {
+      form: <NewPasswordStep email={email} />,
+    },
+  };
 
   return (
-    // NOTE => waiting for Forgot password Flow and layout to be completed...
-    <div>
-      {/* NOTE
-      For testing the components:
-      1. You can type your registered email , then go to your email and find the OTP
-      2. Enter OTP in postman using verify reset API (until the OTP step finished...)
-      3. then return to that page to type the new password */}
-
-      <EmailStep email={email} setEmail={setEmail} />
-      <VerifyOtp email={email} setStep={() => { 'mock' }} />
-      <NewPasswordStep email={email} />
+    <div className="">
+      <div className="">{steps[step].form}</div>
     </div>
   );
 }
