@@ -88,7 +88,7 @@ export default function AddReviewForm({ productId }: AddReviewFormProps) {
     // Render
 
     return (
-        <div className="relative h-full col-span-1 border-l-2 border-zinc-200">
+        <div className="relative h-full col-span-1 border-s-2 border-zinc-200">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className={cn(
