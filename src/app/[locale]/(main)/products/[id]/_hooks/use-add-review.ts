@@ -1,9 +1,10 @@
 // Imports
 
 import { useMutation } from '@tanstack/react-query';
-import { addReviewAction } from '@/app/[locale]/(main)/products/_actions/review.action';
-import { AddReviewFormData } from '@/app/[locale]/(main)/products/_validations/review.validation';
+import { addReviewAction } from '@/lib/actions/review.action';
+import { AddReviewFormData } from '@/lib/schemas/review.schema';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 
 // Custom Hook
 
@@ -12,12 +13,14 @@ import { toast } from 'sonner';
  *
  * Features:
  * - Handles API calls via server action
- * - Shows success/error toast notifications
+ * - Shows success/error toast notifications with i18n
  * - Manages loading and success states
  *
  * @returns Object with isPending, error, addReview (mutate function), and isSuccess
  */
 export const useAddReview = () => {
+  const t = useTranslations('pages.products.reviews.addReview');
+
   const { isPending, error, mutate, isSuccess } =
     useMutation({
       mutationFn: async (fields: AddReviewFormData) => {
@@ -33,13 +36,15 @@ export const useAddReview = () => {
       },
       onSuccess: () => {
         // Show success message
-        toast.success('Review added successfully!');
+        toast.success(t('success'));
       },
       onError: (error: Error) => {
-        // Show error message
-        toast.error(
-          error.message || 'Failed to add review',
-        );
+        // Check for specific error messages and show appropriate translation
+        if (error.message === 'You have already reviewed this product') {
+          toast.error(t('errorAlreadyReviewed'));
+        } else {
+          toast.error(t('errorGeneric'));
+        }
       },
     });
 

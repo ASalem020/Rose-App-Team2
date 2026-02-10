@@ -353,7 +353,10 @@
           "placeholderComment": "Write your review here...",
           "submitting": "Submitting...",
           "submit": "Add Review",
-          "authRequired": "Please login to be able to review the product"
+          "authRequired": "Please login to be able to review the product",
+          "success": "Your review added successfully",
+          "errorAlreadyReviewed": "You have already reviewed this product",
+          "errorGeneric": "An error occurred while adding the review"
         }
       },
       "related": {

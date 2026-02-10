@@ -4,7 +4,7 @@
 
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/auth';
-import { AddReviewFormData } from '../_validations/review.validation';
+import { AddReviewFormData } from '../schemas/review.schema';
 
 // Server Action
 
@@ -23,8 +23,14 @@ export async function addReviewAction(
   // Get the current session from NextAuth
   const session = await getServerSession(authOptions);
 
+  console.log('=== Review Action Debug ===');
+  console.log('Fields received:', fields);
+  console.log('Session:', session);
+  console.log('Access Token:', session?.accessToken);
+
   // Validate authentication
   if (!session?.accessToken) {
+    console.log('Auth failed - no access token');
     return {
       error: 'You must be logged in to add a review',
     };
@@ -45,11 +51,11 @@ export async function addReviewAction(
     );
 
     const payload = await response.json();
-
+    console.log(payload)
     // Handle API errors
     if (!response.ok) {
       return {
-        error: payload.message || 'Failed to add review',
+        error: payload.error,
       };
     }
 

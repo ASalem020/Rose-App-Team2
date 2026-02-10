@@ -9,12 +9,13 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/components/ui/carousel';
-import ProductCard from '../../_components/product/product-card';
+
 import { Product } from '@/lib/types/product';
 import SectionHeader from '@/components/shared/section-header';
-import { useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useGetRelatedProducts } from '../_hooks/use-get-related-products';
 import { useTranslations } from 'next-intl';
+import ProductItem from '../../../_components/product/product-item';
 
 // Types
 
@@ -36,12 +37,12 @@ export default function RelatedProductsCarousel() {
 
     // Navigation
 
-    const searchParams = useSearchParams();
+    const params = useParams();
+    const productId = params.id as string;
 
     // Query
 
-    const productId = searchParams.get('id') || '673e2e1f1159920171828153';
-    const { data, isLoading } = useGetRelatedProducts(productId);
+    const { data } = useGetRelatedProducts(productId);
 
     // Variables
 
@@ -49,17 +50,10 @@ export default function RelatedProductsCarousel() {
 
     // Render
 
-    if (isLoading)
-        return (
-            <div className="py-10 text-center text-maroon-700 dark:text-pink-300">
-                {t('loading')}
-            </div>
-        );
-
     if (!products || !Array.isArray(products) || products.length === 0) return null;
 
     return (
-        <section className="space-y-6">
+        <section className="space-y-6 py-10">
             <div className="flex justify-start">
                 <SectionHeader title="" description={t('title')} />
             </div>
@@ -78,7 +72,15 @@ export default function RelatedProductsCarousel() {
                                 key={product._id}
                                 className="flex basis-1/2 items-center justify-center md:basis-1/3 lg:basis-1/4"
                             >
-                                <ProductCard productInfo={product} />
+                                <ProductItem
+                                    _id={product._id}
+                                    imgCover={product.imgCover}
+                                    title={product.title}
+                                    price={product.price}
+                                    priceAfterDiscount={product.priceAfterDiscount}
+                                    rateAvg={product.rateAvg}
+                                    href={`/products/${product._id}`}
+                                />
                             </CarouselItem>
                         ))}
                     </CarouselContent>

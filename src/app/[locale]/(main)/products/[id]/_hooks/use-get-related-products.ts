@@ -1,6 +1,6 @@
 // Imports
 
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { getRelatedProductsService } from '@/lib/services/products.service';
 
 // Custom Hook
@@ -9,12 +9,12 @@ import { getRelatedProductsService } from '@/lib/services/products.service';
  * useGetRelatedProducts - Hook for fetching related products by category
  *
  * @param productId - The ID of the current product to find related items for
- * @returns Query object with related products data and loading state
+ * @returns Query object with related products data (suspends while loading)
  */
 export const useGetRelatedProducts = (
-  productId: string,
+  productId: string
 ) => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['related-products', productId],
     queryFn: () => getRelatedProductsService(productId),
   });

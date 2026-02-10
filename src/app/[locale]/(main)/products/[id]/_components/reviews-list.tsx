@@ -4,7 +4,7 @@
 
 import Rating from '@/components/shared/rating';
 import { useGetReviews } from '../_hooks/use-get-reviews';
-import { useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
@@ -30,10 +30,10 @@ interface Review {
  * ReviewsList - Component for displaying a list of product reviews
  *
  * Features:
- * - Fetches reviews based on productId from search params
+ * - Fetches reviews based on productId from URL params
  * - Displays user info (name, photo/initials)
  * - Displays rating, title, and comment
- * - Handles loading and empty states
+ * - Handles empty states
  */
 export default function ReviewsList() {
     // Translation
@@ -42,28 +42,18 @@ export default function ReviewsList() {
 
     // Navigation
 
-    const searchParams = useSearchParams();
+    const params = useParams();
+    const productId = params.id as string;
 
     // Query
 
-    const productId = searchParams.get('id') || '673e2e1f1159920171828153';
-    const { data, isLoading, error } = useGetReviews(productId);
+    const { data } = useGetReviews(productId);
 
     // Variables
 
     const reviews = data?.reviews;
 
     // Render
-
-    if (isLoading)
-        return <div className="col-span-2 py-10 text-center">{t('loading')}</div>;
-
-    if (error)
-        return (
-            <div className="col-span-2 py-10 text-center text-red-500">
-                {t('error')}
-            </div>
-        );
 
     if (!reviews || !Array.isArray(reviews) || reviews.length === 0) {
         return (
