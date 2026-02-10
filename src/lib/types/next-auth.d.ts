@@ -1,36 +1,37 @@
-import { User } from "next-auth"
+import { User } from 'next-auth';
 
-declare module "next-auth" {
-
-    /**
-     * The shape of the user object returned in the OAuth providers' `profile` callback,
-     * or the second parameter of the `session` callback, when using a database.
-     */
-    interface User {
-        accessToken: string,
-        user: {
-            _id: string,
-            firstName: string,
-            lastName: string,
-            email: string,
-            gender: string,
-            phone: string,
-            photo: string,
-            role: string,
-            createdAt: string,
-            wishlist: [],
-            addresses: [],
-        }
-    }
+declare module 'next-auth' {
+  /**
+   * The shape of the user object returned in the OAuth providers' `profile` callback,
+   * or the second parameter of the `session` callback, when using a database.
+   */
+  interface User {
+    accessToken: string;
+    user: {
+      _id: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: string;
+      phone: string;
+      photo: string;
+      role: string;
+      createdAt: string;
+      wishlist: [];
+      addresses: [];
+    };
+  }
 
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
-  type Session = User["user"]
+  interface Session {
+    user: User['user'];
+    accessToken?: string;
+  }
 }
 
-
-declare module "next-auth/jwt" {
+declare module 'next-auth/jwt' {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   type JWT = {
     accessToken: User['accessToken'],

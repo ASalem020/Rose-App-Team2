@@ -298,10 +298,57 @@
         "success": "تم إنشاء الحساب بنجاح ، سجل دخول الآن!"
       }
     },
+    "products": {
+      "filter": {
+        "categories": "التصنيفات",
+        "rating": "التقييم",
+        "reset": "إعادة تعيين",
+        "reset-all": "إعادة تعيين الكل"
+      },
+      "details": {
+        "add-cart-btn": "أضف إلى العربة",
+        "currency": "جنيه مصري",
+        "stock-left": "متبقي من المخزون",
+        "stock-empty": "نفد من المخزون",
+        "rating": "التقييم:",
+        "rating-number": "تقييم",
+        "toast-added": "تمت إضافة المنتج إلى العربة بنجاح",
+        "error": {
+          "header": "رسالة الخطأ:",
+          "try-again": "حاول مرة اخري",
+          "back": "رجوع"
+        },
+        "generalRating": "التقييم العام:"
+      },
+      "reviews": {
+        "title": "تقييمات المنتج",
+        "loading": "جاري تحميل التقييمات...",
+        "error": "خطأ في تحميل التقييمات. يرجى المحاولة مرة أخرى لاحقاً.",
+        "empty": "لا توجد تقييمات بعد. كن أول من يقيم هذا المنتج!",
+        "addReview": {
+          "title": "إضافة تقييم",
+          "labelRating": "تقييمك:",
+          "labelTitle": "العنوان",
+          "placeholderTitle": "أعط تقييمك عنواناً",
+          "labelComment": "التقييم",
+          "placeholderComment": "اكتب تقييمك هنا...",
+          "submitting": "جاري الإرسال...",
+          "submit": "إضافة تقييم",
+          "authRequired": "يرجى تسجيل الدخول لتتمكن من تقييم المنتج",
+          "success": "تمت إضافة تقييمك بنجاح",
+          "errorAlreadyReviewed": "لقد قمت بالفعل من تقييم هذا المنتج",
+          "errorGeneric": "حدث خطأ في اضافة التقييم"
+        }
+      },
+      "related": {
+        "title": "منتجات ذات صلة",
+        "loading": "جاري تحميل المنتجات ذات الصلة..."
+      }
+    },
     "product-details": {
       "add-cart-btn": "أضف إلى العربة",
       "currency": "جنيه مصري",
-      "stock-left": "تركت في المخزون",
+      "stock-left": "متبقي من المخزون",
       "stock-empty": "نفد من المخزون",
       "rating": "التقييم:",
       "rating-number": "تقييم",
@@ -310,14 +357,6 @@
         "header": "رسالة الخطأ:",
         "try-again": "حاول مرة اخري",
         "back": "رجوع"
-      }
-    },
-    "products": {
-      "filter": {
-        "categories": "التصنيفات",
-        "rating": "التقييم",
-        "reset": "إعادة تعيين",
-        "reset-all": "إعادة تعيين الكل"
       }
     }
   },

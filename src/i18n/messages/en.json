@@ -305,14 +305,6 @@
       }
     },
     "success-toast": "Your password has been successfully reset.",
-    "products": {
-      "filter": {
-        "categories": "Categories",
-        "rating": "Rating",
-        "reset": "Reset",
-        "reset-all": "Reset All"
-      }
-    },
     "product-details": {
       "add-cart-btn": "Add to Cart",
       "currency": "EGP",
@@ -325,6 +317,49 @@
         "header": "Error Message:",
         "try-again": "Try Again",
         "back": "Go Back"
+      }
+    },
+    "products": {
+      "filter": {
+        "categories": "Categories",
+        "rating": "Rating",
+        "reset": "Reset",
+        "reset-all": "Reset All"
+      },
+      "details": {
+        "category": "Category",
+        "occasion": "Occasion",
+        "inStock": "In Stock",
+        "units": "units",
+        "addToCart": "Add to Cart",
+        "off": "{percentage}% OFF",
+        "rating": "Rating: {rate}/5",
+        "ratings": "({count} ratings)",
+        "generalRating": "General rating:"
+      },
+      "reviews": {
+        "title": "Product Reviews",
+        "loading": "Loading reviews...",
+        "error": "Error loading reviews. Please try again later.",
+        "empty": "No reviews yet. Be the first to review this product!",
+        "addReview": {
+          "title": "Add Review",
+          "labelRating": "Your rating:",
+          "labelTitle": "Title",
+          "placeholderTitle": "Give your review a title",
+          "labelComment": "Review",
+          "placeholderComment": "Write your review here...",
+          "submitting": "Submitting...",
+          "submit": "Add Review",
+          "authRequired": "Please login to be able to review the product",
+          "success": "Your review added successfully",
+          "errorAlreadyReviewed": "You have already reviewed this product",
+          "errorGeneric": "An error occurred while adding the review"
+        }
+      },
+      "related": {
+        "title": "Related Products",
+        "loading": "Loading related products..."
       }
     }
   },
