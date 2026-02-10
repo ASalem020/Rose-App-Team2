@@ -12,7 +12,7 @@ import BuildSearchparams, { BuildSearchparamsProps } from '@/components/features
 
 export default function CategoryFilter({ searchParams }: BuildSearchparamsProps) {
     // ^ Translation 
-    const t = useTranslations("pages.product.filter");
+    const t = useTranslations("pages.products.filter");
 
     // ^ Navigation 
     const router = useRouter();

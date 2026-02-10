@@ -305,12 +305,12 @@
       }
     },
     "success-toast": "Your password has been successfully reset.",
-    "product": {
+    "products": {
       "filter": {
         "categories": "Categories",
-        "reset": "Reset ",
         "rating": "Rating",
-        "resetAll": "Reset All"
+        "reset": "Reset",
+        "reset-all": "Reset All"
       }
     },
     "product-details": {
