@@ -1,26 +1,38 @@
-'use client'
-import { SubmitHandler, useForm } from 'react-hook-form'
+'use client';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RegisterFields } from '../_types/register-fields';
 import { Input } from '@/components/ui/input';
 import { PhoneInput } from '@/components/ui/phone-input';
-import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+} from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
-import { registerSchema } from '@/lib/schema/auth.schema';
+import { registerSchema } from '@/lib/schemas/auth.schema';
 import { useEffect, useState } from 'react';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { useRegister } from '../_hooks/use-register';
-
 
 export default function RegisterForm() {
   // Translations
   const t = useTranslations('pages.register');
   const locale = useLocale();
 
-  // States 
-  const [backendError, setBackendError] = useState('')
+  // States
+  const [backendError, setBackendError] = useState('');
 
   // Hooks
   const { isLoading, mutateAsync } = useRegister();
@@ -30,29 +42,31 @@ export default function RegisterForm() {
     defaultValues: {
       name: {
         firstName: '',
-        lastName: ''
+        lastName: '',
       },
       email: '',
       phone: '',
       gender: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
     },
     mode: 'all',
-    resolver: zodResolver(registerSchema(t))
-  })
+    resolver: zodResolver(registerSchema(t)),
+  });
 
   // Functions
-  const onSubmit: SubmitHandler<RegisterFields> = async (values) => {
+  const onSubmit: SubmitHandler<
+    RegisterFields
+  > = async values => {
     try {
       await mutateAsync(values);
       toast.success(t('toast.success'));
       form.reset();
     } catch (e) {
       // TODO: Until get backend error component
-      setBackendError((e as Error).message)
+      setBackendError((e as Error).message);
     }
-  }
+  };
 
   // Effects
   useEffect(() => {
@@ -60,16 +74,19 @@ export default function RegisterForm() {
 
     const errorTimer = setTimeout(() => {
       setBackendError('');
-    }, 3000)
+    }, 3000);
 
-    return () => clearTimeout(errorTimer)
-  }, [backendError])
+    return () => clearTimeout(errorTimer);
+  }, [backendError]);
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col gap-5 border-y-2 border-zinc-200 py-6'>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-5 border-y-2 border-zinc-200 py-6"
+      >
         {/* Name */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {/* First Name */}
           <FormField
             control={form.control}
@@ -78,7 +95,13 @@ export default function RegisterForm() {
               <FormItem>
                 <FormLabel>{t('first-name')}</FormLabel>
                 <FormControl>
-                  <Input type='text' placeholder={t('placeholders.first-name')} {...field} />
+                  <Input
+                    type="text"
+                    placeholder={t(
+                      'placeholders.first-name',
+                    )}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -93,7 +116,13 @@ export default function RegisterForm() {
               <FormItem>
                 <FormLabel>{t('last-name')}</FormLabel>
                 <FormControl>
-                  <Input type='text' placeholder={t('placeholders.last-name')} {...field} />
+                  <Input
+                    type="text"
+                    placeholder={t(
+                      'placeholders.last-name',
+                    )}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -109,7 +138,11 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>{t('email')}</FormLabel>
               <FormControl>
-                <Input type='email' placeholder='user@example.com' {...field} />
+                <Input
+                  type="email"
+                  placeholder="user@example.com"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -124,7 +157,10 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>{t('phone')}</FormLabel>
               <FormControl>
-                <PhoneInput defaultCountry='EG' {...field} />
+                <PhoneInput
+                  defaultCountry="EG"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -138,10 +174,16 @@ export default function RegisterForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>{t('gender.label')}</FormLabel>
-              <Select dir={locale === 'ar' ? 'rtl' : 'ltr'} value={field.value} onValueChange={field.onChange}>
+              <Select
+                dir={locale === 'ar' ? 'rtl' : 'ltr'}
+                value={field.value}
+                onValueChange={field.onChange}
+              >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder={t("placeholders.gender")} />
+                    <SelectValue
+                      placeholder={t('placeholders.gender')}
+                    />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent position="popper">
@@ -166,7 +208,12 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>{t('password')}</FormLabel>
               <FormControl>
-                <Input type='password' placeholder='**********' {...field} autoComplete='new-password' />
+                <Input
+                  type="password"
+                  placeholder="**********"
+                  {...field}
+                  autoComplete="new-password"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -181,7 +228,12 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>{t('confirm-password')}</FormLabel>
               <FormControl>
-                <Input type='password' placeholder='**********' {...field} autoComplete='new-password' />
+                <Input
+                  type="password"
+                  placeholder="**********"
+                  {...field}
+                  autoComplete="new-password"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -190,16 +242,18 @@ export default function RegisterForm() {
 
         {/* Backend Error Box */}
         {backendError && (
-          <div className='bg-maroon-500/20 border-2 border-maroon-700 py-2 text-center text-sm text-maroon-700 rounded-lg'>
+          <div className="rounded-lg border-2 border-maroon-700 bg-maroon-500/20 py-2 text-center text-sm text-maroon-700">
             {backendError}
           </div>
         )}
 
         {/* Submit Button */}
-        <Button type='submit' disabled={isLoading}>
-          {isLoading ? t('create-button.loading') : t('create-button.create')}
+        <Button type="submit" disabled={isLoading}>
+          {isLoading
+            ? t('create-button.loading')
+            : t('create-button.create')}
         </Button>
       </form>
     </Form>
-  )
+  );
 }

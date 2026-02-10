@@ -26,6 +26,5 @@ export default function LoginPage() {
         <footer>
             <p className='text-zinc-800 w-full text-center'>{t('footer')}<Link href={'/register'} className='text-maroon-700'>{t('register')}</Link></p>
         </footer>
-
     </>
 }
