@@ -16,6 +16,9 @@ import { toast } from 'sonner';
 import { cn } from '@/lib/utils/tailwind-merge';
 import { useTranslations } from 'next-intl';
 import { CartItem } from '@/lib/types/cart';
+import { useAddToWishlist } from '@/hooks/use-add-to-wishlist';
+import useRemoveFromWishlist from '@/hooks/use-remove-from-wishlist';
+import { localWishlist } from '@/lib/utils/local-wishlist';
 
 type ProductContentProps = {
   product: Product;
@@ -26,6 +29,7 @@ export default function ProductContent({
 }: ProductContentProps) {
   // Translation
   const t = useTranslations('pages.product-details');
+  const commonT = useTranslations('common');
 
   // States
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -33,6 +37,8 @@ export default function ProductContent({
 
   // Mutation
   const { addToCart } = useAddCart();
+  const { addToWishlist } = useAddToWishlist();
+  const { removeFromWishlist } = useRemoveFromWishlist();
 
   // Variables
   const isLoggedIn = status === 'authenticated';
@@ -77,6 +83,24 @@ export default function ProductContent({
     );
   };
 
+  // Wishlist Handler
+  const toggleWishlistHandler = () => {
+    if (isLoggedIn) {
+      if (isWishlisted) {
+        removeFromWishlist(product._id);
+      } else {
+        addToWishlist(product._id);
+      }
+    }
+
+    localWishlist({
+      state: isWishlisted,
+      productId: product._id,
+      t: commonT,
+    });
+    setIsWishlisted(prev => !prev);
+  };
+
   // Effects
   useEffect(() => {
     // get stored items from local storage
@@ -95,6 +119,13 @@ export default function ProductContent({
       }
     }
   }, [isLoggedIn, addToCart]);
+
+  useEffect(() => {
+    const wishlist = localStorage.getItem('wishlist');
+    if (wishlist?.includes(product._id)) {
+      setIsWishlisted(true);
+    }
+  }, [product._id]);
 
   return (
     <div className="flex w-1/2 flex-col">
@@ -164,7 +195,7 @@ export default function ProductContent({
       <div className="mt-4 flex gap-2">
         {/* Add to wishlist Button */}
         <Button
-          onClick={() => setIsWishlisted(prev => !prev)}
+          onClick={toggleWishlistHandler}
           variant={'subtle'}
           className={cn(
             `dark:border-1 w-12 border-none px-4 py-2 dark:border-solid dark:border-zinc-500`,
@@ -173,7 +204,6 @@ export default function ProductContent({
               : 'bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800',
           )}
         >
-          {/* TODO: Add wishlist functionality */}
           {isWishlisted ? (
             <HeartMinus size={25} />
           ) : (

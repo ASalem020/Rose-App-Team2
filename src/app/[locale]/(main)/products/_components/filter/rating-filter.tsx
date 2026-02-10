@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 export default function RatingFilter({ searchParams }: BuildSearchparamsProps) {
     // ^ Translation
-    const t = useTranslations("pages.product.filter");
+    const t = useTranslations("pages.products.filter");
 
     // ^ Navigation 
     const router = useRouter();
