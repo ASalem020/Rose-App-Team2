@@ -7,7 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 export default function ResetAllFilters() {
     // ^ Translation
-    const t = useTranslations("pages.product.filter");
+    const t = useTranslations("pages.products.filter");
 
     // ^ Navigation 
     const router = useRouter();
@@ -20,7 +20,7 @@ export default function ResetAllFilters() {
             className="bg-maroon-100/50 text-maroon-600 w-full rounded-md h-11 hover:bg-maroon-100 flex items-center justify-center gap-3 text-lg"
         >
             <RotateCcw />
-            {t("resetAll")}
+            {t("reset-all")}
         </Button>
     );
 }
