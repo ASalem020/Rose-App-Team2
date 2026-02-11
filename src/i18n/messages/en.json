@@ -310,7 +310,12 @@
         "categories": "Categories",
         "reset": "Reset ",
         "rating": "Rating",
-        "resetAll": "Reset All"
+        "resetAll": "Reset All",
+        "occasion" : "occasion",
+        "price" : "Price",
+        "from"  : "from",
+        "to"    : "to"
+
       }
     },
     "product-details": {

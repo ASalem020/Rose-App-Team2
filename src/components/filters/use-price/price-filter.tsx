@@ -12,7 +12,7 @@ export function PriceFilter() {
   const tCommon = useTranslations('common')
 
   // Products page translations
-  const tProducts = useTranslations('pages.products')
+  const tProducts = useTranslations('pages.product')
 
   // Price filter state and actions from the hook
   const { from, to, setPrice, resetPrice } = usePriceFilter()
@@ -22,7 +22,7 @@ export function PriceFilter() {
       {/* Section header with title and reset action */}
       <div className="flex items-center justify-between">
         <h3 className="text-base font-semibold">
-          {tProducts('filters.price.title')}
+          {tProducts('filter.price')}
         </h3>
 
         {/* Reset button clears the price filter */}
@@ -31,7 +31,7 @@ export function PriceFilter() {
           onClick={resetPrice}
           className="text-sm text-red-500 hover:underline"
         >
-          {tCommon('reset')}
+          {tProducts('filter.reset')}
         </button>
       </div>
 
@@ -40,7 +40,7 @@ export function PriceFilter() {
         {/* From price input */}
         <div className="space-y-1">
           <label className="text-sm text-muted-foreground">
-            {tProducts('filters.price.from')}
+            {tProducts('filter.from')}
           </label>
 
           <input
@@ -55,7 +55,7 @@ export function PriceFilter() {
         {/* To price input */}
         <div className="space-y-1">
           <label className="text-sm text-muted-foreground">
-            {tProducts('filters.price.to')}
+            {tProducts('filter.to')}
           </label>
 
           <input

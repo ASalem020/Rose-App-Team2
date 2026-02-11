@@ -1,61 +1,72 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
+import { X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { OccasionCard } from './occasion-card'
-import { Occasion } from '@/lib/types/occasion'
+import { useOccasions } from '@/hooks/use-occasions'
+import BuildSearchparams, {
+  BuildSearchparamsProps,
+} from '@/components/features/build-searchparams'
 
-type Props = {
-  // List of occasions fetched from the API
-  occasions: Occasion[]
-}
+export function OccasionFilter({ searchParams }: BuildSearchparamsProps) {
+  // Translations
+  const t = useTranslations('pages.product.filter')
 
-/**
- * OccasionFilter
- *
- * Renders the occasion filter section used on the products page.
- * Displays a scrollable grid of selectable occasion cards
- * based on the provided API data.
- *
- * This component is responsible for UI rendering only.
- * Selection state and filtering logic are handled by the parent layer.
- */
-export function OccasionFilter({ occasions }: Props) {
-  // Common translations (e.g. Reset)
-  const tCommon = useTranslations('common')
+  // Router
+  const router = useRouter()
 
-  // Products page translations
-  const tProducts = useTranslations('pages.products')
+  // Active occasion from URL
+  const activeOccasion = searchParams?.occasion ?? null
+
+  // Fetch occasions
+  const { data: occasions, isLoading } = useOccasions()
 
   return (
-    <section className="space-y-4">
-      {/* Section header with title and reset action */}
+    <div className="flex flex-col gap-2">
+      {/* Header + reset */}
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-semibold">
-          {tProducts('filters.occasion.title')}
-        </h3>
+        <h2 className="text-xl text-zinc-800">
+          {t('occasion')}
+        </h2>
 
-        {/* Reset button clears selected occasions */}
-        <button
-          type="button"
-          className="text-sm text-red-500 hover:underline"
+        <span
+          className="flex cursor-pointer items-center gap-2 text-red-600"
+          onClick={() => {
+            const params = BuildSearchparams({ searchParams })
+            params.delete('occasion')
+            router.push(`/products?${params.toString()}`)
+          }}
         >
-          {tCommon('reset')}
-        </button>
+          <X /> {t('reset')}
+        </span>
       </div>
 
-      {/* Scrollable grid containing occasion cards */}
+      {/* Occasion cards */}
       <div className="grid max-h-[320px] grid-cols-2 gap-3 overflow-y-auto pr-1">
-        {occasions.map(occasion => {
-          // Build the full image URL from the API response
-          const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/uploads/${occasion.image}`
+        {isLoading
+          ? null
+          : occasions?.map(occasion => {
+              const params = BuildSearchparams({ searchParams })
+              params.set('occasion', occasion._id)
 
-          return (
-            <OccasionCard
-              key={occasion._id}
-              name={occasion.name}
-              image={imageUrl}
-            />
-          )
-        })}
+              const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/uploads/${occasion.image}`
+              const isActive = activeOccasion === occasion._id
+
+              return (
+                <a
+                  key={occasion._id}
+                  href={`/products?${params.toString()}`}
+                >
+                  <OccasionCard
+                    name={occasion.name}
+                    image={imageUrl}
+                    selected={isActive}
+                  />
+                </a>
+              )
+            })}
       </div>
-    </section>
+    </div>
   )
 }

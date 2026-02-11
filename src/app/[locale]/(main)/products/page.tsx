@@ -5,6 +5,8 @@ import React, { Suspense } from 'react';
 import ProductsList from './_components/products-list';
 import ProductsListSkeleton from './_skeleton/products-list.skeleton';
 import { BuildSearchparamsProps } from '@/components/features/build-searchparams';
+import { OccasionFilter } from "@/components/filters/occasion-filter/occasion-filter";
+import { PriceFilter } from "@/components/filters/use-price/price-filter";
 
 export default function ProductPage({searchParams}: BuildSearchparamsProps) {
   return (
@@ -14,8 +16,12 @@ export default function ProductPage({searchParams}: BuildSearchparamsProps) {
         {/* By Category */}
         <CategoryFilter searchParams={searchParams}/>
 
+       <OccasionFilter searchParams={searchParams} />
+      
         {/* By Rating */}
         <RatingFilter searchParams={searchParams}/>
+
+        <PriceFilter/>
 
         {/* Reset All Filters */}
         <ResetAllFilters />
