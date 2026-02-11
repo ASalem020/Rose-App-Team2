@@ -1,9 +1,9 @@
-import AddressCard from './_components/address-card';
+import Addresses from './_components/addresses';
 import StepsProgress from './_components/steps-progress';
 
 export default function Page() {
   return (
-    <div className="checkout-page">
+    <div className="checkout-page mb-16">
       <div className="container mx-auto mt-16 px-5">
         {/* Steps Progress */}
         <StepsProgress currentStep={1} />
@@ -15,26 +15,7 @@ export default function Page() {
         </h3>
 
         {/* Addresses */}
-        <div className="addresses">
-          <div className="container flex max-h-[20.9375rem] flex-col gap-3 overflow-y-auto">
-            <AddressCard
-              city="Cairo"
-              address="14 Omar Ibn Akhatab St., Ramsis St., Cairo"
-              phone="123-456-7890"
-            />
-            <AddressCard
-              city="Cairo"
-              address="14 Omar Ibn Akhatab St., Ramsis St., Cairo"
-              phone="123-456-7890"
-              selected
-            />
-            <AddressCard
-              city="Cairo"
-              address="14 Omar Ibn Akhatab St., Ramsis St., Cairo"
-              phone="123-456-7890"
-            />
-          </div>
-        </div>
+        <Addresses />
       </div>
     </div>
   );
