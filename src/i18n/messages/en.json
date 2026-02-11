@@ -326,7 +326,35 @@
         "try-again": "Try Again",
         "back": "Go Back"
       }
+    },
+    "profile": {
+      "title": "Update Profile",
+      "sidebar": {
+        "My-Account": "My Account",
+        "Change-Password": "Change Password",
+        "Logout": "Logout"
+      },
+      "user-info": {
+        "First-name": "First Name",
+        "Last-name": "Last Name",
+        "Email": "Email",
+        "phone": "Phone",
+        "gender": "Gender",
+        "Old-Password": "Old Password",
+        "New-Password": "New Password",
+        "Confirm-New-Password": "Confirm New Password"
+      },
+      "Save-Changes": "Save Changes",
+      "Delete-My-Account": "Delete My Account",
+      "Change-Password": "Change Password",
+      "dialog":{
+        "title" : "Are you sure you want to delete your account?",
+        "description" : "This action is permanent and cannot be undone.",
+        "cancel" : "Cancel",
+        "action" : "Yes, delete"
+      }
     }
+
   },
   "success-toast": "Your password has been successfully reset."
 }
