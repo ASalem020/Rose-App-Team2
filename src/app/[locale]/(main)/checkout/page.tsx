@@ -8,12 +8,6 @@ export default function Page() {
         {/* Steps Progress */}
         <StepsProgress currentStep={1} />
 
-        {/* Shipping Addresses */}
-        {/* Title */}
-        <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
-          Shipping Addresses
-        </h3>
-
         {/* Addresses */}
         <Addresses />
       </div>
