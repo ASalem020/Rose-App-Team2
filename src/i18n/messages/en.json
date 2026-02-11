@@ -361,6 +361,20 @@
         "title": "Related Products",
         "loading": "Loading related products..."
       }
+    },
+    "cart": {
+      "title": "Cart",
+      "products": " products",
+      "empty": "Your cart is empty, wanna try shopping?",
+      "continue-shopping": "Continue Shopping",
+      "clear-cart": "Clear Cart",
+      "cart-item": {
+        "rating": "Rating:",
+        "ratingCount": "ratings",
+        "remove": "Remove",
+        "currency": "EGP"
+      },
+      "recommended": "Products You May Like"
     }
   },
   "success-toast": "Your password has been successfully reset."
