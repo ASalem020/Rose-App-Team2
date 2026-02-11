@@ -1,4 +1,3 @@
-import AddAddress from './_components/add-address';
 import Addresses from './_components/addresses';
 import StepsProgress from './_components/steps-progress';
 
@@ -17,9 +16,6 @@ export default function Page() {
 
         {/* Addresses */}
         <Addresses />
-
-        {/* Add Address */}
-        <AddAddress />
       </div>
     </div>
   );
