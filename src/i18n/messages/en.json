@@ -352,6 +352,21 @@
             "required": "Please enter your coupon code"
           }
         }
+      },
+      "payment-methods": {
+        "title": "Payment Methods",
+        "back": "Back",
+        "methods": {
+          "cash": {
+            "title": "Cash on Delivery",
+            "description": "Pay when you receive the product"
+          },
+          "credit-card": {
+            "title": "Credit Card",
+            "description": "Pay with a credit card"
+          }
+        },
+        "checkout": "Checkout"
       }
     }
   },

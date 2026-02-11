@@ -1,4 +1,5 @@
 import Addresses from './_components/addresses';
+import PaymentMethods from './_components/payment-methods';
 import StepsProgress from './_components/steps-progress';
 
 export default function Page() {
@@ -10,6 +11,9 @@ export default function Page() {
 
         {/* Addresses */}
         <Addresses />
+
+        {/* Payment Methods */}
+        <PaymentMethods />
       </div>
     </div>
   );
