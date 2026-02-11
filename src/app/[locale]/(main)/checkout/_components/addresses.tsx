@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
 import AddAddress from './add-address';
 import { useTranslations } from 'next-intl';
+import PriceSummary from './price-summary';
 
 export default function Addresses() {
   // Translation
@@ -23,6 +24,8 @@ export default function Addresses() {
       <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
         {t('title')}
       </h3>
+
+      {/* Addresses */}
       <div className="addresses flex flex-col gap-3">
         <div className="container flex max-h-[20.9375rem] flex-col gap-3 overflow-y-auto">
           {isLoading && <LoadingComponent />}
@@ -60,6 +63,9 @@ export default function Addresses() {
           </Button>
         </div>
       </div>
+
+      {/* Price Summary */}
+      <PriceSummary />
     </>
   );
 }

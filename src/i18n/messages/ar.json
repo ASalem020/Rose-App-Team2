@@ -327,6 +327,24 @@
         "add-new-address": "أضف عنوان جديد",
         "no-addresses": "لا توجد عناوين ، برجاء اضافة عنوان",
         "next": "التالي"
+      },
+      "price-summary": {
+        "title": "الملخص",
+        "coupon-placeholder": "أدخل رمز الخصم",
+        "apply": "تطبيق الكود",
+        "coupon-applied": "تم تطبيق الكود بنجاح",
+        "coupon-error": "كود الخصم غير صحيح او غير متاح",
+        "remove-coupon": "إزالة الكود",
+        "no-coupons": "لا توجد أكواد خصم مطبقة",
+        "sub-total": "المجموع الفرعي",
+        "discount": "خصم",
+        "no-discount": "لا يوجد خصم",
+        "total": "المجموع",
+        "validation": {
+          "coupon": {
+            "required": "الرجاء إدخال كود الخصم"
+          }
+        }
       }
     }
   },

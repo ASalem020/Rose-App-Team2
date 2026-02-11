@@ -334,6 +334,24 @@
         "add-new-address": "Add a New Address",
         "no-addresses": "You don't have any addresses, please add one",
         "next": "Next"
+      },
+      "price-summary": {
+        "title": "Summary",
+        "coupon-placeholder": "Enter your coupon code",
+        "apply": "Apply Coupon",
+        "coupon-applied": "Coupon applied successfully",
+        "coupon-error": "Coupon not found or invalid",
+        "remove-coupon": "Remove Coupon",
+        "no-coupons": "No coupons applied",
+        "sub-total": "Sub Total",
+        "discount": "Discount",
+        "no-discount": "No discount",
+        "total": "Total",
+        "validation": {
+          "coupon": {
+            "required": "Please enter your coupon code"
+          }
+        }
       }
     }
   },
