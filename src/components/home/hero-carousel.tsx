@@ -90,7 +90,7 @@ export default function CarouselDemo() {
                       className="w-fit rounded-xl bg-white text-maroon-600"
                     >
                       <Link href="/products">
-                        I'm buying!
+                        I&apos;m buying!
                       </Link>
                     </Button>
                   </div>

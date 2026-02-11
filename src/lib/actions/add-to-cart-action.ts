@@ -1,12 +1,13 @@
 'use server';
 
 import { getToken } from '@/lib/utils/get-token';
+import { Product } from '../types/product';
 
 export async function addToCartAction({
   product,
   quantity,
 }: {
-  product: string;
+  product: Product;
   quantity: number;
 }) {
   const jwt = await getToken();
@@ -19,7 +20,10 @@ export async function addToCartAction({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt?.accessToken}`,
       },
-      body: JSON.stringify({ product, quantity }),
+      body: JSON.stringify({
+        product: product._id,
+        quantity: quantity,
+      }),
     },
   );
 

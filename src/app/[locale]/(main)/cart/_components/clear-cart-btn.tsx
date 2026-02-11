@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { clearUserCartAction } from '@/lib/actions/clear-user-cart-action';
 import { BrushCleaning } from 'lucide-react';
 import React from 'react';
-import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 export default function ClearCartBtn() {
@@ -12,15 +11,17 @@ export default function ClearCartBtn() {
   const t = useTranslations('pages.cart');
 
   // Hooks
-  const router = useRouter();
 
   // Handlers
   const clearCartHandler = async () => {
     // Clear the user cart
     await clearUserCartAction();
 
+    // Remove the cart from localStorage
+    localStorage.removeItem('cart');
+
     // Refresh the page
-    router.refresh();
+    window.location.reload();
   };
   return (
     // Clear cart button

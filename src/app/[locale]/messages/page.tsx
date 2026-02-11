@@ -18,7 +18,7 @@ import MessageItem from './_components/message-item';
 export default async function MessagesPage({
   params: { locale },
 }: {
-  params: { locale: string };
+  params: { locale: 'en' | 'ar' };
 }) {
   // Translations
   const t = await getTranslations();

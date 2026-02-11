@@ -50,12 +50,12 @@ export default function About() {
         <div className="flex w-11/12 flex-col gap-2">
           <h3 className="text-3xl font-bold text-maroon-700 dark:text-softPink-200">
             {t.rich('title', {
-              finest: chunk => (
+              finest: (chunk: string) => (
                 <span className="text-softPink-500 dark:text-maroon-400">
                   {chunk}
                 </span>
               ),
-              special: chunk => (
+              special: (chunk: string) => (
                 <span className="text-softPink-500 dark:text-maroon-400">
                   {chunk}
                 </span>

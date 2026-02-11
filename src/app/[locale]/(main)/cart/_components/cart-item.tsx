@@ -2,12 +2,12 @@
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useRouter } from '@/i18n/navigation';
 import { addToCartAction } from '@/lib/actions/add-to-cart-action';
 import { removeCartItemAction } from '@/lib/actions/remove-cart-item-action';
 import { updateCartQuantityAction } from '@/lib/actions/update-cart-quantity';
 import { CartItem as TCartItem } from '@/lib/types/cart';
 import { Minus, Plus, Star, Trash2 } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useState } from 'react';
@@ -23,9 +23,10 @@ export default function CartItem({ item }: CartItemProps) {
 
   // States
   const [quantity, setQuantity] = useState(item.quantity);
+  const { status } = useSession();
 
-  // Hooks
-  const router = useRouter();
+  // variables
+  const isLoggedIn = status === 'authenticated';
 
   // Handlers
   // Increase button handler
@@ -36,9 +37,36 @@ export default function CartItem({ item }: CartItemProps) {
     // Set the new quantity
     setQuantity(newQuantity);
 
+    // store in localStorage
+    if (!isLoggedIn) {
+      const storedCart = localStorage.getItem('cart');
+
+      const cartData = JSON.parse(storedCart || '[]');
+
+      const existingProductIndex =
+        cartData.cart.cartItems.findIndex(
+          (cartItem: TCartItem) =>
+            cartItem.product._id === item.product._id,
+        );
+
+      // Product already exists → increase quantity only
+      if (existingProductIndex !== -1) {
+        cartData.cart.cartItems[
+          existingProductIndex
+        ].quantity += 1;
+      }
+
+      // save cart to local storage
+      localStorage.setItem(
+        'cart',
+        JSON.stringify(cartData),
+      );
+      return;
+    }
+
     // Add the item to the cart
     await addToCartAction({
-      product: item.product._id,
+      product: item.product,
       quantity: 1,
     });
   };
@@ -56,6 +84,33 @@ export default function CartItem({ item }: CartItemProps) {
     // Set the new quantity
     setQuantity(newQuantity);
 
+    // store in localStorage
+    if (!isLoggedIn) {
+      const storedCart = localStorage.getItem('cart');
+
+      const cartData = JSON.parse(storedCart || '[]');
+
+      const existingProductIndex =
+        cartData.cart.cartItems.findIndex(
+          (cartItem: TCartItem) =>
+            cartItem.product._id === item.product._id,
+        );
+
+      // Product already exists → decrease quantity only
+      if (existingProductIndex !== -1) {
+        cartData.cart.cartItems[
+          existingProductIndex
+        ].quantity -= 1;
+      }
+
+      // save cart to local storage
+      localStorage.setItem(
+        'cart',
+        JSON.stringify(cartData),
+      );
+      return;
+    }
+
     // Update the cart quantity
     await updateCartQuantityAction({
       productId: item.product._id,
@@ -65,13 +120,45 @@ export default function CartItem({ item }: CartItemProps) {
 
   // Remove button handler
   const removeBtnHandler = async () => {
+    // remove from localStorage if guest
+    if (!isLoggedIn) {
+      const storedCart = localStorage.getItem('cart');
+      const cartData = JSON.parse(storedCart || '[]');
+
+      const existingProductIndex =
+        cartData?.cart?.cartItems.findIndex(
+          (cartItem: TCartItem) =>
+            cartItem.product._id === item.product._id,
+        );
+
+      // Product already exists → remove it
+      if (existingProductIndex !== -1) {
+        cartData.cart.cartItems.splice(
+          existingProductIndex,
+          1,
+        );
+      }
+
+      // save cart to local storage
+      localStorage.setItem(
+        'cart',
+        JSON.stringify(cartData),
+      );
+
+      // reload page to update the cart
+      window.location.reload();
+
+      return;
+    }
+
+    // if user
     // Remove the item from the cart
     await removeCartItemAction({
       productId: item.product._id,
     });
 
     // Refresh the page to remove the item from the cart
-    router.refresh();
+    window.location.reload();
   };
 
   // Input handler
@@ -139,7 +226,7 @@ export default function CartItem({ item }: CartItemProps) {
               (×{quantity})
             </span>
             <span className="ms-1 text-2xl font-bold">
-              {item.price * quantity}
+              {item.product.price * quantity}
             </span>
             <span className="ms-1 font-medium">
               {t('currency')}
