@@ -10,15 +10,21 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { useTranslations } from 'next-intl';
 
 export default function AddAddress() {
+  // Translation
+  const t = useTranslations(
+    'pages.checkout.shipping-addresses',
+  );
+
   return (
     <div className="add-address flex flex-col gap-2.5 border-b border-zinc-100">
       {/* OR UI */}
       <div className="flex items-center gap-2.5 py-2">
         <span className="line flex-1 border border-zinc-100"></span>
         <span className="text text-base font-semibold text-zinc-500 md:text-lg">
-          OR
+          {t('or')}
         </span>
         <span className="line flex-1 border border-zinc-100"></span>
       </div>
@@ -28,7 +34,7 @@ export default function AddAddress() {
         {/* Trigger */}
         <AlertDialogTrigger asChild>
           <Button variant="secondary">
-            Add a New Address
+            {t('add-new-address')}
           </Button>
         </AlertDialogTrigger>
 

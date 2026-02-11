@@ -326,6 +326,15 @@
         "try-again": "Try Again",
         "back": "Go Back"
       }
+    },
+    "checkout": {
+      "shipping-addresses": {
+        "title": "Shipping Addresses",
+        "or": "OR",
+        "add-new-address": "Add a New Address",
+        "no-addresses": "You don't have any addresses, please add one",
+        "next": "Next"
+      }
     }
   },
   "success-toast": "Your password has been successfully reset."

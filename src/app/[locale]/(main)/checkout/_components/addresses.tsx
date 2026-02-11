@@ -6,8 +6,14 @@ import LoadingComponent from '@/components/shared/loading-component';
 import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
 import AddAddress from './add-address';
+import { useTranslations } from 'next-intl';
 
 export default function Addresses() {
+  // Translation
+  const t = useTranslations(
+    'pages.checkout.shipping-addresses',
+  );
+
   // Hooks
   const { addresses, isLoading, error } = useAddress();
 
@@ -15,7 +21,7 @@ export default function Addresses() {
     <>
       {/* Title */}
       <h3 className="mb-6 text-2xl font-semibold md:text-3xl">
-        Shipping Addresses
+        {t('title')}
       </h3>
       <div className="addresses flex flex-col gap-3">
         <div className="container flex max-h-[20.9375rem] flex-col gap-3 overflow-y-auto">
@@ -27,8 +33,7 @@ export default function Addresses() {
 
           {addresses?.length === 0 ? (
             <p className="py-2 text-center text-base font-semibold text-zinc-500">
-              You {"don't"} have any addresses , please add
-              one
+              {t('no-addresses')}
             </p>
           ) : (
             addresses?.map(address => (
@@ -48,8 +53,10 @@ export default function Addresses() {
         {/* Next Step */}
         <div className="flex">
           <Button className="ms-auto flex items-center gap-2.5">
-            <span>Next</span>
-            <MoveRight size={20} />
+            <span>{t('next')}</span>
+            <span className="rtl:rotate-180">
+              <MoveRight size={20} />
+            </span>
           </Button>
         </div>
       </div>
