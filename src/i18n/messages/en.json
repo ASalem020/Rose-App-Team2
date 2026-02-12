@@ -367,7 +367,36 @@
           }
         },
         "checkout": "Checkout"
-      }
+      },
+      "validation": {
+        "address": {
+          "required": "Please select an address"
+        },
+          "shippingAddress": {
+            "street": {
+              "required": "Please select an address"
+            },
+            "phone": {
+              "required": "Please enter your phone number"
+            },
+            "city": {
+              "required": "Please enter your city"
+            },
+            "lat": {
+              "required": "Please enter your latitude"
+            },
+            "long": {
+              "required": "Please enter your longitude"
+            }
+          },
+          "payment-method": {
+            "required": "Please select a payment method"
+          },
+          "coupon": {
+            "required": "Please enter your coupon code"
+          }
+        },
+        "success": "Checkout session created successfully, Continue Shopping!"
     }
   },
   "success-toast": "Your password has been successfully reset."

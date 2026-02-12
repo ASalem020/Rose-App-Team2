@@ -7,6 +7,7 @@ type PaymentMethodProps = {
   title: string;
   description: string;
   selected?: boolean;
+  onClick: () => void;
 };
 
 export default function PaymentMethod({
@@ -14,9 +15,11 @@ export default function PaymentMethod({
   title,
   description,
   selected,
+  onClick,
 }: PaymentMethodProps) {
   return (
     <div
+      onClick={onClick}
       className={cn(
         'method flex cursor-pointer flex-col gap-2.5 rounded-xl border border-zinc-200 p-4 duration-500 hover:bg-zinc-50',
         selected && 'bg-zinc-50',
@@ -30,6 +33,7 @@ export default function PaymentMethod({
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-contain"
+          priority
         />
       </div>
 

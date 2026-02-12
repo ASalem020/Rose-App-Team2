@@ -1,19 +1,11 @@
-import Addresses from './_components/addresses';
-import PaymentMethods from './_components/payment-methods';
-import StepsProgress from './_components/steps-progress';
+import CheckoutContent from './_components/checkout-content';
 
 export default function Page() {
   return (
     <div className="checkout-page mb-16">
       <div className="container mx-auto mt-16 px-5">
-        {/* Steps Progress */}
-        <StepsProgress currentStep={1} />
-
-        {/* Addresses */}
-        <Addresses />
-
-        {/* Payment Methods */}
-        <PaymentMethods />
+        {/* CheckoutContent - Create this Component to prevent make route client side */}
+        <CheckoutContent />
       </div>
     </div>
   );

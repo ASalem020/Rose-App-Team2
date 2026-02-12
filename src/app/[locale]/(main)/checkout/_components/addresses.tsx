@@ -7,12 +7,32 @@ import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
 import AddAddress from './add-address';
 import { useTranslations } from 'next-intl';
-import PriceSummary from './price-summary';
+import {
+  UseFormGetValues,
+  UseFormSetValue,
+} from 'react-hook-form';
+import { useState } from 'react';
+import { CheckoutSchemaType } from '@/lib/types/checkout';
 
-export default function Addresses() {
-  // Translation
+type AddressesProps = {
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  setValue: UseFormSetValue<CheckoutSchemaType>;
+  getValues: UseFormGetValues<CheckoutSchemaType>;
+};
+
+export default function Addresses({
+  setStep,
+  setValue,
+  getValues,
+}: AddressesProps) {
+  // Translations
   const t = useTranslations(
     'pages.checkout.shipping-addresses',
+  );
+
+  // States
+  const [selected, setSelected] = useState<string | null>(
+    getValues('shippingAddress.street') || null,
   );
 
   // Hooks
@@ -45,6 +65,17 @@ export default function Addresses() {
                 city={address.city}
                 address={address.street}
                 phone={address.phone}
+                onClick={() => {
+                  setSelected(address.street);
+                  setValue('shippingAddress', {
+                    street: address.street,
+                    phone: address.phone,
+                    city: address.city,
+                    lat: address.lat,
+                    long: address.long,
+                  });
+                }}
+                selected={selected === address.street}
               />
             ))
           )}
@@ -55,7 +86,10 @@ export default function Addresses() {
 
         {/* Next Step */}
         <div className="flex">
-          <Button className="ms-auto flex items-center gap-2.5">
+          <Button
+            className="ms-auto flex items-center gap-2.5"
+            onClick={() => setStep(2)}
+          >
             <span>{t('next')}</span>
             <span className="rtl:rotate-180">
               <MoveRight size={20} />
@@ -63,9 +97,6 @@ export default function Addresses() {
           </Button>
         </div>
       </div>
-
-      {/* Price Summary */}
-      <PriceSummary />
     </>
   );
 }

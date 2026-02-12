@@ -51,8 +51,8 @@ export default function StepsProgress({
             >
               {step}
             </div>
-            {/* Line */}
 
+            {/* Line */}
             <div
               className={cn(
                 'h-1.5 flex-1 bg-zinc-200',
@@ -65,6 +65,9 @@ export default function StepsProgress({
                   isLineActive ? 'w-full' : 'w-0',
                   i === steps.length - 1 &&
                     'rounded-e-full',
+                  i === steps.length - 1 &&
+                    isLineActive &&
+                    'delay-1000',
                 )}
               />
             </div>

@@ -3,7 +3,7 @@
 import ErrorMessage from '@/components/shared/error-message';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { validCoupon } from '@/lib/schemas/checkout.schema';
+import { applyCouponSchema } from '@/lib/schemas/checkout.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TicketPercent } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -38,7 +38,7 @@ export default function ApplyCoupon({
     defaultValues: {
       coupon: '',
     },
-    resolver: zodResolver(validCoupon(t)),
+    resolver: zodResolver(applyCouponSchema(t)),
   });
 
   // Functions

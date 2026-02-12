@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '@/lib/utils/tailwind-merge';
 import { Phone } from 'lucide-react';
 
@@ -6,6 +7,7 @@ type AddressCardProps = {
   address: string;
   phone: string;
   selected?: boolean;
+  onClick: () => void;
 };
 
 export default function AddressCard({
@@ -13,10 +15,12 @@ export default function AddressCard({
   address,
   phone,
   selected,
+  onClick,
 }: AddressCardProps) {
   return (
     <div
       data-selected={selected}
+      onClick={onClick}
       className="address-card group: cursor-pointer rounded-xl border border-zinc-300 px-4 py-3.5 duration-300 hover:bg-zinc-50 data-[selected=true]:bg-maroon-600 data-[selected=true]:text-white"
     >
       {/* Header */}

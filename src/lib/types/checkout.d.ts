@@ -1,3 +1,6 @@
+import z from 'zod';
+import { checkoutSchema } from '../schemas/checkout.schema';
+
 export type CartProduct = Omit<
   Product,
   '__v' | 'isSuperAdmin' | 'isInWishlist' | 'favoriteId'
@@ -45,3 +48,7 @@ interface ApplyCouponError {
 export type ApplyCouponResponse =
   | ApplyCouponSuccess
   | ApplyCouponError;
+
+export type CheckoutSchemaType = z.infer<
+  ReturnType<typeof checkoutSchema>
+>;

@@ -4,11 +4,32 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, MoveRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import PaymentMethod from './payment-method';
+import {
+  UseFormGetValues,
+  UseFormSetValue,
+} from 'react-hook-form';
+import { useState } from 'react';
+import { CheckoutSchemaType } from '@/lib/types/checkout';
 
-export default function PaymentMethods() {
+type PaymentMethodsProps = {
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  setValue: UseFormSetValue<CheckoutSchemaType>;
+  getValues: UseFormGetValues<CheckoutSchemaType>;
+};
+
+export default function PaymentMethods({
+  setStep,
+  setValue,
+  getValues,
+}: PaymentMethodsProps) {
   // Translation
   const t = useTranslations(
     'pages.checkout.payment-methods',
+  );
+
+  // States
+  const [selected, setSelected] = useState<string | null>(
+    getValues('payment-method') || null,
   );
 
   return (
@@ -16,7 +37,10 @@ export default function PaymentMethods() {
       {/* Header ( Title & Back ) */}
       <div className="header mb-6 flex items-center gap-4">
         {/* Back */}
-        <Button className="bg-zinc-100 p-2.5 text-zinc-800 hover:bg-zinc-200 hover:text-zinc-800">
+        <Button
+          onClick={() => setStep(1)}
+          className="bg-zinc-100 p-2.5 text-zinc-800 hover:bg-zinc-200 hover:text-zinc-800"
+        >
           <ArrowLeft size={20} className="rtl:rotate-180" />
           <span className="text-sm">{t('back')}</span>
         </Button>
@@ -35,6 +59,11 @@ export default function PaymentMethods() {
             imgSrc="/assets/images/payment-methods/cash.png"
             title={t('methods.cash.title')}
             description={t('methods.cash.description')}
+            onClick={() => {
+              setSelected('cash');
+              setValue('payment-method', 'cash');
+            }}
+            selected={selected === 'cash'}
           />
 
           {/* Credit Card Method */}
@@ -44,7 +73,11 @@ export default function PaymentMethods() {
             description={t(
               'methods.credit-card.description',
             )}
-            selected
+            onClick={() => {
+              setSelected('credit-card');
+              setValue('payment-method', 'credit-card');
+            }}
+            selected={selected === 'credit-card'}
           />
         </div>
 
