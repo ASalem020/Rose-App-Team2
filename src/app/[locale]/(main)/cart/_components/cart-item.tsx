@@ -40,6 +40,7 @@ export default function CartItem({ item }: CartItemProps) {
       isLoggedIn,
       item,
     );
+
   // Decrease button handler
   const onDecrease = () =>
     decreaseBtnHandler(
@@ -48,6 +49,7 @@ export default function CartItem({ item }: CartItemProps) {
       isLoggedIn,
       item,
     );
+    
   // Remove button handler
   const onRemove = () => removeBtnHandler(isLoggedIn, item);
 

@@ -3,7 +3,6 @@ import { removeCartItemAction } from '@/lib/actions/remove-cart-item-action';
 import { updateCartQuantityAction } from '@/lib/actions/update-cart-quantity';
 import { CartItem as TCartItem } from '@/lib/types/cart';
 
-// Handlers
 // Increase button handler
 export const increaseBtnHandler = async (
   quantity: number,
