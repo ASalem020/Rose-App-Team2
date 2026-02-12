@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import {
   MapPin,
   Search as SearchIcon,
@@ -97,12 +97,15 @@ export async function Header() {
             </button>
 
             {/* cart button */}
-            <button className="relative text-zinc-500 transition-colors hover:text-maroon-600 dark:text-zinc-400 dark:hover:text-softPink-300">
+            <Link
+              href={'/cart'}
+              className="relative text-zinc-500 transition-colors hover:text-maroon-600 dark:text-zinc-400 dark:hover:text-softPink-300"
+            >
               <ShoppingCart className="h-6 w-6" />
               <span className="absolute -end-2.5 -top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-white ring-2 ring-white">
                 8
               </span>
-            </button>
+            </Link>
 
             {/* notification button */}
             <button className="relative text-zinc-500 transition-colors hover:text-maroon-600 dark:text-zinc-400 dark:hover:text-softPink-300">
