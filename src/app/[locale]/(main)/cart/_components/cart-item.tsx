@@ -2,15 +2,18 @@
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { addToCartAction } from '@/lib/actions/add-to-cart-action';
-import { removeCartItemAction } from '@/lib/actions/remove-cart-item-action';
-import { updateCartQuantityAction } from '@/lib/actions/update-cart-quantity';
 import { CartItem as TCartItem } from '@/lib/types/cart';
 import { Minus, Plus, Star, Trash2 } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import {
+  decreaseBtnHandler,
+  increaseBtnHandler,
+  inputHandler,
+  removeBtnHandler,
+} from '../_utils/cart-item-utils';
 
 // Cart item props
 type CartItemProps = {
@@ -30,144 +33,39 @@ export default function CartItem({ item }: CartItemProps) {
 
   // Handlers
   // Increase button handler
-  const increaseBtnHandler = async () => {
-    // Increase the quantity
-    const newQuantity = quantity + 1;
-
-    // Set the new quantity
-    setQuantity(newQuantity);
-
-    // store in localStorage
-    if (!isLoggedIn) {
-      const storedCart = localStorage.getItem('cart');
-
-      const cartData = JSON.parse(storedCart || '[]');
-
-      const existingProductIndex =
-        cartData.cart.cartItems.findIndex(
-          (cartItem: TCartItem) =>
-            cartItem.product._id === item.product._id,
-        );
-
-      // Product already exists → increase quantity only
-      if (existingProductIndex !== -1) {
-        cartData.cart.cartItems[
-          existingProductIndex
-        ].quantity += 1;
-      }
-
-      // save cart to local storage
-      localStorage.setItem(
-        'cart',
-        JSON.stringify(cartData),
-      );
-      return;
-    }
-
-    // Add the item to the cart
-    await addToCartAction({
-      product: item.product,
-      quantity: 1,
-    });
-  };
-
+  const onIncrease = () =>
+    increaseBtnHandler(
+      quantity,
+      setQuantity,
+      isLoggedIn,
+      item,
+    );
   // Decrease button handler
-  const decreaseBtnHandler = async () => {
-    // Decrease the quantity
-    const newQuantity = quantity - 1;
-
-    // If the quantity is 0, do nothing
-    if (newQuantity === 0) {
-      return;
-    }
-
-    // Set the new quantity
-    setQuantity(newQuantity);
-
-    // store in localStorage
-    if (!isLoggedIn) {
-      const storedCart = localStorage.getItem('cart');
-
-      const cartData = JSON.parse(storedCart || '[]');
-
-      const existingProductIndex =
-        cartData.cart.cartItems.findIndex(
-          (cartItem: TCartItem) =>
-            cartItem.product._id === item.product._id,
-        );
-
-      // Product already exists → decrease quantity only
-      if (existingProductIndex !== -1) {
-        cartData.cart.cartItems[
-          existingProductIndex
-        ].quantity -= 1;
-      }
-
-      // save cart to local storage
-      localStorage.setItem(
-        'cart',
-        JSON.stringify(cartData),
-      );
-      return;
-    }
-
-    // Update the cart quantity
-    await updateCartQuantityAction({
-      productId: item.product._id,
-      quantity: newQuantity,
-    });
-  };
-
+  const onDecrease = () =>
+    decreaseBtnHandler(
+      quantity,
+      setQuantity,
+      isLoggedIn,
+      item,
+    );
   // Remove button handler
-  const removeBtnHandler = async () => {
-    // remove from localStorage if guest
-    if (!isLoggedIn) {
-      const storedCart = localStorage.getItem('cart');
-      const cartData = JSON.parse(storedCart || '[]');
-
-      const existingProductIndex =
-        cartData?.cart?.cartItems.findIndex(
-          (cartItem: TCartItem) =>
-            cartItem.product._id === item.product._id,
-        );
-
-      // Product already exists → remove it
-      if (existingProductIndex !== -1) {
-        cartData.cart.cartItems.splice(
-          existingProductIndex,
-          1,
-        );
-      }
-
-      // save cart to local storage
-      localStorage.setItem(
-        'cart',
-        JSON.stringify(cartData),
-      );
-
-      // reload page to update the cart
-      window.location.reload();
-
-      return;
-    }
-
-    // if user
-    // Remove the item from the cart
-    await removeCartItemAction({
-      productId: item.product._id,
-    });
-
-    // Refresh the page to remove the item from the cart
-    window.location.reload();
-  };
+  const onRemove = () => removeBtnHandler(isLoggedIn, item);
 
   // Input handler
-  const inputHandler = async () => {
-    // Update the cart quantity with input value
-    await updateCartQuantityAction({
-      productId: item.product._id,
-      quantity,
-    });
+  const onInputBlur = () =>
+    inputHandler(item, quantity, setQuantity, isLoggedIn);
+
+  // on input change handler
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const val = e.target.value;
+    // If input is cleared or set to 0, force it to 1
+    if (val === '' || parseInt(val) < 1) {
+      setQuantity(1);
+    } else if (/^\d+$/.test(val)) {
+      setQuantity(parseInt(val));
+    }
   };
 
   return (
@@ -213,7 +111,7 @@ export default function CartItem({ item }: CartItemProps) {
           <Button
             className="w-24"
             variant={'destructive'}
-            onClick={() => removeBtnHandler()}
+            onClick={onRemove}
           >
             <Trash2 /> {t('remove')}
           </Button>
@@ -239,29 +137,29 @@ export default function CartItem({ item }: CartItemProps) {
             <Button
               variant={'secondary'}
               className="size-12 px-4 py-2"
-              onClick={() => decreaseBtnHandler()}
+              onClick={onDecrease}
             >
               <Minus size={20} />
             </Button>
 
             {/* Quantity input */}
             <Input
+              inputMode="numeric"
+              min="1"
               width={100}
               height={50}
               className="h-12 w-24"
               placeholder={item.quantity.toString()}
               value={quantity}
-              onChange={e => {
-                setQuantity(Number(e.target.value));
-              }}
-              onBlur={() => inputHandler()}
+              onChange={onChangeHandler}
+              onBlur={onInputBlur}
             />
 
             {/* Increase button */}
             <Button
               variant={'secondary'}
               className="size-12 px-4 py-2"
-              onClick={() => increaseBtnHandler()}
+              onClick={onIncrease}
             >
               <Plus size={20} />
             </Button>

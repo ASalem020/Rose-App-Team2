@@ -1,4 +1,4 @@
-import { getCartService } from '@/lib/services/cart-service';
+import { getCartService } from '@/lib/services/cart.service';
 import { useQuery } from '@tanstack/react-query';
 
 export const useGetCart = ({

@@ -7,7 +7,7 @@ export default function CartEmpty() {
   const t = useTranslations('pages.cart');
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex min-h-96 flex-col items-center justify-center">
       <Image
         src="/assets/images/cart/cart-empty.svg"
         alt="empty-cart"
