@@ -107,7 +107,7 @@ export default function CartContainer() {
             {cartItems.length} {t('products')}
           </span>
         </h2>
-        <ClearCartBtn />
+        <ClearCartBtn cartLength={cartItems.length} />
       </div>
 
       {/* Cart items */}

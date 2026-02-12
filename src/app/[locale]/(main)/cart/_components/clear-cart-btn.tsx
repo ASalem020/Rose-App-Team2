@@ -6,7 +6,11 @@ import { BrushCleaning } from 'lucide-react';
 import React from 'react';
 import { useTranslations } from 'next-intl';
 
-export default function ClearCartBtn() {
+export default function ClearCartBtn({
+  cartLength,
+}: {
+  cartLength: number;
+}) {
   // translation
   const t = useTranslations('pages.cart');
 
@@ -27,6 +31,7 @@ export default function ClearCartBtn() {
     // Clear cart button
     <Button
       variant={'secondary'}
+      disabled={cartLength == 0}
       className="text-sm font-semibold text-maroon-600 dark:text-maroon-400"
       onClick={() => clearCartHandler()}
     >
