@@ -396,7 +396,10 @@
             "required": "Please enter your coupon code"
           }
         },
-        "success": "Checkout session created successfully, Continue Shopping!"
+        "success": {
+          "credit": "Credit card checkout session created successfully, Continue Shopping!",
+          "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
+        }
     }
   },
   "success-toast": "Your password has been successfully reset."

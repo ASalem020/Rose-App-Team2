@@ -52,7 +52,9 @@ export default function CheckoutContent() {
   > = values =>
     mutate(values, {
       onSuccess: () => {
-        toast.success(t('checkout.success'));
+        if (values['payment-method'] === 'credit-card')
+          toast.success(t('checkout.success.credit'));
+        else toast.success(t('checkout.success.cash'));
         router.push('/products');
       },
     });
