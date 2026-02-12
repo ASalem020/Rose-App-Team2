@@ -3,7 +3,6 @@ import Image from 'next/image';
 import React from 'react';
 
 type PaymentMethodProps = {
-  imgSrc: string;
   title: string;
   description: string;
   selected?: boolean;
@@ -11,7 +10,6 @@ type PaymentMethodProps = {
 };
 
 export default function PaymentMethod({
-  imgSrc,
   title,
   description,
   selected,
@@ -28,7 +26,12 @@ export default function PaymentMethod({
       {/* Image */}
       <div className="image-container relative mx-auto size-44 md:size-48">
         <Image
-          src={imgSrc}
+          src={
+            title.includes('Cash') ||
+            title.includes('عند الاستلام')
+              ? '/assets/images/payment-methods/cash.png'
+              : '/assets/images/payment-methods/credit.png'
+          }
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

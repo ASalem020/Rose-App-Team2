@@ -56,7 +56,6 @@ export default function PaymentMethods({
         <div className="methods-container grid grid-cols-1 gap-4 p-2.5 md:grid-cols-2">
           {/* Cash Method */}
           <PaymentMethod
-            imgSrc="/assets/images/payment-methods/cash.png"
             title={t('methods.cash.title')}
             description={t('methods.cash.description')}
             onClick={() => {
@@ -68,7 +67,6 @@ export default function PaymentMethods({
 
           {/* Credit Card Method */}
           <PaymentMethod
-            imgSrc="/assets/images/payment-methods/credit.png"
             title={t('methods.credit-card.title')}
             description={t(
               'methods.credit-card.description',
