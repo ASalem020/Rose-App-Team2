@@ -128,11 +128,11 @@ export default function AddressList({
     );
   }
 
-  const tl = useTranslations('common.labels');
+  
 
   const normalizedAddresses: Address[] = (addresses || []).map((addr: any) => ({
     id: addr._id || addr.id,
-    name: addr.username || addr.name || addr.label || tl('address'),
+    name: addr.username || addr.name || addr.label  ,
     category: addr.category || addr.type || tc('other'),
     street: addr.street || addr.address || '',
     city: addr.city || '',          
@@ -192,7 +192,7 @@ export default function AddressList({
                   </div>
 
                   {/* Main Content */}
-                  <div  className="space-y-2">
+                  <div dir="ltr" className="space-y-2">
                     {/* First Line: City and Phone */}
                     <div  className="flex items-center justify-between px-2">
                       <div className="flex items-center gap-2">

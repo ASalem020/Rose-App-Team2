@@ -110,7 +110,7 @@ export default function AddressWizard({
    */
   const renderHeader = () => (
     <div className="mb-6">
-      <div className="flex justify-end">
+      <div className="flex justify-start rtl:justify-end ">
       <button
         type="button"
         onClick={handleBack}
