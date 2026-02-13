@@ -1,78 +1,113 @@
 'use client';
 
-import React, { useState } from 'react';
+
+// Imports
+
+
+import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import type { Address, AddressFormData, ViewMode } from '../../../lib/types/address';
+import type { Address } from '../../../lib/types/address';
 import AddressList from './address-list';
-import AddressForm from './address-form';
-import AddressMapStep from './address-map-step';
+import AddressWizard from './address-wizard';
+
+
+// Types
+
 
 interface AddressModalProps {
+  /** Callback function when an address is selected from the list */
   onAddressSelect?: (address: Address) => void;
+  /** Callback function when an address is successfully saved */
+  onSave?: () => void;
+  /** ID of the address that is currently marked as selected */
   selectedAddressId?: string | null;
+  /** Initial view mode for the modal */
+  initialView?: 'list' | 'wizard';
 }
 
+
+// Component
+
+
+/**
+ * AddressModal - Parent component that toggles between address list and creation wizard
+ *
+ * Features:
+ * - Switches between List View and Wizard View (Add/Edit)
+ * - Managed session-derived user info (name, phone)
+ * - State synchronization between list and wizard
+ *
+ * @param props - Component properties
+ */
 export default function AddressModal({
   onAddressSelect,
+  onSave,
   selectedAddressId,
+  initialView = 'list',
 }: AddressModalProps) {
+
+  // Context
+
+
   const { data: session } = useSession();
-  const [viewMode, setViewMode] = useState<ViewMode>('list');
+
+
+  // State
+
+
+  const [viewMode, setViewMode] = useState<'list' | 'wizard'>(initialView);
   const [currentAddress, setCurrentAddress] = useState<Address | null>(null);
-  const [formData, setFormData] = useState<AddressFormData | null>(null);
+
+
+  // Variables
+
 
   const username = session?.user
     ? `${session.user.firstName} ${session.user.lastName}`
     : '';
   const userPhone = session?.user?.phone || '';
 
-  // --- List callbacks ---
+
+  // Handlers
+
+
+  /**
+   * Reset data and switch to wizard for a new address
+   */
   const handleAddNew = () => {
     setCurrentAddress(null);
-    setFormData(null);
-    setViewMode('form');
+    setViewMode('wizard');
   };
 
+  /**
+   * Set the active address and switch to wizard for editing
+   * @param address - The address to be edited
+   */
   const handleEdit = (address: Address) => {
     setCurrentAddress(address);
-    setFormData({
-      id: address.id,
-      name: address.name,
-      street: address.street,
-      city: address.city,
-      phone: address.phone,
-    });
-    setViewMode('form');
+    setViewMode('wizard');
   };
 
-  // --- Form callbacks ---
-  const handleFormSubmit = (data: AddressFormData) => {
-    setFormData(data);
-    setViewMode('map');
-  };
-
-  const handleFormCancel = () => {
+  /**
+   * Return to list view after a successful save
+   */
+  const handleWizardSave = () => {
     setViewMode('list');
     setCurrentAddress(null);
-    setFormData(null);
+    onSave?.();
   };
 
-  // --- Map callbacks ---
-  const handleMapSave = () => {
+  /**
+   * Abort wizard and return to list view
+   */
+  const handleWizardCancel = () => {
     setViewMode('list');
     setCurrentAddress(null);
-    setFormData(null);
   };
 
-  const handleMapBack = () => {
-    setViewMode('form');
-  };
 
-  const handleMapCancel = () => {
-    setViewMode('list');
-    setCurrentAddress(null);
-    setFormData(null);
-  };
+  // Render
+
 
   return (
     <div className="w-full">
@@ -85,23 +120,13 @@ export default function AddressModal({
         />
       )}
 
-      {viewMode === 'form' && (
-        <AddressForm
-          initialData={formData}
-          onSubmit={handleFormSubmit}
-          onCancel={handleFormCancel}
-          defaultPhone={userPhone}
-        />
-      )}
-
-      {viewMode === 'map' && (
-        <AddressMapStep
-          formData={formData}
+      {viewMode === 'wizard' && (
+        <AddressWizard
           editingAddress={currentAddress}
           username={username}
-          onSave={handleMapSave}
-          onBack={handleMapBack}
-          onCancel={handleMapCancel}
+          defaultPhone={userPhone}
+          onSave={handleWizardSave}
+          onCancel={handleWizardCancel}
         />
       )}
     </div>
