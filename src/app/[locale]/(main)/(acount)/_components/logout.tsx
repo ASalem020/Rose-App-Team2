@@ -16,10 +16,10 @@ export default function Logout() {
   return (
     <Button
       onClick={() => signOut({callbackUrl: "/login"})}
-      className="flex items-center gap-2 cursor-pointer bg-zinc-100 px-6 py-3 font-bold text-maroon-500 hover:bg-zinc-200/50 tracking-wide"
+      className="flex items-center justify-start gap-2 cursor-pointer bg-zinc-100 px-6 py-3 font-bold text-maroon-500 hover:bg-zinc-200/50 tracking-wide"
     >
-      <LogOut />
-      {t('sidebar.Logout')}
+      <LogOut className='rotate-180'/>
+      {t('sidebar.logout')}
     </Button>
   );
 }

@@ -308,23 +308,23 @@
     "profile": {
       "title": "تعديل الملف الشخصي",
       "sidebar": {
-        "My-Account": "حسابي",
-        "Change-Password": "تغيير كلمة المرور",
-        "Logout": "تسجيل الخروج"
+        "my-account": "حسابي",
+        "change-password": "تغيير كلمة المرور",
+        "logout": "تسجيل الخروج"
       },
       "user-info": {
-        "First-name": "الأسم الأول",
-        "Last-name": "الأسم الثاني",
-        "Email": "البريد الإلكتروني",
+        "first-name": "الأسم الأول",
+        "last-name": "الأسم الثاني",
+        "email": "البريد الإلكتروني",
         "phone": "رقم الهاتف",
         "gender": "النوع",
-        "Old-Password": "كلمة المرور القديمة",
-        "New-Password": "كلمة المرور الجديدة",
-        "Confirm-New-Password": "تأكيد كلمة المرور الجديدة"
+        "old-password": "كلمة المرور القديمة",
+        "new-password": "كلمة المرور الجديدة",
+        "confirm-new-password": "تأكيد كلمة المرور الجديدة"
       },
-      "Save-Changes": "حفظ التغييرات",
-      "Delete-My-Account": "حذف الحساب",
-      "Change-Password": "تغيير كلمة المرور",
+      "save-changes": "حفظ التغييرات",
+      "delete-my-account": "حذف الحساب",
+      "change-password": "تغيير كلمة المرور",
        "dialog":{
         "title" : "هل أنت متأكد من رغبتك في حذف حسابك؟",
         "description" : "هذا الإجراء دائم ولا يمكن التراجع عنه.",

@@ -36,7 +36,7 @@ import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { DeleteAccountAlert } from './../_components/alert-dialog';
-import { useProfileInfo } from '../hooks/use-profile-info';
+import { useProfileInfo } from '../_hooks/use-profile-info';
 
 export default function Profile() {
   // ^ translations
@@ -44,7 +44,7 @@ export default function Profile() {
 
   //^ hooks
   const router = useRouter();
-  const { update } = useSession();
+  const { update, status } = useSession();
   const { userInfo } = useProfileInfo();
 
   // ^ form
@@ -78,7 +78,7 @@ export default function Profile() {
     }
   };
 
-  const handleDeleteMyAcount = async () => {
+  const handleDeleteMyAccount = async () => {
     const response = await deleteMyAcountAction();
     try {
       if (response.message == 'success') {
@@ -100,17 +100,24 @@ export default function Profile() {
   };
 
   //  ^ effect
-    useEffect(() => {
-      if (userInfo?.user) {
-        form.reset({
-          firstName: userInfo.user.firstName,
-          lastName: userInfo.user.lastName,
-          email: userInfo.user.email,
-          phone: userInfo.user.phone,
-          gender: userInfo.user.gender as 'male' | 'female' ,
-        });
-      }
-    }, [userInfo, form]);
+  useEffect(() => {
+    // ^ If you are not a user, we will redirect you to the login page.
+    if (status === 'unauthenticated') {
+      router.replace('/login');
+      return;
+    }
+
+    // ^ reset user Info
+    if (userInfo?.user) {
+      form.reset({
+        firstName: userInfo.user.firstName,
+        lastName: userInfo.user.lastName,
+        email: userInfo.user.email,
+        phone: userInfo.user.phone,
+        gender: userInfo.user.gender as 'male' | 'female',
+      });
+    }
+  }, [status, userInfo, form, router]);
 
   return (
     <Form {...form}>
@@ -127,14 +134,10 @@ export default function Profile() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  {t('user-info.First-name')}
+                  {t('user-info.first-name')}
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Yassa"
-                    {...field}
-                  />
+                  <Input type="text" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -148,14 +151,10 @@ export default function Profile() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  {t('user-info.Last-name')}
+                  {t('user-info.last-name')}
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Mazhar"
-                    {...field}
-                  />
+                  <Input type="text" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -169,13 +168,9 @@ export default function Profile() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('user-info.Email')}</FormLabel>
+              <FormLabel>{t('user-info.email')}</FormLabel>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="yassamazhar4@gmail.com"
-                  {...field}
-                />
+                <Input type="email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -201,26 +196,43 @@ export default function Profile() {
         />
 
         {/* Gender Select */}
-        <Select>
-          <SelectTrigger className="">
-            <SelectValue
-              placeholder={t('user-info.gender')}
-            />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="male">male</SelectItem>
-              <SelectItem value="female">female</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <FormField
+          control={form.control}
+          name="gender"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t('user-info.gender')}</FormLabel>
+              <Select
+                value={field.value}
+                onValueChange={field.onChange}
+              >
+                <SelectTrigger className="">
+                  <SelectValue
+                    placeholder={t('user-info.gender')}
+                  />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="male">
+                      male
+                    </SelectItem>
+                    <SelectItem value="female">
+                      female
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <div className="mt-16 flex items-center justify-between">
           <DeleteAccountAlert
-            onConfirm={handleDeleteMyAcount}
+            onConfirm={handleDeleteMyAccount}
           />
           <Button className="h-10 rounded-md bg-maroon-600 font-semibold text-white hover:bg-maroon-800">
-            {t('Save-Changes')}
+            {t('save-changes')}
           </Button>
         </div>
       </form>

@@ -27,7 +27,7 @@ export function DeleteAccountAlert({ onConfirm }: Props) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="h-11 border-none text-maroon-500 font-semibold" variant="outline">{t('Delete-My-Account')}</Button>
+        <Button className="h-11 border-none text-maroon-500 font-semibold" variant="outline">{t('delete-my-account')}</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

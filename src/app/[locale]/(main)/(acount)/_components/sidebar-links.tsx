@@ -16,27 +16,27 @@ export default function SideBarLinks() {
       {/* profile */}
       <Link
         href={'/profile'}
-        className={`flex items-center gap-3 p-4 mb-2 rounded-md ${
+        className={`flex items-center gap-3 rounded-lg px-4 py-3 mb-2 ${
           pathname === '/profile'
             ? 'bg-zinc-800 text-white '
             : 'hover:bg-gray-200/50'
         }`}
       >
         <CircleUser />
-        {t('sidebar.My-Account')}
+        {t('sidebar.my-account')}
       </Link>
 
       {/* change-password */}
       <Link
         href={'/change-password'}
-        className={`flex items-center gap-3 p-4 mb-2 ${
+        className={`flex items-center gap-3 mb-2 rounded-lg px-4 py-3 ${
           pathname === '/change-password'
             ? 'bg-zinc-800 text-white'
             : 'hover:bg-gray-200/50'
         }`}
       >
         <Lock />
-        {t('sidebar.Change-Password')}
+        {t('sidebar.change-password')}
       </Link>
     </div>
   );

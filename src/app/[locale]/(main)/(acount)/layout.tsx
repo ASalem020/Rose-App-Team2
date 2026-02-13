@@ -1,23 +1,19 @@
-import { useTranslations } from 'next-intl';
 import HeaderComponent from './_components/header-components';
 import SideBarAccount from './_components/sidebar-account';
 
-export default function layout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
 
-  // ^ translations
-  const t = useTranslations('pages.profile');
-
   return (
     <div className="my-7 container mx-auto">
       {/* title */}
-      <HeaderComponent title={t('title')} />
+      <HeaderComponent />
       <div className="container mx-auto grid h-screen grid-cols-4 gap-9">
       {/* sidebar */}
-        <div className="col-span-1 bg-white">
+        <div className="col-span-1 ">
           <SideBarAccount />
         </div>
 

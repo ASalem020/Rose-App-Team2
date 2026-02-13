@@ -36,7 +36,6 @@ export default function ChangePassword() {
   const handleChangePassword = async (data: changePasswordFields) => {
     //^ Do something with the form values.
     const res = await changePasswordAction(data);
-    console.log(res);
     try {
       if (res.message == 'success') {
         await signOut({
@@ -64,7 +63,7 @@ export default function ChangePassword() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('user-info.Old-Password')}</FormLabel>
+              <FormLabel>{t('user-info.old-password')}</FormLabel>
               <FormControl>
                 <Input
                   type="password"
@@ -83,7 +82,7 @@ export default function ChangePassword() {
           name="newPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('user-info.New-Password')}</FormLabel>
+              <FormLabel>{t('user-info.new-password')}</FormLabel>
               <FormControl>
                 <Input
                   type="password"
@@ -102,7 +101,7 @@ export default function ChangePassword() {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t('user-info.Confirm-New-Password')}</FormLabel>
+              <FormLabel>{t('user-info.confirm-new-password')}</FormLabel>
               <FormControl>
                 <Input
                   type="password"
@@ -116,8 +115,10 @@ export default function ChangePassword() {
         />
 
         <div className="flex justify-end mt-16">
-          <Button className="h-10 bg-maroon-600 text-white rounded-md hover:bg-maroon-800 font-semibold ">
-            {t('Change-Password')}
+          <Button className="h-10 bg-maroon-600 text-white rounded-md hover:bg-maroon-800 font-semibold "
+             disabled={!form.formState.isDirty}
+          >
+            {t('change-password')}
           </Button>
         </div>
 
