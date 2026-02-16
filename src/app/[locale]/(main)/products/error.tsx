@@ -36,8 +36,8 @@ export default function Error({
         Something went wrong!
       </h2>
       <p className="mb-8 max-w-md text-muted-foreground">
-        We encountered an unexpected error while processing your request.
-        Our team has been notified.
+        We encountered an unexpected error while processing
+        your request. Our team has been notified.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-4">
         <button

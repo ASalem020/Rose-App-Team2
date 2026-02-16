@@ -1,8 +1,10 @@
-"use server"
+'use server';
 
-import { getToken } from "../utils/get-token"
+import { getToken } from '../utils/get-token';
 
-export async function removeFromWishlistAction(productId: string){
+export async function removeFromWishlistAction(
+  productId: string,
+) {
   const jwt = await getToken();
 
   const response = await fetch(
@@ -12,7 +14,7 @@ export async function removeFromWishlistAction(productId: string){
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt?.accessToken}`,
-      }
+      },
     },
   );
   const payload = await response.json();

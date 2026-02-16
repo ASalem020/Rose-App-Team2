@@ -16,4 +16,7 @@ export type Translations = Awaited<
   ReturnType<typeof getTranslations>
 >;
 
-declare type SearchParamsType = Record<string,string | string[] | undefined>;
+declare type SearchParamsType = Record<
+  string,
+  string | string[] | undefined
+>;

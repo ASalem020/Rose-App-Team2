@@ -1,9 +1,13 @@
-import { addToWishlistAction } from "@/lib/actions/add-to-wishlist.action"
-import { useMutation } from "@tanstack/react-query"
-import { toast } from "sonner";
+import { addToWishlistAction } from '@/lib/actions/add-to-wishlist.action';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 export function useAddToWishlist() {
-  const { mutate: addToWishlist, isPending , error } = useMutation({
+  const {
+    mutate: addToWishlist,
+    isPending,
+    error,
+  } = useMutation({
     mutationKey: ['add-to-wishlist'],
     mutationFn: async (id: string) => {
       const payload = await addToWishlistAction(id);
@@ -19,5 +23,5 @@ export function useAddToWishlist() {
     },
   });
 
-  return { addToWishlist , isPending , error}
+  return { addToWishlist, isPending, error };
 }

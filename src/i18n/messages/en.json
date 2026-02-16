@@ -311,11 +311,10 @@
         "reset": "Reset ",
         "rating": "Rating",
         "resetAll": "Reset All",
-        "occasion" : "occasion",
-        "price" : "Price",
-        "from"  : "from",
-        "to"    : "to"
-
+        "occasion": "occasion",
+        "price": "Price",
+        "from": "from",
+        "to": "to"
       }
     },
     "product-details": {

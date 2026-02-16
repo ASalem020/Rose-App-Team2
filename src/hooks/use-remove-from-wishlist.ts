@@ -1,9 +1,13 @@
-import { removeFromWishlistAction } from "@/lib/actions/remove-form-wishlist.action"
-import { useMutation } from "@tanstack/react-query"
-import { toast } from "sonner";
+import { removeFromWishlistAction } from '@/lib/actions/remove-form-wishlist.action';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 export default function useRemoveFromWishlist() {
-  const { mutate: removeFromWishlist , isPending , error } = useMutation({
+  const {
+    mutate: removeFromWishlist,
+    isPending,
+    error,
+  } = useMutation({
     mutationKey: ['remove-from-wishlist'],
     mutationFn: async (id: string) => {
       const payload = await removeFromWishlistAction(id);
@@ -18,7 +22,7 @@ export default function useRemoveFromWishlist() {
     onError: error => {
       toast.error(error.message);
     },
-    })
-  
-  return { removeFromWishlist , isPending , error}
+  });
+
+  return { removeFromWishlist, isPending, error };
 }

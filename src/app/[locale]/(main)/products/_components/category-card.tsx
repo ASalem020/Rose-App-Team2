@@ -1,26 +1,29 @@
-import React from 'react'
-import Image from 'next/image'
-import { categories } from '@/lib/types/category'
-import { cn } from '@/lib/utils/tailwind-merge'
+import React from 'react';
+import Image from 'next/image';
+import { categories } from '@/lib/types/category';
+import { cn } from '@/lib/utils/tailwind-merge';
 
 type CategoryCardProps = {
-  category: categories,
-  isActive?: boolean
-}
+  category: categories;
+  isActive?: boolean;
+};
 
-export default function CategoryCard({ category, isActive }: CategoryCardProps) {
+export default function CategoryCard({
+  category,
+  isActive,
+}: CategoryCardProps) {
   return (
     <div
       className={cn(
-        "bg-zinc-200 hover:bg-zinc-300 w-full h-8 rounded-md overflow-hidden flex items-center",
-        isActive && "bg-maroon-100/70"
+        'flex h-8 w-full items-center overflow-hidden rounded-md bg-zinc-200 hover:bg-zinc-300',
+        isActive && 'bg-maroon-100/70',
       )}
     >
       {/* category image */}
       <div
         className={cn(
-          "bg-zinc-500 p-2 w-10 h-12 flex items-center justify-center",
-          isActive && "bg-maroon-600/70"
+          'flex h-12 w-10 items-center justify-center bg-zinc-500 p-2',
+          isActive && 'bg-maroon-600/70',
         )}
       >
         <Image
@@ -28,7 +31,7 @@ export default function CategoryCard({ category, isActive }: CategoryCardProps) 
           alt={category.name}
           width={300}
           height={200}
-          className="invert brightness-0"
+          className="brightness-0 invert"
         />
       </div>
 

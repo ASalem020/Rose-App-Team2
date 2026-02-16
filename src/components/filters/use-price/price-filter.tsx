@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { useTranslations } from 'next-intl'
-import { usePriceFilter } from '@/hooks/use-price-filter'
+import { useTranslations } from 'next-intl';
+import { usePriceFilter } from '@/hooks/use-price-filter';
 
 /**
  * PriceFilter
@@ -9,13 +9,14 @@ import { usePriceFilter } from '@/hooks/use-price-filter'
  */
 export function PriceFilter() {
   // Common translations (e.g. Reset)
-  const tCommon = useTranslations('common')
+  const tCommon = useTranslations('common');
 
   // Products page translations
-  const tProducts = useTranslations('pages.product')
+  const tProducts = useTranslations('pages.product');
 
   // Price filter state and actions from the hook
-  const { from, to, setPrice, resetPrice } = usePriceFilter()
+  const { from, to, setPrice, resetPrice } =
+    usePriceFilter();
 
   return (
     <section className="space-y-4">
@@ -68,5 +69,5 @@ export function PriceFilter() {
         </div>
       </div>
     </section>
-  )
+  );
 }

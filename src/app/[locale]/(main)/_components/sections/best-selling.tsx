@@ -73,9 +73,12 @@ export default function BestSelling() {
                   <ProductItem
                     _id={product._id}
                     href={`/products/${product._id}`}
-                    imgCover={product.imgCover} title={product.title}
+                    imgCover={product.imgCover}
+                    title={product.title}
                     price={product.price}
-                    priceAfterDiscount={product.priceAfterDiscount}
+                    priceAfterDiscount={
+                      product.priceAfterDiscount
+                    }
                     rateAvg={product.rateAvg}
                   />
                 </CarouselItem>

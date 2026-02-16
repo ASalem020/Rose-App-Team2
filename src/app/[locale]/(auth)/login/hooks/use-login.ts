@@ -4,7 +4,11 @@ import { signIn } from 'next-auth/react';
 
 export default function useLogin() {
   // ^ Mutation
-  const { error, mutate:login, isPending } = useMutation({
+  const {
+    error,
+    mutate: login,
+    isPending,
+  } = useMutation({
     mutationFn: async (credentials: LoginFields) => {
       const response = await signIn('credentials', {
         email: credentials.email,
@@ -28,6 +32,6 @@ export default function useLogin() {
   return {
     error,
     login,
-    isPending
+    isPending,
   };
 }

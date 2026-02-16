@@ -1,26 +1,28 @@
-'use client'
+'use client';
 
-import { useTranslations } from 'next-intl'
-import { X } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { OccasionCard } from './occasion-card'
-import { useOccasions } from '@/hooks/use-occasions'
+import { useTranslations } from 'next-intl';
+import { X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { OccasionCard } from './occasion-card';
+import { useOccasions } from '@/hooks/use-occasions';
 import BuildSearchparams, {
   BuildSearchparamsProps,
-} from '@/components/features/build-searchparams'
+} from '@/components/features/build-searchparams';
 
-export function OccasionFilter({ searchParams }: BuildSearchparamsProps) {
+export function OccasionFilter({
+  searchParams,
+}: BuildSearchparamsProps) {
   // Translations
-  const t = useTranslations('pages.product.filter')
+  const t = useTranslations('pages.product.filter');
 
   // Router
-  const router = useRouter()
+  const router = useRouter();
 
   // Active occasion from URL
-  const activeOccasion = searchParams?.occasion ?? null
+  const activeOccasion = searchParams?.occasion ?? null;
 
   // Fetch occasions
-  const { data: occasions, isLoading } = useOccasions()
+  const { data: occasions, isLoading } = useOccasions();
 
   return (
     <div className="flex flex-col gap-2">
@@ -33,9 +35,11 @@ export function OccasionFilter({ searchParams }: BuildSearchparamsProps) {
         <span
           className="flex cursor-pointer items-center gap-2 text-red-600"
           onClick={() => {
-            const params = BuildSearchparams({ searchParams })
-            params.delete('occasion')
-            router.push(`/products?${params.toString()}`)
+            const params = BuildSearchparams({
+              searchParams,
+            });
+            params.delete('occasion');
+            router.push(`/products?${params.toString()}`);
           }}
         >
           <X /> {t('reset')}
@@ -47,11 +51,14 @@ export function OccasionFilter({ searchParams }: BuildSearchparamsProps) {
         {isLoading
           ? null
           : occasions?.map(occasion => {
-              const params = BuildSearchparams({ searchParams })
-              params.set('occasion', occasion._id)
+              const params = BuildSearchparams({
+                searchParams,
+              });
+              params.set('occasion', occasion._id);
 
-              const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/uploads/${occasion.image}`
-              const isActive = activeOccasion === occasion._id
+              const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}/uploads/${occasion.image}`;
+              const isActive =
+                activeOccasion === occasion._id;
 
               return (
                 <a
@@ -64,9 +71,9 @@ export function OccasionFilter({ searchParams }: BuildSearchparamsProps) {
                     selected={isActive}
                   />
                 </a>
-              )
+              );
             })}
       </div>
     </div>
-  )
+  );
 }

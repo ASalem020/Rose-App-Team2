@@ -2,28 +2,32 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils/tailwind-merge';
 
 type ProductItemSkeletonPropsType = {
-  divCustomClasses?: string,
-  imgCustomClasses?: string
-}
+  divCustomClasses?: string;
+  imgCustomClasses?: string;
+};
 
 export default function ProductItemSkeleton({
   divCustomClasses,
-  imgCustomClasses
+  imgCustomClasses,
 }: ProductItemSkeletonPropsType) {
   return (
-    <div className={cn(
-      // Main Styles 
-      "relative w-72 space-y-3 rounded-xl",
-      // Custom Classes
-      divCustomClasses
-    )}>
-      {/* Image Skeleton */}
-      <Skeleton className={cn(
+    <div
+      className={cn(
         // Main Styles
-        "relative h-64 w-full overflow-hidden rounded-xl",
+        'relative w-72 space-y-3 rounded-xl',
         // Custom Classes
-        imgCustomClasses
-      )} />
+        divCustomClasses,
+      )}
+    >
+      {/* Image Skeleton */}
+      <Skeleton
+        className={cn(
+          // Main Styles
+          'relative h-64 w-full overflow-hidden rounded-xl',
+          // Custom Classes
+          imgCustomClasses,
+        )}
+      />
 
       {/* Title Skeleton */}
       <div>

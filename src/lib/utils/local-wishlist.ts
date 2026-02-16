@@ -1,5 +1,5 @@
-import { _Translator } from "next-intl";
-import { toast } from "sonner";
+import { _Translator } from 'next-intl';
+import { toast } from 'sonner';
 
 type LocalWishlistProps = {
   state?: boolean;
@@ -7,14 +7,23 @@ type LocalWishlistProps = {
   t: _Translator;
 };
 
-export function localWishlist({ state, productId, t }: LocalWishlistProps) {
-  const stored = localStorage.getItem("wishlist");
-  const wishlist: string[] = stored ? JSON.parse(stored) : [];
+export function localWishlist({
+  state,
+  productId,
+  t,
+}: LocalWishlistProps) {
+  const stored = localStorage.getItem('wishlist');
+  const wishlist: string[] = stored
+    ? JSON.parse(stored)
+    : [];
 
   // remove from wishlist
   if (state) {
     const updated = wishlist.filter(id => id !== productId);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
+    localStorage.setItem(
+      'wishlist',
+      JSON.stringify(updated),
+    );
     return;
   }
 
@@ -22,6 +31,6 @@ export function localWishlist({ state, productId, t }: LocalWishlistProps) {
   if (wishlist.includes(productId)) return;
 
   const updated = [...wishlist, productId];
-  localStorage.setItem("wishlist", JSON.stringify(updated));
-  toast.success(t("success.saved"));
+  localStorage.setItem('wishlist', JSON.stringify(updated));
+  toast.success(t('success.saved'));
 }
