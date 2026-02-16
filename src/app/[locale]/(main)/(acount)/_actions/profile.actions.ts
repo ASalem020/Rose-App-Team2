@@ -20,7 +20,6 @@ export async function updateProfileAction(data : profileFields) {
     })
   });
   const payload = await res.json()
-
   return payload;
 } 
 

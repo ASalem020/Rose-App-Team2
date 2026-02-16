@@ -37,6 +37,7 @@ import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { DeleteAccountAlert } from './../_components/alert-dialog';
 import { useProfileInfo } from '../_hooks/use-profile-info';
+import ProfileImage from '../_components/profile-image';
 
 export default function Profile() {
   // ^ translations
@@ -125,6 +126,9 @@ export default function Profile() {
         onSubmit={form.handleSubmit(updataProfile)}
         className="*:mb-3"
       >
+        {/* image profile */}
+        <ProfileImage imageUrl={userInfo?.user.photo}/>
+
         {/* use nam */}
         <div className="flex items-center gap-4 *:w-1/2">
           {/* first name */}
