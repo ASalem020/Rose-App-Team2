@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { CloudUpload } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   imageUrl?: string;
@@ -13,6 +14,9 @@ export default function ProfileImage({
   imageUrl,
   onChange,
 }: Props) {
+    // ^ translations
+  const t = useTranslations('pages.profile');
+
     // ^ state
   const [preview, setPreview] = useState<string | null>(
     null,
@@ -47,10 +51,9 @@ export default function ProfileImage({
       </div>
 
       <div>
-        <p className="font-medium text-zinc-800">Upload Photo</p>
+        <p className="font-medium text-zinc-800">{t("upload-photo")}</p>
         <p className="text-sm text-zinc-500">
-          You can upload a .jpg, .png, or .gif photo with
-          max size of 5MB.
+          {t("des")}
         </p>
       </div>
     </div>

@@ -329,6 +329,8 @@
     },
     "profile": {
       "title": "Update Profile",
+      "upload-photo": "Upload Photo",
+      "des": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
       "sidebar": {
         "my-account": "My Account",
         "change-password": "Change Password",
