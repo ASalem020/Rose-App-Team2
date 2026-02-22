@@ -192,47 +192,47 @@
       },
       "toast": {
         "success": "Creating Account Successfully, login now!"
+      }
+    },
+    "forgot-password": {
+      "header": "Forgot Password?",
+      "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
+      "button": "Continue",
+      "schemas": {
+        "email-required": "Please enter your Email",
+        "email-invalid": "Please enter a valid Email address"
       },
-      "forgot-password": {
-        "header": "Forgot Password?",
-        "subtitle": "Worry not, we’ll send you instructions to help you reset it.",
-        "button": "Continue",
+      "footer": "Don’t have an account yet? <link>Create one now!</link>",
+      "otp": {
+        "title": "Enter the OTP Code",
+        "description": "We have sent a 6-digit code to",
+        "edit": "edit",
+        "sendNewCode": "send new code",
+        "send": "send",
+        "verify": "Verify",
+        "needHelp": "Need help?",
+        "contactUs": "contact us",
         "schemas": {
-          "email-required": "Please enter your Email",
-          "email-invalid": "Please enter a valid Email address"
+          "code-required": "Please enter the verification code",
+          "code-length": "The code must be exactly 6 digits"
         },
-        "footer": "Don’t have an account yet? <link>Create one now!</link>",
-        "otp": {
-          "title": "Enter the OTP Code",
-          "description": "We have sent a 6-digit code to",
-          "edit": "edit",
-          "sendNewCode": "send new code",
-          "send": "send",
-          "verify": "Verify",
-          "needHelp": "Need help?",
-          "contactUs": "contact us",
-          "schemas": {
-            "code-required": "Please enter the verification code",
-            "code-length": "The code must be exactly 6 digits"
-          },
-          "toast": {
-            "success": "OTP verified successfully!"
-          }
+        "toast": {
+          "success": "OTP verified successfully!"
         }
-      },
-      "new-password": {
-        "header": "Create a new password",
-        "subtitle": "Set a strong password to secure your account.",
-        "footer": "Need help? <link>Contact us</link>",
-        "button": "Reset Password",
-        "schemas": {
-          "password-min-length": "Password must be at least 8 characters",
-          "password-lowercase": "Password must include at least one lowercase letter",
-          "password-number": "Password must include at least one number",
-          "password-special": "Password must include at least one special character",
-          "password-uppercase": "Password must include at least one uppercase letter",
-          "match-password": "Passwords do not match"
-        }
+      }
+    },
+    "new-password": {
+      "header": "Create a new password",
+      "subtitle": "Set a strong password to secure your account.",
+      "footer": "Need help? <link>Contact us</link>",
+      "button": "Reset Password",
+      "schemas": {
+        "password-min-length": "Password must be at least 8 characters",
+        "password-lowercase": "Password must include at least one lowercase letter",
+        "password-number": "Password must include at least one number",
+        "password-special": "Password must include at least one special character",
+        "password-uppercase": "Password must include at least one uppercase letter",
+        "match-password": "Passwords do not match"
       }
     },
     "login": {
@@ -305,14 +305,6 @@
       }
     },
     "success-toast": "Your password has been successfully reset.",
-    "product": {
-      "filter": {
-        "categories": "Categories",
-        "reset": "Reset ",
-        "rating": "Rating",
-        "resetAll": "Reset All"
-      }
-    },
     "product-details": {
       "add-cart-btn": "Add to Cart",
       "currency": "EGP",
@@ -354,6 +346,49 @@
         "description" : "This action is permanent and cannot be undone.",
         "cancel" : "Cancel",
         "action" : "Yes, delete"
+      }
+    },
+    "products": {
+      "filter": {
+        "categories": "Categories",
+        "rating": "Rating",
+        "reset": "Reset",
+        "reset-all": "Reset All"
+      },
+      "details": {
+        "category": "Category",
+        "occasion": "Occasion",
+        "inStock": "In Stock",
+        "units": "units",
+        "addToCart": "Add to Cart",
+        "off": "{percentage}% OFF",
+        "rating": "Rating: {rate}/5",
+        "ratings": "({count} ratings)",
+        "generalRating": "General rating:"
+      },
+      "reviews": {
+        "title": "Product Reviews",
+        "loading": "Loading reviews...",
+        "error": "Error loading reviews. Please try again later.",
+        "empty": "No reviews yet. Be the first to review this product!",
+        "addReview": {
+          "title": "Add Review",
+          "labelRating": "Your rating:",
+          "labelTitle": "Title",
+          "placeholderTitle": "Give your review a title",
+          "labelComment": "Review",
+          "placeholderComment": "Write your review here...",
+          "submitting": "Submitting...",
+          "submit": "Add Review",
+          "authRequired": "Please login to be able to review the product",
+          "success": "Your review added successfully",
+          "errorAlreadyReviewed": "You have already reviewed this product",
+          "errorGeneric": "An error occurred while adding the review"
+        }
+      },
+      "related": {
+        "title": "Related Products",
+        "loading": "Loading related products..."
       }
     }
 

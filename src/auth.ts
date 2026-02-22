@@ -7,6 +7,7 @@ export const authOptions: NextAuthOptions = {
     signIn: '/login',
     signOut: '/login'
   },
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     Credentials({
       name: 'Credentials',
@@ -53,6 +54,7 @@ export const authOptions: NextAuthOptions = {
 
     session: async ({ session, token }) => {
       session.user = token.user;
+      session.accessToken = token.accessToken;
       return session;
     },
   },
