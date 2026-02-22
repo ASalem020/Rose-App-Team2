@@ -1,4 +1,5 @@
 import { Translations } from '@/lib/types/global';
+import { useFormatter } from 'next-intl';
 import React, { useMemo } from 'react';
 
 type TotalProps = {
@@ -12,6 +13,9 @@ export default function Total({
   t,
   coupons = [],
 }: TotalProps) {
+  // Translations
+  const format = useFormatter();
+
   // Variables
   const totalPercentages = useMemo(() => {
     return coupons.reduce(
@@ -29,7 +33,7 @@ export default function Total({
         </h5>
 
         <span className="text-lg font-semibold text-zinc-800 md:text-xl">
-          {subTotalAmount} EGP
+          {format.number(200, 'short-price')}
         </span>
       </div>
 
@@ -54,11 +58,17 @@ export default function Total({
 
         <span>
           {coupons.length === 0
-            ? subTotalAmount
-            : Number(subTotalAmount) -
-              (Number(subTotalAmount) * totalPercentages) /
-                100}
-          EGP
+            ? format.number(
+                Number(subTotalAmount),
+                'short-price',
+              )
+            : format.number(
+                Number(subTotalAmount) -
+                  (Number(subTotalAmount) *
+                    totalPercentages) /
+                    100,
+                'short-price',
+              )}
         </span>
       </div>
     </div>
