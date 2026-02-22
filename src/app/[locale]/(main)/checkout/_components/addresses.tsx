@@ -2,7 +2,6 @@
 import ErrorMessage from '@/components/shared/error-message';
 import useAddress from '../_hooks/use-address';
 import AddressCard from './address-card';
-import LoadingComponent from '@/components/shared/loading-component';
 import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
 import AddAddress from './add-address';
@@ -13,6 +12,7 @@ import {
 } from 'react-hook-form';
 import { useState } from 'react';
 import { CheckoutSchemaType } from '@/lib/types/checkout';
+import AddressesSkeleton from './addresses-skeleton';
 
 type AddressesProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -48,7 +48,7 @@ export default function Addresses({
       {/* Addresses */}
       <div className="addresses flex flex-col gap-3">
         <div className="container flex max-h-[20.9375rem] flex-col gap-3 overflow-y-auto">
-          {isLoading && <LoadingComponent />}
+          {isLoading && <AddressesSkeleton />}
 
           {error && (
             <ErrorMessage message={error.message} />
