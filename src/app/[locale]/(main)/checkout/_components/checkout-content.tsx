@@ -9,9 +9,10 @@ import { checkoutSchema } from '@/lib/schemas/checkout.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import ErrorMessage from '@/components/shared/error-message';
 import { CheckoutSchemaType } from '@/lib/types/checkout';
-import useCheckout from '../_hooks/use-checkout';
 import { toast } from 'sonner';
 import { useRouter } from '@/i18n/navigation';
+import useCashCheckout from '../_hooks/use-cash-checkout';
+import useCreditCheckout from '../_hooks/use-credit-checkout';
 
 export default function CheckoutContent() {
   // Translation
@@ -24,7 +25,10 @@ export default function CheckoutContent() {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   // Hooks
-  const { mutate, error } = useCheckout();
+  const { mutate: mutateCredit, error: creditError } =
+    useCreditCheckout();
+  const { mutate: mutateCash, error: cashError } =
+    useCashCheckout();
 
   // Form & Validation
   const {
@@ -50,14 +54,14 @@ export default function CheckoutContent() {
   const onSubmit: SubmitHandler<
     CheckoutSchemaType
   > = values =>
-    mutate(values, {
-      onSuccess: () => {
-        if (values['payment-method'] === 'credit-card')
-          toast.success(t('checkout.success.credit'));
-        else toast.success(t('checkout.success.cash'));
-        router.push('/products');
-      },
-    });
+    values['payment-method'] === 'cash'
+      ? mutateCash(values, {
+          onSuccess: () => {
+            toast.success(t('checkout.success.cash'));
+            router.push('/all-orders');
+          },
+        })
+      : mutateCredit(values);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,9 +100,11 @@ export default function CheckoutContent() {
         />
       )}
 
-      {error && (
+      {(creditError || cashError) && (
         <ErrorMessage
-          message={error.message}
+          message={
+            cashError?.message || creditError?.message
+          }
           className="mt-5"
         />
       )}
