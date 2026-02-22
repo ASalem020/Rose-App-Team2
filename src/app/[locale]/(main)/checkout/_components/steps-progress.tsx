@@ -43,7 +43,7 @@ export default function StepsProgress({
             {/* Step */}
             <div
               className={cn(
-                'step relative z-10 flex size-6 items-center justify-center rounded-full text-sm font-semibold delay-500 duration-500',
+                'step relative z-10 flex size-6 items-center justify-center rounded-full text-sm font-semibold',
                 isStepActive
                   ? 'bg-maroon-600 text-white'
                   : 'bg-zinc-200 text-zinc-500',
@@ -55,22 +55,13 @@ export default function StepsProgress({
             {/* Line */}
             <div
               className={cn(
-                'h-1.5 flex-1 bg-zinc-200',
+                'h-1.5 flex-1',
+                isLineActive
+                  ? 'bg-maroon-600'
+                  : 'bg-zinc-200',
                 i === steps.length - 1 && 'rounded-e-full',
               )}
-            >
-              <div
-                className={cn(
-                  'h-full bg-maroon-600 transition-all duration-500 ease-in-out',
-                  isLineActive ? 'w-full' : 'w-0',
-                  i === steps.length - 1 &&
-                    'rounded-e-full',
-                  i === steps.length - 1 &&
-                    isLineActive &&
-                    'delay-1000',
-                )}
-              />
-            </div>
+            ></div>
           </Fragment>
         );
       })}
