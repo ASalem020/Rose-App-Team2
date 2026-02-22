@@ -15,7 +15,7 @@ export async function checkoutSessionCredit(
     }
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/orders/checkout`,
+      `${process.env.API_URL}/orders/checkout`,
       {
         method: 'POST',
         headers: {
@@ -56,7 +56,7 @@ export async function checkoutSessionCash(
     }
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/orders`,
+      `${process.env.API_URL}/orders`,
       {
         method: 'POST',
         headers: {
@@ -84,4 +84,3 @@ export async function checkoutSessionCash(
     );
   }
 }
-

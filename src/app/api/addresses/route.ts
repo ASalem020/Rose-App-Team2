@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
     const token = await getToken({ req });
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/addresses`,
+      `${process.env.API_URL}/addresses`,
       {
         method: 'GET',
         headers: {

@@ -17,6 +17,8 @@ export default function PaymentMethod({
 }: PaymentMethodProps) {
   return (
     <div
+      role="button"
+      tabIndex={0}
       onClick={onClick}
       className={cn(
         'method flex cursor-pointer flex-col gap-2.5 rounded-xl border border-zinc-200 p-4 duration-500 hover:bg-zinc-50',

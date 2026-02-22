@@ -19,9 +19,11 @@ export default function AddressCard({
 }: AddressCardProps) {
   return (
     <div
+      role="button"
+      tabIndex={0}
       data-selected={selected}
       onClick={onClick}
-      className="address-card group: cursor-pointer rounded-xl border border-zinc-300 px-4 py-3.5 duration-300 hover:bg-zinc-50 data-[selected=true]:bg-maroon-600 data-[selected=true]:text-white"
+      className="address-card cursor-pointer rounded-xl border border-zinc-300 px-4 py-3.5 duration-300 hover:bg-zinc-50 data-[selected=true]:bg-maroon-600 data-[selected=true]:text-white"
     >
       {/* Header */}
       <div className="header flex items-center justify-between">
