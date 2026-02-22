@@ -1,39 +1,37 @@
-/**
- * Represents a single product inside the order
- */
-export interface OrderProduct {
-  _id: string;
-  title: string;
-  image: string;
-  price: number;
-}
-
-/**
- * Represents a single order item
- */
 export interface OrderItem {
-  product: OrderProduct;
+  _id: string;
   quantity: number;
   price: number;
+  product: {
+    _id: string;
+    title: string;
+    image: string;
+  };
 }
 
-/**
- * Represents a full order
- */
 export interface Order {
   _id: string;
-  createdAt: string;
+  orderNumber: string;
   totalPrice: number;
-  paymentMethod: string;
-  paymentStatus: string;
-  deliveryStatus: string;
-  status: string;
-  items: OrderItem[];
+  paymentType: string;
+  isPaid: boolean;
+  isDelivered: boolean;
+  state: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  orderItems: OrderItem[];
 }
 
-/**
- * API response structure
- */
+export interface OrdersMetadata {
+  currentPage: number;
+  totalPages: number;
+  limit: number;
+  totalItems: number;
+}
+
 export interface OrdersResponse {
+  message: string;
+  metadata: OrdersMetadata;
   orders: Order[];
 }
