@@ -319,6 +319,35 @@
         "back": "Go Back"
       }
     },
+    "profile": {
+      "title": "Update Profile",
+      "upload-photo": "Upload Photo",
+      "des": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
+      "sidebar": {
+        "my-account": "My Account",
+        "change-password": "Change Password",
+        "logout": "Logout"
+      },
+      "user-info": {
+        "first-name": "First Name",
+        "last-name": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "gender": "Gender",
+        "old-password": "Old Password",
+        "new-password": "New Password",
+        "confirm-new-password": "Confirm New Password"
+      },
+      "save-changes": "Save Changes",
+      "delete-my-account": "Delete My Account",
+      "change-password": "Change Password",
+      "dialog":{
+        "title" : "Are you sure you want to delete your account?",
+        "description" : "This action is permanent and cannot be undone.",
+        "cancel" : "Cancel",
+        "action" : "Yes, delete"
+      }
+    },
     "products": {
       "filter": {
         "categories": "Categories",
@@ -376,6 +405,7 @@
       },
       "recommended": "Products You May Like"
     }
+
   },
   "success-toast": "Your password has been successfully reset."
 }

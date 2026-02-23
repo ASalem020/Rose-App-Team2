@@ -1,18 +1,9 @@
 import {
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
   LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
+  MapPinHouse,
+  ScrollText,
   Settings,
   User,
-  UserPlus,
-  Users,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -22,20 +13,15 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-
+import { Link } from '@/i18n/navigation';
 interface AccountDropdownProps {
   trigger?: React.ReactNode;
 }
 
-export function AccountDropdown({
+export async function AccountDropdown({
   trigger,
 }: AccountDropdownProps) {
   return (
@@ -46,98 +32,60 @@ export function AccountDropdown({
           <Button variant="outline">Account</Button>
         )}
       </DropdownMenuTrigger>
+
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>
+          Jonathan Adrian
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
+
         <DropdownMenuGroup>
           {/* View and edit user profile information */}
           <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Profile Item</span>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            <Link
+              href={'/profile'}
+              className="flex items-center"
+            >
+              <User className="mr-2 h-4 w-4" />
+              <span>My Profile</span>
+            </Link>
           </DropdownMenuItem>
+
           {/* Manage subscription and billing details */}
           <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
-            <span>Billing</span>
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+            <Link href={'/'} className="flex items-center">
+              <MapPinHouse className="mr-2 h-4 w-4" />
+              <span>My Addresses</span>
+            </Link>
           </DropdownMenuItem>
+
           {/* Access application settings and configuration */}
           <DropdownMenuItem>
-            <Settings className="mr-2 h-4 w-4" />
-            <span>Settings</span>
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            <Link href={'/'} className="flex items-center">
+              <ScrollText className="mr-2 h-4 w-4" />
+              <span>My Orders</span>
+            </Link>
           </DropdownMenuItem>
+
           {/* View available keyboard shortcuts */}
           <DropdownMenuItem>
-            <Keyboard className="mr-2 h-4 w-4" />
-            <span>Keyboard shortcuts</span>
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+            <Link href={'/'} className="flex items-center">
+              <Settings className="mr-2 h-4 w-4" />
+              <span>Dashboard</span>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
+
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          {/* View team-related settings and members */}
-          <DropdownMenuItem>
-            <Users className="mr-2 h-4 w-4" />
-            <span>Team</span>
-          </DropdownMenuItem>
-          <DropdownMenuSub>
-            {/* Open submenu to invite new users via different channels */}
-            <DropdownMenuSubTrigger>
-              <UserPlus className="mr-2 h-4 w-4" />
-              <span>Invite users</span>
-            </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                {/* Invite users via email */}
-                <DropdownMenuItem>
-                  <Mail className="mr-2 h-4 w-4" />
-                  <span>Email</span>
-                </DropdownMenuItem>
-                {/* Invite users via direct message */}
-                <DropdownMenuItem>
-                  <MessageSquare className="mr-2 h-4 w-4" />
-                  <span>Message</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                {/* Access more invitation options */}
-                <DropdownMenuItem>
-                  <PlusCircle className="mr-2 h-4 w-4" />
-                  <span>More...</span>
-                </DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
-          {/* Create a new team */}
-          <DropdownMenuItem>
-            <Plus className="mr-2 h-4 w-4" />
-            <span>New Team</span>
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        {/* Link to external GitHub profile or repository */}
+
         <DropdownMenuItem>
-          <Github className="mr-2 h-4 w-4" />
-          <span>GitHub</span>
-        </DropdownMenuItem>
-        {/* Access help and support resources */}
-        <DropdownMenuItem>
-          <LifeBuoy className="mr-2 h-4 w-4" />
-          <span>Support</span>
-        </DropdownMenuItem>
-        {/* Access API documentation or keys (currently disabled) */}
-        <DropdownMenuItem disabled>
-          <Cloud className="mr-2 h-4 w-4" />
-          <span>API</span>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        {/* Sign out of the current account session */}
-        <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          <Link
+            href={'/login'}
+            className="flex items-center"
+          >
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Log out</span>
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

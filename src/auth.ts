@@ -3,6 +3,10 @@ import Credentials from 'next-auth/providers/credentials';
 import { LoginResponse } from './lib/types/auth';
 
 export const authOptions: NextAuthOptions = {
+  pages:{
+    signIn: '/login',
+    signOut: '/login'
+  },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     Credentials({
