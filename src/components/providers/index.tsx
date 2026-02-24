@@ -10,6 +10,7 @@ import {
 } from 'next-intl';
 import NextAuthProvider from './next-auth.provider';
 import AuthSideEffects from '../shared/auth-side-effects';
+import { getFormats } from '@/i18n/formats';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -22,6 +23,9 @@ export function Providers({
   messages,
   locale,
 }: ProvidersProps) {
+  // Translations
+  const formats = getFormats(locale);
+
   return (
     <QueryProvider>
       <NextAuthProvider>
@@ -36,6 +40,7 @@ export function Providers({
           <NextIntlClientProvider
             messages={messages}
             locale={locale}
+            formats={formats}
           >
             {children}
             <Toaster />
