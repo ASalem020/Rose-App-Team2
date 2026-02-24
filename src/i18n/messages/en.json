@@ -341,11 +341,11 @@
       "save-changes": "Save Changes",
       "delete-my-account": "Delete My Account",
       "change-password": "Change Password",
-      "dialog":{
-        "title" : "Are you sure you want to delete your account?",
-        "description" : "This action is permanent and cannot be undone.",
-        "cancel" : "Cancel",
-        "action" : "Yes, delete"
+      "dialog": {
+        "title": "Are you sure you want to delete your account?",
+        "description": "This action is permanent and cannot be undone.",
+        "cancel": "Cancel",
+        "action": "Yes, delete"
       }
     },
     "products": {
@@ -390,8 +390,20 @@
         "title": "Related Products",
         "loading": "Loading related products..."
       }
+    },
+    "dashboard": {
+      "overview": {
+        "row-1": {
+          "header": "All Categories",
+          "products-label": " Products",
+          "total-products-label": "Total products",
+          "total-orders-label": "Total orders",
+          "total-categories-label": "Total categories",
+          "total-revenue-label": "Total revenue",
+          "suffix": "EGP"
+        }
+      }
     }
-
   },
   "success-toast": "Your password has been successfully reset."
 }
