@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import FirstRow from './_components/first-row';
-import FirstRowSkeleton from './_components/first-row-skeleton';
+import FirstRowSkeleton from './_skeleton/first-row-skeleton';
 
 export default function page() {
   return (
