@@ -392,6 +392,81 @@
       }
     }
 
+    },
+    "checkout": {
+      "shipping-addresses": {
+        "title": "Shipping Addresses",
+        "or": "OR",
+        "add-new-address": "Add a New Address",
+        "no-addresses": "You don't have any addresses, please add one",
+        "next": "Next"
+      },
+      "price-summary": {
+        "title": "Summary",
+        "coupon-placeholder": "Enter your coupon code",
+        "apply": "Apply Coupon",
+        "coupon-applied": "Coupon applied successfully",
+        "coupon-error": "Coupon not found or invalid",
+        "remove-coupon": "Remove Coupon",
+        "no-coupons": "No coupons applied",
+        "sub-total": "Sub Total",
+        "discount": "Discount",
+        "no-discount": "No discount",
+        "total": "Total",
+        "validation": {
+          "coupon": {
+            "required": "Please enter your coupon code"
+          }
+        }
+      },
+      "payment-methods": {
+        "title": "Payment Methods",
+        "back": "Back",
+        "methods": {
+          "cash": {
+            "title": "Cash on Delivery",
+            "description": "Pay when you receive the product"
+          },
+          "credit-card": {
+            "title": "Credit Card",
+            "description": "Pay with a credit card"
+          }
+        },
+        "checkout": "Checkout"
+      },
+      "validation": {
+        "address": {
+          "required": "Please select an address"
+        },
+          "shippingAddress": {
+            "street": {
+              "required": "Please select an address"
+            },
+            "phone": {
+              "required": "Please enter your phone number"
+            },
+            "city": {
+              "required": "Please enter your city"
+            },
+            "lat": {
+              "required": "Please enter your latitude"
+            },
+            "long": {
+              "required": "Please enter your longitude"
+            }
+          },
+          "payment-method": {
+            "required": "Please select a payment method"
+          },
+          "coupon": {
+            "required": "Please enter your coupon code"
+          }
+        },
+        "success": {
+          "credit": "Credit card checkout session created successfully, Continue Shopping!",
+          "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
+        }
+    }
   },
   "success-toast": "Your password has been successfully reset."
 }
