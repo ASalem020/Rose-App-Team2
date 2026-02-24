@@ -17,8 +17,6 @@ import { cn } from '@/lib/utils/tailwind-merge';
 import { Separator } from '@/components/ui/separator';
 import { getTranslations } from 'next-intl/server';
 import ToggleLang from './toggle-lang';
-import { LocationButton } from './location-button';
-
 
 export async function Header() {
   const t = await getTranslations(
@@ -45,10 +43,14 @@ export async function Header() {
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-50 text-maroon-600 dark:bg-zinc-800 dark:text-softPink-300">
             <MapPin className="h-5 w-5" />
           </div>
-          <LocationButton 
-            deliverToText={t('deliverTo')}
-            locationText={t('location')}
-          />
+          <div className="flex flex-col items-start rtl:items-end">
+            <span className="text-sm capitalize text-zinc-400 dark:text-zinc-500">
+              {t('deliverTo')}
+            </span>
+            <span className="text-sm font-bold capitalize text-maroon-700 underline decoration-maroon-700/30 underline-offset-4 dark:text-zinc-100 dark:decoration-zinc-100/30">
+              {t('location')}
+            </span>
+          </div>
         </div>
 
         {/* Search Bar */}
