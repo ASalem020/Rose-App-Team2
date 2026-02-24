@@ -126,7 +126,7 @@ export default async function FirstRow() {
           {categories.map(category => (
             <div
               key={category._id}
-              className="flex flex-row items-center justify-between border-b py-3 text-zinc-800 last:border-0"
+              className="flex flex-row items-center justify-between border-b py-2.5 text-zinc-800 last:border-0"
             >
               <p className="capitalize">{category.name}</p>
               <span className="rounded-lg bg-zinc-100 px-3 py-1 text-sm font-medium">
