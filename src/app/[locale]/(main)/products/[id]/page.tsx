@@ -8,6 +8,7 @@ import ReviewsSkeleton from '@/components/skeleton/reviews-skeleton';
 import AddReviewSkeleton from '@/components/skeleton/add-review-skeleton';
 import RelatedProductsSkeleton from '@/components/skeleton/related-products-skeleton';
 
+
 type PageProps = {
   params: { id: string };
 };
@@ -15,6 +16,7 @@ type PageProps = {
 export default async function ProductDetailsPage({
   params,
 }: PageProps) {
+ 
   return (
     <div>
       {/* Product details section */}
