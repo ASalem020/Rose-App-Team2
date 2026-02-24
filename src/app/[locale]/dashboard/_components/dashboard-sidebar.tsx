@@ -12,6 +12,7 @@ import {
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import DashboardNavLink from './dashboard-nav-link';
+import Menu from './menu';
 
 export default function DashboardSidebar({
   className,
@@ -33,43 +34,75 @@ export default function DashboardSidebar({
     <aside
       className={cn(
         className,
-        'flex flex-col gap-6 border-e border-black/[8%] bg-white p-6',
+        'relative flex flex-col justify-between border-e border-black/[8%] bg-white p-6',
       )}
     >
-      {/* Logo */}
-      <div className="logo-container flex">
-        <div className="logo relative mx-auto h-28 w-32">
-          <Image
-            src="/assets/images/logo/logo.png"
-            alt="Logo"
-            fill
-          />
+      {/* Main Content */}
+      <div className="main-content flex flex-col gap-6">
+        {/* Logo */}
+        <div className="logo-container flex">
+          <div className="logo relative mx-auto h-28 w-32">
+            <Image
+              src="/assets/images/logo/logo.png"
+              alt="rose app logo"
+              fill
+            />
+          </div>
         </div>
+
+        {/* Preview Website Button */}
+        <div className="preview-website-button">
+          <Button className="w-full gap-2 p-2.5" asChild>
+            <Link href={'/'}>
+              <Flower size={25} />
+              <span className="font-semibold">
+                {t('preview-website')}
+              </span>
+            </Link>
+          </Button>
+        </div>
+
+        {/* Navigation Links */}
+        <nav className="navigation-links flex flex-col gap-4">
+          {dashboardLinks.map(link => (
+            <DashboardNavLink
+              href={link.href}
+              title={t(link['translation-key'])}
+              icon={icons[link.icon]}
+              key={link.href}
+            />
+          ))}
+        </nav>
       </div>
 
-      {/* Preview Website Button */}
-      <div className="preview-website-button">
-        <Button className="w-full gap-2 p-2.5" asChild>
-          <Link href={'/'}>
-            <Flower size={25} />
-            <span className="font-semibold">
-              {t('preview-website')}
-            </span>
-          </Link>
-        </Button>
-      </div>
+      {/* User Info */}
+      <div className="user-info sticky bottom-6 flex items-center justify-between border-t border-black/[8%] pt-4">
+        {/* User Summary */}
+        <div className="user-summary flex items-center gap-2.5">
+          <div className="user-image relative size-14 rounded-full">
+            <Image
+              src={'/images/default.jpg'}
+              alt="username profile image"
+              fill
+              className="rounded-full object-cover"
+            />
+          </div>
+          <div className="info">
+            {/* User Name */}
+            <p className="user-name text-sm font-bold text-zinc-800">
+              Firstname Lastname
+            </p>
 
-      {/* Navigation Links */}
-      <nav className="navigation-links flex flex-col gap-4">
-        {dashboardLinks.map(link => (
-          <DashboardNavLink
-            href={link.href}
-            title={t(link['translation-key'])}
-            icon={icons[link.icon]}
-            key={link.href}
-          />
-        ))}
-      </nav>
+            {/* User Email */}
+            <p className="user-email text-xs text-zinc-800/50">
+              user-email@example.com
+            </p>
+          </div>
+        </div>
+
+        {/* Menu */}
+        <Menu />
+      </div>
     </aside>
   );
 }
