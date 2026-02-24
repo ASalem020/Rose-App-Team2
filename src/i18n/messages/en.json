@@ -390,8 +390,72 @@
         "title": "Related Products",
         "loading": "Loading related products..."
       }
-    }
-
+    },
+    "address": {
+      "list": {
+        "title": "My Addresses",
+        "addNew": "Add a New Address",
+        "empty": {
+          "title": "No addresses yet",
+          "description": "Add your first address to get started"
+        },
+        "deleteConfirm": {
+          "title": "Are you sure you want to delete this address?",
+          "cancel": "Cancel",
+          "confirm": "Confirm",
+          "error": "You can't delete the selected address"
+        }
+      },
+      "wizard": {
+        "addTitle": "Add a New Address",
+        "updateTitle": "Update Address",
+        "steps": {
+          "details": "Details",
+          "location": "Location"
+        }
+      },
+      "form": {
+        "city": {
+          "label": "City",
+          "placeholder": "Enter city name"
+        },
+        "street": {
+          "label": "Address",
+          "placeholder": "Enter your full address"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "Phone number"
+        },
+        "next": "Next",
+        "validation": {
+          "cityMin": "City must be at least 2 characters",
+          "streetMin": "Address must be at least 3 characters",
+          "phoneMin": "Phone number must be at least 10 digits"
+        }
+      },
+      "map": {
+        "title": "Find Your Location",
+        "findMe": "Find Your Location",
+        "saving": "Saving...",
+        "add": "Add Address",
+        "update": "Update Address",
+        "errors": {
+          "unable": "Unable to get your location. Please enable location access.",
+          "notSupported": "Geolocation is not supported by your browser."
+        }
+      },
+      "categories": {
+        "home": "Home",
+        "work": "Work",
+        "family": "Family",
+        "other": "Other"
+      },
+      "toasts": {
+        "addSuccess": "Address added successfully",
+        "updateSuccess": "Address updated successfully",
+        "deleteSuccess": "Address deleted successfully"
+      }
     },
     "checkout": {
       "shipping-addresses": {

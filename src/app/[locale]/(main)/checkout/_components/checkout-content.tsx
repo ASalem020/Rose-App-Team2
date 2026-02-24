@@ -48,6 +48,7 @@ export default function CheckoutContent() {
       'payment-method': '',
     },
     resolver: zodResolver(checkoutSchema(t)),
+    mode: 'all',
   });
 
   // Functions
@@ -62,6 +63,9 @@ export default function CheckoutContent() {
           },
         })
       : mutateCredit(values);
+
+  console.log('errors', errors);
+  console.log(getValues('shippingAddress'));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
