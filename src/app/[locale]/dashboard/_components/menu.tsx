@@ -49,7 +49,7 @@ export default function Menu() {
             : 'invisible opacity-0',
         )}
       >
-        <li className="name p-3 text-sm font-semibold text-maroon-600">
+        <li className="name p-3 text-sm font-semibold text-maroon-700">
           {`${session.data?.user.firstName} ${session.data?.user.lastName}`}
         </li>
         <li className="cursor-pointer border-y border-black/[8%] p-3 text-sm font-medium text-zinc-700 duration-300 hover:bg-zinc-100">
