@@ -345,6 +345,20 @@
         "loading": "جاري تحميل المنتجات ذات الصلة..."
       }
     },
+    "cart": {
+      "title": "عربة التسوق",
+      "products": " المنتجات",
+      "empty": "عربة التسوق فارغة، هل تريد التسوق؟",
+      "continue-shopping": "متابعة التسوق",
+      "clear-cart": "مسح العربة",
+      "cart-item": {
+        "rating": "التقييم:",
+        "ratingCount": "التقييمات",
+        "remove": "حذف",
+        "currency": "جنيه مصري"
+      },
+      "recommended": "المنتجات التي قد تعجبك"
+    },
     "product-details": {
       "add-cart-btn": "أضف إلى العربة",
       "currency": "جنيه مصري",

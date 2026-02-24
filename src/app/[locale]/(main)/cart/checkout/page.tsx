@@ -7,7 +7,7 @@ export default function Page() {
       <div className="container mx-auto mt-16 px-5">
         {/* CheckoutContent - Create this Component to prevent make route client side */}
         <CheckoutContent />
-        <PriceSummary />
+        {/* <PriceSummary /> */}
       </div>
     </div>
   );
