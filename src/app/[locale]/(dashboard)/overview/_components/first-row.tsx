@@ -1,4 +1,5 @@
 import { getAllStatistics } from '@/lib/services/statistics.service';
+import { cn } from '@/lib/utils/tailwind-merge';
 import {
   Package,
   CircleDollarSign,
@@ -73,7 +74,10 @@ export default async function FirstRow() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`flex h-32 flex-col rounded-xl p-4 ${stat.bgColor}`}
+              className={cn(
+                'flex h-32 flex-col rounded-xl p-4',
+                stat.bgColor,
+              )}
             >
               <div className="flex flex-col gap-3">
                 <div>{stat.icon}</div>
@@ -81,13 +85,19 @@ export default async function FirstRow() {
                   <div>
                     {/* State value */}
                     <span
-                      className={`text-2xl font-semibold ${stat.textColor}`}
+                      className={cn(
+                        'text-2xl font-semibold',
+                        stat.textColor,
+                      )}
                     >
                       {stat.value}
                     </span>
                     {stat.suffix && (
                       <span
-                        className={`ms-1 font-medium ${stat.textColor}`}
+                        className={cn(
+                          'ms-1 font-medium',
+                          stat.textColor,
+                        )}
                       >
                         {stat.suffix}
                       </span>

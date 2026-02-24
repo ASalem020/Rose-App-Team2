@@ -4,7 +4,7 @@ import FirstRowSkeleton from './_skeleton/first-row-skeleton';
 
 export default function page() {
   return (
-    <div className="flex h-screen flex-row bg-zinc-200">
+    <div className="flex h-screen flex-row bg-zinc-50">
       <div className="w-1/5 bg-white">Sidebar</div>
       <Suspense fallback={<FirstRowSkeleton />}>
         <FirstRow />
