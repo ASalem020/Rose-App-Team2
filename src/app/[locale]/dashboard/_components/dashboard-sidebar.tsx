@@ -13,6 +13,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import DashboardNavLink from './dashboard-nav-link';
 import Menu from './menu';
+import UserSummary from './user-summary';
 
 export default function DashboardSidebar({
   className,
@@ -78,27 +79,7 @@ export default function DashboardSidebar({
       {/* User Info */}
       <div className="user-info sticky bottom-6 flex items-center justify-between border-t border-black/[8%] pt-4">
         {/* User Summary */}
-        <div className="user-summary flex items-center gap-2.5">
-          <div className="user-image relative size-14 rounded-full">
-            <Image
-              src={'/images/default.jpg'}
-              alt="username profile image"
-              fill
-              className="rounded-full object-cover"
-            />
-          </div>
-          <div className="info">
-            {/* User Name */}
-            <p className="user-name text-sm font-bold text-zinc-800">
-              Firstname Lastname
-            </p>
-
-            {/* User Email */}
-            <p className="user-email text-xs text-zinc-800/50">
-              user-email@example.com
-            </p>
-          </div>
-        </div>
+        <UserSummary />
 
         {/* Menu */}
         <Menu />
