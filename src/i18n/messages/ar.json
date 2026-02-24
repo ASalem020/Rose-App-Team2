@@ -401,6 +401,10 @@
         "occasions": "المناسبات",
         "products": "المنتجات",
         "preview-website": "عرض الموقع"
+      },
+      "menu": {
+        "account-settings": "الحساب",
+        "logout": "تسجيل الخروج"
       }
     }
   },

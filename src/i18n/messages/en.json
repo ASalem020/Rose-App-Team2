@@ -408,6 +408,10 @@
         "occasions": "Occasions",
         "products": "Products",
         "preview-website": "Preview Website"
+      },
+      "menu": {
+        "account-settings": "Account",
+        "logout": "Logout"
       }
     }
   },

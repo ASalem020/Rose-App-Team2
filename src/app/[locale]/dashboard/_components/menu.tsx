@@ -9,8 +9,11 @@ import {
 import { cn } from '@/lib/utils/tailwind-merge';
 import { signOut, useSession } from 'next-auth/react';
 import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 export default function Menu() {
+  const t = useTranslations();
+
   // State
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,7 +43,7 @@ export default function Menu() {
       </div>
       <ul
         className={cn(
-          'dropdown-menu absolute bottom-full left-full z-50 min-w-56 rounded-lg border border-zinc-100 bg-white shadow-md duration-300',
+          'dropdown-menu absolute bottom-full start-full z-50 min-w-56 rounded-lg border border-zinc-100 bg-white shadow-md duration-300',
           isOpen
             ? 'visible opacity-100'
             : 'invisible opacity-0',
@@ -55,7 +58,9 @@ export default function Menu() {
             className="flex items-center gap-2"
           >
             <User size={16} />
-            <span>Account</span>
+            <span>
+              {t('pages.dashboard.menu.account-settings')}
+            </span>
           </Link>
         </li>
         <li
@@ -65,7 +70,7 @@ export default function Menu() {
           onClick={handleLogout}
         >
           <LogOut size={16} />
-          Logout
+          <span>{t('pages.dashboard.menu.logout')}</span>
         </li>
       </ul>
     </div>
