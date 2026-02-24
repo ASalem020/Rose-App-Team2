@@ -298,10 +298,57 @@
         "success": "تم إنشاء الحساب بنجاح ، سجل دخول الآن!"
       }
     },
+    "products": {
+      "filter": {
+        "categories": "التصنيفات",
+        "rating": "التقييم",
+        "reset": "إعادة تعيين",
+        "reset-all": "إعادة تعيين الكل"
+      },
+      "details": {
+        "add-cart-btn": "أضف إلى العربة",
+        "currency": "جنيه مصري",
+        "stock-left": "متبقي من المخزون",
+        "stock-empty": "نفد من المخزون",
+        "rating": "التقييم:",
+        "rating-number": "تقييم",
+        "toast-added": "تمت إضافة المنتج إلى العربة بنجاح",
+        "error": {
+          "header": "رسالة الخطأ:",
+          "try-again": "حاول مرة اخري",
+          "back": "رجوع"
+        },
+        "generalRating": "التقييم العام:"
+      },
+      "reviews": {
+        "title": "تقييمات المنتج",
+        "loading": "جاري تحميل التقييمات...",
+        "error": "خطأ في تحميل التقييمات. يرجى المحاولة مرة أخرى لاحقاً.",
+        "empty": "لا توجد تقييمات بعد. كن أول من يقيم هذا المنتج!",
+        "addReview": {
+          "title": "إضافة تقييم",
+          "labelRating": "تقييمك:",
+          "labelTitle": "العنوان",
+          "placeholderTitle": "أعط تقييمك عنواناً",
+          "labelComment": "التقييم",
+          "placeholderComment": "اكتب تقييمك هنا...",
+          "submitting": "جاري الإرسال...",
+          "submit": "إضافة تقييم",
+          "authRequired": "يرجى تسجيل الدخول لتتمكن من تقييم المنتج",
+          "success": "تمت إضافة تقييمك بنجاح",
+          "errorAlreadyReviewed": "لقد قمت بالفعل من تقييم هذا المنتج",
+          "errorGeneric": "حدث خطأ في اضافة التقييم"
+        }
+      },
+      "related": {
+        "title": "منتجات ذات صلة",
+        "loading": "جاري تحميل المنتجات ذات الصلة..."
+      }
+    },
     "product-details": {
       "add-cart-btn": "أضف إلى العربة",
       "currency": "جنيه مصري",
-      "stock-left": "تركت في المخزون",
+      "stock-left": "متبقي من المخزون",
       "stock-empty": "نفد من المخزون",
       "rating": "التقييم:",
       "rating-number": "تقييم",
@@ -312,12 +359,33 @@
         "back": "رجوع"
       }
     },
-    "products": {
-      "filter": {
-        "categories": "التصنيفات",
-        "rating": "التقييم",
-        "reset": "إعادة تعيين",
-        "reset-all": "إعادة تعيين الكل"
+    "profile": {
+      "title": "تعديل الملف الشخصي",
+      "des": "يمكنك تحميل صورة بصيغة .jpg أو .png أو .gif بحد أقصى 5 ميجابايت.",
+      "upload-photo":"تحميل الصورة",
+      "sidebar": {
+        "my-account": "حسابي",
+        "change-password": "تغيير كلمة المرور",
+        "logout": "تسجيل الخروج"
+      },
+      "user-info": {
+        "first-name": "الأسم الأول",
+        "last-name": "الأسم الثاني",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "gender": "النوع",
+        "old-password": "كلمة المرور القديمة",
+        "new-password": "كلمة المرور الجديدة",
+        "confirm-new-password": "تأكيد كلمة المرور الجديدة"
+      },
+      "save-changes": "حفظ التغييرات",
+      "delete-my-account": "حذف الحساب",
+      "change-password": "تغيير كلمة المرور",
+       "dialog":{
+        "title" : "هل أنت متأكد من رغبتك في حذف حسابك؟",
+        "description" : "هذا الإجراء دائم ولا يمكن التراجع عنه.",
+        "cancel" : "الغاء",
+        "action" : "نعم احذف"
       }
     },
     "checkout": {

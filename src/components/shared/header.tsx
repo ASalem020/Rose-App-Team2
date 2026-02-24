@@ -30,7 +30,7 @@ export async function Header() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/logo/bb70dbdbb3472a27ffcc4d3baeb8eaceb3873b18.png"
+            src="/assets/images/logo/bb70dbdbb3472a27ffcc4d3baeb8eaceb3873b18.png"
             alt="Rose Logo"
             width={70}
             height={70}
