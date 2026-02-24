@@ -1,11 +1,13 @@
 export interface Address {
-  id: string;
+  _id: string;
   name: string;
   street: string;
   city: string;
   phone: string;
-  latitude?: number;
-  longitude?: number;
+  latitude: string;
+  longitude: string;
+  lat: string;
+  long: string;
 }
 
 export interface AddressFormData {

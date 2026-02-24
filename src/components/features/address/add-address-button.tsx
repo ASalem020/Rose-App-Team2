@@ -1,24 +1,23 @@
 'use client';
 
-
 // Imports
-
 
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+} from '@/components/ui/dialog';
 import AddressModal from './address-modal';
 
-
 // Component
-
 
 /**
  * AddAddressButton - A standalone button that opens the address creation wizard
  *
- * This component handles its own dialog state and initializes the 
+ * This component handles its own dialog state and initializes the
  * AddressModal in 'wizard' mode directly.
  *
  * Features:
@@ -27,43 +26,37 @@ import AddressModal from './address-modal';
  * - Uses the standard AddressModal component
  */
 export function AddAddressButton() {
-
   // Context
-
 
   const t = useTranslations('pages.address.list');
 
-
   // State
-
 
   const [isOpen, setIsOpen] = useState(false);
 
-
   // Handlers
-
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
-
   // Render
-
 
   return (
     <>
-      <Button 
+      <Button
+        variant={'secondary'}
         onClick={handleOpen}
-        className="flex items-center gap-2 font-medium"
+        className="flex w-full items-center gap-2 font-medium"
+        type="button"
       >
-        <Plus className="w-4 h-4" />
+        <Plus className="h-4 w-4" />
         {t('addNew')}
       </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-xl w-full p-0 overflow-hidden border-none shadow-2xl">
+        <DialogContent className="w-full max-w-xl overflow-hidden border-none p-0 shadow-2xl">
           <div className="p-6">
-            <AddressModal 
+            <AddressModal
               initialView="wizard"
               onAddressSelect={() => handleClose()}
               onSave={() => handleClose()}
