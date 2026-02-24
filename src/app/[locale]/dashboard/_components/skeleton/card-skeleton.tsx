@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 export default function CardSkeleton() {
   return (
     <>
-      {[...Array(4)].map((_, idx) => (
+      {[...Array(6)].map((_, idx) => (
         <div
           key={idx}
           className="mb-2.5 flex items-center justify-between border-b border-gray-200 pb-2.5"
