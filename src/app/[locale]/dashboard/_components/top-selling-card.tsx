@@ -1,8 +1,9 @@
-'use client';
-
 import { cn } from '@/lib/utils/tailwind-merge';
-import { useDashboardProducts } from '../_hooks/use-products';
-import CardSkeleton from './card-skeleton';
+import { DashboardProducts } from '@/lib/types/dashboard-products';
+import {
+  getFormatter,
+  getTranslations,
+} from 'next-intl/server';
 
 const colors = [
   'bg-gradient-to-r from-[#DFAC16]/25 to-[#DFAC16]/10 ',
@@ -10,39 +11,42 @@ const colors = [
   'bg-gradient-to-r from-[#914400]/25 to-[#914400]/10 ',
 ];
 
-export default function TopSellingCard() {
-  // ^ hooks
-  const { data, isLoading, isError } =
-    useDashboardProducts();
+export default async function TopSellingCard() {
+  // ^ Translations
+  const t = await getTranslations('dashboard');
+  const format = await getFormatter();
 
-  if (isLoading) return <CardSkeleton />;
-  if (isError) return <p>Something went wrong</p>;
+  const response = await fetch(
+    `${process.env.API_URL}/products?sort=-sold`,
+  );
+  const data: DashboardProducts = await response.json();
 
   return (
     <>
-      {data?.statistics?.topSellingProducts?.map(
-        (item, index) => (
-          <div
-            key={item._id}
-            className={cn(
-              'mb-2.5 flex items-center justify-between px-2.5 py-1.5',
-              colors[index] || 'bg-zinc-100',
-            )}
-          >
-            <div className="flex items-center gap-2">
-              <h3 className="max-w-[220px] truncate text-xl font-semibold capitalize text-zinc-800">
-                {item.title}
-              </h3>
-              <span className="text-lg capitalize text-zinc-800">
-                ({item.price} EGP)
-              </span>
-            </div>
-            <span className="font-bold">
-              {item.sold} Sales
+      {data?.products?.map((product, index) => (
+        <div
+          key={product._id}
+          className={cn(
+            'mb-2.5 flex items-center justify-between rounded-md px-2.5 py-1.5',
+            colors[index] || 'bg-zinc-100',
+          )}
+        >
+          <div className="flex items-center gap-2">
+            <h3 className="max-w-[220px] truncate text-xl font-semibold capitalize text-zinc-800">
+              {product.title}
+            </h3>
+            <span className="text-lg capitalize text-zinc-800">
+              {format.number(product.price, {
+                style: 'currency',
+                currency: 'EGP',
+              })}
             </span>
           </div>
-        ),
-      )}
+          <span className="font-bold">
+            {product.sold} {t('Sales')}
+          </span>
+        </div>
+      ))}
     </>
   );
 }

@@ -392,6 +392,8 @@
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح.",
   "dashboard": {
     "top-selling-products": "المنتجات الأكثر مبيعا",
-    "low-stock-products": "منتجات منخفضة المخزون"
+    "low-stock-products": "منتجات منخفضة المخزون",
+    "Products": "منتجات",
+    "Sales": "مبيعات"
   }
 }

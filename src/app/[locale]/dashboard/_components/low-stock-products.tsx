@@ -7,9 +7,11 @@ export default function LowStockProducts() {
   const t = useTranslations('dashboard');
 
   return (
-    <div className="rounded-xl bg-white p-6 shadow-md">
+    <div className="flex max-h-112 flex-col rounded-2xl bg-white p-6">
       <TitleComponents title={t('low-stock-products')} />
-      <LowStockCard />
+      <div className="flex-1 overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <LowStockCard />
+      </div>
     </div>
   );
 }

@@ -395,6 +395,9 @@
   "success-toast": "Your password has been successfully reset.",
   "dashboard": {
     "top-selling-products": "Top Selling Products",
-    "low-stock-products": "Low Stock Products"
+    "low-stock-products": "Low Stock Products",
+    "Products" : "Products",
+    "Sales" : "Sales"
+
   }
 }

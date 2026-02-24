@@ -1,42 +1,41 @@
-'use client';
-
 import { cn } from '@/lib/utils/tailwind-merge';
-import { useDashboardProducts } from '../_hooks/use-products';
-import CardSkeleton from './card-skeleton';
+import { DashboardProducts } from '@/lib/types/dashboard-products';
+import { getTranslations } from 'next-intl/server';
 
-export default function LowStockCard() {
-  // ^ hooks
-  const { data, isLoading, isError } =
-    useDashboardProducts();
+export default async function LowStockCard() {
+  // ^ Translations
+  const t = await getTranslations('dashboard');
 
-  if (isLoading) return <CardSkeleton />;
-  if (isError) return <p>Something went wrong</p>;
+  const response = await fetch(
+    `${process.env.API_URL}//products?sort=quantity`,
+  );
+  const data: DashboardProducts = await response.json();
 
   return (
     <>
-      {[...(data?.statistics?.lowStockProducts || [])]
-        .sort((a, b) => a.quantity - b.quantity)
-        .map(item => (
-          <div
-            key={item._id}
-            className="mb-2.5 flex items-center justify-between border-b border-gray-200 pb-2.5"
+      {data?.products?.map(product => (
+        <div
+          key={product._id}
+          className="mb-2.5 flex items-center justify-between border-b border-gray-200 pb-2.5"
+        >
+          <h3 className="max-w-[220px] truncate text-xl capitalize text-zinc-800">
+            {product.title}
+          </h3>
+          <span
+            className={cn(
+              'text-xl capitalize',
+              product.quantity <= 5
+                ? 'text-red-600'
+                : 'text-zinc-800',
+            )}
           >
-            <h3 className="max-w-[220px] truncate text-xl capitalize text-zinc-800">
-              {item.title}
-            </h3>
-            <span
-              className={cn(
-                'text-xl capitalize',
-                item.quantity <= 5
-                  ? 'text-red-600'
-                  : 'text-zinc-800',
-              )}
-            >
-              {item.quantity <= 0 ? ' 0 ' : item.quantity}{' '}
-              Products
-            </span>
-          </div>
-        ))}
+            {product.quantity <= 0
+              ? ' 0 '
+              : product.quantity}{' '}
+            {t('Products')}
+          </span>
+        </div>
+      ))}
     </>
   );
 }
