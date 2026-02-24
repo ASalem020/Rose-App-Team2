@@ -53,7 +53,9 @@ export default async function FirstRow() {
     },
     {
       label: t('total-revenue-label'),
-      value: overall.totalRevenue.toLocaleString(),
+      value: Math.round(
+        overall.totalRevenue,
+      ).toLocaleString(),
       suffix: t('suffix'),
       icon: (
         <CircleDollarSign
