@@ -16,6 +16,7 @@ export default async function TopSellingCard() {
   const t = await getTranslations('dashboard');
   const format = await getFormatter();
 
+  // ^ fetch data
   const response = await fetch(
     `${process.env.API_URL}/products?sort=-sold`,
   );
@@ -36,14 +37,17 @@ export default async function TopSellingCard() {
               {product.title}
             </h3>
             <span className="text-lg capitalize text-zinc-800">
+              (
               {format.number(product.price, {
                 style: 'currency',
                 currency: 'EGP',
+                maximumFractionDigits: 0,
               })}
+              )
             </span>
           </div>
           <span className="font-bold">
-            {product.sold} {t('Sales')}
+            {product.sold} {t('sales')}
           </span>
         </div>
       ))}

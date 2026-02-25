@@ -6,8 +6,9 @@ export default async function LowStockCard() {
   // ^ Translations
   const t = await getTranslations('dashboard');
 
+  // ^ fetch data
   const response = await fetch(
-    `${process.env.API_URL}//products?sort=quantity`,
+    `${process.env.API_URL}/products?sort=quantity`,
   );
   const data: DashboardProducts = await response.json();
 
@@ -29,10 +30,9 @@ export default async function LowStockCard() {
                 : 'text-zinc-800',
             )}
           >
-            {product.quantity <= 0
-              ? ' 0 '
-              : product.quantity}{' '}
-            {t('Products')}
+            {Math.max(product.quantity, 0)}
+            {'  '}
+            {t('products')}
           </span>
         </div>
       ))}

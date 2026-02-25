@@ -396,8 +396,8 @@
   "dashboard": {
     "top-selling-products": "Top Selling Products",
     "low-stock-products": "Low Stock Products",
-    "Products" : "Products",
-    "Sales" : "Sales"
+    "products" : "Products",
+    "sales" : "Sales"
 
   }
 }

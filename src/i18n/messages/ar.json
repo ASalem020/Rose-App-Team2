@@ -393,7 +393,7 @@
   "dashboard": {
     "top-selling-products": "المنتجات الأكثر مبيعا",
     "low-stock-products": "منتجات منخفضة المخزون",
-    "Products": "منتجات",
-    "Sales": "مبيعات"
+    "products": "منتجات",
+    "sales": "مبيعات"
   }
 }

@@ -3,9 +3,9 @@ import LowStockProducts from './_components/low-stock-products';
 
 export default function Dashboard() {
   return (
-    <div className="container mx-auto mt-6 grid grid-cols-2 gap-6">
+    <section className="container mx-auto mt-6 grid grid-cols-2 gap-6">
       <TopSellingProducts />
       <LowStockProducts />
-    </div>
+    </section>
   );
 }
