@@ -12,6 +12,7 @@ import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 export default function Menu() {
+  // Translation
   const t = useTranslations();
 
   // State

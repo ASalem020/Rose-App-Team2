@@ -39,7 +39,7 @@ export default function DashboardSidebar({
       )}
     >
       {/* Main Content */}
-      <div className="main-content flex flex-col gap-6">
+      <div className="main-content relative flex grow flex-col gap-6">
         {/* Logo */}
         <div className="logo-container flex">
           <div className="logo relative mx-auto h-28 w-32">
@@ -64,7 +64,8 @@ export default function DashboardSidebar({
         </div>
 
         {/* Navigation Links */}
-        <nav className="navigation-links flex flex-col gap-4">
+        {/* Make it sticky to make it easy to follow when scroll in page ( best UX ) */}
+        <nav className="navigation-links sticky top-6 flex flex-col gap-4">
           {dashboardLinks.map(link => (
             <DashboardNavLink
               href={link.href}
