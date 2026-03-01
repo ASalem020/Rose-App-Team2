@@ -21,7 +21,7 @@ export function LocationButton({ deliverToText, locationText }: LocationButtonPr
       if (saved) {
         setSelectedAddress(JSON.parse(saved));
       }
-    } catch (e) {
+    } catch {
       // ignore parse errors
     }
   }, []);
@@ -30,7 +30,7 @@ export function LocationButton({ deliverToText, locationText }: LocationButtonPr
     setSelectedAddress(address);
     try {
       localStorage.setItem('selectedAddress', JSON.stringify(address));
-    } catch (e) {
+    } catch {
       // ignore storage errors
     }
   };
@@ -58,7 +58,7 @@ export function LocationButton({ deliverToText, locationText }: LocationButtonPr
           <div className="p-6">
             <AddressModal
               onAddressSelect={handleAddressSelect}
-              selectedAddressId={selectedAddress?.id ?? null}
+              selectedAddressId={selectedAddress?._id ?? null}
             />
           </div>
         </DialogContent>
