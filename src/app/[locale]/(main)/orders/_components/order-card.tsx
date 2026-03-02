@@ -1,10 +1,10 @@
-import { Order } from '@/lib/types/order'
-import { formatDate } from '@/lib/utils/format-date'
-import ShowToggle from './show-toggle'
+import { Order } from '@/lib/types/order';
+import { formatDate } from '@/lib/utils/format-date';
+import ShowToggle from './show-toggle';
 
 type Props = {
-  order: Order
-}
+  order: Order;
+};
 
 /**
  * OrderCard Component
@@ -19,7 +19,7 @@ export default function OrderCard({ order }: Props) {
   /**
    * Format order creation date
    */
-  const formattedDate = formatDate(order.createdAt)
+  const formattedDate = formatDate(order.createdAt);
 
   /**
    * Map order state to badge styles
@@ -28,16 +28,13 @@ export default function OrderCard({ order }: Props) {
     pending: 'bg-blue-100 text-blue-700',
     completed: 'bg-green-100 text-green-700',
     cancelled: 'bg-red-100 text-red-700',
-  }
+  };
 
   return (
     <div className="overflow-hidden rounded-xl border bg-white shadow-lg">
-      
       {/* Header Section */}
-      <div className="flex items-center justify-between bg-red-700 px-6 py-3 text-white text-2xl font-semibold">
-        <span>
-          Order {order.orderNumber}
-        </span>
+      <div className="flex items-center justify-between bg-red-700 px-6 py-3 text-2xl font-semibold text-white">
+        <span>Order {order.orderNumber}</span>
 
         <span className="text-sm font-normal">
           Created at {formattedDate}
@@ -46,7 +43,6 @@ export default function OrderCard({ order }: Props) {
 
       {/* Body Section */}
       <div className="space-y-6 p-6">
-        
         {/* Order Status Badge */}
         <div className="flex justify-end">
           <span
@@ -61,7 +57,6 @@ export default function OrderCard({ order }: Props) {
 
         {/* Summary Section */}
         <div className="space-y-4">
-          
           {/* Total Price + Payment Status */}
           <div className="flex items-center gap-4">
             <h3 className="text-lg font-semibold">
@@ -96,5 +91,5 @@ export default function OrderCard({ order }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

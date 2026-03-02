@@ -1,20 +1,22 @@
-import Image from 'next/image'
-import type { OrderItem } from '@/lib/types/order'
+import Image from 'next/image';
+import type { OrderItem } from '@/lib/types/order';
 
 type Props = {
-  item: OrderItem
-}
+  item: OrderItem;
+};
 
 /**
  * OrderItemComponent
  * ------------------
  * Displays a single product inside an order.
  */
-export default function OrderItemComponent({ item }: Props) {
+export default function OrderItemComponent({
+  item,
+}: Props) {
   // Build image URL from API or use placeholder if missing
   const imageUrl = item.product?.image
     ? `${process.env.NEXT_PUBLIC_API_URL}/uploads/${item.product.image}`
-    : '/placeholder.png'
+    : '/placeholder.png';
 
   return (
     <div className="flex items-center gap-4 border-b border-gray-100 pb-4">
@@ -44,5 +46,5 @@ export default function OrderItemComponent({ item }: Props) {
         {item.price} EGP
       </p>
     </div>
-  )
+  );
 }

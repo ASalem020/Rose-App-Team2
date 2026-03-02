@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { OrderItem } from '@/lib/types/order'
-import OrderItemComponent from './order-product-item'
+import { useState } from 'react';
+import { OrderItem } from '@/lib/types/order';
+import OrderItemComponent from './order-product-item';
 
 type Props = {
-  items: OrderItem[]
-}
+  items: OrderItem[];
+};
 
 /**
  * ShowToggle
@@ -15,10 +15,10 @@ type Props = {
  */
 export default function ShowToggle({ items }: Props) {
   // State to control whether all items are visible
-  const [showAll, setShowAll] = useState(false)
+  const [showAll, setShowAll] = useState(false);
 
   // Decide which items to show based on state
-  const visibleItems = showAll ? items : items.slice(0, 3)
+  const visibleItems = showAll ? items : items.slice(0, 3);
 
   return (
     <div className="space-y-2">
@@ -37,5 +37,5 @@ export default function ShowToggle({ items }: Props) {
         </button>
       )}
     </div>
-  )
+  );
 }

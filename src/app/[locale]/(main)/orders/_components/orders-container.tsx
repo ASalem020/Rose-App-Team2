@@ -1,9 +1,9 @@
-import { Order } from '@/lib/types/order'
-import OrderCard from './order-card'
+import { Order } from '@/lib/types/order';
+import OrderCard from './order-card';
 
 type Props = {
-  orders: Order[]
-}
+  orders: Order[];
+};
 
 /**
  * OrdersContainer
@@ -20,7 +20,7 @@ export default function OrdersContainer({ orders }: Props) {
           No orders found.
         </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -30,5 +30,5 @@ export default function OrdersContainer({ orders }: Props) {
         <OrderCard key={order._id} order={order} />
       ))}
     </div>
-  )
+  );
 }

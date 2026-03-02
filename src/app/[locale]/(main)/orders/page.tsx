@@ -1,7 +1,7 @@
-import { redirect } from 'next/navigation'
-import OrdersContainer from './_components/orders-container'
-import { getUserOrdersAction } from '@/lib/services/orders.service'
-import { OrdersResponse } from '@/lib/types/order'
+import { redirect } from 'next/navigation';
+import OrdersContainer from './_components/orders-container';
+import { getUserOrdersAction } from '@/lib/services/orders.service';
+import { OrdersResponse } from '@/lib/types/order';
 
 /**
  * OrdersPage
@@ -9,12 +9,11 @@ import { OrdersResponse } from '@/lib/types/order'
  */
 export default async function OrdersPage() {
   try {
-    const data: OrdersResponse = await getUserOrdersAction()
+    const data: OrdersResponse =
+      await getUserOrdersAction();
 
-    return (
-      <OrdersContainer orders={data.orders} />
-    )
+    return <OrdersContainer orders={data.orders} />;
   } catch {
-    redirect('/login')
+    redirect('/login');
   }
 }
