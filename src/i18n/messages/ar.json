@@ -527,6 +527,19 @@
         "updateSuccess": "تم تحديث العنوان بنجاح",
         "deleteSuccess": "تم حذف العنوان بنجاح"
       }
+    },
+    "dashboard": {
+      "nav-links": {
+        "overview": "نظرة عامة",
+        "categories": "التصنيفات",
+        "occasions": "المناسبات",
+        "products": "المنتجات",
+        "preview-website": "عرض الموقع"
+      },
+      "menu": {
+        "account-settings": "الحساب",
+        "logout": "تسجيل الخروج"
+      }
     }
   },
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."

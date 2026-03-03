@@ -530,6 +530,19 @@
           "credit": "Credit card checkout session created successfully, Continue Shopping!",
           "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
         }
+    },
+    "dashboard": {
+      "nav-links": {
+        "overview": "Overview",
+        "categories": "Categories",
+        "occasions": "Occasions",
+        "products": "Products",
+        "preview-website": "Preview Website"
+      },
+      "menu": {
+        "account-settings": "Account",
+        "logout": "Logout"
+      }
     }
   },
   "success-toast": "Your password has been successfully reset."
