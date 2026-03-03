@@ -362,7 +362,7 @@
     "profile": {
       "title": "تعديل الملف الشخصي",
       "des": "يمكنك تحميل صورة بصيغة .jpg أو .png أو .gif بحد أقصى 5 ميجابايت.",
-      "upload-photo":"تحميل الصورة",
+      "upload-photo": "تحميل الصورة",
       "sidebar": {
         "my-account": "حسابي",
         "change-password": "تغيير كلمة المرور",
@@ -381,11 +381,11 @@
       "save-changes": "حفظ التغييرات",
       "delete-my-account": "حذف الحساب",
       "change-password": "تغيير كلمة المرور",
-      "dialog":{
-        "title" : "هل أنت متأكد من رغبتك في حذف حسابك؟",
-        "description" : "هذا الإجراء دائم ولا يمكن التراجع عنه.",
-        "cancel" : "الغاء",
-        "action" : "نعم احذف"
+      "dialog": {
+        "title": "هل أنت متأكد من رغبتك في حذف حسابك؟",
+        "description": "هذا الإجراء دائم ولا يمكن التراجع عنه.",
+        "cancel": "الغاء",
+        "action": "نعم احذف"
       }
     },
     "checkout": {
@@ -526,6 +526,75 @@
         "addSuccess": "تم إضافة العنوان بنجاح",
         "updateSuccess": "تم تحديث العنوان بنجاح",
         "deleteSuccess": "تم حذف العنوان بنجاح"
+      }
+    },
+    "dashboard": {
+      "products": {
+        "add-product": {
+          "header": "إضافة منتج جديد",
+          "form": {
+            "validation": {
+              "title": {
+                "type": "يجب أن يكون العنوان نصًا",
+                "required": "عنوان المنتج مطلوب"
+              },
+              "description": {
+                "type": "يجب أن يكون الوصف نصًا",
+                "required": "وصف المنتج مطلوب"
+              },
+              "price": {
+                "type": "يجب أن تكون السعر نصًا",
+                "required": "السعر مطلوب"
+              },
+              "discount": {
+                "type": "يجب أن يكون التخفيض نصًا",
+                "required": "التخفيض مطلوب"
+              },
+              "price-after-discount": {
+                "type": "يجب أن تكون السعر بعد الخصم نصًا",
+                "required": "السعر بعد الخصم مطلوب"
+              },
+              "quantity": {
+                "type": "يجب أن تكون الكمية نصًا",
+                "required": "الكمية مطلوبة"
+              },
+              "img-cover": {
+                "required": "صورة غلاف المنتج مطلوبة"
+              },
+              "images": {
+                "required": "صور معرض المنتجات مطلوبة"
+              },
+              "category": {
+                "type": "يجب أن تكون الفئة نصًا",
+                "required": "الفئة مطلوبة"
+              },
+              "occasion": {
+                "type": "يجب أن تكون المناسبة نصًا",
+                "required": "المناسبة مطلوبة"
+              }
+            },
+            "price-label": "السعر",
+            "discount-label": "تخفيض",
+            "discount-placeholder": "مثال: 5",
+            "price-after-discount-label": "السعر بعد الخصم",
+            "price-after-discount-placeholder": "مثال: 5",
+            "quantity-label": "كمية",
+            "quantity-placeholder": "مثال: 200",
+            "img-cover-label": "صورة غلاف المنتج",
+            "category-label": "الفئة",
+            "occasion-label": "المناسبة",
+            "submit-loading": "جارٍ إضافة المنتج...",
+            "submit-btn": "أضف المنتج",
+            "title-label": "عنوان",
+            "description-label": "وصف",
+            "title-placeholder": "أدخل عنوان المنتج",
+            "description-placeholder": "أدخل وصف المنتج",
+            "price-placeholder": "مثال: 5000",
+            "images-label": "معرض المنتجات",
+            "select-placeholder": "حدد خيارًا",
+            "success-toast": ""
+          }
+        }
       }
     }
   },
