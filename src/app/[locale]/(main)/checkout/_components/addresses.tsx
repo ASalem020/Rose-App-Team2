@@ -4,7 +4,6 @@ import useAddress from '../_hooks/use-address';
 import AddressCard from './address-card';
 import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
-import AddAddress from './add-address';
 import { useTranslations } from 'next-intl';
 import {
   UseFormGetValues,
@@ -13,6 +12,7 @@ import {
 import { useState } from 'react';
 import { CheckoutSchemaType } from '@/lib/types/checkout';
 import AddressesSkeleton from './addresses-skeleton';
+import { AddAddressButton } from '@/components/features/address/add-address-button';
 
 type AddressesProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -81,8 +81,15 @@ export default function Addresses({
           )}
         </div>
 
+        {/* OR UI */}
+        <div className="relative flex items-center justify-center gap-2.5 py-2 before:absolute before:left-0 before:right-0 before:top-1/2 before:z-0 before:h-px before:bg-zinc-100">
+          <span className="text relative z-10 bg-white px-2.5 text-base font-semibold text-zinc-500 md:text-lg">
+            {t('or')}
+          </span>
+        </div>
+
         {/* Add Address */}
-        <AddAddress />
+        <AddAddressButton />
 
         {/* Next Step */}
         <div className="flex">
