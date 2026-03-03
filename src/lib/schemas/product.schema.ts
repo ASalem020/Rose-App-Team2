@@ -18,7 +18,16 @@ export const productSchema = (t: Translations) => {
           message: t('validation.price.required'),
         },
       ),
-    discount: z.string(),
+    discount: z
+      .string()
+      .optional()
+      .refine(
+        val =>
+          !val || (!isNaN(Number(val)) && Number(val) >= 0),
+        {
+          message: t('validation.discount.type'),
+        },
+      ),
     priceAfterDiscount: z.string(),
     quantity: z
       .string(t('validation.quantity.type'))

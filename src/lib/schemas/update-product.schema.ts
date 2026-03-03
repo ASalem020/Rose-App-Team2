@@ -10,7 +10,9 @@ export const updateProductSchema = (t: Translations) => {
       .string(t('validation.description.type'))
       .nonempty(t('validation.description.required')),
     price: z.string(t('validation.price.required')),
-    discount: z.string(t('validation.discount.type')),
+    discount: z
+      .string(t('validation.discount.type'))
+      .optional(),
     priceAfterDiscount: z.string(),
     quantity: z.string(t('validation.quantity.required')),
     category: z

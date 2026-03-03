@@ -59,7 +59,7 @@ export default function UpdateProductForm({
       title: product.title,
       description: product.description,
       price: product.price.toString(),
-      discount: product.discount.toString(),
+      discount: product.discount?.toString(),
       priceAfterDiscount:
         product.priceAfterDiscount.toString(),
       quantity: product.quantity.toString(),
@@ -188,49 +188,57 @@ export default function UpdateProductForm({
             )}
           />
 
-          {/* Discount */}
-          <FormField
-            control={form.control}
-            name="discount"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>{t('discount-label')}</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    placeholder={t('discount-placeholder')}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {discount && (
+            <>
+              {/* Discount */}
+              <FormField
+                control={form.control}
+                name="discount"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>
+                      {t('discount-label')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        placeholder={t(
+                          'discount-placeholder',
+                        )}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          {/* Price after discount */}
-          <FormField
-            control={form.control}
-            name="priceAfterDiscount"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>
-                  {t('price-after-discount-label')}
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="bg-zinc-100"
-                    type="number"
-                    readOnly
-                    placeholder={t(
-                      'price-after-discount-placeholder',
-                    )}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              {/* Price after discount */}
+              <FormField
+                control={form.control}
+                name="priceAfterDiscount"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormLabel>
+                      {t('price-after-discount-label')}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="bg-zinc-100"
+                        type="number"
+                        readOnly
+                        placeholder={t(
+                          'price-after-discount-placeholder',
+                        )}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
         </div>
 
         {/* Quantity */}

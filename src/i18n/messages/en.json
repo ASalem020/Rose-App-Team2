@@ -552,8 +552,7 @@
                 "required": "Please enter a valid price"
               },
               "discount": {
-                "type": "Discount must be a string",
-                "required": "Discount is required"
+                "type": "Please enter a valid discount"
               },
               "price-after-discount": {
                 "type": "Price after discount must be a string",
