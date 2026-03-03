@@ -23,8 +23,11 @@ export default async function UpdateProduct({
       <div className="w-1/5 bg-white">Sidebar</div>
 
       <div className="w-4/5 bg-zinc-100 p-6">
-        <h2 className="mb-6 text-2xl font-semibold text-zinc-800">
-          {t('header')}
+        <h2 className="mb-6 flex gap-1 text-2xl font-semibold text-zinc-800">
+          <span className="shrink-0">{t('header')}:</span>
+          <span className="truncate" title={product.title}>
+            {product.title}
+          </span>
         </h2>
 
         <div className="mb-20 rounded-2xl bg-white">

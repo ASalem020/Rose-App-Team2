@@ -602,6 +602,8 @@
         "update-product": {
           "header": "Update Product",
           "form": {
+            "view-cover": "View product cover",
+            "view-images": "View product images",
             "success-toast": "Product updated successfully",
             "error-toast": "Failed to update product",
             "validation": {
@@ -657,7 +659,8 @@
             "occasion-label": "Occasion",
             "submit-loading": "updating product...",
             "submit-btn": "update product"
-          }
+          },
+          "view-cover": "View Product Cover"
         }
       }
     }

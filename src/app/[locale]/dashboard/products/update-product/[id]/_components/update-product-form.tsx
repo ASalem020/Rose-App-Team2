@@ -349,15 +349,15 @@ export default function UpdateProductForm({
         <div className="flex justify-end gap-2">
           <Link
             href={`/dashboard/products/${product._id}/cover`}
-            className="flex items-center gap-1 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
+            className="flex items-center gap-1.5 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
           >
-            <ImageIcon size={18} /> View Product Cover
+            <ImageIcon size={18} /> {t('view-cover')}
           </Link>
           <Link
             href={`/dashboard/products/${product._id}/images`}
-            className="flex items-center gap-1 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
+            className="flex items-center gap-1.5 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
           >
-            <Images size={18} /> View Product Images
+            <Images size={18} /> {t('view-images')}
           </Link>
         </div>
 

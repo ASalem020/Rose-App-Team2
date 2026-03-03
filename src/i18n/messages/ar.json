@@ -658,7 +658,9 @@
             "category-label": "الفئة",
             "occasion-label": "المناسبة",
             "submit-loading": "جاري تحديث المنتج...",
-            "submit-btn": "تحديث المنتج"
+            "submit-btn": "تحديث المنتج",
+            "view-images": "عرض صور المنتج",
+            "view-cover": "عرض غلاف المنتج"
           }
         }
       }
