@@ -598,6 +598,66 @@
             "submit-loading": "adding product...",
             "submit-btn": "add product"
           }
+        },
+        "update-product": {
+          "header": "Update Product",
+          "form": {
+            "success-toast": "Product updated successfully",
+            "error-toast": "Failed to update product",
+            "validation": {
+              "title": {
+                "type": "Title must be a string",
+                "required": "Product title is required"
+              },
+              "description": {
+                "type": "Description must be a string",
+                "required": "Product description is required"
+              },
+              "price": {
+                "required": "Please enter a valid price"
+              },
+              "discount": {
+                "type": "Please enter a valid discount"
+              },
+              "quantity": {
+                "type": "Quantity must be a string",
+                "required": "Product quantity is required"
+              },
+              "img-cover": {
+                "required": "Product cover is required"
+              },
+              "images": {
+                "required": "Product gallery images are required"
+              },
+              "category": {
+                "type": "Category must be a string",
+                "required": "Please select a category for the product"
+              },
+              "occasion": {
+                "type": "Occasion must be a string",
+                "required": "Please select an occasion for the product"
+              }
+            },
+            "title-label": "Title",
+            "title-placeholder": "Enter product title",
+            "description-label": "Description",
+            "description-placeholder": "Enter product description",
+            "price-label": "Price",
+            "price-placeholder": "Example: 5000",
+            "discount-label": "Discount",
+            "discount-placeholder": "Example: 5",
+            "price-after-discount-label": "Price after discount",
+            "price-after-discount-placeholder": "Example: 5",
+            "quantity-label": "Quantity",
+            "quantity-placeholder": "Example: 200",
+            "img-cover-label": "Product cover image",
+            "images-label": "Product gallery",
+            "select-placeholder": "Select an option",
+            "category-label": "Category",
+            "occasion-label": "Occasion",
+            "submit-loading": "updating product...",
+            "submit-btn": "update product"
+          }
         }
       }
     }

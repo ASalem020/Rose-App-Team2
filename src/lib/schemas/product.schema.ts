@@ -10,7 +10,7 @@ export const productSchema = (t: Translations) => {
       .string(t('validation.description.type'))
       .nonempty(t('validation.description.required')),
     price: z
-      .string(t('validation.price.type'))
+      .string()
       .nonempty(t('validation.price.required'))
       .refine(
         val => !isNaN(Number(val)) && Number(val) > 0,
@@ -18,10 +18,8 @@ export const productSchema = (t: Translations) => {
           message: t('validation.price.required'),
         },
       ),
-    discount: z.string(t('validation.discount.type')),
-    priceAfterDiscount: z.string(
-      t('validation.price-after-discount.type'),
-    ),
+    discount: z.string(),
+    priceAfterDiscount: z.string(),
     quantity: z
       .string(t('validation.quantity.type'))
       .nonempty(t('validation.quantity.required')),

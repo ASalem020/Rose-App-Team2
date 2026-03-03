@@ -594,6 +594,72 @@
             "select-placeholder": "حدد خيارًا",
             "success-toast": ""
           }
+        },
+        "update-product": {
+          "header": "تحديث المنتج",
+          "form": {
+            "success-toast": "تم تحديث المنتج بنجاح",
+            "error-toast": "فشل تحديث المنتج",
+            "validation": {
+              "title": {
+                "type": "يجب أن يكون العنوان نصًا",
+                "required": "عنوان المنتج مطلوب"
+              },
+              "description": {
+                "type": "يجب أن يكون الوصف نصًا",
+                "required": "وصف المنتج مطلوب"
+              },
+              "price": {
+                "type": "يجب أن يكون السعر نصًا",
+                "required": "يرجى إدخال سعر صالح"
+              },
+              "discount": {
+                "type": "يجب أن يكون التخفيض نصًا",
+                "required": "التخفيض مطلوب"
+              },
+              "price-after-discount": {
+                "type": "يجب أن يكون السعر بعد الخصم نصًا",
+                "required": "السعر بعد الخصم مطلوب"
+              },
+              "quantity": {
+                "type": "يجب أن تكون الكمية نصًا",
+                "required": "كمية المنتج مطلوبة"
+              },
+              "img-cover": {
+                "required": "صورة غلاف المنتج مطلوبة"
+              },
+              "images": {
+                "required": "صور معرض المنتج مطلوبة"
+              },
+              "category": {
+                "type": "يجب أن تكون الفئة نصًا",
+                "required": "يرجى اختيار فئة للمنتج"
+              },
+              "occasion": {
+                "type": "يجب أن تكون المناسبة نصًا",
+                "required": "يرجى اختيار مناسبة للمنتج"
+              }
+            },
+            "title-label": "العنوان",
+            "title-placeholder": "أدخل عنوان المنتج",
+            "description-label": "الوصف",
+            "description-placeholder": "أدخل وصف المنتج",
+            "price-label": "السعر",
+            "price-placeholder": "مثال: 5000",
+            "discount-label": "التخفيض",
+            "discount-placeholder": "مثال: 5",
+            "price-after-discount-label": "السعر بعد الخصم",
+            "price-after-discount-placeholder": "مثال: 5",
+            "quantity-label": "الكمية",
+            "quantity-placeholder": "مثال: 200",
+            "img-cover-label": "صورة غلاف المنتج",
+            "images-label": "معرض المنتج",
+            "select-placeholder": "اختر خيارًا",
+            "category-label": "الفئة",
+            "occasion-label": "المناسبة",
+            "submit-loading": "جاري تحديث المنتج...",
+            "submit-btn": "تحديث المنتج"
+          }
         }
       }
     }

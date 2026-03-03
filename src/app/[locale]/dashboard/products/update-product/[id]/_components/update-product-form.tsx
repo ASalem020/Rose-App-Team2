@@ -21,18 +21,27 @@ import {
 } from '@/components/ui/form';
 import { toast } from 'sonner';
 import { useLocale, useTranslations } from 'next-intl';
-import { productSchema } from '@/lib/schemas/product.schema';
 import { Textarea } from '@/components/ui/textarea';
-import { ProductFields } from '@/app/[locale]/(auth)/register/_types/product-fields';
+import { UpdateProductFields } from '@/app/[locale]/(auth)/register/_types/product-fields';
 import useAllCategories from '@/hooks/use-all-category';
 import useAllOccasions from '@/hooks/use-all-occasions';
-import { useAddProduct } from '../_hooks/use-add-product';
 import { useEffect } from 'react';
+import { Product } from '@/lib/types/product';
+import { useUpdateProduct } from '../_hooks/use-update-product';
+import { updateProductSchema } from '@/lib/schemas/update-product.schema';
+import { Link } from '@/i18n/navigation';
+import { Image as ImageIcon, Images } from 'lucide-react';
 
-export default function CreateProductForm() {
+type Props = {
+  product: Product;
+};
+
+export default function UpdateProductForm({
+  product,
+}: Props) {
   // Translations
   const t = useTranslations(
-    'pages.dashboard.products.add-product.form',
+    'pages.dashboard.products.update-product.form',
   );
   const locale = useLocale();
 
@@ -41,25 +50,24 @@ export default function CreateProductForm() {
   const { occasions } = useAllOccasions();
 
   // Hooks
-  const { isLoading, mutateAsync: addProduct } =
-    useAddProduct();
+  const { isLoading, mutateAsync: updateProduct } =
+    useUpdateProduct(product._id);
 
   // Forms
-  const form = useForm<ProductFields>({
+  const form = useForm<UpdateProductFields>({
     defaultValues: {
-      title: '',
-      description: '',
-      price: '',
-      discount: '',
-      priceAfterDiscount: '',
-      quantity: '',
-      imgCover: undefined,
-      images: undefined,
-      category: '',
-      occasion: '',
+      title: product.title,
+      description: product.description,
+      price: product.price.toString(),
+      discount: product.discount.toString(),
+      priceAfterDiscount:
+        product.priceAfterDiscount.toString(),
+      quantity: product.quantity.toString(),
+      category: product.category,
+      occasion: product.occasion,
     },
     mode: 'onSubmit',
-    resolver: zodResolver(productSchema(t)),
+    resolver: zodResolver(updateProductSchema(t)),
   });
 
   // Form methods
@@ -71,33 +79,32 @@ export default function CreateProductForm() {
 
   // Functions
   const onSubmit: SubmitHandler<
-    ProductFields
+    UpdateProductFields
   > = async values => {
     try {
-      await addProduct(values);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { discount, occasion, ...rest } = values;
+
+      await updateProduct(rest as UpdateProductFields);
       toast.success(t('success-toast'));
-      form.reset();
+      // form.reset();
     } catch (e) {
       toast.error(
         e instanceof Error ? e.message : t('error-toast'),
       );
     }
   };
-
   // Automatically calculate price After Discount
   useEffect(() => {
-    const priceNum = parseFloat(price as string) || 0;
-    const discountNum = parseFloat(discount as string) || 0;
+    const priceNum = Number(price) || 0;
+    const discountNum = Number(discount) || 0;
 
     if (priceNum && discountNum) {
       const discounted =
         priceNum - (priceNum * discountNum) / 100;
-      setValue('priceAfterDiscount', discounted.toFixed(2));
+      setValue('priceAfterDiscount', discounted.toString());
     } else {
-      setValue(
-        'priceAfterDiscount',
-        priceNum ? priceNum.toFixed(2) : '',
-      );
+      setValue('priceAfterDiscount', priceNum.toString());
     }
   }, [price, discount, setValue]);
 
@@ -250,67 +257,6 @@ export default function CreateProductForm() {
           )}
         />
 
-        <div className="flex flex-row gap-4">
-          {/* Product cover image */}
-          <FormField
-            control={form.control}
-            name="imgCover"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>
-                  {t('img-cover-label')}
-                  <span className="ms-0.5 text-red-600">
-                    *
-                  </span>
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="file"
-                    accept="image/*"
-                    onChange={e =>
-                      field.onChange(e.target.files?.[0])
-                    }
-                    onBlur={field.onBlur}
-                    ref={field.ref}
-                    name={field.name}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Product Gallery */}
-          <FormField
-            control={form.control}
-            name="images"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>
-                  {t('images-label')}
-                  <span className="ms-0.5 text-red-600">
-                    *
-                  </span>
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    type="file"
-                    multiple
-                    accept="image/*"
-                    onChange={e =>
-                      field.onChange(e.target.files)
-                    }
-                    onBlur={field.onBlur}
-                    ref={field.ref}
-                    name={field.name}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
         {/* Categories */}
         <FormField
           control={form.control}
@@ -343,7 +289,6 @@ export default function CreateProductForm() {
                       <SelectItem
                         key={category._id}
                         value={category._id}
-                        className="capitalize"
                       >
                         {category.name}
                       </SelectItem>
@@ -388,7 +333,6 @@ export default function CreateProductForm() {
                       <SelectItem
                         key={occasion._id}
                         value={occasion._id}
-                        className="capitalize"
                       >
                         {occasion.name}
                       </SelectItem>
@@ -400,6 +344,22 @@ export default function CreateProductForm() {
             </FormItem>
           )}
         />
+
+        {/* Waiting for cover and images routes... */}
+        <div className="flex justify-end gap-2">
+          <Link
+            href={`/dashboard/products/${product._id}/cover`}
+            className="flex items-center gap-1 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
+          >
+            <ImageIcon size={18} /> View Product Cover
+          </Link>
+          <Link
+            href={`/dashboard/products/${product._id}/images`}
+            className="flex items-center gap-1 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
+          >
+            <Images size={18} /> View Product Images
+          </Link>
+        </div>
 
         {/* Submit Button */}
         <Button

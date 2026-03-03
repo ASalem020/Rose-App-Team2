@@ -7,7 +7,17 @@ export interface ProductForm {
   priceAfterDiscount: string;
   category: string;
   occasion: string;
-  price: string;
   imgCover: File;
   images: FileList | null;
+}
+
+export interface UpdateProductFields {
+  title: string;
+  description: string;
+  quantity: number;
+  price: number;
+  discount: number;
+  priceAfterDiscount: number;
+  category: string;
+  occasion: string;
 }
