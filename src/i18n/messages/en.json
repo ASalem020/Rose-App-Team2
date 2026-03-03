@@ -492,9 +492,11 @@
         "discount": "Discount",
         "no-discount": "No discount",
         "total": "Total",
-        "validation": {
-          "coupon": {
-            "required": "Please enter your coupon code"
+        "checkout": {
+          "validation": {
+            "coupon": {
+              "required": "Please enter your coupon code"
+            }
           }
         }
       },

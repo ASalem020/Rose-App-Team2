@@ -422,9 +422,11 @@
         "discount": "خصم",
         "no-discount": "لا يوجد خصم",
         "total": "المجموع",
-        "validation": {
-          "coupon": {
-            "required": "الرجاء إدخال كود الخصم"
+        "checkout": {
+          "validation": {
+            "coupon": {
+              "required": "الرجاء إدخال كود الخصم"
+            }
           }
         }
       },

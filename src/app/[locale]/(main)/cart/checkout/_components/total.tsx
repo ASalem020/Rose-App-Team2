@@ -33,7 +33,10 @@ export default function Total({
         </h5>
 
         <span className="text-lg font-semibold text-zinc-800 md:text-xl">
-          {format.number(200, 'short-price')}
+          {format.number(
+            Number(subTotalAmount),
+            'short-price',
+          )}
         </span>
       </div>
 
