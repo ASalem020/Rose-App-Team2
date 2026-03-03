@@ -413,6 +413,11 @@
         "account-settings": "Account",
         "logout": "Logout"
       }
+    },
+    "unauthorized": {
+      "main-message": "You are not authorized to access this page.",
+      "sub-message": "If you think this is wrong, please contact the support.",
+      "back-home": "Go To Homepage"
     }
   },
   "success-toast": "Your password has been successfully reset."
