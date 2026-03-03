@@ -418,6 +418,10 @@
       "main-message": "You are not authorized to access this page.",
       "sub-message": "If you think this is wrong, please contact the support.",
       "back-home": "Go To Homepage"
+    },
+    "not-found": {
+      "main-message": "This page does not exist.",
+      "sub-message": "We couldn’t find the page your are looking for, please make sure you are in the right path."
     }
   },
   "success-toast": "Your password has been successfully reset."

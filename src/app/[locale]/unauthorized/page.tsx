@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import BackToHomeBtn from './_components/back-to-home-btn';
 import { useTranslations } from 'next-intl';
+import GeneralPagesText from '@/components/shared/general-pages-text';
 
 export default function Page() {
   const t = useTranslations('pages.unauthorized');
@@ -18,15 +19,11 @@ export default function Page() {
 
       {/* Content */}
       <div className="content flex flex-col items-center gap-1.5">
-        {/* Main Message */}
-        <p className="main-message text-center text-lg font-medium text-zinc-900 md:text-2xl rtl:font-tajawal">
-          {t('main-message')}
-        </p>
-
-        {/* Sub Message */}
-        <p className="sub-message mb-5 text-center text-sm text-zinc-400 md:text-xl rtl:font-tajawal">
-          {t('sub-message')}
-        </p>
+        {/* General Pages Text */}
+        <GeneralPagesText
+          mainMessage={t('main-message')}
+          subMessage={t('sub-message')}
+        />
 
         {/* Back To Home Button */}
         <BackToHomeBtn buttonText={t('back-home')} />
