@@ -15,14 +15,14 @@ export default function GeneralPagesText({
   return (
     <>
       {/* Main Message */}
-      <p className="main-message text-center text-lg font-medium text-zinc-900 md:text-2xl rtl:font-tajawal">
+      <p className="main-message !font-inter text-center text-2xl font-semibold text-zinc-900 md:text-4xl rtl:font-tajawal">
         {mainMessage}
       </p>
 
       {/* Sub Message */}
       <p
         className={cn(
-          'sub-message mb-5 text-center text-sm text-zinc-400 md:text-xl rtl:font-tajawal',
+          'sub-message !font-inter mb-5 text-center text-sm text-zinc-400 md:text-xl rtl:font-tajawal',
           subMessageClassName,
         )}
       >

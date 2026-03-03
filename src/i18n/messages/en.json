@@ -422,6 +422,10 @@
     "not-found": {
       "main-message": "This page does not exist.",
       "sub-message": "We couldn’t find the page your are looking for, please make sure you are in the right path."
+    },
+    "error-page": {
+      "main-message": "Oops, something went wrong!",
+      "sub-message": "Something unexpected happened, please refresh the page or try again shortly."
     }
   },
   "success-toast": "Your password has been successfully reset."

@@ -85,6 +85,7 @@ const config: Config = {
       fontFamily: {
         sarabun: ['var(--font-sarabun)', 'sans-serif'],
         tajawal: ['var(--font-tajawal)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
       },
       width: {
         '100': '25rem',

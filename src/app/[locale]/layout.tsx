@@ -7,7 +7,7 @@ import {
   getTranslations,
   setRequestLocale,
 } from 'next-intl/server';
-import { Sarabun, Tajawal } from 'next/font/google';
+import { Inter, Sarabun, Tajawal } from 'next/font/google';
 
 const sarabun = Sarabun({
   weight: [
@@ -29,6 +29,13 @@ const tajawal = Tajawal({
   weight: ['200', '300', '400', '500', '700', '800', '900'],
   subsets: ['latin', 'arabic'],
   variable: '--font-tajawal',
+  display: 'swap',
+});
+
+const inter = Inter({
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -69,7 +76,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body
-        className={`antialiased ${sarabun.variable} ${tajawal.variable}`}
+        className={`antialiased ${sarabun.variable} ${tajawal.variable} ${inter.variable}}`}
       >
         <Providers messages={messages} locale={locale}>
           {children}
