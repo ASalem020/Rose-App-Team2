@@ -32,3 +32,4 @@ export type ProductAPIResponse = {
   },
   products: Product[]
 }
+

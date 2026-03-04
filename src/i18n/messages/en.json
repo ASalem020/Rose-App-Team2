@@ -341,11 +341,11 @@
       "save-changes": "Save Changes",
       "delete-my-account": "Delete My Account",
       "change-password": "Change Password",
-      "dialog":{
-        "title" : "Are you sure you want to delete your account?",
-        "description" : "This action is permanent and cannot be undone.",
-        "cancel" : "Cancel",
-        "action" : "Yes, delete"
+      "dialog": {
+        "title": "Are you sure you want to delete your account?",
+        "description": "This action is permanent and cannot be undone.",
+        "cancel": "Cancel",
+        "action": "Yes, delete"
       }
     },
     "products": {
@@ -545,5 +545,12 @@
       }
     }
   },
-  "success-toast": "Your password has been successfully reset."
+  "success-toast": "Your password has been successfully reset.",
+  "dashboard": {
+    "top-selling-products": "Top Selling Products",
+    "low-stock-products": "Low Stock Products",
+    "products" : "Products",
+    "sales" : "Sales"
+
+  }
 }
