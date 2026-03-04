@@ -390,6 +390,159 @@
         "title": "Related Products",
         "loading": "Loading related products..."
       }
+    },
+    "address": {
+      "list": {
+        "title": "My Addresses",
+        "addNew": "Add a New Address",
+        "empty": {
+          "title": "No addresses yet",
+          "description": "Add your first address to get started"
+        },
+        "deleteConfirm": {
+          "title": "Are you sure you want to delete this address?",
+          "cancel": "Cancel",
+          "confirm": "Confirm",
+          "error": "You can't delete the selected address"
+        }
+      },
+      "wizard": {
+        "addTitle": "Add a New Address",
+        "updateTitle": "Update Address",
+        "steps": {
+          "details": "Details",
+          "location": "Location"
+        }
+      },
+      "form": {
+        "city": {
+          "label": "City",
+          "placeholder": "Enter city name"
+        },
+        "street": {
+          "label": "Address",
+          "placeholder": "Enter your full address"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "Phone number"
+        },
+        "next": "Next",
+        "validation": {
+          "cityMin": "City must be at least 2 characters",
+          "streetMin": "Address must be at least 3 characters",
+          "phoneMin": "Phone number must be at least 10 digits"
+        }
+      },
+      "map": {
+        "title": "Find Your Location",
+        "findMe": "Find Your Location",
+        "saving": "Saving...",
+        "add": "Add Address",
+        "update": "Update Address",
+        "errors": {
+          "unable": "Unable to get your location. Please enable location access.",
+          "notSupported": "Geolocation is not supported by your browser."
+        }
+      },
+      "categories": {
+        "home": "Home",
+        "work": "Work",
+        "family": "Family",
+        "other": "Other"
+      },
+      "toasts": {
+        "addSuccess": "Address added successfully",
+        "updateSuccess": "Address updated successfully",
+        "deleteSuccess": "Address deleted successfully"
+      }
+    },
+    "checkout": {
+      "shipping-addresses": {
+        "title": "Shipping Addresses",
+        "or": "OR",
+        "add-new-address": "Add a New Address",
+        "no-addresses": "You don't have any addresses, please add one",
+        "next": "Next"
+      },
+      "price-summary": {
+        "title": "Summary",
+        "coupon-placeholder": "Enter your coupon code",
+        "apply": "Apply Coupon",
+        "coupon-applied": "Coupon applied successfully",
+        "coupon-error": "Coupon not found or invalid",
+        "remove-coupon": "Remove Coupon",
+        "no-coupons": "No coupons applied",
+        "sub-total": "Sub Total",
+        "discount": "Discount",
+        "no-discount": "No discount",
+        "total": "Total",
+        "validation": {
+          "coupon": {
+            "required": "Please enter your coupon code"
+          }
+        }
+      },
+      "payment-methods": {
+        "title": "Payment Methods",
+        "back": "Back",
+        "methods": {
+          "cash": {
+            "title": "Cash on Delivery",
+            "description": "Pay when you receive the product"
+          },
+          "credit-card": {
+            "title": "Credit Card",
+            "description": "Pay with a credit card"
+          }
+        },
+        "checkout": "Checkout"
+      },
+      "validation": {
+        "address": {
+          "required": "Please select an address"
+        },
+          "shippingAddress": {
+            "street": {
+              "required": "Please select an address"
+            },
+            "phone": {
+              "required": "Please enter your phone number"
+            },
+            "city": {
+              "required": "Please enter your city"
+            },
+            "lat": {
+              "required": "Please enter your latitude"
+            },
+            "long": {
+              "required": "Please enter your longitude"
+            }
+          },
+          "payment-method": {
+            "required": "Please select a payment method"
+          },
+          "coupon": {
+            "required": "Please enter your coupon code"
+          }
+        },
+        "success": {
+          "credit": "Credit card checkout session created successfully, Continue Shopping!",
+          "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
+        }
+    },
+    "dashboard": {
+      "nav-links": {
+        "overview": "Overview",
+        "categories": "Categories",
+        "occasions": "Occasions",
+        "products": "Products",
+        "preview-website": "Preview Website"
+      },
+      "menu": {
+        "account-settings": "Account",
+        "logout": "Logout"
+      }
     }
   },
   "success-toast": "Your password has been successfully reset.",
