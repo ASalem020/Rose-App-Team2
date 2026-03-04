@@ -9,7 +9,7 @@ export default function LowStockProducts() {
   const t = useTranslations('dashboard');
 
   return (
-    <div className="flex max-h-112 flex-col rounded-2xl bg-white p-6">
+    <div className="flex max-h-112 flex-col  bg-white p-6">
       {/* title  */}
       <TitleComponents title={t('low-stock-products')} />
       {/* content */}
