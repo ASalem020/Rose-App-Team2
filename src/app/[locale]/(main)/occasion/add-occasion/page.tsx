@@ -1,60 +1,63 @@
 'use client';
 
-import { useState } from 'react';
+
+// Imports
+
+
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, ImagePlus, X } from 'lucide-react';
+import Image from 'next/image';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import Image from 'next/image';
+
+import { addOccasionSchema, AddOccasionFormData } from '@/lib/schemas/occasion.schema';
+import { useAddOccasion } from '@/hooks/use-add-occasion';
+
+
+// Page
+
 
 export default function AddOccasionPage() {
   const router = useRouter();
+  const { addOccasion, isPending, isSuccess } = useAddOccasion();
 
-  const [name, setName] = useState('');
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // ── Form ────────────────────────────────────────────────────────────────────
 
-  // ── Handlers ───────────────────────────────────────────────────────────────
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<AddOccasionFormData>({
+    resolver: zodResolver(addOccasionSchema),
+    defaultValues: { name: '' },
+  });
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setImageFile(file);
-    setImagePreview(URL.createObjectURL(file));
+  // Watch the image field to show a preview
+  const imageFile = watch('image');
+  const imagePreview = imageFile instanceof File && imageFile.size > 0
+    ? URL.createObjectURL(imageFile)
+    : null;
+
+  // Redirect on success
+  useEffect(() => {
+    if (isSuccess) router.push('/occasion');
+  }, [isSuccess, router]);
+
+  // ── Submit handler ──────────────────────────────────────────────────────────
+
+  const onSubmit = (data: AddOccasionFormData) => {
+    addOccasion(data);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim()) {
-      toast.error('Please enter an occasion name');
-      return;
-    }
-    setIsSubmitting(true);
-    try {
-      const formData = new FormData();
-      formData.append('name', name.trim());
-      if (imageFile) formData.append('image', imageFile);
-
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/occasions`,
-        { method: 'POST', body: formData },
-      );
-      if (!res.ok) throw new Error();
-
-      toast.success('Occasion created successfully!');
-      router.push('/occasion');
-    } catch {
-      toast.error('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  // ── Render ─────────────────────────────────────────────────────────────────
+  // ── Render ──────────────────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-zinc-900">
@@ -87,7 +90,7 @@ export default function AddOccasionPage() {
           {/* Rose accent bar */}
           <div className="h-1 w-full bg-gradient-to-r from-rose-500 to-rose-400" />
 
-          <form onSubmit={handleSubmit} className="p-6 sm:p-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="p-6 sm:p-8">
             <div className="space-y-6">
 
               {/* ── Name field ── */}
@@ -101,11 +104,12 @@ export default function AddOccasionPage() {
                 <Input
                   id="add-occasion-name"
                   placeholder="Enter occasion name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  required
                   className="h-11"
+                  {...register('name')}
                 />
+                {errors.name && (
+                  <p className="text-xs text-rose-500">{errors.name.message}</p>
+                )}
               </div>
 
               <Separator />
@@ -130,10 +134,7 @@ export default function AddOccasionPage() {
                     {/* Remove overlay button */}
                     <button
                       type="button"
-                      onClick={() => {
-                        setImageFile(null);
-                        setImagePreview(null);
-                      }}
+                      onClick={() => setValue('image', undefined)}
                       className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition hover:bg-black/70"
                     >
                       <X className="h-4 w-4" />
@@ -162,13 +163,20 @@ export default function AddOccasionPage() {
                   </label>
                 )}
 
+                {/* Hidden file input — wired to RHF manually */}
                 <input
                   id="add-occasion-image"
                   type="file"
                   accept="image/*"
                   className="sr-only"
-                  onChange={handleImageChange}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) setValue('image', file, { shouldValidate: true });
+                  }}
                 />
+                {errors.image && (
+                  <p className="text-xs text-rose-500">{errors.image.message as string}</p>
+                )}
               </div>
 
               {/* ── Actions ── */}
@@ -178,16 +186,16 @@ export default function AddOccasionPage() {
                   variant="outline"
                   className="flex-1"
                   onClick={() => router.back()}
-                  disabled={isSubmitting}
+                  disabled={isPending}
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
                   className="flex-1 bg-rose-600 text-white hover:bg-rose-700"
-                  disabled={isSubmitting}
+                  disabled={isPending}
                 >
-                  {isSubmitting ? 'Creating…' : 'Add Occasion'}
+                  {isPending ? 'Creating…' : 'Add Occasion'}
                 </Button>
               </div>
 

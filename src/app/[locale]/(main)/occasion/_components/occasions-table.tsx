@@ -1,53 +1,38 @@
 'use client';
 
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'sonner';
-import { getOccasions } from '@/lib/services/occasions.service';
+
+// Imports
+
+
+import { useQuery } from '@tanstack/react-query';
 import EntityManagementTable from './entity-management-table';
+import { getOccasions } from '@/lib/services/occasions.service';
+import { useDeleteOccasion } from '@/hooks/use-delete-occasion';
 
-// ─── Service helpers ──────────────────────────────────────────────────────────
-// We call the API directly here so the table page stays light.
-// Replace the fetch calls below with your actual server-action / service
-// once you have delete / CRUD actions for occasions.
 
-async function deleteOccasionService(id: string): Promise<void> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/occasions/${id}`,
-    { method: 'DELETE' },
-  );
-  if (!res.ok) throw new Error('Failed to delete occasion');
-}
+// Component
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
+/**
+ * OccasionsTable - Renders the admin occasions management table
+ *
+ * Data Fetching:
+ * - All occasions fetched via React Query (queryKey: ['occasions', 'all'])
+ *
+ * Mutations:
+ * - Delete via useDeleteOccasion hook (wraps deleteOccasionAction)
+ */
 export default function OccasionsTable() {
-  const queryClient = useQueryClient();
-
   const {
     data: occasions,
     isLoading,
     isError,
   } = useQuery({
     queryKey: ['occasions', 'all'],
-    queryFn: async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/occasions`,
-      );
-      const json = await res.json();
-      return json.occasions ?? [];
-    },
+    queryFn: () => getOccasions(),
   });
 
-  const { mutate: deleteOccasion, isPending: isDeleting } = useMutation({
-    mutationFn: deleteOccasionService,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['occasions'] });
-      toast.success('Occasion deleted successfully');
-    },
-    onError: () => {
-      toast.error('Failed to delete occasion');
-    },
-  });
+  const { deleteOccasion, isPending: isDeleting } = useDeleteOccasion();
 
   return (
     <EntityManagementTable

@@ -1,82 +1,78 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+
+// Imports
+
+
+import { useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { toast } from 'sonner';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, ImageIcon } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
 
+import { editOccasionSchema, EditOccasionFormData } from '@/lib/schemas/occasion.schema';
+import { useGetOccasion } from '@/hooks/use-get-occasion';
+import { useUpdateOccasion } from '@/hooks/use-update-occasion';
+
+
+// Page
+
+
 export default function EditOccasionPage() {
   const router = useRouter();
   const params = useParams();
   const id = params?.id as string;
 
-  const [name, setName] = useState('');
-  const [existingImage, setExistingImage] = useState<string | null>(null);
-  const [isFetching, setIsFetching] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { occasion, isLoading } = useGetOccasion(id);
+  const { updateOccasion, isPending, isSuccess } = useUpdateOccasion();
 
-  // ── Fetch existing data ─────────────────────────────────────────────────────
+  // ── Form ────────────────────────────────────────────────────────────────────
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm<EditOccasionFormData>({
+    resolver: zodResolver(editOccasionSchema),
+    defaultValues: { name: '' },
+  });
+
+  // Pre-populate form once occasion data is loaded
   useEffect(() => {
-    if (!id) return;
-    (async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/occasions/${id}`,
-        );
-        const json = await res.json();
-        const occasion = json.occasion ?? json;
-        setName(occasion.name ?? '');
-        setExistingImage(occasion.image ?? null);
-      } catch {
-        toast.error('Could not load occasion data');
-      } finally {
-        setIsFetching(false);
-      }
-    })();
-  }, [id]);
-
-  // ── Submit ──────────────────────────────────────────────────────────────────
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim()) {
-      toast.error('Please enter an occasion name');
-      return;
+    if (occasion) {
+      reset({ name: occasion.name });
     }
-    setIsSubmitting(true);
-    try {
-      const formData = new FormData();
-      formData.append('name', name.trim());
+  }, [occasion, reset]);
 
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/occasions/${id}`,
-        { method: 'PUT', body: formData },
-      );
-      if (!res.ok) throw new Error();
+  // Redirect on success
+  useEffect(() => {
+    if (isSuccess) router.push('/occasion');
+  }, [isSuccess, router]);
 
-      toast.success('Occasion updated successfully!');
-      router.push('/occasion');
-    } catch {
-      toast.error('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+  // ── Submit handler ──────────────────────────────────────────────────────────
+
+  const onSubmit = (data: EditOccasionFormData) => {
+    updateOccasion({ occasionId: id, fields: data });
   };
 
   // ── Helpers ─────────────────────────────────────────────────────────────────
 
+  const name = watch('name');
+
   /** True when the image value from the API is a usable URL */
   const hasValidImage =
-    !!existingImage &&
-    (existingImage.startsWith('http://') ||
-      existingImage.startsWith('https://') ||
-      existingImage.startsWith('/'));
+    !!occasion?.image &&
+    (occasion.image.startsWith('http://') ||
+      occasion.image.startsWith('https://') ||
+      occasion.image.startsWith('/'));
 
   // ── Render ──────────────────────────────────────────────────────────────────
 
@@ -97,7 +93,7 @@ export default function EditOccasionPage() {
           </Button>
           <div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-              {isFetching ? (
+              {isLoading ? (
                 <Skeleton className="h-6 w-48" />
               ) : (
                 `Update Occasion: ${name}`
@@ -116,7 +112,7 @@ export default function EditOccasionPage() {
           <div className="h-1 w-full bg-gradient-to-r from-rose-500 to-rose-400" />
 
           <div className="p-6 sm:p-8">
-            {isFetching ? (
+            {isLoading ? (
               /* Loading skeletons */
               <div className="space-y-6">
                 <div className="space-y-1.5">
@@ -134,7 +130,7 @@ export default function EditOccasionPage() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
                 {/* ── Name field ── */}
                 <div className="space-y-1.5">
@@ -147,11 +143,12 @@ export default function EditOccasionPage() {
                   <Input
                     id="edit-occasion-name"
                     placeholder="Occasion name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    required
                     className="h-11"
+                    {...register('name')}
                   />
+                  {errors.name && (
+                    <p className="text-xs text-rose-500">{errors.name.message}</p>
+                  )}
                 </div>
 
                 <Separator />
@@ -167,7 +164,7 @@ export default function EditOccasionPage() {
                     <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-zinc-600">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={existingImage!}
+                        src={occasion!.image}
                         alt={name}
                         className="h-52 w-full object-cover"
                       />
@@ -195,16 +192,16 @@ export default function EditOccasionPage() {
                     variant="outline"
                     className="flex-1"
                     onClick={() => router.back()}
-                    disabled={isSubmitting}
+                    disabled={isPending}
                   >
                     Cancel
                   </Button>
                   <Button
                     type="submit"
                     className="flex-1 bg-rose-600 text-white hover:bg-rose-700"
-                    disabled={isSubmitting}
+                    disabled={isPending}
                   >
-                    {isSubmitting ? 'Saving…' : 'Update Occasion'}
+                    {isPending ? 'Saving…' : 'Update Occasion'}
                   </Button>
                 </div>
 
