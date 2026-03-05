@@ -532,6 +532,17 @@
       }
     },
     "dashboard": {
+      "overview": {
+        "row-1": {
+          "header": "All Categories",
+          "products-label": " Products",
+          "total-products-label": "Total products",
+          "total-orders-label": "Total orders",
+          "total-categories-label": "Total categories",
+          "total-revenue-label": "Total revenue",
+          "suffix": "EGP"
+        }
+      },
       "products-page": {
         "add-product": {
           "header": "Add a New Product",

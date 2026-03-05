@@ -388,6 +388,7 @@
         "action": "نعم احذف"
       }
     },
+
     "checkout": {
       "shipping-addresses": {
         "title": "العناوين",
@@ -529,6 +530,17 @@
       }
     },
     "dashboard": {
+      "overview": {
+        "row-1": {
+          "header": "جميع الفئات",
+          "products-label": " منتج",
+          "total-products-label": "إجمالي المنتجات",
+          "total-orders-label": "إجمالي الطلبات",
+          "total-categories-label": "إجمالي الفئات",
+          "total-revenue-label": "إجمالي الإيرادات",
+          "suffix": "جنيه"
+        }
+      },
       "products-page": {
         "add-product": {
           "header": "إضافة منتج جديد",
