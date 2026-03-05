@@ -388,6 +388,147 @@
         "action": "نعم احذف"
       }
     },
+
+    "checkout": {
+      "shipping-addresses": {
+        "title": "العناوين",
+        "or": "أو",
+        "add-new-address": "أضف عنوان جديد",
+        "no-addresses": "لا توجد عناوين ، برجاء اضافة عنوان",
+        "next": "التالي"
+      },
+      "price-summary": {
+        "title": "الملخص",
+        "coupon-placeholder": "أدخل رمز الخصم",
+        "apply": "تطبيق الكود",
+        "coupon-applied": "تم تطبيق الكود بنجاح",
+        "coupon-error": "كود الخصم غير صحيح او غير متاح",
+        "remove-coupon": "إزالة الكود",
+        "no-coupons": "لا توجد أكواد خصم مطبقة",
+        "sub-total": "المجموع الفرعي",
+        "discount": "خصم",
+        "no-discount": "لا يوجد خصم",
+        "total": "المجموع",
+        "validation": {
+          "coupon": {
+            "required": "الرجاء إدخال كود الخصم"
+          }
+        }
+      },
+      "payment-methods": {
+        "title": "طرق الدفع",
+        "back": "العودة",
+        "methods": {
+          "cash": {
+            "title": "الدفع عند الاستلام",
+            "description": "دفع عند استلام المنتجات"
+          },
+          "credit-card": {
+            "title": "الدفع بالبطاقة الائتمانية",
+            "description": "دفع بالبطاقة الائتمانية"
+          }
+        },
+        "checkout": "الدفع"
+      },
+      "validation": {
+        "address": {
+          "required": "الرجاء اختيار عنوان"
+        },
+        "shippingAddress": {
+          "street": {
+            "required": "الرجاء اختيار عنوان"
+          },
+          "phone": {
+            "required": "الرجاء إدخال رقم الهاتف"
+          },
+          "city": {
+            "required": "الرجاء إدخال المدينة"
+          },
+          "lat": {
+            "required": "الرجاء إدخال خطوط الطول"
+          },
+          "long": {
+            "required": "الرجاء إدخال خطوط العرض"
+          }
+        },
+        "payment-method": {
+          "required": "الرجاء اختيار طريقة الدفع"
+        },
+        "coupon": {
+          "required": "الرجاء إدخال كود الخصم"
+        }
+      },
+      "success": {
+        "credit": "تم إنشاء جلسة الدفع بالبطاقة الائتمانية بنجاح، تابع التسوق!",
+        "cash": "تم إنشاء جلسة الدفع عند الاستلام بنجاح، تابع التسوق!"
+      }
+    },
+    "address": {
+      "list": {
+        "title": "عناوينى",
+        "addNew": "إضافة عنوان جديد",
+        "empty": {
+          "title": "لا توجد عناوين بعد",
+          "description": "أضف عنوانك الأول للبدء"
+        },
+        "deleteConfirm": {
+          "title": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
+          "cancel": "إلغاء",
+          "confirm": "تأكيد",
+          "error": "لا يمكنك حذف العنوان المختار"
+        }
+      },
+      "wizard": {
+        "addTitle": "إضافة عنوان جديد",
+        "updateTitle": "تحديث العنوان",
+        "steps": {
+          "details": "التفاصيل",
+          "location": "الموقع"
+        }
+      },
+      "form": {
+        "city": {
+          "label": "المدينة",
+          "placeholder": "أدخل اسم المدينة"
+        },
+        "street": {
+          "label": "العنوان",
+          "placeholder": "أدخل عنوانك بالتفصيل"
+        },
+        "phone": {
+          "label": "الهاتف",
+          "placeholder": "رقم الهاتف"
+        },
+        "next": "Next",
+        "validation": {
+          "cityMin": "يجب أن يكون اسم المدينة حرفين على الأقل",
+          "streetMin": "يجب أن يكون العنوان 3 أحرف على الأقل",
+          "phoneMin": "يجب أن يكون رقم الهاتف 10 أرقام على الأقل"
+        }
+      },
+      "map": {
+        "title": "حدد موقعك",
+        "findMe": "تحديد موقعي",
+        "saving": "جاري الحفظ...",
+        "add": "إضافة العنوان",
+        "update": "تحديث العنوان",
+        "errors": {
+          "unable": "تعذر العثور على موقعك. يرجى تفعيل أذونات الوصول للموقع.",
+          "notSupported": "هذا المتصفح لا يدعم تحديد الموقع."
+        }
+      },
+      "categories": {
+        "home": "المنزل",
+        "work": "العمل",
+        "family": "العائلة",
+        "other": "أخرى"
+      },
+      "toasts": {
+        "addSuccess": "تم إضافة العنوان بنجاح",
+        "updateSuccess": "تم تحديث العنوان بنجاح",
+        "deleteSuccess": "تم حذف العنوان بنجاح"
+      }
+    },
     "dashboard": {
       "overview": {
         "row-1": {
@@ -399,7 +540,157 @@
           "total-revenue-label": "إجمالي الإيرادات",
           "suffix": "جنيه"
         }
-      }
+      },
+      "products-page": {
+        "add-product": {
+          "header": "إضافة منتج جديد",
+          "form": {
+            "validation": {
+              "title": {
+                "type": "يجب أن يكون العنوان نصًا",
+                "required": "عنوان المنتج مطلوب"
+              },
+              "description": {
+                "type": "يجب أن يكون الوصف نصًا",
+                "required": "وصف المنتج مطلوب"
+              },
+              "price": {
+                "type": "يجب أن تكون السعر نصًا",
+                "required": "السعر مطلوب"
+              },
+              "discount": {
+                "type": "يجب أن يكون التخفيض نصًا",
+                "required": "التخفيض مطلوب"
+              },
+              "price-after-discount": {
+                "type": "يجب أن تكون السعر بعد الخصم نصًا",
+                "required": "السعر بعد الخصم مطلوب"
+              },
+              "quantity": {
+                "type": "يجب أن تكون الكمية نصًا",
+                "required": "الكمية مطلوبة"
+              },
+              "img-cover": {
+                "required": "صورة غلاف المنتج مطلوبة"
+              },
+              "images": {
+                "required": "صور معرض المنتجات مطلوبة"
+              },
+              "category": {
+                "type": "يجب أن تكون الفئة نصًا",
+                "required": "الفئة مطلوبة"
+              },
+              "occasion": {
+                "type": "يجب أن تكون المناسبة نصًا",
+                "required": "المناسبة مطلوبة"
+              }
+            },
+            "price-label": "السعر",
+            "discount-label": "تخفيض",
+            "discount-placeholder": "مثال: 5",
+            "price-after-discount-label": "السعر بعد الخصم",
+            "price-after-discount-placeholder": "مثال: 5",
+            "quantity-label": "كمية",
+            "quantity-placeholder": "مثال: 200",
+            "img-cover-label": "صورة غلاف المنتج",
+            "category-label": "الفئة",
+            "occasion-label": "المناسبة",
+            "submit-loading": "جارٍ إضافة المنتج...",
+            "submit-btn": "أضف المنتج",
+            "title-label": "عنوان",
+            "description-label": "وصف",
+            "title-placeholder": "أدخل عنوان المنتج",
+            "description-placeholder": "أدخل وصف المنتج",
+            "price-placeholder": "مثال: 5000",
+            "images-label": "معرض المنتجات",
+            "select-placeholder": "حدد خيارًا",
+            "success-toast": ""
+          }
+        },
+        "update-product": {
+          "header": "تحديث المنتج",
+          "form": {
+            "success-toast": "تم تحديث المنتج بنجاح",
+            "error-toast": "فشل تحديث المنتج",
+            "validation": {
+              "title": {
+                "type": "يجب أن يكون العنوان نصًا",
+                "required": "عنوان المنتج مطلوب"
+              },
+              "description": {
+                "type": "يجب أن يكون الوصف نصًا",
+                "required": "وصف المنتج مطلوب"
+              },
+              "price": {
+                "type": "يجب أن يكون السعر نصًا",
+                "required": "يرجى إدخال سعر صالح"
+              },
+              "discount": {
+                "type": "يجب أن يكون التخفيض نصًا",
+                "required": "التخفيض مطلوب"
+              },
+              "price-after-discount": {
+                "type": "يجب أن يكون السعر بعد الخصم نصًا",
+                "required": "السعر بعد الخصم مطلوب"
+              },
+              "quantity": {
+                "type": "يجب أن تكون الكمية نصًا",
+                "required": "كمية المنتج مطلوبة"
+              },
+              "img-cover": {
+                "required": "صورة غلاف المنتج مطلوبة"
+              },
+              "images": {
+                "required": "صور معرض المنتج مطلوبة"
+              },
+              "category": {
+                "type": "يجب أن تكون الفئة نصًا",
+                "required": "يرجى اختيار فئة للمنتج"
+              },
+              "occasion": {
+                "type": "يجب أن تكون المناسبة نصًا",
+                "required": "يرجى اختيار مناسبة للمنتج"
+              }
+            },
+            "title-label": "العنوان",
+            "title-placeholder": "أدخل عنوان المنتج",
+            "description-label": "الوصف",
+            "description-placeholder": "أدخل وصف المنتج",
+            "price-label": "السعر",
+            "price-placeholder": "مثال: 5000",
+            "discount-label": "التخفيض",
+            "discount-placeholder": "مثال: 5",
+            "price-after-discount-label": "السعر بعد الخصم",
+            "price-after-discount-placeholder": "مثال: 5",
+            "quantity-label": "الكمية",
+            "quantity-placeholder": "مثال: 200",
+            "img-cover-label": "صورة غلاف المنتج",
+            "images-label": "معرض المنتج",
+            "select-placeholder": "اختر خيارًا",
+            "category-label": "الفئة",
+            "occasion-label": "المناسبة",
+            "submit-loading": "جاري تحديث المنتج...",
+            "submit-btn": "تحديث المنتج",
+            "view-images": "عرض صور المنتج",
+            "view-cover": "عرض غلاف المنتج"
+          }
+        }
+      },
+      "nav-links": {
+        "overview": "نظرة عامة",
+        "categories": "التصنيفات",
+        "occasions": "المناسبات",
+        "products": "المنتجات",
+        "preview-website": "عرض الموقع"
+      },
+      "menu": {
+        "account-settings": "الحساب",
+        "logout": "تسجيل الخروج"
+      },
+      "top-selling-products": "المنتجات الأكثر مبيعا",
+      "low-stock-products": "منتجات منخفضة المخزون",
+      "products": "منتجات",
+      "sales": "مبيعات"
     }
   },
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
