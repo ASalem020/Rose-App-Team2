@@ -6,7 +6,7 @@ import CardSkeleton from './skeleton/card-skeleton';
 
 export default function TopSellingProducts() {
   // ^ Translations
-  const t = useTranslations('dashboard');
+  const t = useTranslations('pages.dashboard');
 
   return (
     <div className="flex max-h-112 flex-col bg-white p-6">
