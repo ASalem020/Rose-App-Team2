@@ -532,7 +532,7 @@
       }
     },
     "dashboard": {
-      "products": {
+      "products-page": {
         "add-product": {
           "header": "Add a New Product",
           "form": {
@@ -661,7 +661,22 @@
           },
           "view-cover": "View Product Cover"
         }
-      }
+      },
+      "nav-links": {
+        "overview": "Overview",
+        "categories": "Categories",
+        "occasions": "Occasions",
+        "products": "Products",
+        "preview-website": "Preview Website"
+      },
+      "menu": {
+        "account-settings": "Account",
+        "logout": "Logout"
+      },
+      "top-selling-products": "Top Selling Products",
+      "low-stock-products": "Low Stock Products",
+      "products": "Products",
+      "sales": "Sales"
     }
   },
   "success-toast": "Your password has been successfully reset."

@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>prodcuts</div>;
+  return <div>categories</div>;
 }

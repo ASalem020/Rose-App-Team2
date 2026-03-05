@@ -529,7 +529,7 @@
       }
     },
     "dashboard": {
-      "products": {
+      "products-page": {
         "add-product": {
           "header": "إضافة منتج جديد",
           "form": {
@@ -663,7 +663,22 @@
             "view-cover": "عرض غلاف المنتج"
           }
         }
-      }
+      },
+      "nav-links": {
+        "overview": "نظرة عامة",
+        "categories": "التصنيفات",
+        "occasions": "المناسبات",
+        "products": "المنتجات",
+        "preview-website": "عرض الموقع"
+      },
+      "menu": {
+        "account-settings": "الحساب",
+        "logout": "تسجيل الخروج"
+      },
+      "top-selling-products": "المنتجات الأكثر مبيعا",
+      "low-stock-products": "منتجات منخفضة المخزون",
+      "products": "منتجات",
+      "sales": "مبيعات"
     }
   },
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
