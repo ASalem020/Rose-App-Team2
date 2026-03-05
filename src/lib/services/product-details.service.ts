@@ -1,8 +1,10 @@
+import { Product } from '../types/product';
+
 export async function getProductDetailsService(id: string) {
   const res = await fetch(
-    `${process.env.API_URL}/products/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/products/${id}`,
   );
 
-  const data = await res.json();
+  const data: { product: Product } = await res.json();
   return data.product;
 }

@@ -474,6 +474,9 @@
           "confirm": "Confirm",
           "cancel": "Cancel"
         }
+      },
+      "gallery-dialog": {
+        "show-dialog": "Show Gallery Dialog"
       }
   },
   "success-toast": "Your password has been successfully reset."
