@@ -32,7 +32,7 @@ import { useEffect } from 'react';
 export default function CreateProductForm() {
   // Translations
   const t = useTranslations(
-    'pages.dashboard.products.add-product.form',
+    'pages.dashboard.products-page.add-product.form',
   );
   const locale = useLocale();
 
@@ -86,19 +86,21 @@ export default function CreateProductForm() {
 
   // Automatically calculate price After Discount
   useEffect(() => {
-    const priceNum = parseFloat(price as string) || 0;
-    const discountNum = parseFloat(discount as string) || 0;
-
-    if (priceNum && discountNum) {
-      const discounted =
-        priceNum - (priceNum * discountNum) / 100;
-      setValue('priceAfterDiscount', discounted.toFixed(2));
-    } else {
-      setValue(
-        'priceAfterDiscount',
-        priceNum ? priceNum.toFixed(2) : '',
-      );
+    // If no price is entered (empty string), clear the discounted field
+    if (price === '') {
+      setValue('priceAfterDiscount', '');
+      return;
     }
+
+    const priceNum = Number(price) || 0;
+    const discountNum = Number(discount) || 0;
+
+    // Calculate discounted price (handles 0% discount correctly)
+    const discounted =
+      priceNum - (priceNum * discountNum) / 100;
+
+    // Ensure 2 decimal places for consistent currency display
+    setValue('priceAfterDiscount', discounted.toFixed(2));
   }, [price, discount, setValue]);
 
   return (
@@ -113,11 +115,8 @@ export default function CreateProductForm() {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('title-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -137,11 +136,8 @@ export default function CreateProductForm() {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('description-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Textarea
@@ -163,11 +159,8 @@ export default function CreateProductForm() {
             name="price"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>
+                <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                   {t('price-label')}
-                  <span className="ms-0.5 text-red-600">
-                    *
-                  </span>
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -232,11 +225,8 @@ export default function CreateProductForm() {
           name="quantity"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('quantity-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -257,11 +247,8 @@ export default function CreateProductForm() {
             name="imgCover"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>
+                <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                   {t('img-cover-label')}
-                  <span className="ms-0.5 text-red-600">
-                    *
-                  </span>
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -286,11 +273,8 @@ export default function CreateProductForm() {
             name="images"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>
+                <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                   {t('images-label')}
-                  <span className="ms-0.5 text-red-600">
-                    *
-                  </span>
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -317,11 +301,8 @@ export default function CreateProductForm() {
           name="category"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('category-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Select
@@ -362,11 +343,8 @@ export default function CreateProductForm() {
           name="occasion"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('occasion-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Select

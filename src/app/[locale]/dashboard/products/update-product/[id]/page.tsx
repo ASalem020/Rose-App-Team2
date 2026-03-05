@@ -11,7 +11,7 @@ export default async function UpdateProduct({
   params: { id: string };
 }) {
   const t = await getTranslations(
-    'pages.dashboard.products.update-product',
+    'pages.dashboard.products-page.update-product',
   );
 
   const product: Product = await getProductDetailsService(

@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 
 export default async function LowStockCard() {
   // ^ Translations
-  const t = await getTranslations('dashboard');
+  const t = await getTranslations('pages.dashboard');
 
   // ^ fetch data
   const response = await fetch(

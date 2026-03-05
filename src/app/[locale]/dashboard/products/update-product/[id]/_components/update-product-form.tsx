@@ -41,7 +41,7 @@ export default function UpdateProductForm({
 }: Props) {
   // Translations
   const t = useTranslations(
-    'pages.dashboard.products.update-product.form',
+    'pages.dashboard.products-page.update-product.form',
   );
   const locale = useLocale();
 
@@ -82,10 +82,7 @@ export default function UpdateProductForm({
     UpdateProductFields
   > = async values => {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { discount, occasion, ...rest } = values;
-
-      await updateProduct(rest as UpdateProductFields);
+      await updateProduct(values);
       toast.success(t('success-toast'));
       // form.reset();
     } catch (e) {
@@ -96,16 +93,21 @@ export default function UpdateProductForm({
   };
   // Automatically calculate price After Discount
   useEffect(() => {
+    // If no price is entered (empty string), clear the discounted field
+    if (price === '') {
+      setValue('priceAfterDiscount', '');
+      return;
+    }
+
     const priceNum = Number(price) || 0;
     const discountNum = Number(discount) || 0;
 
-    if (priceNum && discountNum) {
-      const discounted =
-        priceNum - (priceNum * discountNum) / 100;
-      setValue('priceAfterDiscount', discounted.toString());
-    } else {
-      setValue('priceAfterDiscount', priceNum.toString());
-    }
+    // Calculate discounted price (handles 0% discount correctly)
+    const discounted =
+      priceNum - (priceNum * discountNum) / 100;
+
+    // Ensure 2 decimal places for consistent currency display
+    setValue('priceAfterDiscount', discounted.toFixed(2));
   }, [price, discount, setValue]);
 
   return (
@@ -120,11 +122,8 @@ export default function UpdateProductForm({
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('title-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -144,11 +143,8 @@ export default function UpdateProductForm({
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('description-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Textarea
@@ -170,11 +166,8 @@ export default function UpdateProductForm({
             name="price"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>
+                <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                   {t('price-label')}
-                  <span className="ms-0.5 text-red-600">
-                    *
-                  </span>
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -247,11 +240,8 @@ export default function UpdateProductForm({
           name="quantity"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('quantity-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Input
@@ -271,11 +261,8 @@ export default function UpdateProductForm({
           name="category"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('category-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Select
@@ -315,11 +302,8 @@ export default function UpdateProductForm({
           name="occasion"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
+              <FormLabel className="after:ms-0.5 after:text-red-600 after:content-['*']">
                 {t('occasion-label')}
-                <span className="ms-0.5 text-red-600">
-                  *
-                </span>
               </FormLabel>
               <FormControl>
                 <Select
