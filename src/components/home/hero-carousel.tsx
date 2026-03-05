@@ -53,7 +53,7 @@ export default function CarouselDemo() {
     // Carousel
     <Carousel
       setApi={setApi}
-      className="relative mx-auto h-[440px] w-full max-w-[955px]"
+      className="relative h-[440px] w-full max-w-[955px] overflow-x-hidden rounded-2xl [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       {/* Carousel content container */}
       <CarouselContent>

@@ -4,7 +4,7 @@ import RoseCard from './card-sections';
 export default function OccasionsSection() {
   return (
     <section className="flex w-full justify-center py-6">
-      <div className="grid w-full max-w-[1340px] grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="grid w-full max-w-[1300px] grid-cols-1 gap-6 md:grid-cols-3">
         {/* card data Map */}
         {cardDetails.map(item => (
           <RoseCard

@@ -6,8 +6,8 @@ import CarouselDemo from './hero-carousel';
 
 export function CardDemo() {
   return (
-    <section className="py-4">
-      <div className="mx-auto flex items-center gap-6">
+    <section className="mt-10">
+      <div className="flex items-center justify-center gap-6">
         <div className="relative h-[440px] w-80 shrink-0 overflow-hidden rounded-2xl">
           <Image
             src="/images/heroImage.png"
