@@ -412,6 +412,30 @@
       "menu": {
         "account-settings": "Account",
         "logout": "Logout"
+      },
+      "products": {
+        "delete": {
+          "success": "Product deleted successfully",
+          "error": "Failed to delete product. Please try again."
+        }
+      },
+      "categories": {
+        "delete": {
+          "success": "Category deleted successfully",
+          "error": "Failed to delete category. Please try again."
+        }
+      },
+      "occasions": {
+        "delete": {
+          "success": "Occasion deleted successfully",
+          "error": "Failed to delete occasion. Please try again."
+        }
+      },
+      "account": {
+        "delete": {
+          "success": "Account deleted successfully",
+          "error": "Failed to delete account. Please try again."
+        }
       }
     },
     "unauthorized": {
@@ -426,7 +450,31 @@
     "error-page": {
       "main-message": "Oops, something went wrong!",
       "sub-message": "Something unexpected happened, please refresh the page or try again shortly."
-    }
+    },
+      "global-delete-alert-dialog": {
+        "show-dialog": "Show Dialog",
+        "account": {
+          "title": "Are you sure you want to delete your account?",
+          "description": "This action is permanent and cannot be undone.",
+          "confirm": "Yes, delete",
+          "cancel": "Nope, not doing it"
+        },
+        "product": {
+          "title": "Are you sure you want to delete this product?",
+          "confirm": "Confirm",
+          "cancel": "Cancel"
+        },
+        "category": {
+          "title": "Are you sure you want to delete this category?",
+          "confirm": "Confirm",
+          "cancel": "Cancel"
+        },
+        "occasion": {
+          "title": "Are you sure you want to delete this occasion?",
+          "confirm": "Confirm",
+          "cancel": "Cancel"
+        }
+      }
   },
   "success-toast": "Your password has been successfully reset."
 }
