@@ -1,29 +1,22 @@
 'use server';
 
 import { getToken } from '@/lib/utils/get-token';
-import { Product } from '../types/product';
 
-export async function addToCartAction({
-  product,
-  quantity,
+export async function removeCartItemAction({
+  productId,
 }: {
-  product: Product;
-  quantity: number;
+  productId: string;
 }) {
   const jwt = await getToken();
 
   const response = await fetch(
-    `${process.env.API_URL}/cart`,
+    `${process.env.API_URL}/cart/${productId}`,
     {
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt?.accessToken}`,
       },
-      body: JSON.stringify({
-        product: product._id,
-        quantity: quantity,
-      }),
     },
   );
 

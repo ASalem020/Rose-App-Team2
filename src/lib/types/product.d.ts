@@ -5,13 +5,12 @@ export interface Product {
   slug: string;
   price: number;
   priceAfterDiscount: number;
-  discount: number;
   quantity: number;
   sold: number;
   rateAvg: number;
   rateCount: number;
-  images: FileList | null;
-  imgCover: File;
+  images: string[];
+  imgCover: string;
   category: string;
   occasion: string;
   isSuperAdmin: boolean;
@@ -32,4 +31,21 @@ export type ProductAPIResponse = {
     nextPage: number;
   };
   products: Product[];
+};
+
+export type RecommendedProduct = {
+  _id: string;
+  title: string;
+  imgCover: string;
+  price: number;
+  priceAfterDiscount: number;
+  rateAvg: number;
+  rateCount: number;
+  id: string;
+};
+
+export type RecommendedProductsAPIResponse = {
+  message: string;
+  count: number;
+  recommendations: RecommendedProduct[];
 };

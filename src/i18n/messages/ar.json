@@ -345,6 +345,20 @@
         "loading": "جاري تحميل المنتجات ذات الصلة..."
       }
     },
+    "cart": {
+      "title": "عربة التسوق",
+      "products": " المنتجات",
+      "empty": "عربة التسوق فارغة، هل تريد التسوق؟",
+      "continue-shopping": "متابعة التسوق",
+      "clear-cart": "مسح العربة",
+      "cart-item": {
+        "rating": "التقييم:",
+        "ratingCount": "التقييمات",
+        "remove": "حذف",
+        "currency": "جنيه مصري"
+      },
+      "recommended": "المنتجات التي قد تعجبك"
+    },
     "product-details": {
       "add-cart-btn": "أضف إلى العربة",
       "currency": "جنيه مصري",
@@ -388,7 +402,6 @@
         "action": "نعم احذف"
       }
     },
-
     "checkout": {
       "shipping-addresses": {
         "title": "العناوين",
@@ -409,9 +422,11 @@
         "discount": "خصم",
         "no-discount": "لا يوجد خصم",
         "total": "المجموع",
-        "validation": {
-          "coupon": {
-            "required": "الرجاء إدخال كود الخصم"
+        "checkout": {
+          "validation": {
+            "coupon": {
+              "required": "الرجاء إدخال كود الخصم"
+            }
           }
         }
       },
@@ -461,7 +476,8 @@
       "success": {
         "credit": "تم إنشاء جلسة الدفع بالبطاقة الائتمانية بنجاح، تابع التسوق!",
         "cash": "تم إنشاء جلسة الدفع عند الاستلام بنجاح، تابع التسوق!"
-      }
+      },
+      "checkout-btn": "الدفع"
     },
     "address": {
       "list": {

@@ -391,6 +391,20 @@
         "loading": "Loading related products..."
       }
     },
+    "cart": {
+      "title": "Cart",
+      "products": " products",
+      "empty": "Your cart is empty, wanna try shopping?",
+      "continue-shopping": "Continue Shopping",
+      "clear-cart": "Clear Cart",
+      "cart-item": {
+        "rating": "Rating:",
+        "ratingCount": "ratings",
+        "remove": "Remove",
+        "currency": "EGP"
+      },
+      "recommended": "Products You May Like"
+    },
     "address": {
       "list": {
         "title": "My Addresses",
@@ -477,9 +491,11 @@
         "discount": "Discount",
         "no-discount": "No discount",
         "total": "Total",
-        "validation": {
-          "coupon": {
-            "required": "Please enter your coupon code"
+        "checkout": {
+          "validation": {
+            "coupon": {
+              "required": "Please enter your coupon code"
+            }
           }
         }
       },
@@ -529,7 +545,8 @@
       "success": {
         "credit": "Credit card checkout session created successfully, Continue Shopping!",
         "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
-      }
+      },
+      "checkout-btn": "Checkout"
     },
     "dashboard": {
       "overview": {

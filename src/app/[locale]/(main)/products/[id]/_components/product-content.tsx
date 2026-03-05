@@ -47,34 +47,54 @@ export default function ProductContent({
   const addToCartHandler = () => {
     // if user not logged in
     if (!isLoggedIn) {
-      const cart = JSON.parse(
-        localStorage.getItem('cart') || '[]',
-      );
+      const storedCart = localStorage.getItem('cart');
+      let cartData = JSON.parse(storedCart || '[]');
 
-      const existingProductIndex = cart.findIndex(
-        (item: CartItem) => item.product === product._id,
-      );
+      // Initialize structure if invalid or missing
+      if (
+        !cartData ||
+        !cartData.cart ||
+        !Array.isArray(cartData.cart.cartItems)
+      ) {
+        cartData = {
+          cart: {
+            cartItems: [],
+          },
+        };
+      }
+
+      const existingProductIndex =
+        cartData.cart.cartItems.findIndex(
+          (item: CartItem) =>
+            item.product._id === product._id,
+        );
 
       if (existingProductIndex !== -1) {
         // Product already exists → increase quantity only
-        cart[existingProductIndex].quantity += 1;
+        cartData.cart.cartItems[
+          existingProductIndex
+        ].quantity += 1;
       } else {
         // New product → add it
-        cart.push({
-          product: product._id,
+        cartData.cart.cartItems.push({
+          product: product,
           quantity: 1,
+          // _id: Math.random().toString(36).substr(2, 9),
+          // price: product.price,
         });
       }
 
       // save cart to local storage
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem(
+        'cart',
+        JSON.stringify(cartData),
+      );
       toast.success(t('toast-added'));
 
       return;
     }
-
     addToCart(
-      { product: product._id, quantity: 1 },
+      { product: product, quantity: 1 },
       {
         onSuccess: () => {
           toast.success(t('toast-added'));
@@ -103,20 +123,24 @@ export default function ProductContent({
 
   // Effects
   useEffect(() => {
-    // get stored items from local storage
-    const cart = JSON.parse(
-      localStorage.getItem('cart') || '[]',
-    );
+    const storedCart = localStorage.getItem('cart');
+    if (!storedCart) return;
+
+    const guestCart = JSON.parse(storedCart);
 
     // if cart is not empty
-    if (cart.length !== 0) {
+    if (
+      isLoggedIn &&
+      guestCart?.cart?.cartItems?.length > 0
+    ) {
       // if user logged in, add all cart items to the database
-      if (isLoggedIn) {
-        cart.map((cart: CartItem) => {
-          addToCart(cart);
+      guestCart.cart.cartItems.forEach((item: CartItem) => {
+        addToCart({
+          product: item.product,
+          quantity: item.quantity,
         });
-        localStorage.removeItem('cart');
-      }
+      });
+      localStorage.removeItem('cart');
     }
   }, [isLoggedIn, addToCart]);
 
