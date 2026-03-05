@@ -14,15 +14,26 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { AddCategoryAction } from '../_actions/add-categories.actions';
 import { useRouter } from '@/i18n/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+import { useTranslations } from 'next-intl';
 
+// ^ type
 type FormValues = {
   name: string;
   image?: FileList;
 };
 
 export default function AddCategoriesPage() {
+  // ^ Transilation
+  const t = useTranslations('dashboard.categories');
+
+  // ^ Query
+  const queryClient = useQueryClient();
+
+  // ^ Navigation
   const router = useRouter();
 
+  // ^ form
   const form = useForm<FormValues>({
     defaultValues: {
       name: '',
@@ -30,23 +41,28 @@ export default function AddCategoriesPage() {
   });
 
   return (
-    <div className="flex min-h-screen flex-col bg-gray-100 p-4">
-      <div className="mx-auto w-full max-w-2xl rounded-2xl p-6 shadow-sm md:p-8">
+    <div className="ml-3 mt-3 flex min-h-screen flex-col">
+      <div className="w-full max-w-2xl rounded-2xl">
         {/* title */}
         <h2 className="mb-6 text-2xl font-semibold">
-          Add a New Categories
+          {t('add-new-category')}
         </h2>
 
-        <div className="rounded-xl bg-white p-6">
+        {/* form */}
+        <div className="mt-3 h-96 rounded-xl bg-white p-3">
           <Form {...form}>
+            {/* function */}
             <form
               action={async (formData: FormData) => {
                 const result =
                   await AddCategoryAction(formData);
                 if (result.success) {
                   toast.success(result.message);
+                  queryClient.invalidateQueries({
+                    queryKey: ['categories'],
+                  });
                   setTimeout(() => {
-                    router.push('/categories');
+                    router.push('/dashboard/categories');
                   }, 1000);
                 } else {
                   toast.error(result.message);
@@ -60,12 +76,18 @@ export default function AddCategoriesPage() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name*</FormLabel>
+                    <FormLabel>
+                      {t('name')}{' '}
+                      <span className="text-red-600">
+                        *
+                      </span>
+                    </FormLabel>
                     <FormControl>
                       <Input
                         type="text"
                         {...field}
                         name="name"
+                        placeholder="Enrter Category Name"
                       />
                     </FormControl>
                     <FormMessage />
@@ -78,8 +100,13 @@ export default function AddCategoriesPage() {
                 control={form.control}
                 name="image"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Image (optional)</FormLabel>
+                  <FormItem className="-mt-2">
+                    <FormLabel>
+                      {t('category-image')}{' '}
+                      <span className="text-red-600">
+                        *
+                      </span>
+                    </FormLabel>
                     <FormControl>
                       <Input
                         type="file"
@@ -98,9 +125,9 @@ export default function AddCategoriesPage() {
               {/* Button */}
               <Button
                 type="submit"
-                className="h-10 rounded-md bg-maroon-600 font-semibold text-white hover:bg-maroon-800"
+                className="mt-16 h-10 rounded-md bg-maroon-600 font-semibold text-white hover:bg-maroon-800"
               >
-                Add Category
+                {t('add-category-button')}
               </Button>
             </form>
           </Form>

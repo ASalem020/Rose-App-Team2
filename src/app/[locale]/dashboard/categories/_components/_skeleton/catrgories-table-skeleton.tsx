@@ -1,7 +1,6 @@
+import { Skeleton } from '@/components/ui/skeleton';
 
-import { Skeleton } from "@/components/ui/skeleton";
-
-export default function CategoriesTableSkeleton () {
+export default function CategoriesTableSkeleton() {
   return (
     <div className="space-y-4">
       <div className="overflow-x-auto">
@@ -25,5 +24,4 @@ export default function CategoriesTableSkeleton () {
       </div>
     </div>
   );
-};
-
+}

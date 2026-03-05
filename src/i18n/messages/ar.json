@@ -381,11 +381,11 @@
       "save-changes": "حفظ التغييرات",
       "delete-my-account": "حذف الحساب",
       "change-password": "تغيير كلمة المرور",
-      "dialog":{
-        "title" : "هل أنت متأكد من رغبتك في حذف حسابك؟",
-        "description" : "هذا الإجراء دائم ولا يمكن التراجع عنه.",
-        "cancel" : "الغاء",
-        "action" : "نعم احذف"
+      "dialog": {
+        "title": "هل أنت متأكد من رغبتك في حذف حسابك؟",
+        "description": "هذا الإجراء دائم ولا يمكن التراجع عنه.",
+        "cancel": "الغاء",
+        "action": "نعم احذف"
       }
     },
     "checkout": {
@@ -547,6 +547,20 @@
     "top-selling-products": "المنتجات الأكثر مبيعا",
     "low-stock-products": "منتجات منخفضة المخزون",
     "products": "منتجات",
-    "sales": "مبيعات"
+    "sales": "مبيعات",
+    "categories": {
+      "title": "جميع الفئات",
+      "add-new-category": "أضف فئة جديدة",
+      "name": "الاسم",
+      "products": "المنتجات",
+      "product": "منتج",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "loading": "تحميل",
+      "category-image": "صورة الفئة",
+      "add-category-button": "أضف فئة",
+      "view-category-image": "عرض صورة الفئة",
+      "update-category": "تحديث الفئة"
+    }
   }
 }

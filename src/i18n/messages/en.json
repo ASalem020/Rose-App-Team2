@@ -502,34 +502,34 @@
         "address": {
           "required": "Please select an address"
         },
-          "shippingAddress": {
-            "street": {
-              "required": "Please select an address"
-            },
-            "phone": {
-              "required": "Please enter your phone number"
-            },
-            "city": {
-              "required": "Please enter your city"
-            },
-            "lat": {
-              "required": "Please enter your latitude"
-            },
-            "long": {
-              "required": "Please enter your longitude"
-            }
+        "shippingAddress": {
+          "street": {
+            "required": "Please select an address"
           },
-          "payment-method": {
-            "required": "Please select a payment method"
+          "phone": {
+            "required": "Please enter your phone number"
           },
-          "coupon": {
-            "required": "Please enter your coupon code"
+          "city": {
+            "required": "Please enter your city"
+          },
+          "lat": {
+            "required": "Please enter your latitude"
+          },
+          "long": {
+            "required": "Please enter your longitude"
           }
         },
-        "success": {
-          "credit": "Credit card checkout session created successfully, Continue Shopping!",
-          "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
+        "payment-method": {
+          "required": "Please select a payment method"
+        },
+        "coupon": {
+          "required": "Please enter your coupon code"
         }
+      },
+      "success": {
+        "credit": "Credit card checkout session created successfully, Continue Shopping!",
+        "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
+      }
     },
     "dashboard": {
       "nav-links": {
@@ -549,8 +549,21 @@
   "dashboard": {
     "top-selling-products": "Top Selling Products",
     "low-stock-products": "Low Stock Products",
-    "products" : "Products",
-    "sales" : "Sales"
-
+    "products": "Products",
+    "sales": "Sales",
+    "categories": {
+      "title": "All Categories",
+      "add-new-category": "Add a new category",
+      "name": "Name",
+      "products": "Products",
+      "product": "Product",
+      "edit": "Edit",
+      "delete": "Delete",
+      "loading": "Loading",
+      "category-image": "Category image",
+      "add-category-button": "Add Category",
+      "view-category-image": "View Category Image",
+      "update-category-button": "Update Category"
+    }
   }
 }
