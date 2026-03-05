@@ -405,7 +405,6 @@
       },
       "recommended": "Products You May Like"
     },
-
     "address": {
       "list": {
         "title": "My Addresses",
@@ -546,7 +545,8 @@
       "success": {
         "credit": "Credit card checkout session created successfully, Continue Shopping!",
         "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
-      }
+      },
+      "checkout-btn": "Checkout"
     },
     "dashboard": {
       "overview": {

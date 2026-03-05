@@ -1,6 +1,6 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ApplyCoupon from './apply-coupon';
 import AppliedCoupons from './applied-coupons';
 import Total from './total';
@@ -8,6 +8,7 @@ import { useGetCart } from '../../_hooks/use-get-cart';
 
 import { useSession } from 'next-auth/react';
 import PriceSummarySkeleton from '@/components/skeleton/price-summary-skeleton';
+import CheckoutBtn from '../../@checkout/_components/checkout-btn';
 
 export default function PriceSummary() {
   // session
@@ -28,6 +29,8 @@ export default function PriceSummary() {
   const { data, isPending } = useGetCart({
     enabled: isLoggedIn,
   });
+
+  useEffect(() => {}, [data]);
 
   if (isPending) return <PriceSummarySkeleton />;
 
@@ -58,6 +61,8 @@ export default function PriceSummary() {
           coupons={coupons}
         />
       </div>
+
+      <CheckoutBtn />
     </div>
   );
 }
