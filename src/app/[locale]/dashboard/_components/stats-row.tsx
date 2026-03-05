@@ -6,16 +6,30 @@ import {
   ClipboardList,
   ReceiptText,
 } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import {
+  getFormatter,
+  getTranslations,
+} from 'next-intl/server';
 
-export default async function FirstRow() {
+export default async function StatsRow() {
   // Translation
   const t = await getTranslations(
     'pages.dashboard.overview.row-1',
   );
+  const format = await getFormatter();
 
   // Fetch data
   const data = await getAllStatistics();
+
+  if (!data?.statistics) {
+    return (
+      <div className="container my-6 flex h-80 items-center justify-center rounded-2xl bg-white shadow-sm">
+        <p className="text-zinc-500">
+          Failed to load statistics.
+        </p>
+      </div>
+    );
+  }
 
   const { overall, categories } = data.statistics;
 
@@ -32,7 +46,7 @@ export default async function FirstRow() {
     },
     {
       label: t('total-orders-label'),
-      value: overall.totalOrders.toLocaleString(),
+      value: format.number(overall.totalOrders),
       icon: (
         <ReceiptText size={30} className="text-blue-600" />
       ),
@@ -53,10 +67,11 @@ export default async function FirstRow() {
     },
     {
       label: t('total-revenue-label'),
-      value: Math.round(
-        overall.totalRevenue,
-      ).toLocaleString(),
-      suffix: t('suffix'),
+      value: format.number(overall.totalRevenue, {
+        style: 'currency',
+        currency: 'EGP',
+        maximumFractionDigits: 0,
+      }),
       icon: (
         <CircleDollarSign
           size={30}
@@ -69,7 +84,7 @@ export default async function FirstRow() {
   ];
 
   return (
-    <section className="container my-6 me-6 ms-4 flex h-80 flex-row gap-6">
+    <section className="container mb-6 mt-2 flex h-80 flex-row gap-6">
       <div className="w-5/12 rounded-2xl bg-white p-6 shadow-sm">
         {/* Overview Cards */}
         <div className="grid h-full grid-cols-2 gap-4">
@@ -94,16 +109,6 @@ export default async function FirstRow() {
                     >
                       {stat.value}
                     </span>
-                    {stat.suffix && (
-                      <span
-                        className={cn(
-                          'ms-1 font-medium',
-                          stat.textColor,
-                        )}
-                      >
-                        {stat.suffix}
-                      </span>
-                    )}
                   </div>
                   {/* Label */}
                   <span className="font-medium text-zinc-800">
@@ -122,7 +127,7 @@ export default async function FirstRow() {
           {t('header')}
         </h2>
         {/* Categories list */}
-        <div className="overflow-auto pr-2">
+        <div className="overflow-auto pr-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {categories.map(category => (
             <div
               key={category._id}
