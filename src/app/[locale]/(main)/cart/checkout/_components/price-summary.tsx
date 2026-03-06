@@ -10,6 +10,13 @@ import { useSession } from 'next-auth/react';
 import PriceSummarySkeleton from '@/components/skeleton/price-summary-skeleton';
 import CheckoutBtn from '../../@checkout/_components/checkout-btn';
 
+type coupons = {
+  coupon: string;
+  discountAmount: string;
+  total?: string;
+  totalAfterDiscount?: string;
+};
+
 export default function PriceSummary() {
   // session
   const { status } = useSession();
@@ -18,9 +25,7 @@ export default function PriceSummary() {
   const t = useTranslations('pages.checkout.price-summary');
 
   // State
-  const [coupons, setCoupons] = useState<
-    { coupon: string; percentage: string }[]
-  >([]);
+  const [coupons, setCoupons] = useState<coupons[]>([]);
 
   // variables
   const isLoggedIn = status === 'authenticated';

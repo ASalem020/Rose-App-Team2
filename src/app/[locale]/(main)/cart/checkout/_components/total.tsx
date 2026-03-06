@@ -5,7 +5,12 @@ import React, { useMemo } from 'react';
 type TotalProps = {
   subTotalAmount: string | number;
   t: Translations;
-  coupons: { coupon: string; percentage: string }[];
+  coupons: {
+    coupon: string;
+    discountAmount: string;
+    total?: string;
+    totalAfterDiscount?: string;
+  }[];
 };
 
 export default function Total({
@@ -17,9 +22,24 @@ export default function Total({
   const format = useFormatter();
 
   // Variables
-  const totalPercentages = useMemo(() => {
+  // const totalPercentages = useMemo(() => {
+  //   return coupons.reduce(
+  //     (acc, coupon) => acc + Number(coupon.discountAmount),
+  //     0,
+  //   );
+  // }, [coupons]);
+
+  const total = useMemo(() => {
     return coupons.reduce(
-      (acc, coupon) => acc + Number(coupon.percentage),
+      (acc, coupon) => acc + Number(coupon.total),
+      0,
+    );
+  }, [coupons]);
+
+  const totalAfterDiscount = useMemo(() => {
+    return coupons.reduce(
+      (acc, coupon) =>
+        acc + Number(coupon.totalAfterDiscount),
       0,
     );
   }, [coupons]);
@@ -48,7 +68,7 @@ export default function Total({
         <span className="text-lg font-semibold text-zinc-800 md:text-xl">
           {coupons.length === 0
             ? t('no-discount')
-            : `${totalPercentages}% ${t('discount')}`}
+            : `${Number(((total - totalAfterDiscount) / total) * 100).toFixed(2)}% ${t('discount')}`}
         </span>
 
         {/* Line */}
@@ -66,10 +86,7 @@ export default function Total({
                 'short-price',
               )
             : format.number(
-                Number(subTotalAmount) -
-                  (Number(subTotalAmount) *
-                    totalPercentages) /
-                    100,
+                Number(totalAfterDiscount),
                 'short-price',
               )}
         </span>
