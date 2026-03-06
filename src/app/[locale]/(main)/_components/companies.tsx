@@ -21,7 +21,7 @@ export default function Companies() {
       {/* Heading */}
       <h3 className="text-center text-4xl font-bold text-maroon-700 dark:text-softPink-200">
         {t.rich('heading', {
-          span: chunk => (
+          span: (chunk: string) => (
             <span className="text-softPink-500 dark:text-maroon-400">
               {chunk}
             </span>

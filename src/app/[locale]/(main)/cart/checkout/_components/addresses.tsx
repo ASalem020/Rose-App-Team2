@@ -92,7 +92,7 @@ export default function Addresses({
         <AddAddressButton />
 
         {/* Next Step */}
-        <div className="flex">
+        <div className="mt-12 flex">
           <Button
             className="ms-auto flex items-center gap-2.5"
             onClick={() => setStep(2)}

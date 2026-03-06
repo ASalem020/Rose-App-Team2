@@ -1,5 +1,6 @@
-
 import { registerSchema } from '@/lib/schema/auth.schema';
-import z from 'zod'
+import z from 'zod';
 
-type RegisterFields = z.infer<ReturnType<typeof registerSchema>>;
+type RegisterFields = z.infer<
+  ReturnType<typeof registerSchema>
+>;

@@ -15,11 +15,11 @@ export default function SupportInfo({
 
       <div className="flex flex-col">
         {/* Support title */}
-        <h4 className="text-sm font-semibold text-maroon-600">
+        <h4 className="text-xl font-semibold text-maroon-600">
           {title}
         </h4>
         {/* Support description */}
-        <p className="text-xs text-gray-600">
+        <p className="text-sm text-zinc-500">
           {description}
         </p>
       </div>

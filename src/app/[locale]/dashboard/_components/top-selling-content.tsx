@@ -13,7 +13,7 @@ const colors = [
 
 export default async function TopSellingCard() {
   // ^ Translations
-  const t = await getTranslations('dashboard');
+  const t = await getTranslations('pages.dashboard');
   const format = await getFormatter();
 
   // ^ fetch data

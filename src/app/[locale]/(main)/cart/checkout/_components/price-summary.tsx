@@ -1,11 +1,19 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ApplyCoupon from './apply-coupon';
 import AppliedCoupons from './applied-coupons';
 import Total from './total';
+import { useGetCart } from '../../_hooks/use-get-cart';
+
+import { useSession } from 'next-auth/react';
+import PriceSummarySkeleton from '@/components/skeleton/price-summary-skeleton';
+import CheckoutBtn from '../../@checkout/_components/checkout-btn';
 
 export default function PriceSummary() {
+  // session
+  const { status } = useSession();
+
   // Translation
   const t = useTranslations('pages.checkout.price-summary');
 
@@ -13,6 +21,18 @@ export default function PriceSummary() {
   const [coupons, setCoupons] = useState<
     { coupon: string; percentage: string }[]
   >([]);
+
+  // variables
+  const isLoggedIn = status === 'authenticated';
+
+  // query
+  const { data, isPending } = useGetCart({
+    enabled: isLoggedIn,
+  });
+
+  useEffect(() => {}, [data]);
+
+  if (isPending) return <PriceSummarySkeleton />;
 
   return (
     <div className="priceSummary">
@@ -37,10 +57,12 @@ export default function PriceSummary() {
         {/* Total */}
         <Total
           t={t}
-          subTotalAmount={100}
+          subTotalAmount={data?.cart?.totalPrice}
           coupons={coupons}
         />
       </div>
+
+      <CheckoutBtn />
     </div>
   );
 }

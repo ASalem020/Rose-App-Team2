@@ -1,6 +1,6 @@
+import { LoginResponse } from '@/lib/types/auth';
 import { NextAuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { LoginResponse } from './lib/types/auth';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -28,7 +28,7 @@ export const authOptions: NextAuthOptions = {
           await response.json();
 
         if ('error' in payload)
-          throw new Error(payload.error);
+          throw new Error(payload.error as string);
 
         return {
           id: payload.user._id,

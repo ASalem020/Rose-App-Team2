@@ -6,10 +6,12 @@ import BestSelling from '@/app/[locale]/(main)/_components/sections/best-selling
 import MostPopular from '@/app/[locale]/(main)/_components/sections/most-popular';
 import OccasionsSection from '@/components/cards/card-List';
 import SupportSection from '@/components/appsupport/support-sections';
+import { CardDemo } from '@/components/home/hero-section';
 
 export default function Home() {
   return (
     <div className="bg-white dark:bg-zinc-800">
+      <CardDemo />
       <OccasionsSection />
       <SupportSection />
       <BestSelling />

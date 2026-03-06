@@ -6,10 +6,10 @@ import CardSkeleton from './skeleton/card-skeleton';
 
 export default function TopSellingProducts() {
   // ^ Translations
-  const t = useTranslations('dashboard');
+  const t = useTranslations('pages.dashboard');
 
   return (
-    <div className="flex max-h-112 flex-col bg-white p-6">
+    <div className="flex max-h-112 flex-col rounded-2xl bg-white p-6">
       {/* title */}
       <TitleComponents title={t('top-selling-products')} />
       {/* content */}
