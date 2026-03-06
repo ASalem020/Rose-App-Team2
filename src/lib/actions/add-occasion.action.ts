@@ -7,15 +7,6 @@
 import { getToken } from '@/lib/utils/get-token';
 
 
-// Types
-
-
-interface AddOccasionFields {
-  name: string;
-  image?: File;
-}
-
-
 // Server Action
 
 
@@ -25,14 +16,18 @@ interface AddOccasionFields {
  * API Endpoint: POST /api/v1/occasions
  * Authentication: Required (Bearer token via getToken)
  *
- * Request Body (FormData):
+ * Accepts FormData directly so it crosses the Next.js Server Action
+ * serialization boundary safely (File inside a plain object is NOT allowed,
+ * but FormData is a supported built-in).
+ *
+ * FormData fields:
  * - name: string
  * - image?: File
  *
- * @param fields - The new occasion fields
+ * @param formData - FormData built on the client before calling this action
  * @returns API response or error object
  */
-export async function addOccasionAction(fields: AddOccasionFields) {
+export async function addOccasionAction(formData: FormData) {
   // Get token for authentication
   const jwt = await getToken();
 
@@ -44,21 +39,14 @@ export async function addOccasionAction(fields: AddOccasionFields) {
   }
 
   try {
-    // Build multipart form data
-    const formData = new FormData();
-    formData.append('name', fields.name);
-    if (fields.image) {
-      formData.append('image', fields.image);
-    }
-
-    // Make API request
+    // Make API request — forward the FormData as-is
     const response = await fetch(
       `${process.env.API_URL}/occasions`,
       {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${jwt.accessToken}`,
-          // NOTE: Do NOT set Content-Type here; the browser sets it automatically
+          // NOTE: Do NOT set Content-Type here; fetch sets it automatically
           // with the correct multipart boundary when using FormData.
         },
         body: formData,

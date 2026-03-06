@@ -40,6 +40,10 @@ export interface InputProps
   onReview?: () => void;
   text?: string;
   error?: boolean;
+  /** Custom label for the upload button — pass a translated string here */
+  uploadLabel?: string;
+  /** Custom label for the review-image button — pass a translated string here */
+  reviewLabel?: string;
 }
 
 const Input = React.forwardRef<
@@ -55,6 +59,8 @@ const Input = React.forwardRef<
       onReview,
       error,
       onChange,
+      uploadLabel = 'Upload File',
+      reviewLabel = 'Review current image(s)',
       ...props
     },
     ref,
@@ -173,7 +179,7 @@ const Input = React.forwardRef<
                 >
                   <ImageIcon className="h-4 w-4 shrink-0" />
                   <span className="truncate">
-                    Review current image(s)
+                    {reviewLabel}
                   </span>
                 </button>
               )}
@@ -191,7 +197,7 @@ const Input = React.forwardRef<
               )}
             >
               <Upload className="h-4 w-4" />
-              Upload File
+              {uploadLabel}
             </span>
           </div>
         </div>

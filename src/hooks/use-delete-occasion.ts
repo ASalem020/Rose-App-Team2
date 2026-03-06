@@ -3,6 +3,7 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 import { deleteOccasionAction } from '@/lib/actions/delete-occasion.action';
 
 
@@ -22,6 +23,7 @@ import { deleteOccasionAction } from '@/lib/actions/delete-occasion.action';
  */
 export function useDeleteOccasion() {
   const queryClient = useQueryClient();
+  const t = useTranslations('pages.dashboard.occasion.toasts');
 
   const { mutate: deleteOccasion, isPending, error } = useMutation({
     mutationKey: ['delete-occasion'],
@@ -38,7 +40,7 @@ export function useDeleteOccasion() {
     },
     onSuccess: () => {
       // Show success message
-      toast.success('Occasion deleted successfully!');
+      toast.success(t('deleteSuccess'));
 
       // Invalidate occasions cache to refresh the list
       queryClient.invalidateQueries({

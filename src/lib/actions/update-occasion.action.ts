@@ -7,14 +7,6 @@
 import { getToken } from '@/lib/utils/get-token';
 
 
-// Types
-
-
-interface UpdateOccasionFields {
-  name: string;
-}
-
-
 // Server Action
 
 
@@ -24,16 +16,21 @@ interface UpdateOccasionFields {
  * API Endpoint: PUT /api/v1/occasions/:occasionId
  * Authentication: Required (Bearer token via getToken)
  *
- * Request Body (FormData):
+ * Accepts FormData directly so it crosses the Next.js Server Action
+ * serialization boundary safely (File inside a plain object is NOT allowed,
+ * but FormData is a supported built-in).
+ *
+ * FormData fields:
  * - name: string
+ * - image?: File  (only appended when the user picks a new image)
  *
  * @param occasionId - The ID of the occasion to update
- * @param fields - The updated occasion fields
+ * @param formData   - FormData built on the client before calling this action
  * @returns API response or error object
  */
 export async function updateOccasionAction(
   occasionId: string,
-  fields: UpdateOccasionFields,
+  formData: FormData,
 ) {
   // Get token for authentication
   const jwt = await getToken();
@@ -46,17 +43,15 @@ export async function updateOccasionAction(
   }
 
   try {
-    // Build multipart form data
-    const formData = new FormData();
-    formData.append('name', fields.name);
-
-    // Make API request
+    // Make API request — forward the FormData as-is
     const response = await fetch(
       `${process.env.API_URL}/occasions/${occasionId}`,
       {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${jwt.accessToken}`,
+          // NOTE: Do NOT set Content-Type here; fetch sets it automatically
+          // with the correct multipart boundary when using FormData.
         },
         body: formData,
       },

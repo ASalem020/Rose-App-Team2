@@ -1,12 +1,17 @@
 'use client';
 
+
+// Imports
+
+
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Plus, Search, Pencil, Trash2, PackageOpen } from 'lucide-react';
+
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils/tailwind-merge';
 import {
   Table,
@@ -28,7 +33,9 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Skeleton } from '@/components/ui/skeleton';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+
+// Types
+
 
 export interface EntityItem {
   _id: string;
@@ -43,7 +50,7 @@ export interface EntityItem {
 }
 
 interface EntityManagementTableProps {
-  /** Display name shown in the page heading  e.g. "Occasions" */
+  /** Display name shown in the page heading e.g. "Occasions" */
   name: string;
   /** The data array fetched from the API */
   data: EntityItem[] | undefined;
@@ -61,16 +68,25 @@ interface EntityManagementTableProps {
   isDeleting?: boolean;
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
+// Helpers
+
+
+/**
+ * getProductCount - Normalises the product count field across entity types
+ *
+ * Occasions use `ProductCount`, categories use `productsCount`.
+ */
 function getProductCount(item: EntityItem): number {
   return item.ProductCount ?? item.productsCount ?? 0;
 }
 
 /**
- * Returns true only for src values next/image accepts:
- *  - absolute URLs  (http:// or https://)
- *  - root-relative  (starts with /)
+ * isValidImageSrc - Guards against bare filenames that next/image rejects
+ *
+ * Returns true only for:
+ *  - Absolute URLs  (http:// or https://)
+ *  - Root-relative  (starts with /)
  * The API sometimes returns bare filenames — those are rejected.
  */
 function isValidImageSrc(src: string | undefined): src is string {
@@ -78,8 +94,13 @@ function isValidImageSrc(src: string | undefined): src is string {
   return src.startsWith('http://') || src.startsWith('https://') || src.startsWith('/');
 }
 
-// ─── Skeleton Rows ────────────────────────────────────────────────────────────
 
+// Sub-components
+
+
+/**
+ * TableSkeletonRows - Placeholder rows shown while data is loading
+ */
 function TableSkeletonRows() {
   return (
     <>
@@ -106,8 +127,29 @@ function TableSkeletonRows() {
   );
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
+// Component
+
+
+/**
+ * EntityManagementTable - Generic admin table for managing occasions or categories
+ *
+ * Features:
+ * - Client-side search / filter
+ * - Skeleton loading states
+ * - Delete confirmation dialog
+ * - Fully translated (EN / AR) via next-intl
+ * - Reusable for occasions and categories
+ *
+ * @param name       - Display label used in the heading e.g. "Occasions"
+ * @param data       - Array of entity items from the API
+ * @param isLoading  - Whether the fetch is in-flight
+ * @param isError    - Whether the fetch failed
+ * @param addPath    - Route for the "Add new" button
+ * @param editPath   - Function that returns the edit route for an item id
+ * @param onDelete   - Callback invoked with the item id when deletion is confirmed
+ * @param isDeleting - Whether the delete mutation is in-flight
+ */
 export default function EntityManagementTable({
   name,
   data,
@@ -118,13 +160,31 @@ export default function EntityManagementTable({
   onDelete,
   isDeleting = false,
 }: EntityManagementTableProps) {
-  const [search, setSearch] = useState('');
-  const [deleteTarget, setDeleteTarget] =
-    useState<EntityItem | null>(null);
 
+  // Translation
+
+
+  const t = useTranslations('pages.dashboard.occasion.table');
+
+
+  // State
+
+
+  const [search, setSearch] = useState('');
+  const [deleteTarget, setDeleteTarget] = useState<EntityItem | null>(null);
+
+
+  // Variables
+
+
+  // Filtered list derived from the search query
   const filtered = (data ?? []).filter(item =>
     item.name.toLowerCase().includes(search.toLowerCase()),
   );
+
+
+  // Handlers
+
 
   const handleDeleteConfirm = () => {
     if (deleteTarget) {
@@ -133,19 +193,19 @@ export default function EntityManagementTable({
     }
   };
 
-  // ── Render ──────────────────────────────────────────────────────────────────
+
+  // Render
+
 
   return (
     <div className="flex flex-col gap-6 p-6">
-      {/* ── Page Header ── */}
+
+      {/* Page Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            All {name}
+            {t('title')}
           </h1>
-          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            Manage your {name.toLowerCase()} and their products
-          </p>
         </div>
 
         <Link
@@ -156,51 +216,52 @@ export default function EntityManagementTable({
           )}
         >
           <Plus className="h-4 w-4" />
-          Add a new {name.toLowerCase().replace(/s$/, '')}
+          {t('addNew')}
         </Link>
       </div>
 
-      {/* ── Search ── */}
-      <div className="relative max-w-sm">
+      {/* Search */}
+      <div className="relative w-full">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
         <Input
           id={`search-${name.toLowerCase()}`}
-          placeholder="Search..."
+          placeholder={t('searchPlaceholder')}
           value={search}
           onChange={e => setSearch(e.target.value)}
           className="pl-9"
         />
       </div>
 
-      {/* ── Table Card ── */}
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+      {/* Table */}
+      <div className="overflow-hidden  bg-white  dark:bg-zinc-900">
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50 dark:bg-zinc-800">
-              <TableHead className="w-[60px]">Image</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Products</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <div className="flex items-center gap-2">
+                <TableHead className=" max-w-40 w-full">{t('columns.name')}</TableHead>
+                <TableHead>{t('columns.products')}</TableHead>
+              </div>
+              <TableHead className="text-right">{t('columns.actions')}</TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
-            {/* Loading */}
+            {/* Loading skeletons */}
             {isLoading && <TableSkeletonRows />}
 
-            {/* Error */}
+            {/* Error state */}
             {!isLoading && isError && (
               <TableRow>
                 <TableCell
                   colSpan={4}
                   className="py-16 text-center text-sm text-red-500"
                 >
-                  Failed to load {name.toLowerCase()}. Please try again.
+                  {t('error')}
                 </TableCell>
               </TableRow>
             )}
 
-            {/* Empty */}
+            {/* Empty state */}
             {!isLoading && !isError && filtered.length === 0 && (
               <TableRow>
                 <TableCell colSpan={4} className="py-16 text-center">
@@ -208,55 +269,36 @@ export default function EntityManagementTable({
                     <PackageOpen className="h-12 w-12 opacity-40" />
                     <p className="text-sm font-medium">
                       {search
-                        ? `No ${name.toLowerCase()} match "${search}"`
-                        : `No ${name.toLowerCase()} found`}
+                        ? t('empty.noMatch', { search })
+                        : t('empty.noData')}
                     </p>
                   </div>
                 </TableCell>
               </TableRow>
             )}
 
-            {/* Data Rows */}
+            {/* Data rows */}
             {!isLoading &&
               !isError &&
               filtered.map(item => (
                 <TableRow
                   key={item._id}
-                  className="transition-colors hover:bg-rose-50/40 dark:hover:bg-rose-950/20"
+                  className="transition-colors hover:bg-rose-200/40 dark:hover:bg-rose-950/20"
                 >
-                  {/* Thumbnail */}
-                  <TableCell>
-                    {isValidImageSrc(item.image) ? (
-                      <div className="relative h-10 w-10 overflow-hidden rounded-md border border-gray-100 dark:border-zinc-700">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          fill
-                          className="object-cover"
-                          sizes="40px"
-                        />
-                      </div>
-                    ) : (
-                      <div className="flex h-10 w-10 items-center justify-center rounded-md bg-gray-100 text-xs font-bold uppercase text-gray-400 dark:bg-zinc-700">
-                        {item.name.slice(0, 2)}
-                      </div>
-                    )}
-                  </TableCell>
+                  <div className="flex  items-start gap-2 ">
 
-                  {/* Name */}
-                  <TableCell className="font-medium text-gray-900 dark:text-white">
-                    {item.name}
-                  </TableCell>
+                    {/* Name */}
+                    <TableCell className=" max-w-40 w-full font-medium text-gray-900 dark:text-white">
+                      {item.name}
+                    </TableCell>
 
-                  {/* Product count */}
-                  <TableCell>
-                    <Badge
-                      variant="secondary"
-                      className="text-xs font-normal text-gray-600 dark:text-gray-300"
-                    >
-                      {getProductCount(item)} products
-                    </Badge>
-                  </TableCell>
+                    {/* Product count */}
+                    <TableCell>
+                      <p className="text-xs font-normal text-gray-600 dark:text-gray-300">
+                        {t('productCount', { count: getProductCount(item) })}
+                      </p>
+                    </TableCell>
+                  </div>
 
                   {/* Actions */}
                   <TableCell className="text-right">
@@ -269,7 +311,7 @@ export default function EntityManagementTable({
                         )}
                       >
                         <Pencil className="h-3.5 w-3.5" />
-                        Edit
+                        {t('edit')}
                       </Link>
 
                       <Button
@@ -279,7 +321,7 @@ export default function EntityManagementTable({
                         onClick={() => setDeleteTarget(item)}
                       >
                         <Trash2 className="h-3.5 w-3.5" />
-                        Delete
+                        {t('delete')}
                       </Button>
                     </div>
                   </TableCell>
@@ -289,14 +331,7 @@ export default function EntityManagementTable({
         </Table>
       </div>
 
-      {/* ── Footer Count ── */}
-      {!isLoading && !isError && (data ?? []).length > 0 && (
-        <p className="text-xs text-gray-400">
-          Showing {filtered.length} of {(data ?? []).length} {name.toLowerCase()}
-        </p>
-      )}
-
-      {/* ── Delete Confirmation Dialog ── */}
+      {/* Delete Confirmation Dialog */}
       <AlertDialog
         open={!!deleteTarget}
         onOpenChange={open => !open && setDeleteTarget(null)}
@@ -307,26 +342,26 @@ export default function EntityManagementTable({
               <Trash2 className="h-7 w-7 text-red-500" />
             </div>
             <AlertDialogTitle className="text-center">
-              Delete {name.toLowerCase().replace(/s$/, '')}?
+              {t('deleteDialog.title')}
             </AlertDialogTitle>
             <AlertDialogDescription className="text-center">
-              Are you sure you want to delete{' '}
+              {t('deleteDialog.description')}{' '}
               <span className="font-semibold text-gray-800 dark:text-white">
                 {deleteTarget?.name}
               </span>
-              ? This action cannot be undone.
+              {t('deleteDialog.suffix')}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="sm:justify-center">
             <AlertDialogCancel disabled={isDeleting}>
-              Cancel
+              {t('deleteDialog.cancel')}
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
               disabled={isDeleting}
               className="bg-red-500 text-white hover:bg-red-600"
             >
-              {isDeleting ? 'Deleting…' : 'Yes, delete'}
+              {isDeleting ? t('deleteDialog.deleting') : t('deleteDialog.confirm')}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
