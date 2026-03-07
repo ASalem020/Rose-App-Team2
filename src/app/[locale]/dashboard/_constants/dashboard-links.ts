@@ -14,7 +14,7 @@ export const dashboardLinks: DashboardLink[] = [
   {
     icon: 'calender-heart',
     'translation-key': 'occasions',
-    href: '/dashboard/occasions',
+    href: '/dashboard/occasion',
   },
   {
     icon: 'package',

@@ -701,10 +701,59 @@
         "account-settings": "Account",
         "logout": "Logout"
       },
-      "top-selling-products": "Top Selling Products",
-      "low-stock-products": "Low Stock Products",
-      "products": "Products",
-      "sales": "Sales"
+      "occasion": {
+        "table": {
+          "title": "All Occasions",
+          "addNew": "Add a new occasion",
+          "searchPlaceholder": "Search...",
+          "columns": {
+            "name": "Name",
+            "products": "Products",
+            "actions": "Actions"
+          },
+          "productCount": "{count} products",
+          "edit": "Edit",
+          "delete": "Delete",
+          "empty": {
+            "noMatch": "No occasions match \"{search}\"",
+            "noData": "No occasions found"
+          },
+          "error": "Failed to load occasions. Please try again.",
+          "deleteDialog": {
+            "title": "Delete occasion?",
+            "description": "Are you sure you want to delete",
+            "suffix": "? This action cannot be undone.",
+            "cancel": "Cancel",
+            "confirm": "Yes, delete",
+            "deleting": "Deleting…"
+          }
+        },
+        "add": {
+          "heading": "Add a New Occasion",
+          "subheading": "Fill in the details below to create a new occasion",
+          "nameLabel": "Name",
+          "namePlaceholder": "Enter occasion name",
+          "imageLabel": "Occasion image",
+          "uploadLabel": "Upload image",
+          "submit": "Add Occasion",
+          "submitting": "Creating…"
+        },
+        "edit": {
+          "heading": "Update Occasion",
+          "subheading": "Edit the name of this occasion",
+          "nameLabel": "Name",
+          "namePlaceholder": "Occasion name",
+          "viewImage": "View occasion image",
+          "submit": "Update Occasion",
+          "submitting": "Saving…",
+          "closeReview": "Close Review"
+        },
+        "toasts": {
+          "addSuccess": "Occasion created successfully!",
+          "updateSuccess": "Occasion updated successfully!",
+          "deleteSuccess": "Occasion deleted successfully!"
+        }
+      }
     }
   },
   "success-toast": "Your password has been successfully reset."

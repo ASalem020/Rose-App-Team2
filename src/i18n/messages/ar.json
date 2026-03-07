@@ -703,10 +703,59 @@
         "account-settings": "الحساب",
         "logout": "تسجيل الخروج"
       },
-      "top-selling-products": "المنتجات الأكثر مبيعا",
-      "low-stock-products": "منتجات منخفضة المخزون",
-      "products": "منتجات",
-      "sales": "مبيعات"
+      "occasion": {
+        "table": {
+          "title": "جميع المناسبات",
+          "addNew": "إضافة مناسبة جديدة",
+          "searchPlaceholder": "بحث...",
+          "columns": {
+            "name": "الاسم",
+            "products": "المنتجات",
+            "actions": "الإجراءات"
+          },
+          "productCount": "{count} منتجات",
+          "edit": "تعديل",
+          "delete": "حذف",
+          "empty": {
+            "noMatch": "لا توجد مناسبات تطابق \"{search}\"",
+            "noData": "لا توجد مناسبات"
+          },
+          "error": "فشل تحميل المناسبات. يرجى المحاولة مرة أخرى.",
+          "deleteDialog": {
+            "title": "حذف المناسبة؟",
+            "description": "هل أنت متأكد أنك تريد حذف",
+            "suffix": "؟ لا يمكن التراجع عن هذا الإجراء.",
+            "cancel": "إلغاء",
+            "confirm": "نعم، احذف",
+            "deleting": "جاري الحذف…"
+          }
+        },
+        "add": {
+          "heading": "إضافة مناسبة جديدة",
+          "subheading": "أدخل التفاصيل أدناه لإنشاء مناسبة جديدة",
+          "nameLabel": "الاسم",
+          "namePlaceholder": "أدخل اسم المناسبة",
+          "imageLabel": "صورة المناسبة",
+          "uploadLabel": "رفع صورة",
+          "submit": "إضافة المناسبة",
+          "submitting": "جاري الإنشاء…"
+        },
+        "edit": {
+          "heading": "تحديث المناسبة",
+          "subheading": "تعديل اسم هذه المناسبة",
+          "nameLabel": "الاسم",
+          "namePlaceholder": "اسم المناسبة",
+          "viewImage": "عرض صورة المناسبة",
+          "submit": "تحديث المناسبة",
+          "submitting": "جاري الحفظ…",
+          "closeReview": "إغلاق المعاينة"
+        },
+        "toasts": {
+          "addSuccess": "تم إنشاء المناسبة بنجاح!",
+          "updateSuccess": "تم تحديث المناسبة بنجاح!",
+          "deleteSuccess": "تم حذف المناسبة بنجاح!"
+        }
+      }
     }
   },
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
