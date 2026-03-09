@@ -330,6 +330,24 @@
         "try-again": "Try Again",
         "back": "Go Back"
       }
+    },
+    "dashboard-product": {
+      "header": "All Products",
+      "search-placeholder": "Search...",
+      "add-product": "Add a new product",
+      "table": {
+        "name": "Name",
+        "price": "Price",
+        "stock": "Stock",
+        "sales": "Sales",
+        "ratings": "Ratings",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "toast": {
+        "delete-success": "Product deleted successfully",
+        "delete-error": "Failed to delete product"
+      }
     }
   },
   "success-toast": "Your password has been successfully reset."
