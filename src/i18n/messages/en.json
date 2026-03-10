@@ -305,14 +305,6 @@
       }
     },
     "success-toast": "Your password has been successfully reset.",
-    "products": {
-      "filter": {
-        "categories": "Categories",
-        "rating": "Rating",
-        "reset": "Reset",
-        "reset-all": "Reset All"
-      }
-    },
     "product-details": {
       "add-cart-btn": "Add to Cart",
       "currency": "EGP",
@@ -325,6 +317,158 @@
         "header": "Error Message:",
         "try-again": "Try Again",
         "back": "Go Back"
+      }
+    },
+    "profile": {
+      "title": "Update Profile",
+      "upload-photo": "Upload Photo",
+      "des": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
+      "sidebar": {
+        "my-account": "My Account",
+        "change-password": "Change Password",
+        "logout": "Logout"
+      },
+      "user-info": {
+        "first-name": "First Name",
+        "last-name": "Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "gender": "Gender",
+        "old-password": "Old Password",
+        "new-password": "New Password",
+        "confirm-new-password": "Confirm New Password"
+      },
+      "save-changes": "Save Changes",
+      "delete-my-account": "Delete My Account",
+      "change-password": "Change Password",
+      "dialog": {
+        "title": "Are you sure you want to delete your account?",
+        "description": "This action is permanent and cannot be undone.",
+        "cancel": "Cancel",
+        "action": "Yes, delete"
+      }
+    },
+    "products": {
+      "filter": {
+        "categories": "Categories",
+        "rating": "Rating",
+        "reset": "Reset",
+        "reset-all": "Reset All"
+      },
+      "details": {
+        "category": "Category",
+        "occasion": "Occasion",
+        "inStock": "In Stock",
+        "units": "units",
+        "addToCart": "Add to Cart",
+        "off": "{percentage}% OFF",
+        "rating": "Rating: {rate}/5",
+        "ratings": "({count} ratings)",
+        "generalRating": "General rating:"
+      },
+      "reviews": {
+        "title": "Product Reviews",
+        "loading": "Loading reviews...",
+        "error": "Error loading reviews. Please try again later.",
+        "empty": "No reviews yet. Be the first to review this product!",
+        "addReview": {
+          "title": "Add Review",
+          "labelRating": "Your rating:",
+          "labelTitle": "Title",
+          "placeholderTitle": "Give your review a title",
+          "labelComment": "Review",
+          "placeholderComment": "Write your review here...",
+          "submitting": "Submitting...",
+          "submit": "Add Review",
+          "authRequired": "Please login to be able to review the product",
+          "success": "Your review added successfully",
+          "errorAlreadyReviewed": "You have already reviewed this product",
+          "errorGeneric": "An error occurred while adding the review"
+        }
+      },
+      "related": {
+        "title": "Related Products",
+        "loading": "Loading related products..."
+      }
+    },
+    "cart": {
+      "title": "Cart",
+      "products": " products",
+      "empty": "Your cart is empty, wanna try shopping?",
+      "continue-shopping": "Continue Shopping",
+      "clear-cart": "Clear Cart",
+      "cart-item": {
+        "rating": "Rating:",
+        "ratingCount": "ratings",
+        "remove": "Remove",
+        "currency": "EGP"
+      },
+      "recommended": "Products You May Like"
+    },
+    "address": {
+      "list": {
+        "title": "My Addresses",
+        "addNew": "Add a New Address",
+        "empty": {
+          "title": "No addresses yet",
+          "description": "Add your first address to get started"
+        },
+        "deleteConfirm": {
+          "title": "Are you sure you want to delete this address?",
+          "cancel": "Cancel",
+          "confirm": "Confirm",
+          "error": "You can't delete the selected address"
+        }
+      },
+      "wizard": {
+        "addTitle": "Add a New Address",
+        "updateTitle": "Update Address",
+        "steps": {
+          "details": "Details",
+          "location": "Location"
+        }
+      },
+      "form": {
+        "city": {
+          "label": "City",
+          "placeholder": "Enter city name"
+        },
+        "street": {
+          "label": "Address",
+          "placeholder": "Enter your full address"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "Phone number"
+        },
+        "next": "Next",
+        "validation": {
+          "cityMin": "City must be at least 2 characters",
+          "streetMin": "Address must be at least 3 characters",
+          "phoneMin": "Phone number must be at least 10 digits"
+        }
+      },
+      "map": {
+        "title": "Find Your Location",
+        "findMe": "Find Your Location",
+        "saving": "Saving...",
+        "add": "Add Address",
+        "update": "Update Address",
+        "errors": {
+          "unable": "Unable to get your location. Please enable location access.",
+          "notSupported": "Geolocation is not supported by your browser."
+        }
+      },
+      "categories": {
+        "home": "Home",
+        "work": "Work",
+        "family": "Family",
+        "other": "Other"
+      },
+      "toasts": {
+        "addSuccess": "Address added successfully",
+        "updateSuccess": "Address updated successfully",
+        "deleteSuccess": "Address deleted successfully"
       }
     },
     "checkout": {
@@ -347,9 +491,11 @@
         "discount": "Discount",
         "no-discount": "No discount",
         "total": "Total",
-        "validation": {
-          "coupon": {
-            "required": "Please enter your coupon code"
+        "checkout": {
+          "validation": {
+            "coupon": {
+              "required": "Please enter your coupon code"
+            }
           }
         }
       },
@@ -372,36 +518,178 @@
         "address": {
           "required": "Please select an address"
         },
-          "shippingAddress": {
-            "street": {
-              "required": "Please select an address"
-            },
-            "phone": {
-              "required": "Please enter your phone number"
-            },
-            "city": {
-              "required": "Please enter your city"
-            },
-            "lat": {
-              "required": "Please enter your latitude"
-            },
-            "long": {
-              "required": "Please enter your longitude"
-            }
+        "shippingAddress": {
+          "street": {
+            "required": "Please select an address"
           },
-          "payment-method": {
-            "required": "Please select a payment method"
+          "phone": {
+            "required": "Please enter your phone number"
           },
-          "coupon": {
-            "required": "Please enter your coupon code"
+          "city": {
+            "required": "Please enter your city"
+          },
+          "lat": {
+            "required": "Please enter your latitude"
+          },
+          "long": {
+            "required": "Please enter your longitude"
           }
         },
-        "success": {
-          "credit": "Credit card checkout session created successfully, Continue Shopping!",
-          "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
+        "payment-method": {
+          "required": "Please select a payment method"
+        },
+        "coupon": {
+          "required": "Please enter your coupon code"
         }
+      },
+      "success": {
+        "credit": "Credit card checkout session created successfully, Continue Shopping!",
+        "cash": "Cash on delivery checkout session created successfully, Continue Shopping!"
+      },
+      "checkout-btn": "Checkout"
     },
     "dashboard": {
+      "overview": {
+        "row-1": {
+          "header": "All Categories",
+          "products-label": " Products",
+          "total-products-label": "Total products",
+          "total-orders-label": "Total orders",
+          "total-categories-label": "Total categories",
+          "total-revenue-label": "Total revenue",
+          "suffix": "EGP"
+        }
+      },
+      "products-page": {
+        "add-product": {
+          "header": "Add a New Product",
+          "form": {
+            "success-toast": "Product added successfully",
+            "error-toast": "Failed to add product",
+            "validation": {
+              "title": {
+                "type": "Title must be a string",
+                "required": "Product title is required"
+              },
+              "description": {
+                "type": "Description must be a string",
+                "required": "Product description is required"
+              },
+              "price": {
+                "type": "Price must be a string",
+                "required": "Please enter a valid price"
+              },
+              "discount": {
+                "type": "Please enter a valid discount"
+              },
+              "price-after-discount": {
+                "type": "Price after discount must be a string",
+                "required": "Price after discount is required"
+              },
+              "quantity": {
+                "type": "Quantity must be a string",
+                "required": "Product quantity is required"
+              },
+              "img-cover": {
+                "required": "Product cover is required"
+              },
+              "images": {
+                "required": "Product gallery images are required"
+              },
+              "category": {
+                "type": "Category must be a string",
+                "required": "Please select a category for the product"
+              },
+              "occasion": {
+                "type": "Occasion must be a string",
+                "required": "Please select an occasion for the product"
+              }
+            },
+            "title-label": "Title",
+            "title-placeholder": "Enter product title",
+            "description-label": "Description",
+            "description-placeholder": "Enter product description",
+            "price-label": "Price",
+            "price-placeholder": "Example: 5000",
+            "discount-label": "Discount",
+            "discount-placeholder": "Example: 5",
+            "price-after-discount-label": "Price after discount",
+            "price-after-discount-placeholder": "Example: 5",
+            "quantity-label": "Quantity",
+            "quantity-placeholder": "Example: 200",
+            "img-cover-label": "Product cover image",
+            "images-label": "Product gallery",
+            "select-placeholder": "Select an option",
+            "category-label": "Category",
+            "occasion-label": "Occasion",
+            "submit-loading": "adding product...",
+            "submit-btn": "add product"
+          }
+        },
+        "update-product": {
+          "header": "Update Product",
+          "form": {
+            "view-cover": "View product cover",
+            "view-images": "View product images",
+            "success-toast": "Product updated successfully",
+            "error-toast": "Failed to update product",
+            "validation": {
+              "title": {
+                "type": "Title must be a string",
+                "required": "Product title is required"
+              },
+              "description": {
+                "type": "Description must be a string",
+                "required": "Product description is required"
+              },
+              "price": {
+                "required": "Please enter a valid price"
+              },
+              "discount": {
+                "type": "Please enter a valid discount"
+              },
+              "quantity": {
+                "type": "Quantity must be a string",
+                "required": "Product quantity is required"
+              },
+              "img-cover": {
+                "required": "Product cover is required"
+              },
+              "images": {
+                "required": "Product gallery images are required"
+              },
+              "category": {
+                "type": "Category must be a string",
+                "required": "Please select a category for the product"
+              },
+              "occasion": {
+                "type": "Occasion must be a string",
+                "required": "Please select an occasion for the product"
+              }
+            },
+            "title-label": "Title",
+            "title-placeholder": "Enter product title",
+            "description-label": "Description",
+            "description-placeholder": "Enter product description",
+            "price-label": "Price",
+            "price-placeholder": "Example: 5000",
+            "discount-label": "Discount",
+            "discount-placeholder": "Example: 5",
+            "price-after-discount-label": "Price after discount",
+            "price-after-discount-placeholder": "Example: 5",
+            "quantity-label": "Quantity",
+            "quantity-placeholder": "Example: 200",
+            "img-cover-label": "Product cover image",
+            "images-label": "Product gallery",
+            "select-placeholder": "Select an option",
+            "category-label": "Category",
+            "occasion-label": "Occasion",
+            "submit-loading": "updating product...",
+            "submit-btn": "update product"
+          },
+          "view-cover": "View Product Cover"
+        }
+      },
       "nav-links": {
         "overview": "Overview",
         "categories": "Categories",
@@ -436,48 +724,52 @@
           "success": "Account deleted successfully",
           "error": "Failed to delete account. Please try again."
         }
-      }
+      },
+      "top-selling-products": "Top Selling Products",
+      "low-stock-products": "Low Stock Products",
+      "products-text": "Products",
+      "sales": "Sales"
     },
     "unauthorized": {
       "main-message": "You are not authorized to access this page.",
-      "sub-message": "If you think this is wrong, please contact the support.",
-      "back-home": "Go To Homepage"
+      "sub-message": "If you believe this is an error, please contact support.",
+      "back-home": "Back to Home"
     },
     "not-found": {
       "main-message": "This page does not exist.",
-      "sub-message": "We couldn’t find the page your are looking for, please make sure you are in the right path."
+      "sub-message": "We couldn't find the page you're looking for. Please make sure you're on the correct path."
     },
     "error-page": {
-      "main-message": "Oops, something went wrong!",
-      "sub-message": "Something unexpected happened, please refresh the page or try again shortly."
+      "main-message": "Sorry, something went wrong!",
+      "sub-message": "An unexpected thing happened, please refresh the page or try again later."
     },
-      "global-delete-alert-dialog": {
-        "show-dialog": "Show Dialog",
-        "account": {
-          "title": "Are you sure you want to delete your account?",
-          "description": "This action is permanent and cannot be undone.",
-          "confirm": "Yes, delete",
-          "cancel": "Nope, not doing it"
-        },
-        "product": {
-          "title": "Are you sure you want to delete this product?",
-          "confirm": "Confirm",
-          "cancel": "Cancel"
-        },
-        "category": {
-          "title": "Are you sure you want to delete this category?",
-          "confirm": "Confirm",
-          "cancel": "Cancel"
-        },
-        "occasion": {
-          "title": "Are you sure you want to delete this occasion?",
-          "confirm": "Confirm",
-          "cancel": "Cancel"
-        }
+    "global-delete-alert-dialog": {
+      "show-dialog": "Confirm Deletion",
+      "account": {
+        "title": "Are you sure you want to delete your account?",
+        "description": "All your data will be deleted and you won't be able to recover it.",
+        "confirm": "Yes, delete my account",
+        "cancel": "No, don't do it"
       },
-      "gallery-dialog": {
-        "show-dialog": "Show Gallery Dialog"
+      "product": {
+        "title": "Are you sure you want to delete this product?",
+        "confirm": "Yes, delete product",
+        "cancel": "Cancel"
+      },
+      "category": {
+        "title": "Are you sure you want to delete this category?",
+        "confirm": "Yes, delete category",
+        "cancel": "Cancel"
+      },
+      "occasion": {
+        "title": "Are you sure you want to delete this occasion?",
+        "confirm": "Yes, delete occasion",
+        "cancel": "Cancel"
       }
+    },
+    "gallery-dialog": {
+      "show-dialog": "View Gallery Dialog"
+    }
   },
   "success-toast": "Your password has been successfully reset."
 }

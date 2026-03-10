@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import {
   MapPin,
   Search as SearchIcon,
@@ -17,6 +17,8 @@ import { cn } from '@/lib/utils/tailwind-merge';
 import { Separator } from '@/components/ui/separator';
 import { getTranslations } from 'next-intl/server';
 import ToggleLang from './toggle-lang';
+import { LocationButton } from './location-button';
+
 
 export async function Header() {
   const t = await getTranslations(
@@ -30,7 +32,7 @@ export async function Header() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/logo/bb70dbdbb3472a27ffcc4d3baeb8eaceb3873b18.png"
+            src="/assets/images/logo/bb70dbdbb3472a27ffcc4d3baeb8eaceb3873b18.png"
             alt="Rose Logo"
             width={70}
             height={70}
@@ -43,14 +45,10 @@ export async function Header() {
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-50 text-maroon-600 dark:bg-zinc-800 dark:text-softPink-300">
             <MapPin className="h-5 w-5" />
           </div>
-          <div className="flex flex-col items-start rtl:items-end">
-            <span className="text-sm capitalize text-zinc-400 dark:text-zinc-500">
-              {t('deliverTo')}
-            </span>
-            <span className="text-sm font-bold capitalize text-maroon-700 underline decoration-maroon-700/30 underline-offset-4 dark:text-zinc-100 dark:decoration-zinc-100/30">
-              {t('location')}
-            </span>
-          </div>
+          <LocationButton 
+            deliverToText={t('deliverTo')}
+            locationText={t('location')}
+          />
         </div>
 
         {/* Search Bar */}
@@ -97,12 +95,15 @@ export async function Header() {
             </button>
 
             {/* cart button */}
-            <button className="relative text-zinc-500 transition-colors hover:text-maroon-600 dark:text-zinc-400 dark:hover:text-softPink-300">
+            <Link
+              href={'/cart'}
+              className="relative text-zinc-500 transition-colors hover:text-maroon-600 dark:text-zinc-400 dark:hover:text-softPink-300"
+            >
               <ShoppingCart className="h-6 w-6" />
               <span className="absolute -end-2.5 -top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-sm font-bold text-white ring-2 ring-white">
                 8
               </span>
-            </button>
+            </Link>
 
             {/* notification button */}
             <button className="relative text-zinc-500 transition-colors hover:text-maroon-600 dark:text-zinc-400 dark:hover:text-softPink-300">

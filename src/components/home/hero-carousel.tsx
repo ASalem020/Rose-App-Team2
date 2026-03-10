@@ -53,7 +53,7 @@ export default function CarouselDemo() {
     // Carousel
     <Carousel
       setApi={setApi}
-      className="relative mx-auto h-[440px] w-full max-w-[955px]"
+      className="relative h-[440px] w-full max-w-[955px] overflow-x-hidden rounded-2xl [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       {/* Carousel content container */}
       <CarouselContent>
@@ -90,7 +90,7 @@ export default function CarouselDemo() {
                       className="w-fit rounded-xl bg-white text-maroon-600"
                     >
                       <Link href="/products">
-                        I'm buying!
+                        I&apos;m buying!
                       </Link>
                     </Button>
                   </div>

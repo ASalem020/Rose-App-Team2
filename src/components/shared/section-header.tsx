@@ -11,7 +11,7 @@ export default function SectionHeader({
   description,
 }: SectionHeaderPropsType) {
   return (
-    <div className="section-header mb-10 flex flex-col px-5">
+    <div className="section-header mb-10 flex flex-col">
       {/* Title */}
       <SectionHeaderTitle title={title} />
 

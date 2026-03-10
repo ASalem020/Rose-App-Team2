@@ -20,3 +20,12 @@ export async function getAllProduct({
   const data = await res.json();
   return data.products;
 }
+export async function getRelatedProductsService(
+  productId: string,
+) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/related/category/${productId}`,
+  );
+  const data = await res.json();
+  return data;
+}
