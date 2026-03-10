@@ -25,6 +25,11 @@ export default function GlobalDeleteAlertDialog() {
 
       {/* Dialog Content */}
       <GlobalDeleteAlertDialogContent
+        // show messages files to know translated messages for all dialog types
+        title={t('account.title')}
+        description={t('account.description')}
+        confirmText={t('account.confirm')}
+        cancelText={t('account.cancel')}
         dialogTo="account"
         setDialogClose={setOpen}
         actionId=""
