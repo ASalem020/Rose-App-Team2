@@ -1,16 +1,19 @@
+'use client';
 import GeneralPagesText from '@/components/shared/general-pages-text';
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
-export default function NotFound() {
-  const t = useTranslations('pages.not-found');
+export default function Error() {
+  // Translations
+  const t = useTranslations('pages.error-page');
+
   return (
-    <div className="not-found-section flex min-h-screen flex-col items-center justify-center gap-12">
-      {/* 404 Image */}
-      <div className="image-container relative mx-auto h-40 w-80 md:h-80 md:w-[44.375rem]">
+    <div className="error-page flex min-h-screen flex-col items-center justify-center gap-12">
+      {/* Server Down Image */}
+      <div className="image-container relative mx-auto size-96">
         <Image
-          src="/assets/images/not-found.png"
-          alt="404 image"
+          src="/assets/images/server-down.png"
+          alt="Server down image"
           fill
         />
       </div>

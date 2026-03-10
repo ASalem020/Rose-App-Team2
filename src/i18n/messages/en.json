@@ -701,10 +701,74 @@
         "account-settings": "Account",
         "logout": "Logout"
       },
+      "products": {
+        "delete": {
+          "success": "Product deleted successfully",
+          "error": "Failed to delete product. Please try again."
+        }
+      },
+      "categories": {
+        "delete": {
+          "success": "Category deleted successfully",
+          "error": "Failed to delete category. Please try again."
+        }
+      },
+      "occasions": {
+        "delete": {
+          "success": "Occasion deleted successfully",
+          "error": "Failed to delete occasion. Please try again."
+        }
+      },
+      "account": {
+        "delete": {
+          "success": "Account deleted successfully",
+          "error": "Failed to delete account. Please try again."
+        }
+      },
       "top-selling-products": "Top Selling Products",
       "low-stock-products": "Low Stock Products",
-      "products": "Products",
+      "products-text": "Products",
       "sales": "Sales"
+    },
+    "unauthorized": {
+      "main-message": "You are not authorized to access this page.",
+      "sub-message": "If you believe this is an error, please contact support.",
+      "back-home": "Back to Home"
+    },
+    "not-found": {
+      "main-message": "This page does not exist.",
+      "sub-message": "We couldn't find the page you're looking for. Please make sure you're on the correct path."
+    },
+    "error-page": {
+      "main-message": "Sorry, something went wrong!",
+      "sub-message": "An unexpected thing happened, please refresh the page or try again later."
+    },
+    "global-delete-alert-dialog": {
+      "show-dialog": "Confirm Deletion",
+      "account": {
+        "title": "Are you sure you want to delete your account?",
+        "description": "All your data will be deleted and you won't be able to recover it.",
+        "confirm": "Yes, delete my account",
+        "cancel": "No, don't do it"
+      },
+      "product": {
+        "title": "Are you sure you want to delete this product?",
+        "confirm": "Yes, delete product",
+        "cancel": "Cancel"
+      },
+      "category": {
+        "title": "Are you sure you want to delete this category?",
+        "confirm": "Yes, delete category",
+        "cancel": "Cancel"
+      },
+      "occasion": {
+        "title": "Are you sure you want to delete this occasion?",
+        "confirm": "Yes, delete occasion",
+        "cancel": "Cancel"
+      }
+    },
+    "gallery-dialog": {
+      "show-dialog": "View Gallery Dialog"
     }
   },
   "success-toast": "Your password has been successfully reset."

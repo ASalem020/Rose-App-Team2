@@ -32,7 +32,7 @@ export default async function LowStockCard() {
           >
             {Math.max(product.quantity, 0)}
             {'  '}
-            {t('products')}
+            {t('products-text')}
           </span>
         </div>
       ))}

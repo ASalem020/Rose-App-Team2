@@ -16,6 +16,8 @@ const publicPages = ['/(?!.*checkout)(?!dashboard).*'];
 // Protected pages that require authentication
 const protectedPages = ['/dashboard', '/dashboard/(.*)'];
 
+const loginToShowPages = ['/checkout', '/checkout/(.*)'];
+
 const handleI18nRouting = createMiddleware(routing);
 
 const authMiddleware = withAuth(
@@ -56,6 +58,13 @@ export default async function middleware(req: NextRequest) {
     'i',
   );
 
+  const loginToShowPathnameRegex = RegExp(
+    `^(/(${routing.locales.join('|')}))?(${loginToShowPages
+      .flatMap(p => (p === '/' ? ['', '/'] : p))
+      .join('|')})/?$`,
+    'i',
+  );
+
   const isPublicPage = publicPathnameRegex.test(
     req.nextUrl.pathname,
   );
@@ -63,6 +72,9 @@ export default async function middleware(req: NextRequest) {
     req.nextUrl.pathname,
   );
   const isProtectedPage = protectedPathnameRegex.test(
+    req.nextUrl.pathname,
+  );
+  const isLoginToShowPage = loginToShowPathnameRegex.test(
     req.nextUrl.pathname,
   );
 
@@ -77,9 +89,17 @@ export default async function middleware(req: NextRequest) {
   }
 
   // Protected pages: require authentication
-  if (isProtectedPage) {
+  if (isLoginToShowPage) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (authMiddleware as any)(req);
+  }
+
+  if (isProtectedPage && !token) {
+    const redirectUrl = new URL(
+      '/unauthorized',
+      req.nextUrl.origin,
+    );
+    return NextResponse.redirect(redirectUrl);
   }
 
   // Public pages: just handle i18n routing
