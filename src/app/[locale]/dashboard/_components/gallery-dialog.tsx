@@ -10,11 +10,11 @@ import { useState } from 'react';
 import GalleryDialogContent from './gallery-dialog-content';
 
 type GalleryDialogProps = {
-  productId: string;
+  images: string[];
 };
 
 export default function GalleryDialog({
-  productId,
+  images,
 }: GalleryDialogProps) {
   // Translation
   const t = useTranslations('pages.gallery-dialog');
@@ -30,7 +30,7 @@ export default function GalleryDialog({
 
       {/* Dialog Content */}
       <GalleryDialogContent
-        productId={productId}
+        images={images}
         setClosed={setOpen}
       />
     </AlertDialog>

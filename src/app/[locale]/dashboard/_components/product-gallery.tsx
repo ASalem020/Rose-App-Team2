@@ -9,27 +9,21 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
-import { useProductGallery } from '../_hooks/product-gallery';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useEffect, useState } from 'react';
 
 type ProductGalleryProps = {
-  productId: string;
+  images: string[];
 };
 
 export default function ProductGallery({
-  productId,
+  images,
 }: ProductGalleryProps) {
   // States
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
-  // Query
-  const { gallery, isLoading } =
-    useProductGallery(productId);
-
   // Variables
-  const count = gallery?.length || 0;
+  const count = images?.length || 0;
 
   // Effects
   useEffect(() => {
@@ -38,7 +32,7 @@ export default function ProductGallery({
     api.on('select', () =>
       setCurrent(api.selectedScrollSnap()),
     );
-  }, [api, gallery]);
+  }, [api, images]);
 
   return (
     <Carousel
@@ -47,28 +41,19 @@ export default function ProductGallery({
     >
       {/* Content */}
       <CarouselContent>
-        {/* Skeleton Loading State */}
-        {isLoading ? (
-          <CarouselItem>
+        {// Gallery Images
+        images?.map((image, index) => (
+          <CarouselItem key={index}>
             <div className="image-box relative flex min-h-[30rem] justify-center rounded-xl border border-black/10">
-              <Skeleton className="h-[35.375rem] w-[26.875rem] animate-pulse bg-gray-50" />
+              <Image
+                src={image}
+                alt="Product Image"
+                width={430}
+                height={566}
+              />
             </div>
           </CarouselItem>
-        ) : (
-          // Gallery Images
-          gallery?.map((image, index) => (
-            <CarouselItem key={index}>
-              <div className="image-box relative flex min-h-[30rem] justify-center rounded-xl border border-black/10">
-                <Image
-                  src={image}
-                  alt="Product Image"
-                  width={430}
-                  height={566}
-                />
-              </div>
-            </CarouselItem>
-          ))
-        )}
+        ))}
       </CarouselContent>
 
       {/* Footer */}

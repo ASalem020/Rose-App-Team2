@@ -9,12 +9,12 @@ import ProductGallery from './product-gallery';
 
 type GalleryDialogContentProps = {
   setClosed: React.Dispatch<React.SetStateAction<boolean>>;
-  productId: string;
+  images: string[];
 };
 
 export default function GalleryDialogContent({
   setClosed,
-  productId,
+  images,
 }: GalleryDialogContentProps) {
   return (
     <AlertDialogContent className="flex min-h-[43.125rem] flex-col gap-0 !rounded-2xl p-6 md:min-w-[58.3125rem]">
@@ -42,7 +42,7 @@ export default function GalleryDialogContent({
             Product Gallery Dialog Description
           </AlertDialogDescription>
           {/* ProductGallery */}
-          <ProductGallery productId={productId} />
+          <ProductGallery images={images} />
         </div>
       </AlertDialogHeader>
     </AlertDialogContent>
