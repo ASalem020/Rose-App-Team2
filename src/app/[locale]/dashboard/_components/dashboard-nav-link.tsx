@@ -2,13 +2,20 @@
 import { Button } from '@/components/ui/button';
 import { Link, usePathname } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
-import React from 'react';
+import { Nunito_Sans } from 'next/font/google';
 
 type DashboardNavLinkProps = {
   href: string;
   title: string;
   icon: React.ReactNode;
 };
+
+// Fonts
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '700',
+});
 
 export default function DashboardNavLink({
   href,
@@ -35,7 +42,7 @@ export default function DashboardNavLink({
           : 'ghost'
       }
       asChild
-      className="justify-start p-2.5 hover:bg-maroon-50 hover:text-maroon-600"
+      className={`justify-start p-2.5 hover:bg-maroon-50 hover:text-maroon-600 ${nunitoSans.className} rtl:font-sarabun`}
     >
       <Link
         href={href}

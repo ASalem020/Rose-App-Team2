@@ -345,6 +345,20 @@
         "loading": "جاري تحميل المنتجات ذات الصلة..."
       }
     },
+    "cart": {
+      "title": "عربة التسوق",
+      "products": " المنتجات",
+      "empty": "عربة التسوق فارغة، هل تريد التسوق؟",
+      "continue-shopping": "متابعة التسوق",
+      "clear-cart": "مسح العربة",
+      "cart-item": {
+        "rating": "التقييم:",
+        "ratingCount": "التقييمات",
+        "remove": "حذف",
+        "currency": "جنيه مصري"
+      },
+      "recommended": "المنتجات التي قد تعجبك"
+    },
     "product-details": {
       "add-cart-btn": "أضف إلى العربة",
       "currency": "جنيه مصري",
@@ -408,9 +422,11 @@
         "discount": "خصم",
         "no-discount": "لا يوجد خصم",
         "total": "المجموع",
-        "validation": {
-          "coupon": {
-            "required": "الرجاء إدخال كود الخصم"
+        "checkout": {
+          "validation": {
+            "coupon": {
+              "required": "الرجاء إدخال كود الخصم"
+            }
           }
         }
       },
@@ -460,7 +476,8 @@
       "success": {
         "credit": "تم إنشاء جلسة الدفع بالبطاقة الائتمانية بنجاح، تابع التسوق!",
         "cash": "تم إنشاء جلسة الدفع عند الاستلام بنجاح، تابع التسوق!"
-      }
+      },
+      "checkout-btn": "الدفع"
     },
     "address": {
       "list": {
@@ -529,6 +546,152 @@
       }
     },
     "dashboard": {
+      "overview": {
+        "row-1": {
+          "header": "جميع الفئات",
+          "products-label": " منتج",
+          "total-products-label": "إجمالي المنتجات",
+          "total-orders-label": "إجمالي الطلبات",
+          "total-categories-label": "إجمالي الفئات",
+          "total-revenue-label": "إجمالي الإيرادات",
+          "suffix": "جنيه"
+        }
+      },
+      "products-page": {
+        "add-product": {
+          "header": "إضافة منتج جديد",
+          "form": {
+            "validation": {
+              "title": {
+                "type": "يجب أن يكون العنوان نصًا",
+                "required": "عنوان المنتج مطلوب"
+              },
+              "description": {
+                "type": "يجب أن يكون الوصف نصًا",
+                "required": "وصف المنتج مطلوب"
+              },
+              "price": {
+                "type": "يجب أن تكون السعر نصًا",
+                "required": "السعر مطلوب"
+              },
+              "discount": {
+                "type": "يجب أن يكون التخفيض نصًا",
+                "required": "التخفيض مطلوب"
+              },
+              "price-after-discount": {
+                "type": "يجب أن تكون السعر بعد الخصم نصًا",
+                "required": "السعر بعد الخصم مطلوب"
+              },
+              "quantity": {
+                "type": "يجب أن تكون الكمية نصًا",
+                "required": "الكمية مطلوبة"
+              },
+              "img-cover": {
+                "required": "صورة غلاف المنتج مطلوبة"
+              },
+              "images": {
+                "required": "صور معرض المنتجات مطلوبة"
+              },
+              "category": {
+                "type": "يجب أن تكون الفئة نصًا",
+                "required": "الفئة مطلوبة"
+              },
+              "occasion": {
+                "type": "يجب أن تكون المناسبة نصًا",
+                "required": "المناسبة مطلوبة"
+              }
+            },
+            "price-label": "السعر",
+            "discount-label": "تخفيض",
+            "discount-placeholder": "مثال: 5",
+            "price-after-discount-label": "السعر بعد الخصم",
+            "price-after-discount-placeholder": "مثال: 5",
+            "quantity-label": "كمية",
+            "quantity-placeholder": "مثال: 200",
+            "img-cover-label": "صورة غلاف المنتج",
+            "category-label": "الفئة",
+            "occasion-label": "المناسبة",
+            "submit-loading": "جارٍ إضافة المنتج...",
+            "submit-btn": "أضف المنتج",
+            "title-label": "عنوان",
+            "description-label": "وصف",
+            "title-placeholder": "أدخل عنوان المنتج",
+            "description-placeholder": "أدخل وصف المنتج",
+            "price-placeholder": "مثال: 5000",
+            "images-label": "معرض المنتجات",
+            "select-placeholder": "حدد خيارًا",
+            "success-toast": ""
+          }
+        },
+        "update-product": {
+          "header": "تحديث المنتج",
+          "form": {
+            "success-toast": "تم تحديث المنتج بنجاح",
+            "error-toast": "فشل تحديث المنتج",
+            "validation": {
+              "title": {
+                "type": "يجب أن يكون العنوان نصًا",
+                "required": "عنوان المنتج مطلوب"
+              },
+              "description": {
+                "type": "يجب أن يكون الوصف نصًا",
+                "required": "وصف المنتج مطلوب"
+              },
+              "price": {
+                "type": "يجب أن يكون السعر نصًا",
+                "required": "يرجى إدخال سعر صالح"
+              },
+              "discount": {
+                "type": "يجب أن يكون التخفيض نصًا",
+                "required": "التخفيض مطلوب"
+              },
+              "price-after-discount": {
+                "type": "يجب أن يكون السعر بعد الخصم نصًا",
+                "required": "السعر بعد الخصم مطلوب"
+              },
+              "quantity": {
+                "type": "يجب أن تكون الكمية نصًا",
+                "required": "كمية المنتج مطلوبة"
+              },
+              "img-cover": {
+                "required": "صورة غلاف المنتج مطلوبة"
+              },
+              "images": {
+                "required": "صور معرض المنتج مطلوبة"
+              },
+              "category": {
+                "type": "يجب أن تكون الفئة نصًا",
+                "required": "يرجى اختيار فئة للمنتج"
+              },
+              "occasion": {
+                "type": "يجب أن تكون المناسبة نصًا",
+                "required": "يرجى اختيار مناسبة للمنتج"
+              }
+            },
+            "title-label": "العنوان",
+            "title-placeholder": "أدخل عنوان المنتج",
+            "description-label": "الوصف",
+            "description-placeholder": "أدخل وصف المنتج",
+            "price-label": "السعر",
+            "price-placeholder": "مثال: 5000",
+            "discount-label": "التخفيض",
+            "discount-placeholder": "مثال: 5",
+            "price-after-discount-label": "السعر بعد الخصم",
+            "price-after-discount-placeholder": "مثال: 5",
+            "quantity-label": "الكمية",
+            "quantity-placeholder": "مثال: 200",
+            "img-cover-label": "صورة غلاف المنتج",
+            "images-label": "معرض المنتج",
+            "select-placeholder": "اختر خيارًا",
+            "category-label": "الفئة",
+            "occasion-label": "المناسبة",
+            "submit-loading": "جاري تحديث المنتج...",
+            "submit-btn": "تحديث المنتج",
+            "view-images": "عرض صور المنتج",
+            "view-cover": "عرض غلاف المنتج"
+          }
+        }
+      },
       "nav-links": {
         "overview": "نظرة عامة",
         "categories": "التصنيفات",
@@ -539,13 +702,80 @@
       "menu": {
         "account-settings": "الحساب",
         "logout": "تسجيل الخروج"
+      },
+      "products": {
+        "delete": {
+          "success": "تم حذف المنتج بنجاح",
+          "error": "فشل في حذف المنتج. يرجى المحاولة مرة أخرى."
+        }
+      },
+      "categories": {
+        "delete": {
+          "success": "تم حذف الفئة بنجاح",
+          "error": "فشل في حذف الفئة. يرجى المحاولة مرة أخرى."
+        },
+        "occasions": {
+          "delete": {
+            "success": "تم حذف المناسبة بنجاح",
+            "error": "فشل في حذف المناسبة. يرجى المحاولة مرة أخرى."
+          }
+        }
+      },
+      "account": {
+        "delete": {
+          "success": "تم حذف الحساب بنجاح",
+          "error": "فشل في حذف الحساب. يرجى المحاولة مرة أخرى."
+        }
+      },
+      "top-selling-products": "المنتجات الأكثر مبيعا",
+      "low-stock-products": "منتجات منخفضة المخزون",
+      "products-text": "منتجات",
+      "sales": "مبيعات"
+    },
+    "unauthorized": {
+      "main-message": "أنت غير مصرح لك بالوصول إلى هذه الصفحة.",
+      "sub-message": "إذا كنت تعتقد أن هذا خطأ، يرجى الاتصال بالدعم.",
+      "back-home": "العودة إلى الصفحة الرئيسية"
+    },
+    "not-found": {
+      "main-message": "هذه الصفحة غير موجودة.",
+      "sub-message": "لم نتمكن من العثور على الصفحة التي تبحث عنها، يرجى التأكد من أنك في المسار الصحيح."
+    },
+    "error-page": {
+      "main-message": "عذرًا، حدث خطأ ما!",
+      "sub-message": "حدث شيء غير متوقع، يرجى تحديث الصفحة أو المحاولة مرة أخرى قريبًا."
+    },
+    "global-delete-alert-dialog": {
+      "show-dialog": "تنفيذ الحذف",
+      "account": {
+        "title": "هل أنت متأكد أنك تريد حذف حسابك؟",
+        "description": "سيتم حذف جميع بياناتك ولن تتمكن من استعادتها.",
+        "confirm": "نعم، احذف حسابي",
+        "cancel": "لا، لا تفعل ذلك"
+      },
+      "product": {
+        "title": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
+        "confirm": "نعم، احذف المنتج",
+        "cancel": "إلغاء"
+      },
+      "category": {
+        "title": "هل أنت متأكد أنك تريد حذف هذه الفئة؟",
+        "confirm": "نعم، احذف الفئة",
+        "cancel": "إلغاء"
+      },
+      "occasion": {
+        "title": "هل أنت متأكد أنك تريد حذف هذه المناسبة؟",
+        "confirm": "نعم، احذف المناسبة",
+        "cancel": "إلغاء"
       }
+    },
+    "gallery-dialog": {
+      "show-dialog": "عرض حوار المعرض"
     }
   },
   "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح.",
   "dashboard": {
     "top-selling-products": "المنتجات الأكثر مبيعا",
-    "low-stock-products": "منتجات منخفضة المخزون",
     "products": "منتجات",
     "sales": "مبيعات",
     "categories": {

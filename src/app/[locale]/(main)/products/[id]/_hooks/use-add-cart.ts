@@ -1,11 +1,14 @@
 import { addToCartAction } from '@/lib/actions/add-to-cart-action';
-import { CartItem } from '@/lib/types/cart';
+import { Product } from '@/lib/types/product';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 export default function useAddCart() {
   const { isPending, error, mutate } = useMutation({
-    mutationFn: async (cart: CartItem) => {
+    mutationFn: async (cart: {
+      product: Product;
+      quantity: number;
+    }) => {
       const payload = await addToCartAction(cart);
 
       if ('error' in payload) {

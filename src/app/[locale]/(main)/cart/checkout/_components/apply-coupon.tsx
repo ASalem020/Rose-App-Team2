@@ -14,7 +14,12 @@ import { toast } from 'sonner';
 type ApplyCouponProps = {
   setCoupon: React.Dispatch<
     React.SetStateAction<
-      { coupon: string; percentage: string }[]
+      {
+        coupon: string;
+        discountAmount: string;
+        total?: string;
+        totalAfterDiscount?: string;
+      }[]
     >
   >;
 };
@@ -26,7 +31,7 @@ export default function ApplyCoupon({
   const t = useTranslations('pages.checkout.price-summary');
 
   // Mutation
-  const { data, mutate, error } = useCoupon();
+  const { mutate, error } = useCoupon();
 
   // Form & Validation
   const {
@@ -46,14 +51,16 @@ export default function ApplyCoupon({
     coupon: string;
   }> = values =>
     mutate(values.coupon, {
-      onSuccess: () => {
+      onSuccess: data => {
         toast.success(t('coupon-applied'));
         setCoupon(prev => [
           ...prev,
           {
             coupon: values.coupon,
-            percentage:
-              data?.discountAmount?.toString() || '0',
+            discountAmount: data.discountAmount.toString(),
+            total: data.cart?.totalPrice.toString(),
+            totalAfterDiscount:
+              data.cart?.totalPriceAfterDiscount.toString(),
           },
         ]);
       },

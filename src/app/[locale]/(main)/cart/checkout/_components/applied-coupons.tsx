@@ -2,10 +2,20 @@ import { cn } from '@/lib/utils/tailwind-merge';
 import React from 'react';
 
 type AppliedCouponsProps = {
-  coupons: { coupon: string; percentage: string }[];
+  coupons: {
+    coupon: string;
+    discountAmount: string;
+    total?: string;
+    totalAfterDiscount?: string;
+  }[];
   setCoupons: React.Dispatch<
     React.SetStateAction<
-      { coupon: string; percentage: string }[]
+      {
+        coupon: string;
+        discountAmount: string;
+        total?: string;
+        totalAfterDiscount?: string;
+      }[]
     >
   >;
   removeText: string;

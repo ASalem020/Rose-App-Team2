@@ -4,7 +4,7 @@ import * as React from 'react';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { cn } from '@/lib/utils/tailwind-merge';
 import { Button } from '@/components/ui/button';
@@ -165,12 +165,14 @@ Carousel.displayName = 'Carousel';
 
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+  React.HTMLAttributes<HTMLDivElement> & {
+    wrapperClassName?: string;
+  }
+>(({ className, wrapperClassName, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="">
+    <div ref={carouselRef} className={cn(wrapperClassName)}>
       <div
         ref={ref}
         className={cn(
@@ -241,7 +243,7 @@ const CarouselPrevious = React.forwardRef<
         onClick={scrollPrev}
         {...props}
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ChevronLeft size={25} className="rtl:rotate-180" />
         <span className="sr-only">Previous slide</span>
       </Button>
     );
@@ -281,7 +283,10 @@ const CarouselNext = React.forwardRef<
         onClick={scrollNext}
         {...props}
       >
-        <ArrowRight className="h-4 w-4" />
+        <ChevronRight
+          size={25}
+          className="rtl:rotate-180"
+        />
         <span className="sr-only">Next slide</span>
       </Button>
     );
