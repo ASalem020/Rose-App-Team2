@@ -1,7 +1,7 @@
 'use server';
 
 import { getToken } from '@/lib/utils/get-token';
-import { redirect } from 'next/navigation';
+import { redirect } from '@/i18n/navigation';
 
 export async function updateCategoryAction(
   id: string,

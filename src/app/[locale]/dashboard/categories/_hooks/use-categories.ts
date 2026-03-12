@@ -3,8 +3,8 @@ import { CategoriesResponse } from '@/lib/types/category';
 import { useQuery } from '@tanstack/react-query';
 
 export default function useCategories(page: number) {
-  // ^ Query
-  const { data, isLoading } = useQuery<CategoriesResponse>({
+  // Query
+  const { data } = useQuery<CategoriesResponse>({
     queryKey: ['categories', page],
     queryFn: () => getCategoriesService(page),
   });
@@ -12,6 +12,5 @@ export default function useCategories(page: number) {
   return {
     categories: data?.categories ?? [],
     metadata: data?.metadata,
-    isLoading,
   };
 }

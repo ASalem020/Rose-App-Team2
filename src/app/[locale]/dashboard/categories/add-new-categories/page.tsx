@@ -17,23 +17,23 @@ import { useRouter } from '@/i18n/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 
-// ^ type
+// type
 type FormValues = {
   name: string;
   image?: FileList;
 };
 
 export default function AddCategoriesPage() {
-  // ^ Transilation
+  // Transilation
   const t = useTranslations('dashboard.categories');
 
-  // ^ Query
+  // Query
   const queryClient = useQueryClient();
 
-  // ^ Navigation
+  // Navigation
   const router = useRouter();
 
-  // ^ form
+  // form
   const form = useForm<FormValues>({
     defaultValues: {
       name: '',
@@ -42,7 +42,7 @@ export default function AddCategoriesPage() {
 
   return (
     <div className="ml-3 mt-3 flex min-h-screen flex-col">
-      <div className="w-full max-w-2xl rounded-2xl">
+      <div className="container max-w-3xl rounded-2xl">
         {/* title */}
         <h2 className="mb-6 text-2xl font-semibold">
           {t('add-new-category')}

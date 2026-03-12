@@ -1,4 +1,5 @@
 'use client';
+
 import {
   Button,
   buttonVariants,
@@ -24,23 +25,22 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import useCategories from '../_hooks/use-categories';
-import CategoriesTableSkeleton from './_skeleton/catrgories-table-skeleton';
 import DeleteCategoryButton from './delete-button';
 import { useTranslations } from 'next-intl';
 
 export default function CategoryTable() {
-  // ^ Transilation
+  // Transilation
   const t = useTranslations('dashboard.categories');
 
-  // ^ state
+  // state
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
 
-  // ^ hooks
-  const { categories, metadata, isLoading } =
+  // hooks
+  const { categories, metadata } =
     useCategories(page);
 
-  // ^ Variable
+  // Variable
   const filtered = categories.filter(item =>
     item.name.toLowerCase().includes(search.toLowerCase()),
   );
@@ -61,16 +61,16 @@ export default function CategoryTable() {
         </h1>
 
         {/* add category */}
-        <Link
-          href={'categories/add-new-categories'}
-          className={cn(
-            buttonVariants({ variant: 'default' }),
-            'gap-2 bg-maroon-600 p-2.5 text-white hover:bg-maroon-700',
-          )}
+        <Button
+          asChild
+          variant="default"
+          className="gap-2 bg-maroon-600 text-white hover:bg-maroon-700"
         >
-          <Plus className="h-4 w-4" />
-          {t('add-new-category')}
-        </Link>
+          <Link href="/dashboard/categories/add-new-categories">
+            <Plus className="h-4 w-4" />
+            {t('add-new-category')}
+          </Link>
+        </Button>
       </div>
 
       {/* ── Search ── */}
@@ -86,23 +86,20 @@ export default function CategoryTable() {
       </div>
 
       {/* table */}
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-        <Table>
+ 
+        <Table className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
           {/* header */}
-          <TableHeader>
-            <TableRow className="bg-zinc-50 *:text-zinc-900">
-              <TableHead>{t('name')}</TableHead>
-              <TableHead>{t('products')}</TableHead>
+          <TableHeader className="bg-zinc-50">
+            <TableRow className="*:text-zinc-900">
+              <TableHead className="">{t('name')}</TableHead>
+              <TableHead className="pr-36">{t('products')}</TableHead>
+              <TableHead ></TableHead>
             </TableRow>
           </TableHeader>
 
           {/* body */}
           <TableBody>
-            {isLoading ? (
-              // skeleton loading
-              <CategoriesTableSkeleton />
-            ) : (
-              // display category
+             {
               filtered.map(category => (
                 <TableRow
                   key={category._id}
@@ -141,10 +138,9 @@ export default function CategoryTable() {
                   </TableCell>
                 </TableRow>
               ))
-            )}
+            }
           </TableBody>
         </Table>
-      </div>
 
       {/* pagination */}
       <div className="flex flex-wrap items-center justify-center gap-2 pt-6">

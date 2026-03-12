@@ -10,7 +10,7 @@ import { deleteCategoriesActions } from '../_actions/delete-categories.actions';
 import { toast } from 'sonner';
 import { useTranslations } from 'next-intl';
 
-// ^ Type
+// Type
 type Props = {
   id: string;
 };
@@ -18,13 +18,13 @@ type Props = {
 export default function DeleteCategoryButton({
   id,
 }: Props) {
-  // ^ Transilation
+  // Transilation
   const t = useTranslations('dashboard.categories');
 
-  //^ Query
+  // Query
   const queryClient = useQueryClient();
 
-  //^ Mutation
+  // Mutation
   const mutation = useMutation({
     mutationFn: (id: string) => deleteCategoriesActions(id),
     onSuccess: data => {

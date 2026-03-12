@@ -22,29 +22,29 @@ import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { useTranslations } from 'next-intl';
 
-// ^ Type
+// Type
 type FormValues = {
   name: string;
 };
 
 export default function UpdateCategoriesPage() {
-  // ^ Transilation
+  // Transilation
   const t = useTranslations('dashboard.categories');
 
-  // ^ Navigation
+  // Navigation
   const router = useRouter();
   const params = useParams();
   const searchParams = useSearchParams();
 
-  // ^ Query
+  // Query
   const queryClient = useQueryClient();
 
-  // ^ Variable
+  // Variable
   const categoryId = params.id as string;
   const categoryName = searchParams.get('name') || '';
   const categoryImage = searchParams.get('image') || '';
 
-  // ^ Form
+  // Form
   const form = useForm<FormValues>({
     defaultValues: {
       name: categoryName,
@@ -53,15 +53,15 @@ export default function UpdateCategoriesPage() {
 
   return (
     <div className="ml-3 mt-3 flex min-h-screen flex-col">
-      <div className="w-full max-w-2xl rounded-2xl">
+      <div className="container max-w-3xl rounded-2xl">
         {/* Title */}
         <h2 className="mb-6 text-2xl font-semibold">
           {t('update-category')}: {categoryName}
         </h2>
 
         {/* form */}
-        <div className="mt-3 h-96 rounded-xl bg-white p-3">
-          <Form {...form}>
+        <div className="h-96 rounded-2xl bg-white p-3">
+          <Form {...form} >
             {/* function */}
             <form
               action={async (formData: FormData) => {
@@ -114,7 +114,7 @@ export default function UpdateCategoriesPage() {
                 <Link
                   href={categoryImage}
                   target="_blank"
-                  className="w-fite ml-auto mt-1 flex items-center gap-2 rounded-lg border border-gray-200 p-2 text-xl text-blue-600"
+                  className="w-fite ml-auto mt-1 flex items-center gap-2 rounded-lg border border-gray-200 p-2 text-sm text-blue-600"
                 >
                   <Image className="h-5 w-5" />
                   {t('view-category-image')}

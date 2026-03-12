@@ -1,4 +1,5 @@
 'use server';
+
 import { getToken } from '@/lib/utils/get-token';
 
 export async function AddCategoryAction(
@@ -19,7 +20,6 @@ export async function AddCategoryAction(
   );
 
   const payload = await res.json();
-  console.log('payload', payload);
 
   if (payload.error) {
     const error = await res.json();
