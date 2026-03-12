@@ -29,8 +29,8 @@ import { useEffect } from 'react';
 import { Product } from '@/lib/types/product';
 import { useUpdateProduct } from '../_hooks/use-update-product';
 import { updateProductSchema } from '@/lib/schemas/update-product.schema';
-import { Link } from '@/i18n/navigation';
-import { Image as ImageIcon, Images } from 'lucide-react';
+import { Image as ImageIcon } from 'lucide-react';
+import GalleryDialog from '@/app/[locale]/dashboard/_components/gallery-dialog';
 
 type Props = {
   product: Product;
@@ -337,20 +337,27 @@ export default function UpdateProductForm({
           )}
         />
 
-        {/* Waiting for cover and images routes... */}
+        {/* Cover image and product gallery images */}
         <div className="flex justify-end gap-2">
-          <Link
-            href={`/dashboard/products/${product._id}/cover`}
-            className="flex items-center gap-1.5 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
-          >
-            <ImageIcon size={18} /> {t('view-cover')}
-          </Link>
-          <Link
-            href={`/dashboard/products/${product._id}/images`}
-            className="flex items-center gap-1.5 rounded-lg border border-zinc-200 p-2 text-sm text-blue-600"
-          >
-            <Images size={18} /> {t('view-images')}
-          </Link>
+          {/* Product cover image */}
+          <GalleryDialog images={[product.imgCover]}>
+            <Button
+              variant={'outline'}
+              className="flex items-center gap-1.5 rounded-lg border border-zinc-200 p-2 text-sm font-normal text-blue-600 hover:bg-inherit"
+            >
+              <ImageIcon size={18} /> {t('view-cover')}
+            </Button>
+          </GalleryDialog>
+
+          {/* Product gallery images */}
+          <GalleryDialog images={product.images}>
+            <Button
+              variant={'outline'}
+              className="flex items-center gap-1.5 rounded-lg border border-zinc-200 p-2 text-sm font-normal text-blue-600 hover:bg-inherit"
+            >
+              <ImageIcon size={18} /> {t('view-images')}
+            </Button>
+          </GalleryDialog>
         </div>
 
         {/* Submit Button */}

@@ -40,7 +40,7 @@ export default function ProductGallery({
       setApi={setApi}
     >
       {/* Content */}
-      <CarouselContent>
+      <CarouselContent wrapperClassName="overflow-hidden">
         {// Gallery Images
         images?.map((image, index) => (
           <CarouselItem key={index}>

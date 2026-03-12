@@ -5,12 +5,13 @@ export interface Product {
   slug: string;
   price: number;
   priceAfterDiscount: number;
+  discount: number;
   quantity: number;
   sold: number;
   rateAvg: number;
   rateCount: number;
-  images: string[];
-  imgCover: string;
+  images: FileList | null;
+  imgCover: File;
   category: string;
   occasion: string;
   isSuperAdmin: boolean;
