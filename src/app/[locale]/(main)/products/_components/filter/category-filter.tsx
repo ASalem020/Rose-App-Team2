@@ -20,7 +20,7 @@ export default function CategoryFilter({ searchParams }: BuildSearchparamsProps)
 
     // ^ Hooks
     const { categories } = useAllCategories();
-
+    
     return (
         <div className='flex flex-col gap-2'>
             {/* reset  */}
@@ -41,7 +41,7 @@ export default function CategoryFilter({ searchParams }: BuildSearchparamsProps)
             {/* display categories */}
             <div className="flex flex-col space-y-2 max-h-64 overflow-y-auto pr-2">
                 {categories ?
-                    categories?.map((category: categories) => {
+                    categories?.categories?.map((category: categories) => {
                         const params = BuildSearchparams({ searchParams });
                         params.set('category', category._id);
                         const isActive = activeCategory === category._id;

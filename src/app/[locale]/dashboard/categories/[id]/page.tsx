@@ -61,7 +61,7 @@ export default function UpdateCategoriesPage() {
 
         {/* form */}
         <div className="h-96 rounded-2xl bg-white p-3">
-          <Form {...form} >
+          <Form {...form}>
             {/* function */}
             <form
               action={async (formData: FormData) => {
