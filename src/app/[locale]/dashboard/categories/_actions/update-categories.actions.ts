@@ -1,7 +1,7 @@
 'use server';
 
 import { getToken } from '@/lib/utils/get-token';
-import { redirect } from '@/i18n/navigation';
+import { redirect } from 'next/navigation';
 
 export async function updateCategoryAction(
   id: string,
@@ -31,6 +31,6 @@ export async function updateCategoryAction(
   }
   return {
     success: true,
-    message: 'Category updateing successfully ',
+    message: 'Category updated successfully',
   };
 }
