@@ -709,16 +709,16 @@
           "error": "فشل في حذف المنتج. يرجى المحاولة مرة أخرى."
         }
       },
-      "occasions": {
-        "delete": {
-          "success": "تم حذف المناسبة بنجاح",
-          "error": "فشل في حذف المناسبة. يرجى المحاولة مرة أخرى."
-        }
-      },
       "categories": {
         "delete": {
           "success": "تم حذف الفئة بنجاح",
           "error": "فشل في حذف الفئة. يرجى المحاولة مرة أخرى."
+        },
+        "occasions": {
+          "delete": {
+            "success": "تم حذف المناسبة بنجاح",
+            "error": "فشل في حذف المناسبة. يرجى المحاولة مرة أخرى."
+          }
         }
       },
       "account": {
@@ -726,12 +726,12 @@
           "success": "تم حذف الحساب بنجاح",
           "error": "فشل في حذف الحساب. يرجى المحاولة مرة أخرى."
         }
-       },
-    "top-selling-products": "المنتجات الأكثر مبيعا",
-    "low-stock-products": "منتجات منخفضة المخزون",
-    "products-text": "منتجات",
-    "sales": "مبيعات"
-   },
+      },
+      "top-selling-products": "المنتجات الأكثر مبيعا",
+      "low-stock-products": "منتجات منخفضة المخزون",
+      "products-text": "منتجات",
+      "sales": "مبيعات"
+    },
     "unauthorized": {
       "main-message": "أنت غير مصرح لك بالوصول إلى هذه الصفحة.",
       "sub-message": "إذا كنت تعتقد أن هذا خطأ، يرجى الاتصال بالدعم.",
@@ -741,11 +741,11 @@
       "main-message": "هذه الصفحة غير موجودة.",
       "sub-message": "لم نتمكن من العثور على الصفحة التي تبحث عنها، يرجى التأكد من أنك في المسار الصحيح."
     },
-      "error-page": {
+    "error-page": {
       "main-message": "عذرًا، حدث خطأ ما!",
       "sub-message": "حدث شيء غير متوقع، يرجى تحديث الصفحة أو المحاولة مرة أخرى قريبًا."
-  },
-  "global-delete-alert-dialog": {
+    },
+    "global-delete-alert-dialog": {
       "show-dialog": "تنفيذ الحذف",
       "account": {
         "title": "هل أنت متأكد أنك تريد حذف حسابك؟",
@@ -768,10 +768,29 @@
         "confirm": "نعم، احذف المناسبة",
         "cancel": "إلغاء"
       }
+    },
+    "gallery-dialog": {
+      "show-dialog": "عرض حوار المعرض"
+    }
   },
-  "gallery-dialog": {
-    "show-dialog": "عرض حوار المعرض"
+  "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح.",
+  "dashboard": {
+    "top-selling-products": "المنتجات الأكثر مبيعا",
+    "products": "منتجات",
+    "sales": "مبيعات",
+    "categories": {
+      "title": "جميع الفئات",
+      "add-new-category": "أضف فئة جديدة",
+      "name": "الاسم",
+      "products": "المنتجات",
+      "product": "منتج",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "loading": "تحميل",
+      "category-image": "صورة الفئة",
+      "add-category-button": "أضف فئة",
+      "view-category-image": "عرض صورة الفئة",
+      "update-category": "تحديث الفئة"
+    }
   }
-  },
-  "success-toast": "لقد تم إعادة تعيين كلمة المرور الخاصة بك بنجاح."
 }

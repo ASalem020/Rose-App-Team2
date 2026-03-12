@@ -8,3 +8,15 @@ export interface categories {
   isSuperAdmin: boolean;
   productsCount: number;
 }
+export interface CategoriesMetadata {
+  currentPage: number;
+  limit: number;
+  totalPages: number;
+  totalItems: number;
+}
+
+export interface CategoriesResponse {
+  message: string;
+  metadata: CategoriesMetadata;
+  categories: Category[];
+}

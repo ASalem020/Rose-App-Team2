@@ -1,7 +1,9 @@
-export default function Page() {
-  // !throw this error to test the error boundary
-  throw new Error(
-    'An error occurred while loading the categories. Please try again later.',
+import CategoryTable from './_components/categories-table';
+
+export default function page() {
+  return (
+    <div className="ml-2 mt-2 bg-white rounded-2xl">
+      <CategoryTable />
+    </div>
   );
-  return <div>categories</div>;
 }

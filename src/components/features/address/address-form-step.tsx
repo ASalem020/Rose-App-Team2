@@ -4,15 +4,15 @@
 // Imports
 
 
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useTranslations } from 'next-intl';
 import { PhoneInput } from '@/components/ui/phone-input';
 import type { AddressFormData } from '../../../lib/types/address';
+import { addressFormSchema } from '../../../lib/schemas/address.schema';
 
 
 // Types
@@ -59,21 +59,8 @@ export default function AddressFormStep({
 
   // Form & Validation
 
-
-  const addressFormSchema = z.object({
-    city: z.string().min(2, t('validation.cityMin')),
-    street: z.string().min(3, t('validation.streetMin')),
-    phone: z.string().min(10, t('validation.phoneMin')),
-  });
-
-
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<FormValues>({
-    resolver: zodResolver(addressFormSchema),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(addressFormSchema(t)),
     defaultValues: {
       city: initialData?.city || '',
       street: initialData?.street || '',
@@ -102,81 +89,84 @@ export default function AddressFormStep({
 
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-5">
-      {/* City */}
-      <div>
-        <Label
-          htmlFor="city"
-          className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 block"
-        >
-          {t('city.label')}
-        </Label>
-        <Input
-          id="city"
-          placeholder={t('city.placeholder')}
-          {...register('city')}
-          className="h-11 text-sm border-gray-300 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white focus:border-red-500 dark:focus:border-softPink-500 focus:ring-red-500 dark:focus:ring-softPink-500"
-        />
-        {errors.city && (
-          <p className="text-xs text-red-500 mt-1">{errors.city.message}</p>
-        )}
-      </div>
-
-      {/* Address */}
-      <div>
-        <Label
-          htmlFor="street"
-          className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 block"
-        >
-          {t('street.label')}
-        </Label>
-        <textarea
-          id="street"
-          placeholder={t('street.placeholder')}
-          {...register('street')}
-          rows={4}
-          className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white rounded-md resize-none focus:border-red-500 dark:focus:border-softPink-500 focus:ring-1 focus:ring-red-500 dark:focus:ring-softPink-500 focus:outline-none placeholder:text-start"
-        />
-        {errors.street && (
-          <p className="text-xs text-red-500 mt-1">{errors.street.message}</p>
-        )}
-      </div>
-
-      {/* Phone */}
-      <div>
-        <Label
-          htmlFor="phone"
-          className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 block"
-        >
-          {t('phone.label')}
-        </Label>
-        <Controller
-          name="phone"
-          control={control}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onFormSubmit)} className="space-y-5">
+        {/* City */}
+        <FormField
+          control={form.control}
+          name="city"
           render={({ field }) => (
-            <PhoneInput
-              defaultCountry="EG"
-              placeholder={t('phone.placeholder')}
-              value={field.value}
-              onChange={field.onChange}
-              error={!!errors.phone}
-            />
+            <FormItem>
+              <FormLabel className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 block">
+                {t('city.label')}
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder={t('city.placeholder')}
+                  className="h-11 text-sm border-gray-300 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white focus:border-red-500 dark:focus:border-softPink-500 focus:ring-red-500 dark:focus:ring-softPink-500"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage className="text-xs text-red-500 mt-1" />
+            </FormItem>
           )}
         />
-        {errors.phone && (
-          <p className="text-xs text-red-500 mt-1">{errors.phone.message}</p>
-        )}
-      </div>
 
-      {/* Next button */}
-      <div className="pt-2">
-        <Button
-          type="submit"
-          className="w-full h-12 font-medium rounded-lg text-base"
-        >
-          {t('next')}
-        </Button>
-      </div>
-    </form>
+        {/* Address */}
+        <FormField
+          control={form.control}
+          name="street"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 block">
+                {t('street.label')}
+              </FormLabel>
+              <FormControl>
+                <textarea
+                  placeholder={t('street.placeholder')}
+                  rows={4}
+                  className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white rounded-md resize-none focus:border-red-500 dark:focus:border-softPink-500 focus:ring-1 focus:ring-red-500 dark:focus:ring-softPink-500 focus:outline-none placeholder:text-start"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage className="text-xs text-red-500 mt-1" />
+            </FormItem>
+          )}
+        />
+
+        {/* Phone */}
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 block">
+                {t('phone.label')}
+              </FormLabel>
+              <FormControl>
+                <PhoneInput
+                  defaultCountry="EG"
+                  placeholder={t('phone.placeholder')}
+                  value={field.value}
+                  onChange={field.onChange}
+                  error={!!form.formState.errors.phone}
+                />
+              </FormControl>
+              <FormMessage className="text-xs text-red-500 mt-1" />
+            </FormItem>
+          )}
+        />
+
+        {/* Next button */}
+        <div className="pt-2">
+          <Button
+            type="submit"
+            className="w-full h-12 font-medium rounded-lg text-base"
+          >
+            {t('next')}
+          </Button>
+        </div>
+      </form>
+    </Form>
   );
 }

@@ -771,5 +771,25 @@
       "show-dialog": "View Gallery Dialog"
     }
   },
-  "success-toast": "Your password has been successfully reset."
+  "success-toast": "Your password has been successfully reset.",
+  "dashboard": {
+    "top-selling-products": "Top Selling Products",
+    "products": "Products",
+    "sales": "Sales",
+    "categories": {
+      "title": "All Categories",
+      "add-new-category": "Add a new category",
+      "name": "Name",
+      "products": "Products",
+      "product": "Product",
+      "edit": "Edit",
+      "delete": "Delete",
+      "loading": "Loading",
+      "category-image": "Category image",
+      "add-category-button": "Add Category",
+      "view-category-image": "View Category Image",
+      "update-category": "Update Category"
+    }
+  }
+
 }

@@ -10,7 +10,7 @@ export default function useAllOccasions() {
   // ^ 1 Get occasions
   const { data: occasions } = useQuery({
     queryKey: ['occasions'],
-    queryFn: getOccasions,
+    queryFn: () => getOccasions('4'),
   });
   if (occasions?.length && !activeOccasion) {
     setActiveOccasion(occasions[0]._id);

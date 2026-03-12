@@ -126,7 +126,7 @@ export default function AddressList({
   const normalizedAddresses: Address[] = (
     addresses || []
   ).map((addr: any) => ({
-    id: addr._id || addr.id,
+    _id: addr._id || addr.id,
     name: addr.username || addr.name || addr.label,
     category: addr.category || addr.type || tc('other'),
     street: addr.street || addr.address || '',
