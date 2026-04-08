@@ -55,7 +55,7 @@ export default function Menu() {
         </li>
         <li className="cursor-pointer border-y border-black/[8%] p-3 text-sm font-medium text-zinc-700 duration-300 hover:bg-zinc-100">
           <Link
-            href={'/dashboard/account-settings'}
+            href={'/dashboard/account'}
             className="flex items-center gap-2"
           >
             <User size={16} />
